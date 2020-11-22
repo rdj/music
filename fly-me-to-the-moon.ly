@@ -53,42 +53,81 @@
   b2:m7.5- e:7.9-
 }
 
-\relative {
-  \tempo "Medium Swing"
+\new Voice = "melody" {
+  \relative {
+    \tempo "Medium Swing"
 
-  \repeat volta 2 {
-    c''4 b a g |
-    f g a c |
-    b a g f |
-    e1 |
-    \break
-    a4 g f e |
-    d e f a |
-    gs f e d |
-    c2. cs4 |
-    \break
-    d a' a2~ |
-    a4 c2 b4 |
-  }
-  \alternative {
-    {
-      g1~ |
-      g2. b,4 |
-      \break
-      c f f2~ |
-      f4 a2 g4 |
-      f2 e2~ |
+    \repeat volta 2 {
+      c''4 b a g |
+      f g a c |
+      b a g f |
       e1 |
       \break
-    }
-    {
-      g1~ |
-      g2. gs4 |
-      a c, c2~ |
-      c4 c2 d4 |
+      a4 g f e |
+      d e f a |
+      gs f e d |
+      c2. cs4 |
       \break
-      c1~ |
-      c1 \bar "|."
+      d a' a2~ |
+      a4 c2 b4 |
+    }
+    \alternative {
+      {
+        g1~ |
+        g2. b,4 |
+        \break
+        c f f2~ |
+        f4 a2 g4 |
+        f2 e2~ |
+        e1 |
+        \break
+      }
+      {
+        g1~ |
+        g2. gs4 |
+        a c, c2~ |
+        c4 c2 d4 |
+        \break
+        c1~ |
+        c1 \bar "|."
+      }
+    }
+  }
+}
+
+\new Lyrics \lyricsto "melody" {
+  \lyricmode {
+    \repeat volta 2 {
+      <<
+        {
+          Fly me to the moon,
+          and let me play a- mong the stars.
+          Let me see what spring is like
+          on Ju- pi- ter and Mars.
+          In o- ther words,
+          hold my
+        }
+        \new Lyrics \lyricsto "melody" {
+          Fill my heart with song,
+          and let me sing for- e- ver more.
+          You are all I long for,
+          all I wor- ship and a- dore.
+          In o- ther words,
+          please be
+        }
+      >>
+    }
+    \alternative {
+      {
+        hand.
+        In o- ther words,
+        ba- by, kiss me.
+      }
+      {
+        true.
+        In o- ther words,
+        I love you.
+      }
     }
   }
 }
