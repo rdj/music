@@ -1,5 +1,6 @@
 \version "2.20.0"
 \language "english"
+\pointAndClickOff
 
 #(set-default-paper-size "letter")
 
