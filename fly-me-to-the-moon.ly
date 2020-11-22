@@ -36,18 +36,18 @@
   f1:maj7
   b:m7.5-
   e:7.9-
-  a2.:m a4:7
-  d1:m
+  a2.:m7 a4:7
+  d1:m7
   g:7
   c2:maj7 f:7
-  e:m a:7
-  d1:m
+  e:m7 a:7
+  d1:m7
   g:7
   c:maj7
   b2:m7.5- e:7.9-
-  e1:m
+  e1:m7
   a:7
-  d:m
+  d:m7
   g:7
   c:maj7
   b2:m7.5- e:7.9-
