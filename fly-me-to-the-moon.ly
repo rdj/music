@@ -18,6 +18,7 @@
 \header {
   title = "Fly Me to the Moon"
   composer = "Bart Howard"
+  tagline = ""
 }
 
 <<
