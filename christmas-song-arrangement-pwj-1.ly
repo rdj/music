@@ -14,9 +14,6 @@
   tagline = "Arrangement by Jonny May (Beg/Int)"
 }
 
-accf = \accidentalStyle forget
-accd = \accidentalStyle default
-
 daCapo = {
   \once \override Score.RehearsalMark.self-alignment-X = #RIGHT
   \once \override Score.RehearsalMark.break-visibility = #begin-of-line-invisible
@@ -37,6 +34,15 @@ coda = {
   \override Staff.TimeSignature #'stencil = ##f
   \mark \markup \musicglyph #"scripts.coda"
 }
+
+forceAccs =
+  #(define-music-function (music) (ly:music?)
+    #{
+      \accidentalStyle forget
+      #music
+      \accidentalStyle default
+    #}
+  )
 
 <<
 
@@ -111,7 +117,7 @@ coda = {
           <<
             e2
             \\
-            { \grace gs,8 <f a>4 \accf <e gs> \accd }
+            { \grace gs,8 <f a>4 \forceAccs <e gs> }
           >> |
           <c' bf> a'
           <g bf,>8 f \grace gs, <e' a,> d |
