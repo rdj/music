@@ -5,6 +5,7 @@
 #(set-default-paper-size "letter")
 
 \paper {
+  indent = 0
 }
 
 \header {
