@@ -6,9 +6,6 @@
 
 \paper {
   indent = 0
-  markup-system-spacing = #'((basic-distance . 23)
-                             (minimum-distance . 8)
-                             (padding . 1))  
 }
 
 \layout {
