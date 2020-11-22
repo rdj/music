@@ -17,6 +17,27 @@
 accf = \accidentalStyle forget
 accd = \accidentalStyle default
 
+daCapo = {
+  \once \override Score.RehearsalMark.self-alignment-X = #RIGHT
+  \once \override Score.RehearsalMark.break-visibility = #begin-of-line-invisible
+  \override Score.RehearsalMark.direction = #DOWN
+  \once \override Score.RehearsalMark.font-size = #1
+  \mark \markup { { \lower #1 "D.C. al Coda" { \musicglyph #"scripts.coda"} } }
+}
+
+toCoda = {
+  \once \override Score.RehearsalMark.self-alignment-X = #RIGHT
+  \once \override Score.RehearsalMark.break-visibility = #begin-of-line-invisible
+  \override Score.RehearsalMark.direction = #UP
+  \once \override Score.RehearsalMark.font-size = #1
+  \mark \markup { { \lower #1 "To Coda" { \musicglyph #"scripts.coda"} } }
+}
+
+coda = {
+  \override Staff.TimeSignature #'stencil = ##f
+  \mark \markup \musicglyph #"scripts.coda"
+}
+
 <<
 
   \chords {
@@ -168,6 +189,7 @@ accd = \accidentalStyle default
           af <af' d''> |
           <g e'> <e' b'>
           <fs e'> <b ds'> |
+          \toCoda
         }
         \alternative {
           {
@@ -208,6 +230,52 @@ accd = \accidentalStyle default
         <g f'> <f' b'> |
         \bar "||"
         \break
+        \daCapo
+      }
+    }
+  >>
+
+>>
+
+% CODA
+
+<<
+
+  \chords {
+    e2:m/g
+    fs4:7 b:7 |
+    e:m7 a:m7
+    d:m7 g:9 |
+    c1:6.9 |
+  }
+
+  \new PianoStaff <<
+    \new Staff = "upper" {
+      \coda
+      \clef treble
+
+      \relative e'' {
+        <e b g>4 g8 a
+        <b cs,>4 c8 a |
+        <g b,>4 c,
+        <c f,> <d af f> |
+        <c g d>2
+        <d g c>
+      }
+    }
+
+    \new Staff = "lower" {
+      \coda
+      \clef bass
+
+      \fixed c, {
+        <g e'>4 <e' b'>
+        <fs e'> <b ds'> |
+        <e' g'> <a g'>
+        <d' f'> <g f'> |
+        <c' a'>2
+        c |
+        \bar "|."
       }
     }
   >>
