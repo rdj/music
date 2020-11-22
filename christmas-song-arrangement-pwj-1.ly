@@ -287,4 +287,31 @@ forceAccs =
   >>
 
 >>
-  
+
+% Having trouble deciding which grace note to use in this tune. The
+% original just uses small notes with no ties or slashes, which I
+% found a little hard to follow, but then I found a way to tweak the
+% grace notes so they are smaller, and I find that acceptable.
+%
+% Another option is to explicitly slur the grace note to the proper
+% note in the chord, e.g. `\grace as( <g) b>`, but the slur ends up
+% a bit ugly in this case, there is a bug filed about it.
+%
+%   grace = small note
+%   slashedGrace = slashed grace note
+%   appoggiatura = slurred grace note
+%   acciaccatura = slurred slashed grace note
+\layout {
+  \context {
+    \Score
+    \with{
+      $(add-grace-property 'Voice 'NoteHead 'font-size '-5)
+      $(add-grace-property 'Voice 'Slur 'height-limit '1)
+      $(add-grace-property 'Voice 'Flag 'font-size '-5)
+      $(add-grace-property 'Voice 'Stem 'length '4)
+      $(add-grace-property 'Voice 'Beam 'beam-thickness '0.3)
+      $(add-grace-property 'Voice 'Beam 'length-fraction '0.5)
+      $(add-grace-property 'Voice 'Beam 'shorten '1)
+    }
+  }
+}
