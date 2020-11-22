@@ -60,7 +60,15 @@ accd = \accidentalStyle default
     d:m7 |
     \break
 
-    
+    g:m7
+    c:7.9- |
+    f:maj7
+    f:6 |
+    f:m7
+    bf:9 |
+    ef:maj7
+    ef:6 |
+    \break
   }
 
   \new PianoStaff <<
@@ -114,6 +122,16 @@ accd = \accidentalStyle default
         g4 <e a,>
         <d a>8 c b c |
         \break
+
+        <bf' d,>8 a <bf d,> a
+        <bf df,> a g f |
+        g4 <e a,>
+        <d a>8 c b c |
+        af'8 g <af ef c>4
+        <d, c>8 g f ef |
+        f4 <d g,>
+        <c g>8 ef f ef |
+        \break
       }
     }
 
@@ -158,6 +176,16 @@ accd = \accidentalStyle default
         <c' bf'> <e' bf'> |
         <f e'> <e' a'>
         <d' c''> <f' c''> |
+        \break
+
+        <g f'> <f' bf'>
+        <c' bf'> <e' bf'> |
+        <f e'> <e' a'>
+        <f d'> <d' a'> |
+        <f ef'> <ef' af'>
+        <bf af'> <d' af'> |
+        <ef bf> <d' g'>
+        <ef bf> <c' g'> |
         \break
       }
     }
