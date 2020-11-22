@@ -69,6 +69,12 @@ accd = \accidentalStyle default
     ef:maj7
     ef:6 |
     \break
+
+    a:m7
+    d:7 |
+    g:9sus4
+    g:9 |
+    \break
   }
 
   \new PianoStaff <<
@@ -114,6 +120,7 @@ accd = \accidentalStyle default
             g <f a,>4 <b, a f> |
             <c g d>2
             r8 c b c |
+            \bar "||"
           }
         }
 
@@ -131,6 +138,13 @@ accd = \accidentalStyle default
         <d, c>8 g f ef |
         f4 <d g,>
         <c g>8 ef f ef |
+        \break
+
+        <d c g>8 d d d
+        \grace as <d b e,>4 <d b e,>8 d |
+        <d c f,>4 <c f, e>
+        <b a f> <e b f> |
+        \bar "||"
         \break
       }
     }
@@ -186,6 +200,13 @@ accd = \accidentalStyle default
         <bf af'> <d' af'> |
         <ef bf> <d' g'>
         <ef bf> <c' g'> |
+        \break
+
+        <a g'> <g' c''>
+        <d' g' c''> <fs' c''> |
+        <g f'> <f' c''>
+        <g f'> <f' b'> |
+        \bar "||"
         \break
       }
     }
