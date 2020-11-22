@@ -98,18 +98,18 @@
       <<
         {
           Fly me to the moon,
-          and let me play a- mong the stars.
+          and let me play a -- mong the stars.
           Let me see what spring is like
-          on Ju- pi- ter and Mars.
-          In o- ther words,
+          on Ju -- pi -- ter and Mars.
+          In o -- ther words,
           hold my
         }
         \new Lyrics \lyricsto "melody" {
           Fill my heart with song,
-          and let me sing for- e- ver more.
+          and let me sing for -- e -- ver more.
           You are all I long for,
-          all I wor- ship and a- dore.
-          In o- ther words,
+          all I wor -- ship and a -- dore.
+          In o -- ther words,
           please be
         }
       >>
@@ -117,12 +117,12 @@
     \alternative {
       {
         hand.
-        In o- ther words,
-        ba- by, kiss me.
+        In o -- ther words,
+        ba -- by, kiss me.
       }
       {
         true.
-        In o- ther words,
+        In o -- ther words,
         I love you.
       }
     }
