@@ -187,9 +187,9 @@ coda = {
 
           <a e'> <g' c''>
           af <af' d''> |
+          \toCoda
           <g e'> <e' b'>
           <fs e'> <b ds'> |
-          \toCoda
         }
         \alternative {
           {
