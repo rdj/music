@@ -59,12 +59,12 @@
     f g a c |
     b a g f |
     e1 |
-    %\break
+    \break
     a4 g f e |
     d e f a |
     gs f e d |
     c2. cs4 |
-    %\break
+    \break
     d a' a2~ |
     a4 c2 b4 |
   }
@@ -72,19 +72,19 @@
     {
       g1~ |
       g2. b,4 |
-      %\break
+      \break
       c f f2~ |
       f4 a2 g4 |
       f2 e2~ |
       e1 |
-      %\break
+      \break
     }
     {
       g1~ |
       g2. gs4 |
       a c, c2~ |
       c4 c2 d4 |
-      %\break
+      \break
       c1~ |
       c1 \bar "|."
     }
