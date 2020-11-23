@@ -54,7 +54,7 @@ forceAccs =
       c2:6.9
       d:m6 |
       e:m7
-      g:13 |
+      g:13.11 |
       g:m7
       c:7 |
       f:maj7
