@@ -249,7 +249,7 @@ forceAccs =
 
   \chords {
     e2:m/g
-    fs4:7 b:7 |
+    fs4:m7 b:7 |
     e:m7 a:m7
     d:m7 g:9 |
     c1:6.9 |
