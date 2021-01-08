@@ -52,7 +52,7 @@ forceAccs =
 
     \repeat volta 2 {
       c2:6.9
-      d:m6 |
+      d:m7 |
       e:m7
       g:13.11 |
       g:m7
