@@ -70,6 +70,7 @@ legato = \markup { \italic "legato" }
       \clef bass
       <c e,>4 r <c e,> <c e,> |
       <c e,>2 r2\fermata |
+      \bar "|."
     }
   }
 
