@@ -89,7 +89,7 @@ legato = \markup { \italic "legato" }
 
       r |
       r <g' b d> r <g c e> |
-      r <g b d> r <g b d> |
+      r <g b d> <g b d> r |
       r <fs a> r <g b> |
       r <d fs a> <d fs a>
 
