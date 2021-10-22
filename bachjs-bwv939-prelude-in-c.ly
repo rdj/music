@@ -19,6 +19,18 @@
   tagline = ##f
 }
 
+%% I'd prefer to use define-event-function, then this could go after
+%% the note like \mordent usually does, but I can't figure out how
+%% to do the script-priority override in an event function, it has
+%% to come before the note.
+msharp = #(define-music-function (note) (ly:music?)
+           #{
+           \once \override TextScript.script-priority = #-100
+           #note
+           ^ \markup {\teeny \sharp}
+           \mordent
+           #} )
+
 \new PianoStaff <<
   \new Staff = "upper" {
     \clef treble
@@ -58,9 +70,12 @@
         g2 r4 g |
         a8 a, c e c a g' e |
         fs2 r4 d |
-        g  g, g' g, |
-        g' g, g' g, |
-        g' g, g' g, |
+        \repeat unfold 3 {
+          \repeat unfold 2 {
+            \msharp g
+            g,
+          }
+        }
         g'8 g, b d b g f' d |
         e c e g e c c' e, |
         f1~ |
@@ -70,5 +85,3 @@
     >>
   }
 >>
-  
-
