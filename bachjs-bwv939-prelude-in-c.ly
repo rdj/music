@@ -44,7 +44,7 @@ msharp = #(define-music-function (note) (ly:music?)
       <d c a>2 r4 <d c a> |
       <d b g>8 g, b d <b g>4 <e b> |
       c2 r4 <c a e>~ |
-      8 c, fs a fs d c' a |
+      8 d, fs a fs d c' a |
       b g b d b g f'? d |
       e g, c e c g g' e |
       fs a, c fs c a a' fs |
