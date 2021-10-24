@@ -35,6 +35,29 @@ dolce = \markup { \italic "dolce" }
 %% simplify the reading for students who would typically be studying
 %% this piece. So I am going to stick with the simple repeats.
 
+MONE_A_RH = {
+  % g2
+  \sgr b8 a\( g a b\) |
+  g4 g'8\(\> d\) d\( b\) b\( g\)\! |
+  c2 \sgr c8 b\( a b c\) |
+  a4 d8\( e d b c a\) |
+  g2 \sgr b8 a\( g a b\) |
+  c2 \sgr fs8 e\( d e fs\) |
+  g\( d\) e\( c\) b\( d\) c\( a\) |
+  a2\( g4\) r |
+}
+
+MONE_A_LH = {
+  <b g>2 <c fs,> |
+  <b g>4 r r2 |
+  <a d,> <g d> |
+  <fs d>4 r r2 |
+  g8 d' b d g, f' d f |
+  g,\( e' c e\) g,\( c a c\) |
+  b4 c d d, |
+  g d g, r |
+}
+
 \score { % Movement 1 ABABAC
   \new PianoStaff <<
     \new Staff = "upper" {
@@ -44,14 +67,7 @@ dolce = \markup { \italic "dolce" }
       \relative c'' {
         \tempo Moderato
         %% A
-        g2\p \sgr b8 a\( g a b\) |
-        g4 g'8\(\> d\) d\( b\) b\( g\)\! |
-        c2 \sgr c8 b\( a b c\) |
-        a4 d8\( e d b c a\) |
-        g2 \sgr b8 a\( g a b\) |
-        c2 \sgr fs8 e\( d e fs\) |
-        g\( d\) e\( c\) b\( d\) c\( a\) |
-        a2\( g4\) r |
+        g2\p \MONE_A_RH
 
         \repeat volta 2 {
           %% B
@@ -64,14 +80,7 @@ dolce = \markup { \italic "dolce" }
           a4 d,8 e fs g a b |
           c4 b8\( c d c a b\) |
           %% A Section again
-          g2_\dolce \sgr b8 a\( g a b\) |
-          g4 g'8\(\> d\) d\( b\) b\( g\)\! |
-          c2 \sgr c8 b\( a b c\) |
-          a4 d8\( e d b c a\) |
-          g2 \sgr b8 a\( g a b\) |
-          c2 \sgr fs8 e\( d e fs\) |
-          g\( d\) e\( c\) b\( d\) c\( a\) |
-          a2\( g4\) r |
+          g2_\dolce \MONE_A_RH
         }
 
         %% C
@@ -96,14 +105,7 @@ dolce = \markup { \italic "dolce" }
       \time 4/4
       \relative c' {
         %% A
-        <b g>2 <c fs,> |
-        <b g>4 r r2 |
-        <a d,> <g d> |
-        <fs d>4 r r2 |
-        g8 d' b d g, f' d f |
-        g,\( e' c e\) g,\( c a c\) |
-        b4 c d d, |
-        g d g, r |
+        \MONE_A_LH
 
         %% B
         fs'8 d fs d g d g d |
@@ -116,14 +118,7 @@ dolce = \markup { \italic "dolce" }
         R1 |
 
         %% A
-        <b g>2 <c fs,> |
-        <b g>4 r r2 |
-        <a d,>2 <g d> |
-        <fs d>4 r r2 |
-        g8 d' b d g, f' d f |
-        g, e' c e g, c a c |
-        b4 c d d, |
-        g d g, r |
+        \MONE_A_LH
 
         %% C
         d'8\( a' c a\) d,\( a' c a\) |
