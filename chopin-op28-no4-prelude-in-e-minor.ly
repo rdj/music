@@ -32,10 +32,18 @@
 %% to some degree, but I think the performer can be trusted to
 %% identify the chord changes and be guided by their own judgement.
 %%
+%% ACCIDENTALS (mm. 5, 12, 18)
+%% Both B&H and Catelin mark many accidentals that are redundant in
+%% modern practice, without using parentheses. I have copied the same
+%% accidentals. In measures 5, 12, and 18, some editions add an
+%% explicit F♯ (LH), G♮ (RH) and D♮ (RH), respectively. Although that
+%% would seem to be consistent with the other redundant accidentals,
+%% I have not added them here.
+%%
 %% ACCENT MARKS (mm. 8, 12)
 %% B&H contains two single-note long descrescendo marks. In measure 8,
 %% Catelin shows this as a descrescendo extended over the entire length
-%% of the G# tied into m. 9. In consulting other editions, this is
+%% of the G♯ tied into m. 9. In consulting other editions, this is
 %% one of the places I saw the most disagreement. I'm deferring to the
 %% Catelin here, since I treated it as authoritative for the other dynamic
 %% marks.
@@ -120,8 +128,8 @@ smorz = \markup { \small \italic "smorz." }
       fs8. e16\! |
       e8\f ds c' ds, ds e g b, |
       d c \tuplet 3/2 { e e, a } fs4._\dim a8 |
-      fs2.\p\)\stopTextSpan \sgr b8 a4 |
-      fs2.^\(~ 8.\< e16 |
+      fs2.\p\)\stopTextSpan \sgr b8^\( a4 |
+      fs2.~ 8.\< e16 |
       << { e2. } { s16 s\! } >>
       fs4_\smorz |
       e2. fs4 |
