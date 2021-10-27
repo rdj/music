@@ -10,7 +10,7 @@
 \header {
   title = "Prelude in E minor"
   composer = "Frédéric Chopin"
-  opus = "Op. 24, No. 4 (1839)"
+  opus = "Op. 28, No. 4 (1839)"
   tagline = ##f
 }
 
