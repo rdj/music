@@ -190,7 +190,7 @@ MTWO_A_LH = {
         \repeat volta 2 {
           %% B
           \sgr a g fs g |
-          a\(\<-. b-. cs-. d-. e-. f\)\!-.
+          a\(\<-. b-. cs-. d-. e-. fs\)\!-.
           a4 g8 fs e d |
           cs b a e' cs g |
           fs4 a8 d d d |
