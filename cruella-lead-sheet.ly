@@ -22,7 +22,7 @@
 
 trip = #(define-music-function (music) (ly:music?) #{ \tuplet 3/2 #music #})
 
-\include "rhythm-mark.ly"
+\include "lib/rhythm-mark.ly"
 
 <<
 
@@ -63,7 +63,7 @@ trip = #(define-music-function (music) (ly:music?) #{ \tuplet 3/2 #music #})
     % Second ending
     d2:7 g:7
     c1:7
-    
+
   }
 
   \new Staff {
@@ -77,11 +77,11 @@ trip = #(define-music-function (music) (ly:music?) #{ \tuplet 3/2 #music #})
       ds8 |
       \repeat volta  2 {
         e g a bf~ 4. gs8 |
-        a c d ef~ 4. ef,8 | 
+        a c d ef~ 4. ef,8 |
         e g a bf~ bf bf4 gs8 |
         a c d ef~ 4. c8 | \break
         e c d c ef c d c |
-        e2.~ 8 a, | 
+        e2.~ 8 a, |
       }
       \alternative {
         {
@@ -93,14 +93,14 @@ trip = #(define-music-function (music) (ly:music?) #{ \tuplet 3/2 #music #})
           2.~ 8 c \bar "||" | \break
         }
       }
-      
+
       \mark #2
       e f d e c d b c |
       a a4.~ a c8 |
       e f d e c d b c |
       a2.~ 8 c | \break
       d d \trip { d c d~ } 4. c8 |
-      d d \trip { d c d~ } 2 | 
+      d d \trip { d c d~ } 2 |
       ef8 ef d c ef ef d c |
       d2.~ 8 ds, | \break
 
@@ -110,12 +110,10 @@ trip = #(define-music-function (music) (ly:music?) #{ \tuplet 3/2 #music #})
       e g a bf~ bf bf4 gs8 |
       a c d ef~ 4. c8 | \break
       e c d c ef c d c |
-      e2.~ 8 a, | 
+      e2.~ 8 a, |
       e' ef4 c8 ef d c c~ |
       1 \bar "|." |
     }
   }
 
 >>
-
-

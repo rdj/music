@@ -23,12 +23,12 @@ makePercent =
    (make-music 'PercentEvent
                'length (ly:music-length note)))
 
-\include "rhythm-mark.ly"
+\include "lib/rhythm-mark.ly"
 
 <<
 
   \chords {
-    \set chordChanges = ##t    
+    \set chordChanges = ##t
     \set majorSevenSymbol = "maj7"
 
     c2.:7
@@ -47,7 +47,7 @@ makePercent =
     g:7
     g:7
     c:7
-  }    
+  }
 
   \new Staff {
     \clef treble
@@ -114,7 +114,7 @@ makePercent =
 
 \markup Bridge
 
-  
+
 \new ChordNames \with {
   \override BarLine.bar-extent = #'(-2 . 2)
   \consists "Bar_engraver"
@@ -126,4 +126,3 @@ makePercent =
   c1 c2 g:7 c1 c2 b2
   e1:m e2:m fs:m7.5- b1:7 g2:7 c
 }
-  
