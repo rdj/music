@@ -29,7 +29,7 @@
         bf8. ef16 8 d |
         bf8. f'16 8 ef |
         ef8. df16 c8 af'16 g |
-        g f f ef \appoggiatura ef32 d8 c16 bf | \break
+        g f f ef \appoggiatura ef16 d8 c16 bf | \break
         bf8. ef16 8 d |
         bf8. f'16 8 ef |
         ef8. df16 c8 af'16 f |
