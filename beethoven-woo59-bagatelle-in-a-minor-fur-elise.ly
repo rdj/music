@@ -8,6 +8,19 @@
   print-page-number = ##f
 }
 
+#(set-global-staff-size 20)
+
+\paper {
+    top-margin = 8\mm                              %-minimum: 8 mm
+    top-markup-spacing.basic-distance = #6         %-dist. from bottom of top margin to the first markup/title
+    markup-system-spacing.basic-distance = #5      %-dist. from header/title to first system
+    top-system-spacing.basic-distance = #12        %-dist. from top margin to system in pages with no titles
+    last-bottom-spacing.padding = #2               %-min #1.5 -pads music from copyright block
+    ragged-bottom = ##f
+    ragged-last-bottom = ##f
+}
+
+
 \header {
   title = "Bagatelle in A minor (“Für Elise”)"
   subsubtitle = \markup { "From" \italic "Neue Briefe Beethovens" "(1867)" }
@@ -144,7 +157,7 @@ upperStaff = {
       \Section-A-Part-IV-RH
     }
     \alternative {
-      { a8 r16 b c d | }
+      { a8 r16 b c d | \pageBreak }
       { a8 r16 <c e,> <c f,> <c g e> | }
     }
 
@@ -166,7 +179,7 @@ upperStaff = {
     e\) ds[\( e]\) ds[\( e]\) ds\( |
     e\) ds e b d c |
 
-    \Section-A-Again-RH
+    \Section-A-Again-RH \pageBreak
 
     %% C Section
     a8 r r |
