@@ -66,6 +66,17 @@
 %% is played over the note in question, so maybe the ornament and the
 %% changed bass are related. I am sticking to the first edition here.
 
+%% NOTE CHOICE - MEASURES 33-35
+%%
+%% The first edition shows measure 33 differs from measure 31; the
+%% penultimate note is an E rather than a D. And in m. 35, the first
+%% note is a repeat of the D from the end of m. 34. I cannot find any
+%% other editions that keep these notes. Universally measure 33 is
+%% identical to measure 31, and the repeated D at the beginning of m.
+%% 34 has been replaced with an E. In this case, I am opting to go
+%% with the consensus of modern editions instead of copying the first
+%% ed.
+
 %% PEDAL MARKS
 %%
 %% The pedal marks are terribly inconsistent within the first edition.
@@ -185,7 +196,7 @@ upperStaff = {
     c4 d16. b32 |
     c[ g' g, g'] a,[ g' b, g'] c,[ g' d g] |
     e[ g c b] a[ g f e] d[ g f d] |
-    c[ g' g, g'] a,[ g' b, g'] c,[ g' d g] |
+    c[ g' g, g'] a,[ g' b, g'] c,[ g' d g] | %% see note (mm. 33-35)
     e[ g c b] a[ g f e] d[ g f d] |
     e[ f e ds] e[ b e ds] e[ b e ds] |
     e8. b16[ e ds] |
