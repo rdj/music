@@ -187,7 +187,7 @@ upperStaff = {
     e[ g c b] a[ g f e] d[ g f d] |
     c[ g' g, g'] a,[ g' b, g'] c,[ g' d g] |
     e[ g c b] a[ g f e] d[ g f d] |
-    e[ g e ds] e[ b e ds] e[ b e ds] |
+    e[ f e ds] e[ b e ds] e[ b e ds] |
     e8. b16[ e ds] |
     e8. b16[\( e]\) ds\( |
     e\) ds[\( e]\) ds[\( e]\) ds\( |
