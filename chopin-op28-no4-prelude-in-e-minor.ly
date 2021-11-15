@@ -53,7 +53,7 @@
 %% mark, so I have rendered it thus.
 %%
 %% GRACE NOTES (mm. 11, 19)
-%% B&H uses unslashed appogiaturas, but Catelin and every modern edition
+%% B&H uses unslashed appoggiaturas, but Catelin and every modern edition
 %% I could find use a slashed acciaccatura. Neither first but most modern
 %% editions slur to the principal note, which I've done as well.
 %%
