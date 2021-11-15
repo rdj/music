@@ -29,7 +29,7 @@
   tagline = ##f
 }
 
-%% MEASURE 7 - E4 or D4?
+%% NOTE CHOICE - MEASURE 7
 %%
 %% There is significant debate about whether the E4 in measure 7
 %% should actually be a D4. This piece was published after Beethoven's
@@ -51,6 +51,20 @@
 %% Suzuki), is to use E4 throughout the piece, but to use D4 in the
 %% penultimate measure to provide a final strong cadence to close the
 %% piece. This is the course I have chosen.
+
+%% NOTE CHOICE - MEASURE 30
+%%
+%% The note in question is the fourth note in the bass clef. It is an
+%% F in the first edition, but many editions substitute an E.
+%%
+%% First Ed G E G F G F
+%% Commonly G E G E G F
+%%
+%% Unlike measure 7, I wasn't able to find information online to
+%% explain this discrepency. This is the same measure where many
+%% editions (contrary to the first) show a turn in the right hand that
+%% is played over the note in question, so maybe the ornament and the
+%% changed bass are related. I am sticking to the first edition here.
 
 %% PEDAL MARKS
 %%
@@ -99,7 +113,7 @@ Section-A-Part-I-RH = { %% mm. 2-7
   c8 r16 e, e' ds |
   e ds e b d c |
   a8 r16 c, e a |
-  b8 r16 e, c' b | %% see note re: E4 vs D4
+  b8 r16 e, c' b | %% see note (m. 7)
 }
 
 Section-A-Part-II-RH = { %% m. 9
@@ -281,7 +295,7 @@ lowerStaff = {
     f, a c a c a |
     f a c a c a |
     e a c a <d d,> f, |
-    g e' g, f' g, f' | \clef treble
+    g e' g, f' g, f' | \clef treble %% see note (m. 30)
     <e c>8 r16 <g f> <g e> <g f d> |
     <g e c>8 \clef bass <a, f>[ <b g>] | \clef treble
     c8 r16 <g' f> <g e> <g f d> |
