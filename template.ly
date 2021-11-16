@@ -36,6 +36,9 @@ lowerStaff = {
   }
 }
 
+dynamics = {
+}
+
 pedalMarks = {
 }
 
@@ -45,6 +48,10 @@ pedalMarks = {
       \clef treble
       \global
       \upperStaff
+    }
+    \new Dynamics {
+      \global
+      \dynamics
     }
     \new Staff = "lower" {
       \clef bass
