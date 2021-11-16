@@ -10,7 +10,7 @@
 }
 
 \header {
-  title = "Sonatina in G major"
+  title = "Fugue in G major"
   composer = "George Frideric Handel"
   opus = "HWV 582 (ca. 1721-1722)"
   tagline = ##f
