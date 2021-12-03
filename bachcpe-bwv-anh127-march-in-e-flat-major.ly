@@ -23,6 +23,34 @@
   tagline = ##f
 }
 
+%% MEASURE 25, BASS CLEF
+%%
+%% If you look at the scans of AMB's notebook[1], the E♭ in the bass clef
+%% is a quarter note on beats 1, 3, and 4, but is two eighth notes on
+%% beat 2.
+%%
+%% Every modern edition (including "urtext" editions) I could find
+%% replaces these two eighth notes with a single quarter note. In
+%% listening to recordings, some performers did play eighth notes, but
+%% most played a quarter note.
+%%
+%% According to Bach Digital[2], there are five other sources for this
+%% work. I wasn't able to access them, but I'm guessing some of the
+%% other sources have a quarter note.
+%%
+%% Alternately, this might be one of those quirks of music history
+%% where an early editor corrected what they saw as an obvious mistake
+%% and it has been copied forward since then. It's only with the
+%% luxury of the internet that I can so easily reference the original
+%% source and see the discrepancy.
+%%
+%% I am going to leave the eighth notes, but I suspect I will perform
+%% the piece with just a quarter note.
+%%
+%% 1. https://www.bach-digital.de/receive/BachDigitalSource_source_00001136
+%%
+%% 2. https://www.bach-digital.de/receive/BachDigitalWork_work_00001438
+
 global = {
   \key ef \major
   \time 2/2
