@@ -67,7 +67,7 @@ lowerStaff = {
     r16 g a b c a b g d'8 g fs g |
 
     a16 d, e fs g e fs d a'8 d c d |
-    g,16 \clef treble g' f e d f e g f8 d f d |
+    g,16 \clef treble g' f e d f e g f8 e f d |
     e16 a g f e g f a g8 f g e |
     f16 bf a g f a g bf a g f e d f e g |
 
