@@ -11,7 +11,7 @@
 
 \header {
   title = "Invention in C major"
-  subsubtitle = \markup { "From" \italic "Klavierbüchlein für Wilhelm Friedemann Bach" }
+  subsubtitle = \markup { "No. 1 from" \italic { "15 Inventions" } "(1801)" }
   composer = "Johann Sebastian Bach"
   opus = "BWV 772 (1723)"
   tagline = ##f
