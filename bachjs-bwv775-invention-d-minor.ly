@@ -100,7 +100,7 @@ lowerStaff = {
     c, c' e, |
     f g a |
     bf16 g a bf c d |
-    c, d' c bf a g |
+    e, d' c bf a g |
     a f g a bf c |
     d, c' bf a g f |
     e c d e f g |
