@@ -70,6 +70,7 @@ lowerStaff = {
     fs8[ a] b ds r16 e c e a, c e g |
     fs d b d g, b d fs e c a c fs, a c8~ |
     16 b c a
+    % Bach \clef bass
     b8 b, e16 e' b g e b g b |
     e,8[ c'] g' bf cs, r r16 g'' f e |
     d8 d, f af b, r r16 f'' e d |
