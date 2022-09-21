@@ -14,6 +14,25 @@
   tagline = ##f
 }
 
+%% Note: It is apparently a well-known problem in Chopin scholarship
+%% that the three different "first editions" (there was an English one
+%% as well which I didn't reference) of Op. 28 have discrepencies. For
+%% bizarre international copyright reasons it is difficult to access
+%% any autograph manuscripts. In 2010, The Frederyk Chopin Institute
+%% in Warsaw published a hardcover with a facsimile of the autograph
+%% manuscript held in the National Library in Warsaw along with
+%% scholarly commentary. It is expensive and seemingly unavailable in
+%% the USA, but I am trying to get one imported from the UK. If I am
+%% successful, I will revise this version.
+%%
+%% Note to self, when revising, keep in mind that redundant dynamic
+%% markings may be an indication that "hairpin" marking are used to
+%% indicate rubato rather than traditional dynamics. See Seymour
+%% Bernstein's tonebase video on this prelude:
+%% https://youtu.be/pRLBBJLX-dQ
+%%
+%% /rdj 2022-09-21
+
 %% There were some differences between the French (Catelin) first edition and the
 %% German (Breitkopf & Härtel) first edition. I've also chosen more modern
 %% notation in a few instances.
