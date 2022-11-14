@@ -5,7 +5,7 @@
 #(set-default-paper-size "letter")
 \paper {
   print-page-number = ##f
-  indent = 0
+  % indent = 0
   % page-breaking = #ly:one-page-breaking
 }
 
@@ -25,33 +25,31 @@ global = {
 upperStaff = {
   \relative c'' {
     %% Bach: \clef soprano
-    r16 bf32 c d c bf16 f' d bf' f d f32 ef d ef f16 bf, d f, af |
+    r16 bf32 c d c bf16 f' d bf' f d f32 ef d ef f16 bf, d f, af | \break
     g ef32 f g f ef16 bf' g ef' bf g bf32 af g af bf16 ef, g c, ef |
-
     a, c32 d ef d c16 a' f c' a ef' f,32 g a g f16 c' a f' c |
+
     d8 r r16 g32 f ef f g16 c,8 r r16 f32 ef d ef f16 |
-
     bf,8 r r16 ef32 d c d ef16 a, c32 bf a bf c16 f,8 r |
-    f' f, a c f4 r |
 
+    f' f, a c f4 r |
     r8 f, bf d f4 r |
     r8 g, bf c e4 r |
 
     r16 f,32 g a g f16 c' a f' c a' ef32 d c d ef16 a, c fs, a |
     bf8 d bf g af f' af, f |
+    g16 c,32 d ef d c16 g' ef c' g d' af32 g f g af16 d, f b, g' |  \pageBreak
 
-    g16 c,32 d ef d c16 g' ef c' g d' af32 g f g af16 d, f b, g' |
     ef8 r r16 c32 d ef d c16 c'8. bf16 a f32 g a g f16 |
-
     f'8. ef16 d bf32 c d c bf16 bf'8. af16 g bf32 af g af bf16 |
-    ef, g32 f ef f g16 c, ef32 d c d ef16 a, c32 d ef d c16 f af,32 g f g af16 |
 
+    ef, g32 f ef f g16 c, ef32 d c d ef16 a, c32 d ef d c16 f af,32 g f g af16 |
     g bf32 c d c bf16 ef g,32 f ef f g16 f a32 bf c bf a16 d f,32 ef d ef f16 |
     ef g32 a bf a g16 c ef,32 d c d ef16 d4
+
     \stemUp % accommodate lower voice moving up
     r16 bf'32 c d c bf16
     \stemNeutral |
-
     f' d bf' f d f32 ef d ef f16 bf, ef bf ef g, ef32 f g f ef16 |
     bf' g ef' bf g bf32 af g af bf16 ef,8 ef'~ 16 32 d c d ef16 |
 
