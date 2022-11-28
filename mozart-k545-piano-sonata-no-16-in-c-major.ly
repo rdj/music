@@ -85,8 +85,8 @@ MONE_A_upper = {
     c'4 r16 c a fs d4 r16 d fs d |
     b'4 r16 b g e c4 r16 c e c |
     a'4 r16 a fs c b4 r16 g' d b |
-    a2 \acciaccatura b8^2 c4 \acciaccatura ds^2 e4 |
-    \acciaccatura gs^2 a4. b32^4 a gs a^1 c8^3( a) c^4( a^2) |
+    a2 \acciaccatura b8^2 c4 \acciaccatura ds8^2 e4 |
+    \acciaccatura gs8^2 a4. b32^4 a gs a^1 c8^3( a) c^4( a^2) |
     b8 g d'2 c16 b a g |
     \afterGrace 16/17 a1\startTrillSpan { s16\stopTrillSpan g16[ a] } |
     g4 g16 d g b d b^3 g^1 b^2 c a^1 fs^2 a^4 |
