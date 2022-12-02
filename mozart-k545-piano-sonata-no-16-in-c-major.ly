@@ -131,7 +131,7 @@ MONE_A_lower = {
     <b g> r r
     \clef bass
     <c, a d,> |
-    <b g> <g g,> q r |
+    <b g> <g g,> q r | \break
   }
 }
 
@@ -157,6 +157,78 @@ MONE_A_dynamics = {
 MONE_A_pedal = {
 }
 
+MONE_B_upper = {
+  \relative c'' {
+    g4 g'16 d g bf-3 d bf g-1 bf-2 c a-1 fs-2 a-4 |
+    g4 g,16 d g bf d bf g bf c a fs a |
+    g4 r r16 g'-1 bf a g f? e d |
+    cs4 r r16 cs' e d cs bf a g |
+    f?4 d16 a d f a f-3 d-1 f-2 g e-1 cs-2 e |
+    d4 d,16 a d f a f d f g e cs e |
+    r d e f g a b? cs d4 r |
+    r16 b c d e fs gs a b4 r |
+    r16 a e' d c b a g? f?4 r |
+    r16 g d' c b a g f e4 r |
+    r16 f c' b a g f e d4 r |
+    r16 e b' a gs f? e d c4 r |
+    r16 bf-3 d c bf a g f-3 e f-1 g a bf c d e |
+    f2-1 a4 c |
+    e,4.( f16 g) f4 r |
+    d'2 c4 f |
+    %%c bf8(\trill a16 bf) a4 r |
+  }
+}
+
+MONE_B_lower = {
+  \relative c {
+    <g g'>4 r r
+    \clef treble
+    <c'' a d,> |
+    <bf g> r r
+    \clef bass
+    <c, a d,> |
+    r16 g, a bf c d e fs g4 r | \break
+    r16 a, b? cs d e fs gs a4 r |
+    <d, d,> r r
+    \clef treble
+    <g' e a,> |
+    <f d> r r \clef bass <g, e a,> | \break
+    <f d> r r16 d'-3 f e d c?-1 b a |
+    gs4 r r16 gs b a gs f?-1 e d |
+    c4 r r16
+    \clef treble
+    d' a' g f e d c | \pageBreak
+    b4 r r16 c g' f e d c b |
+    a4 r r16
+    \clef bass
+    b f' e d c b a |
+    gs4 r r16 a-3 c b a g-1 f e | \break
+    d2 <bf' g c,>
+    \clef treble |
+    f'8 c' a c f, c' a c |
+    g c bf c f, c' a c |
+    f, d' bf d f, c' a c | \break
+  }
+}
+
+MONE_B_dynamics = {
+}
+
+MONE_B_pedal = {
+}
+
+MONE_C_upper = {
+}
+
+MONE_C_lower = {
+}
+
+MONE_C_dynamics = {
+}
+
+MONE_C_pedal = {
+}
+
 \score {
   \new PianoStaff \with { instrumentName = \markup { \abs-fontsize #18 { "16" } } } <<
     \new Staff = "up" {
@@ -165,19 +237,30 @@ MONE_A_pedal = {
       \repeat volta 2 {
         \MONE_A_upper
       }
+      %%\repeat volta 2
+      {
+        \MONE_B_upper
+        \MONE_C_upper
+      }
     }
     \new Dynamics {
       \MONE_global
       \MONE_A_dynamics
+      \MONE_B_dynamics
+      \MONE_C_dynamics
     }
     \new Staff = "down" {
       \clef bass
       \MONE_global
       \MONE_A_lower
+      \MONE_B_lower
+      \MONE_C_lower
     }
     \new Dynamics {
       \MONE_global
       \MONE_A_pedal
+      \MONE_B_pedal
+      \MONE_C_pedal
     }
   >>
 }
