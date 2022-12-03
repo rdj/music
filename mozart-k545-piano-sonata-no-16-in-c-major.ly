@@ -113,10 +113,10 @@ MONE_A_lower = {
     f4._3 g8 a4. fs8 | \break
     g,16 b d g g, c e g g, b d g g, c e g |
     g,4 g' g, r |
-    cs'16_2 d cs d cs d cs d c^3 d^1 c^2 d c d c d |
+    cs'16_2 d cs d cs d cs d c^3 d^1 c^2 d c d c d | \break
     b_3 d \repeat unfold 7 { b d } |
     c d b d a d b d c d b d c d a d |
-    \repeat unfold 8 { b d } |
+    \repeat unfold 8 { b d } | \break
     c d b d a d b d c d b d c d a d |
     \clef treble
     r b d g b4 r16 c, e g c4 |
@@ -124,6 +124,7 @@ MONE_A_lower = {
     r16 g, b e g4 r16 a, c e a4 |
     r16 fs, a d fs4 r16 g, b d g4 |
     <e c>8 \repeat unfold 7 q | \break
+    \grace s8 % Grace skip needed to avoid line-breaking warning with acciaccatura in upper voice
     <e c>8 \repeat unfold 7 q |
     \repeat unfold 4 { d16 b' g b } |
     \repeat unfold 4 { d, c' fs, c' } | \break
@@ -149,8 +150,10 @@ MONE_A_dynamics = {
   %% m13
   s16 \p s16 s8 s4 s2 |
   s1*8 |
+  %% m22
   s2 \cresc s2 |
   s1 |
+  %% m24
   s8 \f s8 s4 s2 |
   s1*4 |
 }
