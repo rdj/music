@@ -84,7 +84,9 @@ MONE_A_upper = {
     d'4 r16 d b g e4 r16 e g e |
     c'4 r16 c a fs d4 r16 d fs d |
     b'4 r16 b g e c4 r16 c e c |
-    a'4 r16 a fs c b4 r16 g' d b |
+    a'4 r16 a fs
+    \footnote \markup { \italic "c" } #'(0.5 . 1) \markup \small { \italic { "c:" } "Some editions have C instead of B, see m. 66. (Muzyka; Peters, n.d., ca. 1938; Lafitte, 1909)" }
+    d b4 r16 g' d b |
     a2 \acciaccatura b8^2 c4 \acciaccatura ds8^2 e4 |
     \acciaccatura gs8^2 a4. b32^4 a gs a^1 c8^3( a) c^4( a^2) |
     b8 g d'2 c16 b a g |
@@ -107,7 +109,8 @@ MONE_A_lower = {
     \clef bass
     <c f,> |
     <c e,> r r q |
-    <c d,> r r <b d,> | \break
+    < \footnote \markup { \italic "b" } #'(0.5 . 0.5) \markup \small { \italic { "b:" } "Some editions have B instead of C; see mm. 48, 52. (Bärenrether-Verlag, 1986; Muzyka, n.d., ca. 1964)" }
+      c d,> r r <b d,> | \break
     <c c,> r r <e, c> |
     <a f>1 |
     f4._3 g8 a4. fs8 | \break
@@ -139,7 +142,8 @@ MONE_A_lower = {
 MONE_A_dynamics = {
   \override DynamicTextSpanner.style = #'none
   %% m1
-  s1 \mf |
+  s1 \footnote \markup { \italic "a" } #'(1 . 0.75) \markup \small { { \italic "a:" } "No editorial consensus on dynamics. No primary source survives." }
+  \mf |
   s1*7 |
   %% m9
   s4 s8 s8 \cresc s2 |
@@ -226,7 +230,11 @@ MONE_C_upper = {
     a8 bf16 c d-1 e f g a g f e d c bf a |
     a'4 r r <a c,> |
     <g c,> r r q |
-    <f c> r r <f b,?> |
+    <
+      f
+      \footnote \markup { \italic "e" } #'(0.5 . 1) \markup \small { \italic { "e:" } "Some editions have B instead of C. (Muzyka)" }
+      c
+    > r r <f b,?> |
     <e c> r r <e c> |
     d16 d, e f g a b cs d a b cs d e f g |
     a-1 b c? b a g-4 f e f-1 g a g f e-4 d c? |
@@ -239,7 +247,9 @@ MONE_C_upper = {
     c8.(\trill b16) b4 r2 |
     g'4 r16 g e c a4 r16 a c a |
     f'4 r16 f d b g4 r16 g' b g e'4 r16 e c a f4 r16 f a f |
-    d'4 r16 d b g e4 r16 c' g e |
+    d'4 r16 d b
+    \footnote \markup { \italic "h" } #'(0.5 . 1) \markup \small { \italic { "h:" } "Some editions have F instead of G. (Muzyka)" }
+    g e4 r16 c' g e |
     d2 \acciaccatura cs8 d4 \acciaccatura cs8 d4 |
     a'2 \acciaccatura gs8 a4 \acciaccatura gs8 a4 |
     g?8-1 a16 b c-1 d e d c b-4 a g f e-3 d c |
@@ -261,7 +271,9 @@ MONE_C_lower = {
     \clef bass
     <f bf,> |
     <f a,> r r q | \break
-    <f g,> r r <e g,> |
+    < \footnote \markup { \italic "d" } #'(0.5 . -0.25) \markup \small { \italic { "d:" } "Some editions have E instead of F. (Bärenrether-Verlag; Muzyka)" }
+      f
+      g,> r r <e g,> |
     <f f,> r r2 |
     f,8-3 g16 a bf-4 c d e f-2 e-1 d c bf a-1 g f | \break
     e8 f16 g a b?-4 c d e d c b a-1 g f e |
@@ -281,7 +293,9 @@ MONE_C_lower = {
     r16 e, g c e4 r16 f, a c f4 |
     r16 d, f b d4 r16 e, g b e4 |
     \clef treble
-    r16 c e a c4 r16 d, f a d4 | \break
+    r16 c e
+    \footnote \markup { \italic "g" } #'(0.25 . -3) \markup \small { \italic { "g:" } "Some editions have G instead of A (Meyer, 1872); considered an error. (Bärenrether-Verlag; Muzyka)" }
+    a c4 r16 d, f a d4 | \break
     r16 b, d g b4 r16 c, e g c4 |
     r8 <a f> q q q q q q |
     \clef bass
