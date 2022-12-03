@@ -50,7 +50,7 @@ MONE_global = {
 MONE_A_upper = {
   \relative c'' {
     c2 e4 g |
-    b,4.( c16 d c4) r |
+    b,4.( c16 d) c4 r |
     a'2^3 g4 c |
     g^1
     <<
