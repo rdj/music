@@ -109,7 +109,7 @@ MONE_A_lower = {
     \clef bass
     <c f,> |
     <c e,> r r q |
-    < \footnote \markup { \italic "b" } #'(0.5 . 0.5) \markup \small { \italic { "b:" } "Some editions have B instead of C; see mm. 48, 52. (Bärenrether-Verlag, 1986; Muzyka, n.d., ca. 1964)" }
+    < \footnote \markup { \italic "b" } #'(0.5 . 0.5) \markup \small { \italic { "b:" } "Some editions have B instead of C; see mm. 48, 52. (Bärenreiter-Verlag, 1986; Muzyka, n.d., ca. 1964)" }
       c d,> r r <b d,> | \break
     <c c,> r r <e, c> |
     <a f>1 |
@@ -271,7 +271,7 @@ MONE_C_lower = {
     \clef bass
     <f bf,> |
     <f a,> r r q | \break
-    < \footnote \markup { \italic "d" } #'(0.5 . -0.25) \markup \small { \italic { "d:" } "Some editions have E instead of F. (Bärenrether-Verlag; Muzyka)" }
+    < \footnote \markup { \italic "d" } #'(0.5 . -0.25) \markup \small { \italic { "d:" } "Some editions have E instead of F. (Bärenreiter-Verlag; Muzyka)" }
       f
       g,> r r <e g,> |
     <f f,> r r2 |
@@ -294,7 +294,7 @@ MONE_C_lower = {
     r16 d, f b d4 r16 e, g b e4 |
     \clef treble
     r16 c e
-    \footnote \markup { \italic "g" } #'(0.25 . -3) \markup \small { \italic { "g:" } "Some editions have G instead of A (Meyer, 1872); considered an error. (Bärenrether-Verlag; Muzyka)" }
+    \footnote \markup { \italic "g" } #'(0.25 . -3) \markup \small { \italic { "g:" } "Some editions have G instead of A (Meyer, 1872); considered an error. (Bärenreiter-Verlag; Muzyka)" }
     a c4 r16 d, f a d4 | \break
     r16 b, d g b4 r16 c, e g c4 |
     r8 <a f> q q q q q q |
