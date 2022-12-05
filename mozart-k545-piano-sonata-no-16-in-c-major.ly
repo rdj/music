@@ -49,12 +49,13 @@ MONE_global = {
 
 MONE_A_upper = {
   \relative c'' {
+    \footnote \markup { \italic "a" } #'(1 . 1) \markup \small { \italic a: First print edition has no dynamics. Mozart’s autograph score is considered lost. Editorial dynamics vary widely. }
     c2 e4 g |
     b,4.( c16 d) c4 r |
-    a'2^3 g4 c |
-    g^1
+    a'2 g4 c |
+    g
     <<
-      { f8(\trill^\finger "2-4" e16^1 f^3) e4 }
+      { f8(\trill e16 f) e4 }
 
       \new Staff \with {
         \remove Time_signature_engraver
@@ -67,33 +68,33 @@ MONE_A_upper = {
         \set stemLeftBeamCount = #1
         \set stemRightBeamCount = #2
         e f e4 }
-    >> r |
-    a,8^1 b16 c d^1 e f g a g f e d c^4 b a |
-    g8 a16 b c^1 d e f g f e d c b^4 a g |
-    f8 g16 a b^1 c d e f e d c b a g f |
+    >> r | \break
+    a,8 b16 c d e f g a g f e d c b a |
+    g8 a16 b c d e f g f e d c b a g |
+    f8 g16 a b c d e f e d c b a g f | \break
     e8 f16 g a b c d e d c b a g f e |
-    d8 e16 f g a b cs d a^1 b cs d^1 e f g |
-    a^1 b c b a g^4 f e f^1 g a g f e^4 d c |
-    b8 g'^\markup { \italic "stacc." } e c d g e c |
+    d8 e16 f g a b cs d a b cs d e f g |
+    a b c b a g f e f g a g f e d c | \break
+    b8[ g'] e[ c] d[ g] e[ c] |
     d4 <g d b> g, r |
     R1 |
-    d''8( b) g4.( a16 b a8) g-. |
-    g8.\trill^\finger "1-3"( fs16^2) fs4^3 r2 |
-    d'8( b) g4.( a16 b a8) g-. |
+    d''8( b) g4.( a16 b a8) g-! | \break
     g8.\trill( fs16) fs4 r2 |
+    d'8( b) g4.( a16 b a8) g-! |
+    g8.\trill( fs16) fs4 r2 | \pageBreak
     d'4 r16 d b g e4 r16 e g e |
     c'4 r16 c a fs d4 r16 d fs d |
     b'4 r16 b g e c4 r16 c e c |
     a'4 r16 a fs
     \footnote \markup { \italic "c" } #'(0.5 . 1) \markup \small { \italic { "c:" } "Some editions have C instead of B, see m. 66. (Muzyka; Peters, n.d., ca. 1938; Lafitte, 1909)" }
     d b4 r16 g' d b |
-    a2 \acciaccatura b8^2 c4 \acciaccatura ds8^2 e4 |
-    \acciaccatura gs8^2 a4. b32^4 a gs a^1 c8^3( a) c^4( a^2) |
-    b8 g d'2 c16 b a g |
-    \afterGrace 16/17 a1\startTrillSpan { s16\stopTrillSpan g16[ a] } |
-    g4 g16 d g b d b^3 g^1 b^2 c a^1 fs^2 a^4 |
+    a2 \appoggiatura b16 c4 \appoggiatura ds16 e4 |
+    \appoggiatura gs16 a4. b32( a gs a) c8( a) c( a) |
+    b8( g) d'2 c16 b a g |
+    \afterGrace 16/17 a1\startTrillSpan { g32[(\stopTrillSpan a]) } |
+    g4 g16 d g b d b g b c a fs a | \break
     g4 g,16 d g b d b g b c a fs a |
-    g4 <d'_2 b'> <b g'> r |
+    g4 <d' b'> <b g'> r |
   }
 }
 
@@ -101,65 +102,45 @@ MONE_A_lower = {
   \relative c' {
     \bassToTreble
     \clef treble
-    c8 g' e_3 g c, g' e g |
+    c8 g' e g c, g' e g |
     d g f g c, g' e g |
-    c, a' f_2 a c, g' e g |
-    b, g' d_4 g c,_5 g' e g | \break
+    c, a' f a c, g' e g |
+    b, g' d g c, g' e g |
     f4 r r
     \clef bass
     <c f,> |
     <c e,> r r q |
     < \footnote \markup { \italic "b" } #'(0.5 . 0.5) \markup \small { \italic { "b:" } "Some editions have B instead of C; see mm. 48, 52. (Bärenreiter-Verlag, 1986; Muzyka, n.d., ca. 1964)" }
-      c d,> r r <b d,> | \break
+      c d,> r r <b d,> |
     <c c,> r r <e, c> |
     <a f>1 |
-    f4._3 g8 a4. fs8 | \break
+    f4. g8 a4. fs8 |
     g,16 b d g g, c e g g, b d g g, c e g |
     g,4 g' g, r |
-    cs'16_2 d cs d cs d cs d c^3 d^1 c^2 d c d c d | \break
-    b_3 d \repeat unfold 7 { b d } |
+    cs'16 d cs d cs d cs d c d c d c d c d |
+    b d \repeat unfold 7 { b d } |
     c d b d a d b d c d b d c d a d |
-    \repeat unfold 8 { b d } | \break
+    \repeat unfold 8 { b d } |
     c d b d a d b d c d b d c d a d |
     \clef treble
     r b d g b4 r16 c, e g c4 |
-    r16 a, c fs a4 r16 b, d fs b4 | \break
+    r16 a, c fs a4 r16 b, d fs b4 |
     r16 g, b e g4 r16 a, c e a4 |
     r16 fs, a d fs4 r16 g, b d g4 |
-    <e c>8 \repeat unfold 7 q | \break
-    \grace s8 % Grace skip needed to avoid line-breaking warning with acciaccatura in upper voice
+    <e c>8 \repeat unfold 7 q |
+    \grace s8 % Grace skip needed to avoid line-breaking warning with appoggiatura in upper voice
     <e c>8 \repeat unfold 7 q |
     \repeat unfold 4 { d16 b' g b } |
-    \repeat unfold 4 { d, c' fs, c' } | \break
-    <b_2 g_4>4 r r <c a d,> |
+    \repeat unfold 4 { d, c' fs, c' } |
+    <b g>4 r r <c a d,> |
     <b g> r r
     \clef bass
     <c, a d,> |
-    <b g> <g g,> q r | \break
+    <b g> <g g,> q r |
   }
 }
 
 MONE_A_dynamics = {
-  \override DynamicTextSpanner.style = #'none
-  %% m1
-  s1 \footnote \markup { \italic "a" } #'(1 . 0.75) \markup \small { { \italic "a:" } "No editorial consensus on dynamics. No primary source survives." }
-  \mf |
-  s1*7 |
-  %% m9
-  s4 s8 s8 \cresc s2 |
-  s1 |
-  %% m11
-  s8 \f s8 s4 s2 |
-  s1 |
-  %% m13
-  s16 \p s16 s8 s4 s2 |
-  s1*8 |
-  %% m22
-  s2 \cresc s2 |
-  s1 |
-  %% m24
-  s8 \f s8 s4 s2 |
-  s1*4 |
 }
 
 MONE_A_pedal = {
@@ -167,19 +148,19 @@ MONE_A_pedal = {
 
 MONE_B_upper = {
   \relative c'' {
-    g4 g'16 d g bf-3 d bf g-1 bf-2 c a-1 fs-2 a-4 |
+    g4 g'16 d g bf d bf g bf c a fs a | \break
     g4 g,16 d g bf d bf g bf c a fs a |
-    g4 r r16 g'-1 bf a g f? e d |
+    g4 r r16 g' bf a g f? e d |
     cs4 r r16 cs' e d cs bf a g |
-    f?4 d16 a d f a f-3 d-1 f-2 g e-1 cs-2 e |
+    f?4 d16 a d f a f d f g e cs e |
     d4 d,16 a d f a f d f g e cs e |
-    r d e f g a b? cs d4 r |
+    r d e f g a b cs d4 r | \pageBreak
     r16 b c d e fs gs a b4 r |
     r16 a e' d c b a g? f?4 r |
-    r16 g d' c b a g f e4 r |
+    r16 g d' c b a g f e4 r | \break
     r16 f c' b a g f e d4 r |
-    r16 e b' a gs f? e d c4 r |
-    r16 bf-3 d c bf a g f-3 e f-1 g a bf c d e |
+    r16 e b' a gs f e d c4 r |
+    r16 bf d c bf a g f e f g a bf c d e |
   }
 }
 
@@ -191,28 +172,27 @@ MONE_B_lower = {
     <bf g> r r
     \clef bass
     <c, a d,> |
-    r16 g, a bf c d e fs g4 r | \break
+    r16 g, a bf c d e fs g4 r |
     r16 a, b? cs d e fs gs a4 r |
     <d, d,> r r
     \clef treble
     <g' e a,> |
-    <f d> r r \clef bass <g, e a,> | \break
-    <f d> r r16 d'-3 f e d c?-1 b a |
-    gs4 r r16 gs b a gs f?-1 e d |
+    <f d> r r \clef bass <g, e a,> |
+    <f d> r r16 d' f e d c? b a |
+    gs4 r r16 gs b a gs f? e d |
     c4 r r16
     \clef treble
-    d' a' g f e d c | \pageBreak
+    d' a' g f e d c |
     b4 r r16 c g' f e d c b |
     a4 r r16
     \clef bass
     b f' e d c b a |
-    gs4 r r16 a-3 c b a g-1 f e | \break
+    gs4 r r16 a c b a g f e |
     d2 <bf' g c,> |
   }
 }
 
 MONE_B_dynamics = {
-  s1*13 |
 }
 
 MONE_B_pedal = {
@@ -220,41 +200,41 @@ MONE_B_pedal = {
 
 MONE_C_upper = {
   \relative c'' {
-    f2-1 a4 c |
+    f2 a4 c |
     e,4.( f16 g) f4 r |
     d'2 c4 f |
     c bf8(\trill a16 bf) a4 r |
-    d,8-1 e16 f g-1 a bf c d c bf a g f-4 e d |
-    c8 d16 e f g a bf c bf a g f e-3 d c |
-    bf8-2 c16-1 d e f-1 g a bf a g f e-3 d c bf-2 |
-    a8 bf16 c d-1 e f g a g f e d c bf a |
+    d,8 e16 f g a bf c d c bf a g f e d |
+    c8 d16 e f g a bf c bf a g f e d c |
+    bf8 c16 d e f g a bf a g f e d c bf |
+    a8 bf16 c d e f g a g f e d c bf a |
     a'4 r r <a c,> |
     <g c,> r r q |
     <
       f
       \footnote \markup { \italic "e" } #'(0.5 . 1) \markup \small { \italic { "e:" } "Some editions have B instead of C. (Muzyka)" }
       c
-    > r r <f b,?> |
+    > r r <f b,> |
     <e c> r r <e c> |
-    d16 d, e f g a b cs d a b cs d e f g |
-    a-1 b c? b a g-4 f e f-1 g a g f e-4 d c? |
-    b8 g'^\markup { \italic "stacc." } e c d g e c |
+    d16 d, e f g a b cs d a b cs d e f g | \pageBreak
+    a b c b a g f e f g a g f e d c |
+    b8[ g'] e[ c] d[ g] e[ c] |
     d4 <b d g> g r |
     R1 |
-    g'8( e) c4.( d16 e d8) c-. |
-    c8.(\trill-\finger "2 4" b16)-1 b4-3 r2 |
-    g'8( e) c4.( d16 e d8) c-. |
+    g'8( e) c4.( d16 e d8) c-! |
+    c8.(\trill b16) b4 r2 |
+    g'8( e) c4.( d16 e d8) c-! |
     c8.(\trill b16) b4 r2 |
     g'4 r16 g e c a4 r16 a c a |
     f'4 r16 f d b g4 r16 g' b g e'4 r16 e c a f4 r16 f a f |
     d'4 r16 d b
     \footnote \markup { \italic "h" } #'(0.5 . 1) \markup \small { \italic { "h:" } "Some editions have F instead of G. (Muzyka)" }
     g e4 r16 c' g e |
-    d2 \acciaccatura cs8 d4 \acciaccatura cs8 d4 |
-    a'2 \acciaccatura gs8 a4 \acciaccatura gs8 a4 |
-    g?8-1 a16 b c-1 d e d c b-4 a g f e-3 d c |
-    \afterGrace 16/17 d1\startTrillSpan { s16\stopTrillSpan c16[ d] } |
-    c4 c16-2 g c e g e-3 c-1 e-2 f d-1 b-2 d |
+    d2 \appoggiatura cs16 d4 \appoggiatura cs16 d4 |
+    a'2 \appoggiatura gs16 a4 \appoggiatura gs16 a4 |
+    g?8 a16 b c d e d c b a g f e d c |
+    \afterGrace 16/17 d1\startTrillSpan { c32[(\stopTrillSpan d]) } |
+    c4 c16 g c e g e c e f d b d |
     c4 c,16 g c e g e c e f d b d |
     c4 <c'' g e> c, r |
   }
@@ -265,43 +245,43 @@ MONE_C_lower = {
     \clef treble
     f8 c' a c f, c' a c |
     g c bf c f, c' a c |
-    f, d' bf d f, c' a c | \break
+    f, d' bf d f, c' a c |
     e, c' g c f, c' a c |
     bf4 r r
     \clef bass
     <f bf,> |
-    <f a,> r r q | \break
+    <f a,> r r q |
     < \footnote \markup { \italic "d" } #'(0.5 . -0.25) \markup \small { \italic { "d:" } "Some editions have E instead of F. (Bärenreiter-Verlag; Muzyka)" }
       f
       g,> r r <e g,> |
     <f f,> r r2 |
-    f,8-3 g16 a bf-4 c d e f-2 e-1 d c bf a-1 g f | \break
-    e8 f16 g a b?-4 c d e d c b a-1 g f e |
-    d8 e16 f g a b-3 c d c b a g-1 f e d |
-    c8 d16 e f g a b c b a g f e d c | \break
+    f,8 g16 a bf c d e f e d c bf a g f |
+    e8 f16 g a b? c d e d c b a g f e |
+    d8 e16 f g a b c d c b a g f e d |
+    c8 d16 e f g a b c b a g f e d c |
     <f a>1 |
     f4. g8 a4. fs8 |
-    g,16 b d g g, c e g g, b d g g, c e g | \pageBreak
+    g,16 b d g g, c e g g, b d g g, c e g |
     g,4 g' g, r |
     \clef treble
-    fs''16-2 g fs g fs g fs g f-3 g-1 f-2 g f g f g |
-    \repeat unfold 8 { e g } | \break
+    fs''16 g fs g fs g fs g f g f g f g f g |
+    \repeat unfold 8 { e g } |
     f g e g d g e g f g e g f g d g |
     \repeat unfold 8 { e g } |
-    f g e g d g e g f g e g f g d g | \break
+    f g e g d g e g f g e g f g d g |
     \clef bass
     r16 e, g c e4 r16 f, a c f4 |
     r16 d, f b d4 r16 e, g b e4 |
     \clef treble
     r16 c e
     \footnote \markup { \italic "g" } #'(0.25 . -3) \markup \small { \italic { "g:" } "Some editions have G instead of A (Meyer, 1872); considered an error. (Bärenreiter-Verlag; Muzyka)" }
-    a c4 r16 d, f a d4 | \break
+    a c4 r16 d, f a d4 |
     r16 b, d g b4 r16 c, e g c4 |
     r8 <a f> q q q q q q |
     \clef bass
-    r <ef c fs,> q q q q q q | \break
+    r <ef c fs,> q q q q q q |
     g,16 e'? c e \repeat unfold 3 { g,16 e' c e } |
-    \repeat unfold 4 { g, f' b, f' } | \break
+    \repeat unfold 4 { g, f' b, f' } |
     <e c>4 r r <f d g,> |
     <e c> r r <f, d g,> |
     <e c> c' <c, c,> r |
@@ -309,24 +289,6 @@ MONE_C_lower = {
 }
 
 MONE_C_dynamics = {
-  %% m42
-  s1 \mf |
-  s1*11 |
-  %% m54
-  s4 \cresc s4 s2 |
-  s1 |
-  %% m56
-  s8 \f s8 s4 s2 |
-  s1 |
-  %% m58
-  s16 \p s16 s8 s4 s2 |
-  s1*8 |
-  %% m67
-  s2 \cresc s2 |
-  s1 |
-  %% m69
-  s8 \f s8 s4 s2 |
-  s1*4 |
 }
 
 MONE_C_pedal = {
