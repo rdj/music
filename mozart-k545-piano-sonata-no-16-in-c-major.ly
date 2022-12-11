@@ -140,12 +140,6 @@ MONE_A_lower = {
   }
 }
 
-MONE_A_dynamics = {
-}
-
-MONE_A_pedal = {
-}
-
 MONE_B_upper = {
   \relative c'' {
     g4 g'16 d g bf d bf g bf c a fs a | \break
@@ -190,12 +184,6 @@ MONE_B_lower = {
     gs4 r r16 a c b a g f e |
     d2 <bf' g c,> |
   }
-}
-
-MONE_B_dynamics = {
-}
-
-MONE_B_pedal = {
 }
 
 MONE_C_upper = {
@@ -288,12 +276,82 @@ MONE_C_lower = {
   }
 }
 
-MONE_C_dynamics = {
+MTWO_global = {
+  \key g \major
+  \time 3/4
+  \tempo Andante
 }
 
-MONE_C_pedal = {
+MTWO_A_upper = {
+  \relative c'' {
+    b2( d16 c b c) |
+    d8.( b16) g4 r |
+    g'4.( a16 g fs e d cs) |
+    d8.( b16) g4 r |
+    c8.( a16) fs8-.[ a-.] b-.[ c-.] |
+    d8.( b16) g'4 r |
+    a16( g fs g fs e ds e d c b c) |
+    b8.( c32 b) a8( d cs c) |
+    b4~ 16( g b d c a c e) |
+    d8.( b16) g-. g-. a-. b-. c-. d-. e-. fs-. |
+    g( fs g fs a g fs g fs e d cs) |
+    d( b d b) g4 r |
+    \stemUp c16( a c a) fs-! a( gs a as b c cs) \stemNeutral |
+    d( b d b) g'4 r16 b16( fs g) |
+    ds( e c a) g8. 16
+    <<
+      { b( a g a) } \\
+      { \footnote "*" #'(0.5 . -0.5) \markup { * \italic { m.15: } Some editions omit the F-sharp. (Muzyka) }
+        fs4 }
+    >> |
+    <<
+      { a4( g) } \\
+      { \stemUp fs4 g \stemNeutral }
+    >> r4 |
+  }
 }
 
+MTWO_A_lower = {
+  \relative c' {
+    \repeat unfold 2 { g16 d' b d } a d c d |
+    \repeat unfold 3 { g, d' b d } |
+    \repeat unfold 2 { g, e' c e } g, cs as cs | \break
+    \repeat unfold 3 { g d' b d } |
+    \repeat unfold 3 { a d c d } |
+    g, d' b d e, b' g b b, g' d g | \break
+    <<
+      { e4 g2 | g4 fs } \\
+      { c2 e4 | d2 }
+    >> r4 |
+    \repeat unfold 2 { g16 d' b d } a d c d | \break
+    \repeat unfold 3 { g, d' b d } |
+    \repeat unfold 2 { g, e' c e } g, cs as cs |
+    \repeat unfold 3 { g d' b d } | \break
+    \repeat unfold 3 { a d c d } |
+    g, d' b d e, b' g b b, g' d g |
+    c, a' e a d, b' g b d, c' a c |
+    <<
+      { c4( b) } \\
+      { g2 }
+    >> r4 | \pageBreak
+  }
+}
+
+MTWO_B_upper = {
+}
+
+MTWO_B_lower = {
+}
+
+MTWO_C_upper = {
+}
+
+MTWO_C_lower = {
+}
+
+\pageBreak
+
+%% Movement I. Allegro. C major. 4/4. AABA'BA'
 \score {
   \new PianoStaff \with { instrumentName = \markup { \abs-fontsize #18 { "16" } } } <<
     \new Staff = "up" {
@@ -308,12 +366,6 @@ MONE_C_pedal = {
         \MONE_C_upper
       }
     }
-    \new Dynamics {
-      \MONE_global
-      \MONE_A_dynamics
-      \MONE_B_dynamics
-      \MONE_C_dynamics
-    }
     \new Staff = "down" {
       \clef bass
       \MONE_global
@@ -321,11 +373,36 @@ MONE_C_pedal = {
       \MONE_B_lower
       \MONE_C_lower
     }
-    \new Dynamics {
-      \MONE_global
-      \MONE_A_pedal
-      \MONE_B_pedal
-      \MONE_C_pedal
+  >>
+}
+
+%% Movement II. Andante. G major. 3/4. AABBC
+\score {
+  \header {
+    %% Do not repeat the opus
+    piece = " "
+    opus = " "
+  }
+  \new PianoStaff <<
+    \new Staff = "up" {
+      \clef treble
+      \MTWO_global
+      \repeat volta 2
+      {
+        \MTWO_A_upper
+      }
+      %\repeat volta 2
+      {
+        \MTWO_B_upper
+      }
+      \MTWO_C_upper
+    }
+    \new Staff = "down" {
+      \clef bass
+      \MTWO_global
+      \MTWO_A_lower
+      \MTWO_B_lower
+      \MTWO_C_lower
     }
   >>
 }
