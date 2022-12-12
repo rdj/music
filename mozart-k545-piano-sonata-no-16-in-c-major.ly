@@ -41,13 +41,13 @@ bassToTreble = {
   tagline = ##f
 }
 
-M.1.global = {
+Mov.1.global = {
   \key c \major
   \time 4/4
   \tempo Allegro
 }
 
-M.1.A.upper = {
+Mov.1.upper.A = {
   \relative c'' {
     \footnote "*" #'(1 . 1) \markup \small { \italic { * m.1: } First print edition has no dynamics. Mozart’s autograph score is considered lost. Editorial dynamics vary widely. }
     c2 e4 g |
@@ -98,7 +98,7 @@ M.1.A.upper = {
   }
 }
 
-M.1.A.lower = {
+Mov.1.lower.A = {
   \relative c' {
     \bassToTreble
     \clef treble
@@ -140,7 +140,7 @@ M.1.A.lower = {
   }
 }
 
-M.1.B.upper = {
+Mov.1.upper.B = {
   \relative c'' {
     g4 g'16 d g bf d bf g bf c a fs a | \break
     g4 g,16 d g bf d bf g bf c a fs a |
@@ -158,7 +158,7 @@ M.1.B.upper = {
   }
 }
 
-M.1.B.lower = {
+Mov.1.lower.B = {
   \relative c {
     <g g'>4 r r
     \clef treble
@@ -186,7 +186,7 @@ M.1.B.lower = {
   }
 }
 
-M.1.C.upper = {
+Mov.1.upper.C = {
   \relative c'' {
     f2 a4 c |
     e,4.( f16 g) f4 r |
@@ -228,7 +228,7 @@ M.1.C.upper = {
   }
 }
 
-M.1.C.lower = {
+Mov.1.lower.C = {
   \relative c' {
     \clef treble
     f8 c' a c f, c' a c |
@@ -276,13 +276,13 @@ M.1.C.lower = {
   }
 }
 
-M.2.global = {
+Mov.2.global = {
   \key g \major
   \time 3/4
   \tempo Andante
 }
 
-M.2.A.upper = {
+Mov.2.upper.A = {
   \relative c'' {
     b2( d16 c b c) |
     d8.( b16) g4 r |
@@ -311,7 +311,7 @@ M.2.A.upper = {
   }
 }
 
-M.2.A.lower = {
+Mov.2.lower.A = {
   \relative c' {
     \repeat unfold 2 { g16 d' b d } a d c d |
     \repeat unfold 3 { g, d' b d } |
@@ -337,16 +337,16 @@ M.2.A.lower = {
   }
 }
 
-M.2.B.upper = {
+Mov.2.upper.B = {
 }
 
-M.2.B.lower = {
+Mov.2.lower.B = {
 }
 
-M.2.C.upper = {
+Mov.2.upper.C = {
 }
 
-M.2.C.lower = {
+Mov.2.lower.C = {
 }
 
 %% Movement I. Allegro. C major. 4/4. AABA'BA'
@@ -354,22 +354,22 @@ M.2.C.lower = {
   \new PianoStaff \with { instrumentName = \markup { \abs-fontsize #18 { "16" } } } <<
     \new Staff = "up" {
       \clef treble
-      \M.1.global
+      \Mov.1.global
       \repeat volta 2 {
-        \M.1.A.upper
+        \Mov.1.upper.A
       }
       \repeat volta 2
       {
-        \M.1.B.upper
-        \M.1.C.upper
+        \Mov.1.upper.B
+        \Mov.1.upper.C
       }
     }
     \new Staff = "down" {
       \clef bass
-      \M.1.global
-      \M.1.A.lower
-      \M.1.B.lower
-      \M.1.C.lower
+      \Mov.1.global
+      \Mov.1.lower.A
+      \Mov.1.lower.B
+      \Mov.1.lower.C
     }
   >>
 }
@@ -386,23 +386,23 @@ M.2.C.lower = {
   \new PianoStaff <<
     \new Staff = "up" {
       \clef treble
-      \M.2.global
+      \Mov.2.global
       \repeat volta 2
       {
-        \M.2.A.upper
+        \Mov.2.upper.A
       }
       %\repeat volta 2
       {
-        \M.2.B.upper
+        \Mov.2.upper.B
       }
-      \M.2.C.upper
+      \Mov.2.upper.C
     }
     \new Staff = "down" {
       \clef bass
-      \M.2.global
-      \M.2.A.lower
-      \M.2.B.lower
-      \M.2.C.lower
+      \Mov.2.global
+      \Mov.2.lower.A
+      \Mov.2.lower.B
+      \Mov.2.lower.C
     }
   >>
 }
