@@ -282,6 +282,38 @@ Mov.2.global = {
   \tempo Andante
 }
 
+Mov.2.upper.refrain = {
+  \relative c'' {
+    b4~ 16( g b d c a c e) |
+    d8.( b16) g-. g-. a-. b-. c-. d-. e-. fs-. |
+    g( fs g fs a g fs g fs e d cs) |
+    d( b d b) g4 r |
+    \stemUp c16( a c a) fs-! a( gs a as b c cs) \stemNeutral |
+    d( b d b) g'4 r16 b16( fs g) |
+    ds( e c a) g8. 16
+    <<
+      { b( a g a) | a4( g) } \\
+      { fs4 | \stemUp fs g \stemNeutral }  % some editions omit the F-sharp the first time, not footnoting it
+    >> r |
+  }
+}
+
+Mov.2.lower.refrain = {
+  \relative c' {
+    g16 d' b d g, d' b d a d c d | \break
+    \repeat unfold 3 { g, d' b d } |
+    g, e' c e g, e' c e g, cs as cs |
+    \repeat unfold 3 { g d' b d } | \break
+    \repeat unfold 3 { a d c d } |
+    g, d' b d e, b' g b b, g' d g |
+    c, a' e a d, b' g b d, c' a c |
+    <<
+      { c4( b) } \\
+      g2
+    >> r4 |
+  }
+}
+
 Mov.2.upper.A = {
   \relative c'' {
     b2( d16 c b c) |
@@ -292,22 +324,7 @@ Mov.2.upper.A = {
     d8.( b16) g'4 r |
     a16( g fs g fs e ds e d c b c) |
     b8.( c32 b) a8( d cs c) |
-    b4~ 16( g b d c a c e) |
-    d8.( b16) g-. g-. a-. b-. c-. d-. e-. fs-. |
-    g( fs g fs a g fs g fs e d cs) |
-    d( b d b) g4 r |
-    \stemUp c16( a c a) fs-! a( gs a as b c cs) \stemNeutral |
-    d( b d b) g'4 r16 b16( fs g) |
-    ds( e c a) g8. 16
-    <<
-      { b( a g a) } \\
-      { \footnote "*" #'(0.5 . -0.5) \markup { * \italic { m.15: } Some editions omit the F-sharp. (Muzyka) }
-        fs4 }
-    >> |
-    <<
-      { a4( g) } \\
-      { \stemUp fs4 g \stemNeutral }
-    >> r4 |
+    \Mov.2.upper.refrain
   }
 }
 
@@ -323,17 +340,8 @@ Mov.2.lower.A = {
       { e4 g2 | g4 fs } \\
       { c2 e4 | d2 }
     >> r4 |
-    \repeat unfold 2 { g16 d' b d } a d c d | \break
-    \repeat unfold 3 { g, d' b d } |
-    \repeat unfold 2 { g, e' c e } g, cs as cs |
-    \repeat unfold 3 { g d' b d } | \break
-    \repeat unfold 3 { a d c d } |
-    g, d' b d e, b' g b b, g' d g |
-    c, a' e a d, b' g b d, c' a c |
-    <<
-      { c4( b) } \\
-      { g2 }
-    >> r4 | \pageBreak
+    \Mov.2.lower.refrain
+    \pageBreak
   }
 }
 
@@ -350,17 +358,7 @@ Mov.2.upper.B = {
       { fs e d e | e4( d16) ds e ds fs e d c } \\
       { cs4 | cs s2 }
     >> ||
-    b4~ 16( g b d c a c e) |
-    d8.( b16) g16-. g-. a-. b-. c-. d-. e-. fs-. |
-    g( fs g fs a g fs g fs e d cs) |
-    d( b d b) g4 r |
-    \stemUp c16( a c a) fs-! a( gs a as b c cs) \stemNeutral |
-    d( b d b) g'4 r16 b( fs g) |
-    ds( e c a) g8. 16
-    <<
-      { b( a g a) | a4( g) } \\
-      { fs4 | \stemUp fs g \stemNeutral }
-    >> r |
+    \Mov.2.upper.refrain
   }
 }
 
@@ -379,17 +377,7 @@ Mov.2.lower.B = {
       { g4( fs) } \\
       d2
     >> r4 |
-    g,16 d' b d g, d' b d a d c d | \break
-    \repeat unfold 3 { g, d' b d } |
-    g, e' c e g, e' c e g, cs as cs |
-    \repeat unfold 3 { g d' b d } | \break
-    \repeat unfold 3 { a d c d } |
-    g, d' b d e, b' g b b, g' d g |
-    c, a' e a d, b' g b d, c' a c |
-    <<
-      { c4( b) } \\
-      g2
-    >> r4 |
+    \Mov.2.lower.refrain
   }
 }
 
