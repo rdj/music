@@ -333,7 +333,7 @@ MTWO_A_lower = {
     <<
       { c4( b) } \\
       { g2 }
-    >> r4 | \pageBreak
+    >> r4 |
   }
 }
 
@@ -348,8 +348,6 @@ MTWO_C_upper = {
 
 MTWO_C_lower = {
 }
-
-\pageBreak
 
 %% Movement I. Allegro. C major. 4/4. AABA'BA'
 \score {
@@ -375,6 +373,8 @@ MTWO_C_lower = {
     }
   >>
 }
+
+\pageBreak
 
 %% Movement II. Andante. G major. 3/4. AABBC
 \score {
