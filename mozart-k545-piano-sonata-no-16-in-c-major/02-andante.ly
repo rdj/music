@@ -176,9 +176,46 @@ Mov.2.lower.D = {
 }
 
 Mov.2.upper.Coda = {
+  \relative {
+    g'16 fs a g b a c b d c e d |
+    f4. g16 a g f e d |
+    ds4( e) r16 g(fs e) |
+    d( b a e') g,8. 16
+    <<
+      { b a g a } \\
+      fs4
+    >> |
+    g16 fs a g b a c b d c e d |
+    f4. g16 a g f e d |
+    e4 fs? g |
+    g,4. a32( g fs g)
+    <<
+      { b8 a } \\
+      fs4
+    >> |
+    g16( d b') b-! b( g d') d-! d( b a b) |
+    g( d b') b-! b( g d') d-! d( b a b) |
+    g8 r <g b,> r r4 |
+  }
 }
 
 Mov.2.lower.Coda = {
+  \relative c' {
+    <b g>4 r r | \break
+    \clef treble
+    \twice { a16 f' c f } b, g' d g |
+    \thrice { c, g' e g } |
+    b, d c e
+    \clef bass
+    d, b' g b d, c' a c | \break
+    <b g>4 r r |
+    a,16 f' c f b, g' d g g, g' b, g' |
+    c, g' e g c, a' ef a cs, bf' e, bf' | \break
+    \twice { c, b' g b } d, c' a c |
+    <b g>4 r r8 <c d,>^(_( |
+    <b g>4^)_) r r8 <c d,>^(_( |
+    <b g>8^)_) r8 g, r r4 |
+  }
 }
 
 %% II. Andante. G major. 3/4. ABABCBCBDAB.
@@ -210,6 +247,7 @@ Mov.2.lower.Coda = {
       \Mov.2.upper.A
       \Mov.2.upper.B
       \Mov.2.upper.Coda
+      \bar "|."
     }
     \new Staff = "down" {
       \clef bass
