@@ -282,7 +282,7 @@ Mov.2.global = {
   \tempo Andante
 }
 
-Mov.2.upper.refrain = {
+Mov.2.upper.B = {
   \relative c'' {
     b4~ 16( g b d c a c e) |
     d8.( b16) g-. g-. a-. b-. c-. d-. e-. fs-. |
@@ -292,13 +292,17 @@ Mov.2.upper.refrain = {
     d( b d b) g'4 r16 b16( fs g) |
     ds( e c a) g8. 16
     <<
-      { b( a g a) | a4( g) } \\
-      { fs4 | \stemUp fs g \stemNeutral }  % some editions omit the F-sharp the first time, not footnoting it
+      { b( a g a) } \\
+      { fs4 }
+    >> |
+    <<
+      { a4( g) } \\
+      { \stemUp fs g \stemNeutral }  % some editions omit the F-sharp the first time, not footnoting it
     >> r |
   }
 }
 
-Mov.2.lower.refrain = {
+Mov.2.lower.B = {
   \relative c' {
     g16 d' b d g, d' b d a d c d | \break
     \repeat unfold 3 { g, d' b d } |
@@ -324,7 +328,7 @@ Mov.2.upper.A = {
     d8.( b16) g'4 r |
     a16( g fs g fs e ds e d c b c) |
     b8.( c32 b) a8( d cs c) |
-    \Mov.2.upper.refrain
+    \Mov.2.upper.B
   }
 }
 
@@ -340,12 +344,12 @@ Mov.2.lower.A = {
       { e4 g2 | g4 fs } \\
       { c2 e4 | d2 }
     >> r4 |
-    \Mov.2.lower.refrain
+    \Mov.2.lower.B
     \pageBreak
   }
 }
 
-Mov.2.upper.B = {
+Mov.2.upper.C = {
   \relative c'' {
     d4~ 16( cs e d g fs e d) |
     cs8.( d16) e4 r |
@@ -358,11 +362,11 @@ Mov.2.upper.B = {
       { fs e d e | e4( d16) ds e ds fs e d c } \\
       { cs4 | cs s2 }
     >> ||
-    \Mov.2.upper.refrain
+    \Mov.2.upper.B
   }
 }
 
-Mov.2.lower.B = {
+Mov.2.lower.C = {
   \clef treble
   \relative c' {
     \repeat unfold 3 { d16 a' fs a } |
@@ -377,14 +381,14 @@ Mov.2.lower.B = {
       { g4( fs) } \\
       d2
     >> r4 |
-    \Mov.2.lower.refrain
+    \Mov.2.lower.B
   }
 }
 
-Mov.2.upper.C = {
+Mov.2.upper.D = {
 }
 
-Mov.2.lower.C = {
+Mov.2.lower.D = {
 }
 
 %% Movement I. Allegro. C major. 4/4. AABA'BA'
@@ -431,16 +435,16 @@ Mov.2.lower.C = {
       }
       \repeat volta 2
       {
-        \Mov.2.upper.B
+        \Mov.2.upper.C
       }
-      \Mov.2.upper.C
+      \Mov.2.upper.D
     }
     \new Staff = "down" {
       \clef bass
       \Mov.2.global
       \Mov.2.lower.A
-      \Mov.2.lower.B
       \Mov.2.lower.C
+      \Mov.2.lower.D
     }
   >>
 }
