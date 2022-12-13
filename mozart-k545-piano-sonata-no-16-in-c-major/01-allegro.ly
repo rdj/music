@@ -166,7 +166,7 @@ Mov.1.lower.B = {
   }
 }
 
-Mov.1.upper.C = {
+Mov.1.upper.A′ = {
   \relative c'' {
     f2 a4 c |
     e,4.( f16 g) f4 r |
@@ -208,7 +208,7 @@ Mov.1.upper.C = {
   }
 }
 
-Mov.1.lower.C = {
+Mov.1.lower.A′ = {
   \relative c' {
     \clef treble
     f8 c' a c f, c' a c |
@@ -256,7 +256,7 @@ Mov.1.lower.C = {
   }
 }
 
-%% Movement I. Allegro. C major. 4/4. AABA'BA'
+%% I. Allegro. C major. 4/4. Sonata form, AABA′BA′.
 \score {
   \new PianoStaff \with { instrumentName = \markup { \abs-fontsize #18 { "16" } } } <<
     \new Staff = "up" {
@@ -268,7 +268,7 @@ Mov.1.lower.C = {
       \repeat volta 2
       {
         \Mov.1.upper.B
-        \Mov.1.upper.C
+        \Mov.1.upper.A′
       }
     }
     \new Staff = "down" {
@@ -276,7 +276,7 @@ Mov.1.lower.C = {
       \Mov.1.global
       \Mov.1.lower.A
       \Mov.1.lower.B
-      \Mov.1.lower.C
+      \Mov.1.lower.A′
     }
   >>
 }
