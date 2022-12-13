@@ -15,11 +15,16 @@ Mov.2.upper.B = {
     ds( e c a) g8. 16
     <<
       { b( a g a) } \\
-      { fs4 }
+      { fs4 } % some editions omit the F-sharp the first time, not footnoting it
     >> |
+  }
+}
+
+Mov.2.upper.B_end = {
+  \relative c'' {
     <<
       { a4( g) } \\
-      { \stemUp fs g \stemNeutral }  % some editions omit the F-sharp the first time, not footnoting it
+      { \stemUp fs g \stemNeutral }
     >> r |
   }
 }
@@ -33,6 +38,11 @@ Mov.2.lower.B = {
     \repeat unfold 3 { a d c d } |
     g, d' b d e, b' g b b, g' d g |
     c, a' e a d, b' g b d, c' a c |
+  }
+}
+
+Mov.2.lower.B_end = {
+  \relative c' {
     <<
       { c4( b) } \\
       g2
@@ -40,7 +50,7 @@ Mov.2.lower.B = {
   }
 }
 
-Mov.2.upper.A = {
+Mov.2.upper.AB = {
   \relative c'' {
     b2( d16 c b c) |
     d8.( b16) g4 r |
@@ -51,10 +61,11 @@ Mov.2.upper.A = {
     a16( g fs g fs e ds e d c b c) |
     b8.( c32 b) a8( d cs c) |
     \Mov.2.upper.B
+    \Mov.2.upper.B_end
   }
 }
 
-Mov.2.lower.A = {
+Mov.2.lower.AB = {
   \relative c' {
     \repeat unfold 2 { g16 d' b d } a d c d |
     \repeat unfold 3 { g, d' b d } |
@@ -67,11 +78,11 @@ Mov.2.lower.A = {
       { c2 e4 | d2 }
     >> r4 |
     \Mov.2.lower.B
-    \pageBreak
+    \Mov.2.lower.B_end
   }
 }
 
-Mov.2.upper.C = {
+Mov.2.upper.CB = {
   \relative c'' {
     d4~ 16( cs e d g fs e d) |
     cs8.( d16) e4 r |
@@ -85,10 +96,11 @@ Mov.2.upper.C = {
       { cs4 | cs s2 }
     >> ||
     \Mov.2.upper.B
+    \Mov.2.upper.B_end
   }
 }
 
-Mov.2.lower.C = {
+Mov.2.lower.CB = {
   \clef treble
   \relative c' {
     \repeat unfold 3 { d16 a' fs a } |
@@ -104,6 +116,7 @@ Mov.2.lower.C = {
       d2
     >> r4 |
     \Mov.2.lower.B
+    \Mov.2.lower.B_end
   }
 }
 
@@ -126,19 +139,20 @@ Mov.2.lower.D = {
       \Mov.2.global
       \repeat volta 2
       {
-        \Mov.2.upper.A
+        \Mov.2.upper.AB
       }
+      \pageBreak
       \repeat volta 2
       {
-        \Mov.2.upper.C
+        \Mov.2.upper.CB
       }
       \Mov.2.upper.D
     }
     \new Staff = "down" {
       \clef bass
       \Mov.2.global
-      \Mov.2.lower.A
-      \Mov.2.lower.C
+      \Mov.2.lower.AB
+      \Mov.2.lower.CB
       \Mov.2.lower.D
     }
   >>
