@@ -4,6 +4,34 @@ Mov.2.global = {
   \tempo Andante
 }
 
+Mov.2.upper.A = {
+  \relative c'' {
+    b2( d16 c b c) |
+    d8.( b16) g4 r |
+    g'4.( a16 g fs e d cs) |
+    d8.( b16) g4 r |
+    c8.( a16) fs8-.[ a-.] b-.[ c-.] |
+    d8.( b16) g'4 r |
+    a16( g fs g fs e ds e d c b c) |
+    b8.( c32 b) a8( d cs c) |
+  }
+}
+
+Mov.2.lower.A = {
+  \relative c' {
+    \repeat unfold 2 { g16 d' b d } a d c d |
+    \repeat unfold 3 { g, d' b d } |
+    \repeat unfold 2 { g, e' c e } g, cs as cs | \break
+    \repeat unfold 3 { g d' b d } |
+    \repeat unfold 3 { a d c d } |
+    g, d' b d e, b' g b b, g' d g | \break
+    <<
+      { e4 g2 | g4 fs } \\
+      { c2 e4 | d2 }
+    >> r4 |
+  }
+}
+
 Mov.2.upper.B = {
   \relative c'' {
     b4~ 16( g b d c a c e) |
@@ -20,15 +48,6 @@ Mov.2.upper.B = {
   }
 }
 
-Mov.2.upper.B_end = {
-  \relative c'' {
-    <<
-      { a4( g) } \\
-      { \stemUp fs g \stemNeutral }
-    >> r |
-  }
-}
-
 Mov.2.lower.B = {
   \relative c' {
     g16 d' b d g, d' b d a d c d | \break
@@ -41,6 +60,15 @@ Mov.2.lower.B = {
   }
 }
 
+Mov.2.upper.B_end = {
+  \relative c'' {
+    <<
+      { a4( g) } \\
+      { \stemUp fs g \stemNeutral }
+    >> r |
+  }
+}
+
 Mov.2.lower.B_end = {
   \relative c' {
     <<
@@ -50,39 +78,8 @@ Mov.2.lower.B_end = {
   }
 }
 
-Mov.2.upper.AB = {
-  \relative c'' {
-    b2( d16 c b c) |
-    d8.( b16) g4 r |
-    g'4.( a16 g fs e d cs) |
-    d8.( b16) g4 r |
-    c8.( a16) fs8-.[ a-.] b-.[ c-.] |
-    d8.( b16) g'4 r |
-    a16( g fs g fs e ds e d c b c) |
-    b8.( c32 b) a8( d cs c) |
-    \Mov.2.upper.B
-    \Mov.2.upper.B_end
-  }
-}
 
-Mov.2.lower.AB = {
-  \relative c' {
-    \repeat unfold 2 { g16 d' b d } a d c d |
-    \repeat unfold 3 { g, d' b d } |
-    \repeat unfold 2 { g, e' c e } g, cs as cs | \break
-    \repeat unfold 3 { g d' b d } |
-    \repeat unfold 3 { a d c d } |
-    g, d' b d e, b' g b b, g' d g | \break
-    <<
-      { e4 g2 | g4 fs } \\
-      { c2 e4 | d2 }
-    >> r4 |
-    \Mov.2.lower.B
-    \Mov.2.lower.B_end
-  }
-}
-
-Mov.2.upper.CB = {
+Mov.2.upper.C = {
   \relative c'' {
     d4~ 16( cs e d g fs e d) |
     cs8.( d16) e4 r |
@@ -95,12 +92,10 @@ Mov.2.upper.CB = {
       { fs e d e | e4( d16) ds e ds fs e d c } \\
       { cs4 | cs s2 }
     >> ||
-    \Mov.2.upper.B
-    \Mov.2.upper.B_end
   }
 }
 
-Mov.2.lower.CB = {
+Mov.2.lower.C = {
   \clef treble
   \relative c' {
     \repeat unfold 3 { d16 a' fs a } |
@@ -115,8 +110,6 @@ Mov.2.lower.CB = {
       { g4( fs) } \\
       d2
     >> r4 |
-    \Mov.2.lower.B
-    \Mov.2.lower.B_end
   }
 }
 
@@ -124,6 +117,12 @@ Mov.2.upper.D = {
 }
 
 Mov.2.lower.D = {
+}
+
+Mov.2.upper.Coda = {
+}
+
+Mov.2.lower.Coda = {
 }
 
 %% Movement II. Andante. G major. 3/4. AABBC
@@ -139,21 +138,35 @@ Mov.2.lower.D = {
       \Mov.2.global
       \repeat volta 2
       {
-        \Mov.2.upper.AB
+        \Mov.2.upper.A
+        \Mov.2.upper.B
+        \Mov.2.upper.B_end
       }
       \pageBreak
       \repeat volta 2
       {
-        \Mov.2.upper.CB
+        \Mov.2.upper.C
+        \Mov.2.upper.B
+        \Mov.2.upper.B_end
       }
       \Mov.2.upper.D
+      %%\Mov.2.upper.A
+      %%\Mov.2.upper.B
+      %%\Mov.2.upper.Coda
     }
     \new Staff = "down" {
       \clef bass
       \Mov.2.global
-      \Mov.2.lower.AB
-      \Mov.2.lower.CB
+      \Mov.2.lower.A
+      \Mov.2.lower.B
+      \Mov.2.lower.B_end
+      \Mov.2.lower.C
+      \Mov.2.lower.B
+      \Mov.2.lower.B_end
       \Mov.2.lower.D
+      %%\Mov.2.lower.A
+      %%\Mov.2.lower.B
+      %%\Mov.2.lower.Coda
     }
   >>
 }
