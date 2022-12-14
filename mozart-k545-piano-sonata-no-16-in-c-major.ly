@@ -18,12 +18,12 @@
   tagline = ##f
 }
 
-% \include "mozart-k545-piano-sonata-no-16-in-c-major/01-allegro.ly"
+\include "mozart-k545-piano-sonata-no-16-in-c-major/01-allegro.ly"
 
-% \pageBreak
+\pageBreak
 
-% \include "mozart-k545-piano-sonata-no-16-in-c-major/02-andante.ly"
+\include "mozart-k545-piano-sonata-no-16-in-c-major/02-andante.ly"
 
-% \pageBreak
+\pageBreak
 
 \include "mozart-k545-piano-sonata-no-16-in-c-major/03-rondo-allegretto.ly"

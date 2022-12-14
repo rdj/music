@@ -1,5 +1,6 @@
 twice = #(define-music-function (music) (ly:music?) #{ \repeat unfold 2 $music #})
 thrice = #(define-music-function (music) (ly:music?) #{ \repeat unfold 3 $music #})
+simile = \markup { \italic simile }
 
 Mov.3.global = {
   \key c \major
@@ -141,6 +142,40 @@ Mov.3.lower.C = \relative {
   r4\fermata
 }
 
+Mov.3.upper.coda = \relative {
+  b'16( f' d b) |
+  a'( g f e) d( f d b) |
+  a'( g f e) d'( c b a) |
+  a( g) f-. e-. e( d) c-. b-. |
+  d8( c) b16( f' d b) |
+  a'( g f e) d( f d b) |
+  a'( g f e) d'( c b a) |
+  a( g) f-. e-. e( d) c-. b-. |
+  \twice {
+    c e g, c e, g c, e |
+    g c <e c> <g e> <g e>( <f d>) <e c>-. <d b>-. |
+  }
+  c8 <e g c> <c e,> q |
+  q4 r |
+}
+
+Mov.3.lower.coda = \relative {
+  f16( b g b) |
+  e,^\simile c' g c f, b g b |
+  e, c' g c f, d' a d |
+  g, e' c e g, f' d f |
+  c g' e g f, b g b |
+  e, c' g c f, b g b |
+  e, c' g c f, d' a d |
+  g, e' c e g, f' d f |
+  \twice {
+    c e g, c e, g c, e |
+    g8 r g, r |
+  }
+  <c c,>[ <e e,> <g g,> <e e,>] |
+  <c c,>4 r |
+}
+
 %% Breaks match Bärenreiter-Verlag, 1986
 Mov.3.reference.breaks = {
   s4 |
@@ -185,6 +220,8 @@ Mov.3.reference.breaks = {
       \Mov.3.upper.A
       \Mov.3.upper.C
       \Mov.3.upper.A
+      \Mov.3.upper.coda
+      \bar "|."
     }
     \new Staff = "down" {
       \Mov.3.global
@@ -194,6 +231,7 @@ Mov.3.reference.breaks = {
       \Mov.3.lower.A
       \Mov.3.lower.C
       r4 \Mov.3.lower.A
+      \Mov.3.lower.coda
     }
     \new Dynamics {
       \Mov.3.global
