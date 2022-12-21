@@ -4,7 +4,6 @@
 
 \paper {
   indent = 0
-  page-breaking = #ly:one-page-breaking
   ragged-last = ##f
 }
 
@@ -83,6 +82,8 @@ thumbs = \markup \concat { "(" \tiny \number 1 ")" }
     b_1 a^1 g^3 gs e4^1_5 r | \break
   }
 }
+
+\pageBreak
 
 \new Staff {
   \clef treble
