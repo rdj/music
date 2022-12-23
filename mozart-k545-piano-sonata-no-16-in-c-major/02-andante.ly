@@ -211,7 +211,7 @@ Mov.2.lower.Coda = {
     <b g>4 r r |
     a,16 f' c f b, g' d g g, g' b, g' |
     c, g' e g c, a' ef a cs, bf' e, bf' | \break
-    \twice { c, b' g b } d, c' a c |
+    \twice { d, b' g b } d, c' a c |
     <b g>4 r r8 <c d,>^(_( |
     <b g>4^)_) r r8 <c d,>^(_( |
     <b g>8^)_) r8 g, r r4 |
