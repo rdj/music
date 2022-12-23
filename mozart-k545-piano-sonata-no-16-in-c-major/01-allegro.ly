@@ -48,20 +48,20 @@ Mov.1.upper.A = {
         \set stemLeftBeamCount = #1
         \set stemRightBeamCount = #2
         e f e4 }
-    >> r | \break
+    >> r |
     a,8 b16 c d e f g a g f e d c b a |
     g8 a16 b c d e f g f e d c b a g |
-    f8 g16 a b c d e f e d c b a g f | \break
+    f8 g16 a b c d e f e d c b a g f |
     e8 f16 g a b c d e d c b a g f e |
     d8 e16 f g a b cs d a b cs d e f g |
-    a b c b a g f e f g a g f e d c | \break
+    a b c b a g f e f g a g f e d c |
     b8[ g'] e[ c] d[ g] e[ c] |
     d4 <g d b> g, r |
     R1 |
-    d''8( b) g4.( a16 b a8) g-! | \break
+    d''8( b) g4.( a16 b a8) g-! |
     g8.\trill( fs16) fs4 r2 |
     d'8( b) g4.( a16 b a8) g-! |
-    g8.\trill( fs16) fs4 r2 | \pageBreak
+    g8.\trill( fs16) fs4 r2 |
     d'4 r16 d b g e4 r16 e g e |
     c'4 r16 c a fs d4 r16 d fs d |
     b'4 r16 b g e c4 r16 c e c |
@@ -72,7 +72,7 @@ Mov.1.upper.A = {
     \appoggiatura gs16 a4. b32( a gs a) c8( a) c( a) |
     b8( g) d'2 c16 b a g |
     \afterGrace 16/17 a1\startTrillSpan { g32[(\stopTrillSpan a]) } |
-    g4 g16 d g b d b g b c a fs a | \break
+    g4 g16 d g b d b g b c a fs a |
     g4 g,16 d g b d b g b c a fs a |
     g4 <d' b'> <b g'> r |
   }
@@ -122,16 +122,16 @@ Mov.1.lower.A = {
 
 Mov.1.upper.B = {
   \relative c'' {
-    g4 g'16 d g bf d bf g bf c a fs a | \break
+    g4 g'16 d g bf d bf g bf c a fs a |
     g4 g,16 d g bf d bf g bf c a fs a |
     g4 r r16 g' bf a g f? e d |
     cs4 r r16 cs' e d cs bf a g |
     f?4 d16 a d f a f d f g e cs e |
     d4 d,16 a d f a f d f g e cs e |
-    r d e f g a b cs d4 r | \pageBreak
+    r d e f g a b cs d4 r |
     r16 b c d e fs gs a b4 r |
     r16 a e' d c b a g? f?4 r |
-    r16 g d' c b a g f e4 r | \break
+    r16 g d' c b a g f e4 r |
     r16 f c' b a g f e d4 r |
     r16 e b' a gs f e d c4 r |
     r16 bf d c bf a g f e f g a bf c d e |
@@ -184,7 +184,7 @@ Mov.1.upper.A′ = {
       c
     > r r <f b,> |
     <e c> r r <e c> |
-    d16 d, e f g a b cs d a b cs d e f g | \pageBreak
+    d16 d, e f g a b cs d a b cs d e f g |
     a b c b a g f e f g a g f e d c |
     b8[ g'] e[ c] d[ g] e[ c] |
     d4 <b d g> g r |
@@ -256,6 +256,54 @@ Mov.1.lower.A′ = {
   }
 }
 
+%% Breaks match Bärenreiter-Verlag, 1986
+Mov.1.reference.breaks = {
+  s1*4 | \break
+  \barNumberCheck #5
+  s1*3 | \break
+  \barNumberCheck #8
+  s1*3 | \break
+  \barNumberCheck #11
+  s1*4 | \break
+  \barNumberCheck #15
+  s1*3 | \pageBreak
+  \barNumberCheck #18
+  s1*3 | \break
+  \barNumberCheck #21
+  s1*3 | \break
+  \barNumberCheck #24
+  s1*3 | \break
+  \barNumberCheck #27
+  s1*3 | \break
+  \barNumberCheck #30
+  s1*3 | \break
+  \barNumberCheck #33
+  s1*3 | \pageBreak
+  \barNumberCheck #36
+  s1*3 | \break
+  \barNumberCheck #39
+  s1*3 | \break
+  \barNumberCheck #42
+  s1*4 | \break
+  \barNumberCheck #46
+  s1*3 | \break
+  \barNumberCheck #49
+  s1*3 | \break
+  \barNumberCheck #52
+  s1*3 | \pageBreak
+  \barNumberCheck #55
+  s1*3 | \break
+  \barNumberCheck #58
+  s1*3 | \break
+  \barNumberCheck #61
+  s1*3 | \break
+  \barNumberCheck #64
+  s1*3 | \break
+  \barNumberCheck #67
+  s1*3 | \break
+  \barNumberCheck #70
+}
+
 %% I. Allegro. C major. 4/4. Sonata form, AABA′BA′.
 \score {
   \new PianoStaff \with { instrumentName = \markup { \abs-fontsize #18 { "16" } } } <<
@@ -277,6 +325,10 @@ Mov.1.lower.A′ = {
       \Mov.1.lower.A
       \Mov.1.lower.B
       \Mov.1.lower.A′
+    }
+    \new Dynamics {
+      \Mov.1.global
+      \Mov.1.reference.breaks
     }
   >>
 }

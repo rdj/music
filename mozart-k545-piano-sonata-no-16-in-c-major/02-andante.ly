@@ -24,10 +24,10 @@ Mov.2.lower.A = {
   \relative c' {
     \twice { g16 d' b d } a d c d |
     \thrice { g, d' b d } |
-    \twice { g, e' c e } g, cs as cs | \break
+    \twice { g, e' c e } g, cs as cs |
     \thrice { g d' b d } |
     \thrice { a d c d } |
-    g, d' b d e, b' g b b, g' d g | \break
+    g, d' b d e, b' g b b, g' d g |
     <<
       { e4 g2 | g4 fs } \\
       { c2 e4 | d2 }
@@ -53,10 +53,10 @@ Mov.2.upper.B = {
 
 Mov.2.lower.B = {
   \relative c' {
-    g16 d' b d g, d' b d a d c d | \break
+    g16 d' b d g, d' b d a d c d |
     \thrice { g, d' b d } |
     g, e' c e g, e' c e g, cs as cs |
-    \thrice { g d' b d } | \break
+    \thrice { g d' b d } |
     \thrice { a d c d } |
     g, d' b d e, b' g b b, g' d g |
     c, a' e a d, b' g b d, c' a c |
@@ -104,11 +104,11 @@ Mov.2.lower.C = {
   \relative c' {
     \thrice { d16 a' fs a } |
     \thrice { e a g a } |
-    \thrice { cs, a' g a } | \break
+    \thrice { cs, a' g a } |
     d, a' fs a cs, a' d, a' b, g' d g |
     \clef bass
     a, fs' d fs g, e' cs e fs, d' a d |
-    b g' e g a, fs' ds fs g, e' b e | \break
+    b g' e g a, fs' ds fs g, e' b e |
     a, fs' d fs a, fs' d fs a, g' e g |
     <<
       { g4( fs) } \\
@@ -152,26 +152,26 @@ Mov.2.lower.D = {
     \twice { g16 d' bf d } a d c d |
     \thrice { g, d' bf d } |
     \twice { fs, d' a d } d, d' fs, d' |
-    \twice {g, d' bf d } g, ef' bf ef | \break
+    \twice {g, d' bf d } g, ef' bf ef |
     \thrice { a, f' c f } |
     bf, f' d f g, d' bf d d, bf' f bf |
-    ef, c' g c f, d' bf d f, ef' c ef | \break
+    ef, c' g c f, d' bf d f, ef' c ef |
     <<
       { ef4( d) } \\
       { bf2 }
     >> r4 |
 
     af16 f' c f g, d' b d f, d' g, d' |
-    ef, c' g c d, b' f b c, c' ef, c' | \break
+    ef, c' g c d, b' f b c, c' ef, c' |
     cs, bf' e,? bf' d, bf' g bf ef, bf' g bf |
     d, bf' g bf \twice { d, a' fs a } |
     \thrice { c, a' fs a } |
-    \thrice { bf, g' d g } | \break
+    \thrice { bf, g' d g } |
     c, a' ef a d, bf' g bf d, c' a c |
     <<
       { c4( bf) } \\
       g2
-    >> r4 | \break
+    >> r4 |
   }
 }
 
@@ -201,21 +201,67 @@ Mov.2.upper.Coda = {
 
 Mov.2.lower.Coda = {
   \relative c' {
-    <b g>4 r r | \break
+    <b g>4 r r |
     \clef treble
     \twice { a16 f' c f } b, g' d g |
     \thrice { c, g' e g } |
     b, d c e
     \clef bass
-    d, b' g b d, c' a c | \break
+    d, b' g b d, c' a c |
     <b g>4 r r |
     a,16 f' c f b, g' d g g, g' b, g' |
-    c, g' e g c, a' ef a cs, bf' e, bf' | \break
+    c, g' e g c, a' ef a cs, bf' e, bf' |
     \twice { d, b' g b } d, c' a c |
     <b g>4 r r8 <c d,>^(_( |
     <b g>4^)_) r r8 <c d,>^(_( |
     <b g>8^)_) r8 g, r r4 |
   }
+}
+
+%% Breaks match Bärenreiter-Verlag, 1986
+Mov.2.reference.breaks = {
+  s2.*3 | \break
+  \barNumberCheck #4
+  s2.*3 | \break
+  \barNumberCheck #7
+  s2.*3 | \break
+  \barNumberCheck #10
+  s2.*3 | \break
+  \barNumberCheck #13
+  s2.*4 | \pageBreak
+  \barNumberCheck #17
+  s2.*3 | \break
+  \barNumberCheck #20
+  s2.*3 | \break
+  \barNumberCheck #23
+  s2.*3 | \break
+  \barNumberCheck #26
+  s2.*3 | \break
+  \barNumberCheck #29
+  s2.*4 | \pageBreak
+  \barNumberCheck #33
+  s2.*4 | \break
+  \barNumberCheck #37
+  s2.*3 | \break
+  \barNumberCheck #40
+  s2.*3 | \break
+  \barNumberCheck #43
+  s2.*4 | \break
+  \barNumberCheck #47
+  s2.*4 | \break
+  \barNumberCheck #51
+  s2.*4 | \pageBreak
+  \barNumberCheck #55
+  s2.*4 | \break
+  \barNumberCheck #59
+  s2.*3 | \break
+  \barNumberCheck #62
+  s2.*3 | \break
+  \barNumberCheck #65
+  s2.*3 | \break
+  \barNumberCheck #68
+  s2.*3 | \break
+  \barNumberCheck #71
 }
 
 %% II. Andante. G major. 3/4. ABABCBCBDAB.
@@ -262,6 +308,10 @@ Mov.2.lower.Coda = {
       \Mov.2.lower.A
       \Mov.2.lower.B
       \Mov.2.lower.Coda
+    }
+    \new Dynamics {
+      \Mov.2.global
+      \Mov.2.reference.breaks
     }
   >>
 }
