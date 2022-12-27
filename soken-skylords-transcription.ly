@@ -23,6 +23,13 @@ poco_rit = {
   \textSpannerDown
 }
 
+su = \stemUp
+sd = \stemDown
+sn = \stemNeutral
+
+twice = #(define-music-function (music) (ly:music?) #{ \repeat unfold 2 $music #})
+thrice = #(define-music-function (music) (ly:music?) #{ \repeat unfold 3 $music #})
+
 global = {
   \key d \major
   \time 3/4
@@ -83,13 +90,19 @@ lower.B = {
   \barNumberCheck #9
   \clef bass
   <<
-    { \lower.B_tenor } \\
-    { \lower.B_bass }
+    \new Voice = "tenor" {
+      \voiceOne
+      \lower.B_tenor
+    }
+    \new Voice = "bass" {
+      \voiceTwo
+      \lower.B_bass
+    }
   >>
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% C = mm. 17- (enter melody)
+%% C = mm. 17-40 (enter melody) -- could probably split this up a bit
 
 upper.C = \relative {
   \barNumberCheck #17
@@ -115,8 +128,6 @@ upper.C = \relative {
     <e b gs>2.\arpeggio |
   }
   <<
-    \set PianoStaff.connectArpeggios = ##t
-
     {
       <fs, d a>\(\arpeggio |
       a4(\arpeggio gs2)\)
@@ -127,10 +138,37 @@ upper.C = \relative {
       <e cs>2.\arpeggio
     }
   >> |
+  <a d,>2.\arpeggio |
+   <as cs e>2( <cs e g>4) |
+   <<
+     \relative {
+       \sn
+       r4 <a' d a'>4\( fs'~ |
+       2 d8 e |
+       <fs b, a>4\arpeggio \su b,2\)~ |
+       2.
+     } \\
+     \relative {
+       s4 s4 fs'~ |
+       2 s4 |
+       s2. |
+       r4 <e cs>( <fs d>)
+     }
+   >> |
+   r4 <a d a'>4 <fs fs'>4~ |
+   q2 d'8 e |
+   <<
+     \relative {
+       \sd
+       \acciaccatura e''8 fs2.~ |
+       2.
+     } \\
+     \relative {
+       a'2.~ |
+       2.
+     } |
+   >>
 }
-
-su = \stemUp
-sn = \stemNeutral
 
 lower.C_tenor = \relative {
   \stemNeutral
@@ -147,31 +185,99 @@ lower.C_tenor = \relative {
   \su fs,8\( a \sn d cs a b |
   gs b e2\) |
   \su fs,8 a \sn d cs a b |
+  s2. |
+  r8 \su fs \sn d' cs a b |
+  r \su cs \sn g' fs e cs |
+  r \su fs, \sn cs' fs, d' fs, |
+  r \su fs cs' fs, d' r |
+  r \su a \sn cs a d a |
+  r \su a cs a d a \sn |
+  r \su fs \sn cs' fs, d' fs, |
+  r \su fs \sn cs' fs, d' fs, |
+  r \su a e'\( a, fs' a, g' a, fs' a, e'\) a, \sn |
 }
 
 lower.C_bass = \relative {
   b,2. |
-  s2. |
-  d2. |
+  s |
+  d |
   r4 r4 cs4 |
   b2. |
-  s2. |
-  d2. |
+  s |
+  d |
   r4 r4 c4 |
   b2. |
-  s2. |
+  s |
+  b |
+  s |
+  b |
+  cs |
+  e |
+  fs |
+  b,, |
+  b'2 b,8 cs |
+  d2. |
+  d'2 cs,4 |
   b2. |
-  s2. |
-  b2. |
-  cs2. |
+  b' |
+  d2.~ |
+  2 cs,4 |
 }
 
 lower.C = {
   \barNumberCheck #17
   <<
-    { \lower.C_tenor } \\
-    { \lower.C_bass }
+    \new Voice = "tenor" {
+      \voiceOne
+      \lower.C_tenor
+    }
+    \new Voice = "bass" {
+      \voiceTwo
+      \lower.C_bass
+    }
   >>
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% D = mm. 41-56 (melody to bass)
+
+upper.D = \relative {
+  \barNumberCheck #41
+  \twice { \thrice { <c' d fs>8 a8 } | }
+  \thrice { <b d fs> fs } |
+  \thrice { <bf d f> f } |
+  <a b? ds>8 fs? \twice { <a b ds>8 fs } |
+  \thrice { <a b ds>8 fs } |
+  \thrice { <gs b ds> ds } |
+  <g? b d?> d? \twice { <g b d> d } |
+  \thrice { <a' cs e> g } |
+  \thrice { <bf d f> b } |
+  \thrice { <a cs e> g } |
+  \thrice { <bf d> g } |
+  \thrice { <a cs e> g } |
+  \twice { <bf df f> g } <bf d f> g |
+  \thrice { <a cs e> g } |
+  \twice { <bf d> g } <a cs e> g |
+}
+
+lower.D = \relative {
+  \barNumberCheck #41
+  c,2.~\( |
+  4 d-> c |
+  b2. |
+  bf\) |
+  a~\( |
+  4 b-> a |
+  gs2. |
+  g?\) |
+  a4.\( g8 a4 |
+  bf4 g2 |
+  a4 e'2~ |
+  2.\) |
+  a,4.\( g8 a4 |
+  bf4 g2 |
+  a4 e'2~ |
+  2\) fs,4 |
 }
 
 editorial.above = {
@@ -190,10 +296,24 @@ editorial.between = {
   s2.*7 |
   \barNumberCheck #25
   s2.\mp |
+  s2.*5 |
+  \barNumberCheck #31
+  s2.\pp |
+  s8\startTextSpan s8 s4 s8 s8\stopTextSpan |
+  s2._\markup \italic { a tempo }\mf |
+  s2.*5 |
+  \barNumberCheck #39
+  s2._\markup \italic { en dehors } |
+  s2.*16 |
+  \barNumberCheck #56
+  s8\startTextSpan s8 s8 s8 s8 s8\stopTextSpan |
 }
 
 editorial.below = {
-  s8^\markup \italic { with plenty of pedal throughout }
+  s2.^\markup \italic { with plenty of pedal throughout } |
+  s2.*54 |
+  \barNumberCheck #56
+  s2 s4\ppp |
 }
 
 reference.breaks = {
@@ -254,11 +374,16 @@ reference.breaks = {
     \global
     \editorial.above
   }
-  \new Staff = "up" {
+  \new Staff = "up" \with {
+    %% Allow arpeggios to span voices
+    \consists "Span_arpeggio_engraver"
+    connectArpeggios = ##t
+  } {
     \global
     \upper.A
     \upper.B
     \upper.C
+    \upper.D
   }
   \new Dynamics {
     \global
@@ -269,6 +394,7 @@ reference.breaks = {
     \lower.A
     \lower.B
     \lower.C
+    \lower.D
   }
   \new Dynamics {
     \global
