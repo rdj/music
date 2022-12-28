@@ -1,4 +1,4 @@
-\version "2.20.0"
+\version "2.24.0"
 \language "english"
 \pointAndClickOff
 
@@ -34,7 +34,6 @@ global = {
   \key d \major
   \time 3/4
   \set Timing.beamExceptions = #'() % Beam each beat separately in 3/4 instead of the whole measure
-  \tempo "Calmly, but with movement" 4 = 82
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -46,7 +45,7 @@ upper.A = \relative {
 }
 
 lower.A = \relative {
-  <b fs'>2.
+  <b fs'>2. |
   b' |
   <a d,> |
   d2 cs,4 |
@@ -102,7 +101,7 @@ lower.B = {
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% C = mm. 17-40 (enter melody) -- could probably split this up a bit
+%% C = mm. 17-32 (enter melody)
 
 upper.C = \relative {
   \barNumberCheck #17
@@ -139,35 +138,7 @@ upper.C = \relative {
     }
   >> |
   <a d,>2.\arpeggio |
-   <as cs e>2( <cs e g>4) |
-   <<
-     \relative {
-       \sn
-       r4 <a' d a'>4\( fs'~ |
-       2 d8 e |
-       <fs b, a>4\arpeggio \su b,2\)~ |
-       2.
-     } \\
-     \relative {
-       s4 s4 fs'~ |
-       2 s4 |
-       s2. |
-       r4 <e cs>( <fs d>)
-     }
-   >> |
-   r4 <a d a'>4 <fs fs'>4~ |
-   q2 d'8 e |
-   <<
-     \relative {
-       \sd
-       \acciaccatura e''8 fs2.~ |
-       2.
-     } \\
-     \relative {
-       a'2.~ |
-       2.
-     } |
-   >>
+  <as cs e>2( <cs e g>4) |
 }
 
 lower.C_tenor = \relative {
@@ -188,13 +159,6 @@ lower.C_tenor = \relative {
   s2. |
   r8 \su fs \sn d' cs a b |
   r \su cs \sn g' fs e cs |
-  r \su fs, \sn cs' fs, d' fs, |
-  r \su fs cs' fs, d' r |
-  r \su a \sn cs a d a |
-  r \su a cs a d a \sn |
-  r \su fs \sn cs' fs, d' fs, |
-  r \su fs \sn cs' fs, d' fs, |
-  r \su a e'\( a, fs' a, g' a, fs' a, e'\) a, \sn |
 }
 
 lower.C_bass = \relative {
@@ -214,14 +178,6 @@ lower.C_bass = \relative {
   cs |
   e |
   fs |
-  b,, |
-  b'2 b,8 cs |
-  d2. |
-  d'2 cs,4 |
-  b2. |
-  b' |
-  d2.~ |
-  2 cs,4 |
 }
 
 lower.C = {
@@ -239,9 +195,80 @@ lower.C = {
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% D = mm. 41-56 (melody to bass)
+%% D = mm. 33-40 (a tempo)
 
 upper.D = \relative {
+  \barNumberCheck #33
+   <<
+     \relative {
+       \sn
+       r4 <a' d a'>4\( fs'~ |
+       2 d8 e |
+       <fs b, a>4\arpeggio \su b,2~\) |
+       2.
+     } \\
+     \relative {
+       s4 s4 fs'~ |
+       2 s4 |
+       s2. |
+       r4 <e cs>( <fs d>)
+     }
+   >> |
+   r4 <a' d a'>4 <fs fs'>4~ |
+   q2 d'8 e |
+   <<
+     \relative {
+       \sd
+       \acciaccatura e''8 fs2.~ |
+       2.
+     } \\
+     \relative {
+       a'2.~ |
+       2.
+     } |
+   >>
+}
+
+lower.D_tenor = \relative {
+  r8 \su fs \sn cs' fs, d' fs, |
+  r \su fs cs' fs, d' r |
+  r \su a \sn cs a d a |
+  r \su a cs a d a \sn |
+  r \su fs \sn cs' fs, d' fs, |
+  r \su fs \sn cs' fs, d' fs, |
+  r \su a e'\( a, fs' a, |
+  g' a, fs' a, e'\) a, \sn |
+}
+
+lower.D_bass = \relative {
+  b,,2. |
+  b'2 b,8 cs |
+  d2. |
+  d'2 cs,4 |
+  b2. |
+  b' |
+  d2.~ |
+  2 cs,4 |
+}
+
+lower.D = {
+  \barNumberCheck #33
+  <<
+    \new Voice = "tenor" {
+      \voiceOne
+      \lower.D_tenor
+    }
+    \new Voice = "bass" {
+      \voiceTwo
+      \lower.D_bass
+    }
+  >>
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% E = mm. 41-56 (melody to bass)
+
+upper.E = \relative {
   \barNumberCheck #41
   \twice { \thrice { <c' d fs>8 a8 } | }
   \thrice { <b d fs> fs } |
@@ -260,7 +287,7 @@ upper.D = \relative {
   \twice { <bf d> g } <a cs e> g |
 }
 
-lower.D = \relative {
+lower.E = \relative {
   \barNumberCheck #41
   c,2.~\( |
   4 d-> c |
@@ -280,10 +307,171 @@ lower.D = \relative {
   2\) fs,4 |
 }
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% F = mm. 57-72 (Slightly slower)
+
+upper.F = \relative {
+  \barNumberCheck #57
+  r4
+  \ottava #1
+  <a'' d a'>\arpeggio\( <fs fs'>~\arpeggio |
+  q2 d'8 e |
+  \acciaccatura e8 fs4 b,2~
+  2.\) |
+  r4 <a d a'>\arpeggio\( <fs fs'>~\arpeggio |
+  q2 d'8 e |
+  \acciaccatura e8 fs2.~ |
+  2.\) |
+  <fs, a d>2.\arpeggio |
+  <gs b e>2.\arpeggio |
+  <fs a d>2.\arpeggio |
+  <gs b e>2.\arpeggio |
+  <a d fs>2.\arpeggio |
+  <<
+    { a'4( gs2) }
+    \\
+    { \acciaccatura b,8 cs2. }
+  >> |
+  \ottava #0
+  <a, d fs>2.\arpeggio |
+  <as d e>2( <cs e g>4) |
+}
+
+%% Note: mm. 57-66 are notated in three staves
+middle.F = \relative {
+  \clef treble
+  \barNumberCheck #57
+  r8\p_\markup \italic {molto legato} fs\( b cs d fs |
+  a fs a cs d4\) |
+  r8 a,\( d e fs a |
+  cs b d cs a b\) |
+  r fs,\( b cs d fs |
+  a fs a cs d4\) |
+  r8 a,\( d e fs a |
+  cs b d cs a b\) |
+  fs\( a d cs a b |
+  gs b e2\) |
+  \barNumberCheck #67
+}
+
+lower.F_tenor = \relative {
+  s2.*10 |
+  \barNumberCheck #67
+  \clef treble
+  fs'8\( a d cs a b |
+  gs b e2\) |
+  b8\rest fs d' cs a b |
+  R2. |
+  \clef bass
+  r8 \su fs, \sn d' cs a b |
+  r8 \su cs \sn g' fs e cs |
+}
+
+lower.F_bass = \relative {
+  b,2.~ |
+  2. |
+  d2.~ |
+  2 c4 |
+  b2.~ |
+  2. |
+  d2.~ |
+  2. |
+  b'2.~ |
+  2. |
+  b2. ~ |
+  2. |
+  b2. |
+  cs2. |
+  b,2. |
+  fs'2. |
+}
+
+lower.F = {
+  \barNumberCheck #57
+  <<
+    \new Voice = "tenor" {
+      \voiceOne
+      \lower.F_tenor
+    }
+    \new Voice = "bass" {
+      \voiceTwo
+      \lower.F_bass
+    }
+  >>
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% D′ = mm. 73-80 (Tempo I), variation of D (mm. 33-40)
+
+upper.D′ = \relative {
+  \barNumberCheck #73
+  <<
+    \relative {
+      r4 <a' d a'>4\( fs'~ |
+      2 d8 e |
+      fs4 b,2~ |
+      2.\)
+    } \\
+    \relative {
+      s4 s4 \su fs'~ |
+      2 \sd s4 |
+      <b a>2. |
+      r4 e, fs
+    }
+  >> |
+  r4 <a' d a'>4\( <fs fs'>4~ |
+  q2 d'8 e |
+  \acciaccatura e8 fs2.~ |
+  2.\) |
+}
+
+lower.D′_tenor = \relative {
+  \twice { r8 fs cs' fs, d' fs, | }
+  \twice { r8 a cs a d a } |
+  \twice { r8 fs cs' fs, d' fs, | }
+  r \su a e' a, fs' a, |
+  g' a, fs' a, e' a, \sn |
+}
+
+lower.D′_bass = \relative {
+  b,2. |
+  b, |
+  d' |
+  d,2 c'4 |
+  b2. |
+  b, |
+  d'~ |
+  2. |
+}
+
+lower.D′ = {
+  \barNumberCheck #73
+  <<
+    \new Voice = "tenor" {
+      \voiceOne
+      \lower.D′_tenor
+    }
+    \new Voice = "bass" {
+      \voiceTwo
+      \lower.D′_bass
+    }
+  >>
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% E′ = mm. 81-96 (melody to bass), variation of mm. 41-56
+
 editorial.above = {
+  \tempo "Calmly, but with movement" 4 = 82
   s2.*16 |
   \barNumberCheck #17
-  s4 s4^\markup \italic cantabile
+  s4 s4^\markup \italic cantabile s4 |
+  s2.*39 |
+  \barNumberCheck #57
+  \tempo "Slightly slower" s2. |
+  s2.*15 |
+  \barNumberCheck #73
+  \tempo "Tempo I" s2. |
 }
 
 editorial.between = {
@@ -303,10 +491,23 @@ editorial.between = {
   s2._\markup \italic { a tempo }\mf |
   s2.*5 |
   \barNumberCheck #39
-  s2._\markup \italic { en dehors } |
+  s8 s8_\markup \italic { en dehors } s4 s4 |
   s2.*16 |
   \barNumberCheck #56
-  s8\startTextSpan s8 s8 s8 s8 s8\stopTextSpan |
+  s4 s8\startTextSpan s8 s8 s8\stopTextSpan |
+  s4_\markup \italic {tranquillo} s4\mp s4 |
+  s2.*9 |
+  \barNumberCheck #67
+  s2.\p |
+  s2. |
+  s2.\pp |
+  s2.*2 |
+  \barNumberCheck #72
+  s8 s8\cresc s4 s4 |
+  s4\mp s2 |
+  s2.*5 |
+  \barNumberCheck #79
+  s8 s8_\markup \italic { en dehors } s4 s4 |
 }
 
 editorial.below = {
@@ -368,8 +569,10 @@ reference.breaks = {
   \barNumberCheck #115
 }
 
-
-\new PianoStaff <<
+%showLastLength = R2.*15
+\new PianoStaff \with {
+  \remove "Keep_alive_together_engraver"
+} <<
   \new Dynamics {
     \global
     \editorial.above
@@ -384,10 +587,20 @@ reference.breaks = {
     \upper.B
     \upper.C
     \upper.D
+    \upper.E
+    \upper.F
+    \upper.D′
   }
   \new Dynamics {
     \global
     \editorial.between
+  }
+  \new Staff = "middle" \with {
+    \RemoveAllEmptyStaves
+  } {
+    \global
+    s2.*56 |
+    \middle.F
   }
   \new Staff = "down" {
     \global
@@ -395,6 +608,9 @@ reference.breaks = {
     \lower.B
     \lower.C
     \lower.D
+    \lower.E
+    \lower.F
+    \lower.D′
   }
   \new Dynamics {
     \global
