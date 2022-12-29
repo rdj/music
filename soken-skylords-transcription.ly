@@ -630,8 +630,9 @@ editorial.above = {
   s2.*15 |
   \barNumberCheck #73
   \tempo "Tempo I" s2. |
-  s2.*23 |
-  \barNumberCheck #97
+  s2.*22 |
+  \barNumberCheck #96
+  s2 s8 s16 s32 s32^\markup { \note {8} #UP = \note {8} #UP } |
   \tempo "A tempo, resolute" s2. |
   s2.*14
   \barNumberCheck #112
