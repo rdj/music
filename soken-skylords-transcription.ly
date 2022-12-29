@@ -636,7 +636,7 @@ editorial.above = {
   \tempo "A tempo, resolute" s2. |
   s2.*14
   \barNumberCheck #112
-  s4. s8 s8^\markup \italic { sempre \musicglyph #"f" } s8 |
+  s4. s8 s8-\markup \italic { sempre \musicglyph #"f" } s8 |
 }
 
 editorial.between = {
@@ -700,6 +700,27 @@ editorial.below = {
   s2.*54 |
   \barNumberCheck #56
   s2 s4\ppp |
+}
+
+breaks = {
+  s2.*8 |
+  \barNumberCheck #9
+  \break
+  s2.*8 |
+  \barNumberCheck #17
+  \break
+  s2.*16 |
+  \barNumberCheck #33
+  \break
+  s2.*24 |
+  \barNumberCheck #57
+  \break
+  s2.*16 |
+  \barNumberCheck #73
+  \break
+  s2.*24 |
+  \barNumberCheck #97
+  \pageBreak
 }
 
 reference.breaks = {
@@ -808,6 +829,7 @@ reference.breaks = {
   }
   \new Dynamics {
     \global
-    \reference.breaks
+    %%\reference.breaks
+    \breaks
   }
 >>
