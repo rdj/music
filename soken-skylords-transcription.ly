@@ -7,6 +7,7 @@
 \paper {
   print-page-number = ##f
   indent = 0
+  ragged-last = ##t
 }
 
 \header {
@@ -23,9 +24,25 @@ poco_rit = {
   \textSpannerDown
 }
 
+rit = {
+  \override TextSpanner.bound-details.left.text = \markup { \italic "rit." }
+  \textSpannerDown
+}
+
+rall = {
+  \override TextSpanner.bound-details.left.text = \markup { \italic "rallentando" }
+  \textSpannerDown
+}
+
 su = \stemUp
 sd = \stemDown
 sn = \stemNeutral
+
+crpoco = #(make-music
+           'CrescendoEvent
+           'span-direction START
+           'span-type 'text
+           'span-text "cresc. poco a poco")
 
 twice = #(define-music-function (music) (ly:music?) #{ \repeat unfold 2 $music #})
 thrice = #(define-music-function (music) (ly:music?) #{ \repeat unfold 3 $music #})
@@ -34,6 +51,11 @@ global = {
   \key d \major
   \time 3/4
   \set Timing.beamExceptions = #'() % Beam each beat separately in 3/4 instead of the whole measure
+}
+
+measureNinetySeven = {
+  \key c \major
+  \time 6/8
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -459,7 +481,143 @@ lower.D′ = {
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% E′ = mm. 81-96 (melody to bass), variation of mm. 41-56
+%% E′ = mm. 81-96 (cresc poco a poco), variation of mm. 41-56
+
+upper.E′ = \relative {
+  \barNumberCheck #81
+  \twice { \thrice { <c' d fs>8 a8 } | }
+  \thrice { <b d fs> fs } |
+  \thrice { <c' d f> f, } |
+  <a b? ds>8 fs? \twice { <a b ds>8 fs } |
+  \thrice { <a b ds>8 fs } |
+  \thrice { <gs b ds> ds } |
+  <g? b d?> d? <g b d> d <b' d f>4 |
+  \thrice { <a' cs e>8 g } |
+  \thrice { <bf d f> b } |
+  \thrice { <a cs e> g } |
+  \thrice { <bf d> g } |
+  \thrice { <a cs e> g } |
+  \thrice { <a bf d> g } |
+  \thrice { <a cs e> g } |
+  \twice { <bf d> g } <g cs e>4 |
+}
+
+lower.E′ = \relative {
+  \barNumberCheck #81
+  c,2.~\( |
+  4 d-> c |
+  b2. |
+  bf\) |
+  a~\( |
+  4 b-> a |
+  gs2. |
+  g?\) |
+  a4.\( g8 a4 |
+  bf4 g2 |
+  a4 e'2~ |
+  2.\) |
+  a,4.\( g8 a4 |
+  bf4 g2 |
+  a4 e'2~ |
+  2\) a4 |
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% G = mm. 97- (A tempo, resolute)
+
+upper.G_soprano = \relative {
+  \thrice {
+    d'4. <d a'>4.~ |
+    q2. |
+  }
+  <a c f>4. <f' c'> |
+  <g, b d> a'8 g16 a b8 |
+  <a d,>4.
+  <d a'>4.~ |
+  q2. |
+  <d a d,>4. <a d a'>~ |
+  2. |
+  <d a d,>4. <a d a'>~ |
+  2. |
+  s2. |
+  s2. |
+  s2. |
+  <a' d e a>2.\arpeggio |
+}
+
+upper.G_alto = \relative {
+  s2.*7 |
+  \barNumberCheck #104
+  s4. g'4. |
+  s2. |
+  <c, a>16 d8 8 16 <c a>16 d8 8 16 |
+  s2. |
+  <c g>16 d8 8 16 <e g,>16 d8 8 16 |
+  s2. |
+  d'16 a g fs g a d a g fs g a |
+  <d a d,>4. <a d f>~ |
+  4.~ 8 <g c e>8. <g c>16 |
+  <d a' d>2.~ |
+  2.\fermata |
+}
+
+upper.G = {
+  \barNumberCheck #97
+  \measureNinetySeven
+  <<
+    \new Voice = "soprano" {
+      \voiceOne
+      \upper.G_soprano
+    }
+    \new Voice = "alto" {
+      \voiceTwo
+      \upper.G_alto
+    }
+  >>
+}
+
+lower.G_tenor = \relative {
+  \repeat unfold 10 { d8. 8 16 8 8 8 | }
+  \repeat unfold 2 { c8. 8 16 8 8 8 | }
+  \repeat unfold 2 { b8. 8 16 8 8 8 | }
+  bf8. 8 16 8 8 8 |
+  bf8. 8 16 8 c8 8 |
+  d8. 8 16 8 4 |
+}
+
+lower.G_bass = \relative {
+  \thrice { <d, a'>2. | }
+  d4.~ 8 a4 |
+  <d a'>2. |
+  <d a'>4.~ q8 a4 |
+  <d a'>2. |
+  <d a'>4.~ 8 a d |
+  <d a'>2.~ |
+  q2. |
+  <c g>2. |
+  <c g>2. |
+  b2. |
+  b2. |
+  bf2. |
+  bf4.~ 8 c4 |
+  <d a'>2. |
+  <d a'>2.\fermata |
+}
+
+lower.G = {
+  \barNumberCheck #97
+  \measureNinetySeven
+  <<
+    \new Voice = "tenor" {
+      \voiceOne
+      \lower.G_tenor
+    }
+    \new Voice = "bass" {
+      \voiceTwo
+      \lower.G_bass
+    }
+  >>
+}
 
 editorial.above = {
   \tempo "Calmly, but with movement" 4 = 82
@@ -472,6 +630,12 @@ editorial.above = {
   s2.*15 |
   \barNumberCheck #73
   \tempo "Tempo I" s2. |
+  s2.*23 |
+  \barNumberCheck #97
+  \tempo "A tempo, resolute" s2. |
+  s2.*14
+  \barNumberCheck #112
+  s4. s8 s8^\markup \italic { sempre \musicglyph #"f" } s8 |
 }
 
 editorial.between = {
@@ -507,7 +671,27 @@ editorial.between = {
   s4\mp s2 |
   s2.*5 |
   \barNumberCheck #79
-  s8 s8_\markup \italic { en dehors } s4 s4 |
+  s8 s8^\markup \italic { en dehors } s4 s4 |
+  s2. |
+  \barNumberCheck #81
+  s2.\crpoco |
+  s2.*7 |
+  \barNumberCheck #89
+  s2.\mf |
+  s2.*6 |
+  \barNumberCheck #96
+  \rit
+  s8\startTextSpan s8 s4 s8 s16 s32 s32\stopTextSpan |
+  s2.\mf |
+  s2.*7 |
+  \barNumberCheck #105
+  s2.\f |
+  s2.*6 |
+  \barNumberCheck #112
+  \rall
+  s4. s4.\startTextSpan |
+  s2. |
+  s2.\stopTextSpan
 }
 
 editorial.below = {
@@ -590,6 +774,9 @@ reference.breaks = {
     \upper.E
     \upper.F
     \upper.D′
+    \upper.E′
+    \upper.G
+    \bar "|."
   }
   \new Dynamics {
     \global
@@ -611,6 +798,8 @@ reference.breaks = {
     \lower.E
     \lower.F
     \lower.D′
+    \lower.E′
+    \lower.G
   }
   \new Dynamics {
     \global
