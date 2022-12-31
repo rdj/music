@@ -11,7 +11,7 @@
 }
 
 \header {
-  title = "Skylords - The Churning Mists (Night)"
+  title = "Skylords — The Churning Mists (Night)"
   subtitle = \markup { from \italic { Final Fantasy XIV: Heavensward } }
 
   composer = "Masayoshi Soken"
