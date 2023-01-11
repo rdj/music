@@ -90,7 +90,7 @@ Mov.1.lower.A = {
     \clef bass
     <c f,> |
     <c e,> r r q |
-    < \footnote "*" #'(0.5 . 0.5) \markup \small { * \italic { m.7: } Some editions have B instead of C; see mm. 48, 52. (Bärenreiter-Verlag, 1986; Muzyka, n.d., ca. 1964) }
+    < \footnote "*" #'(0.5 . 0.5) \markup \small { * \italic { m.7: } Some editions have B instead of C; see mm. 48, 52. (Bärenreiter, 1986; Muzyka, n.d., ca. 1964) }
       c d,> r r <b d,> |
     <c c,> r r <e, c> |
     <a f>1 |
@@ -219,7 +219,7 @@ Mov.1.lower.A′ = {
     \clef bass
     <f bf,> |
     <f a,> r r q |
-    < \footnote "*" #'(0.5 . -0.25) \markup \small { * \italic { m.48: } Some editions have E instead of F. (Bärenreiter-Verlag; Muzyka) }
+    < \footnote "*" #'(0.5 . -0.25) \markup \small { * \italic { m.48: } Some editions have E instead of F. (Bärenreiter; Muzyka) }
       f
       g,> r r <e g,> |
     <f f,> r r2 |
@@ -242,7 +242,7 @@ Mov.1.lower.A′ = {
     r16 d, f b d4 r16 e, g b e4 |
     \clef treble
     r16 c e
-    \footnote "*" #'(0.25 . -3) \markup \small { * \italic { m.65: } Some editions have G instead of A (Meyer, 1872); considered an error. (Bärenreiter-Verlag; Muzyka) }
+    \footnote "*" #'(0.25 . -3) \markup \small { * \italic { m.65: } Some editions have G instead of A (Meyer, 1872); considered an error. (Bärenreiter; Muzyka) }
     a c4 r16 d, f a d4 |
     r16 b, d g b4 r16 c, e g c4 |
     r8 <a f> q q q q q q |
@@ -256,7 +256,7 @@ Mov.1.lower.A′ = {
   }
 }
 
-%% Breaks match Bärenreiter-Verlag, 1986
+%% Breaks match Bärenreiter, 1986
 Mov.1.reference.breaks = {
   s1*4 | \break
   \barNumberCheck #5

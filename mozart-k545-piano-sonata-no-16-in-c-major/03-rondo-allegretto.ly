@@ -176,7 +176,7 @@ Mov.3.lower.coda = \relative {
   <c c,>4 r |
 }
 
-%% Breaks match Bärenreiter-Verlag, 1986
+%% Breaks match Bärenreiter, 1986
 Mov.3.reference.breaks = {
   s4 |
   s2*6 | \break

@@ -218,7 +218,7 @@ Mov.2.lower.Coda = {
   }
 }
 
-%% Breaks match Bärenreiter-Verlag, 1986
+%% Breaks match Bärenreiter, 1986
 Mov.2.reference.breaks = {
   s2.*3 | \break
   \barNumberCheck #4
