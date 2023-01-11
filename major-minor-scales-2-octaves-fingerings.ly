@@ -1,4 +1,4 @@
-\version "2.20.0"
+\version "2.24"
 \language "english"
 \pointAndClickOff
 
@@ -23,8 +23,9 @@
 
 rflat = \markup { \raise #0.5 \tiny \flat }
 rsharp = \markup { \raise #1 \tiny \sharp }
-threes = \markup \concat { "(" \tiny \number 3 ")" }
-thumbs = \markup \concat { "(" \tiny \number 1 ")" }
+three = \markup \tiny \number 3
+threes = \markup \parenthesize \three
+thumbs = \markup \parenthesize \tiny \number 1
 
 \new Staff {
   \clef treble
@@ -110,5 +111,43 @@ thumbs = \markup \concat { "(" \tiny \number 1 ")" }
     cs_3 d^3 e^1_1 fs_4 gs as b^5_1 a |
     g fs_4 e^1_1 d^3 cs_3 b^1_1 a^4 g |
     fs_4 e^1_1 d^3 cs b4^1_4 r | \break
+  }
+}
+
+\new Staff {
+  \clef treble
+  \key a \major
+  \time 4/4
+  \relative {
+    a8^\markup { "A Major" \threes }^1_5
+    b cs^3_3 d^1 e fs^3_3 gs a^1 |
+    b_4 cs^3_3 d^1 e fs^3_3 gs a^5_1 gs |
+    fs^3_3 e_1 d cs^3_3 b a_1 gs^4 fs^3_3 |
+    e_1 d cs^3_3 b a4^1_5 r |
+    \break
+  }
+  \relative {
+    fs8^\markup { \concat{F \rsharp} Natural Minor \concat { ( \three } together on \concat { C \rsharp } only) }^3_4
+    gs a^1 b cs_3^3 d^1 e fs_4 |
+    gs a^1 b cs_3^3 d^1 e fs_2^3  e_1 |
+    d cs^3_3 b_1 a gs^4 fs e_1 d |
+    cs^3_3 b_1 a gs^4 fs4^3_4 r |
+    \break
+  }
+  \relative {
+    fs8^\markup { \concat{F \rsharp} Harmonic Minor \concat { ( \three } together on \concat { C \rsharp } only) }^3_4
+    gs a^1 b cs_3^3 d^1 es fs_4 |
+    gs a^1 b cs_3^3 d^1 es fs^3_2 es_1 |
+    d cs^3_3 b_1 a gs^4 fs es_1 d |
+    cs^3_3 b_1 a gs^4 fs4^3_4 r |
+    \break
+  }
+  \relative {
+    fs8^\markup { \concat{F \rsharp} Melodic Minor \concat { ( \three } ascending. RH changes descending; \three together on \concat { C \rsharp } only)}^2_4
+    gs^3_3 a^1 b cs_3^3 ds es^1 fs_4 |
+    gs^3_3 a^1 b cs_3^3 ds es^1 fs^3_4 e_1 |
+    d cs^3_3 b_1 a gs^4 fs e_1 d |
+    cs^3_3 b_1 a gs^4 fs4^3_4 r |
+    \break
   }
 }
