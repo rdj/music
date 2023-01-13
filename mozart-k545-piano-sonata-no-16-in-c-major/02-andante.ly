@@ -29,7 +29,7 @@ Mov.2.lower.A = {
     \thrice { a d c d } |
     g, d' b d e, b' g b b, g' d g |
     <<
-      { e4 g2 | g4 fs } \\
+      { e4 g2 | g4( fs) } \\
       { c2 e4 | d2 }
     >> r4 |
   }
@@ -67,7 +67,7 @@ Mov.2.upper.B_end = {
   \relative c'' {
     <<
       { a4( g) } \\
-      { \stemUp fs g \stemNeutral }
+      { \stemUp fs( g) \stemNeutral }
     >> r |
   }
 }
@@ -90,7 +90,7 @@ Mov.2.upper.C = {
     d?8.( e16) fs4 r |
     fs4~ 16( e g fs b a g fs) |
     e4~ 16( ds fs e a g fs e) |
-    e( d?) d8~ 16 a d fs
+    e( d?) d8~ 16 a( d fs)
     <<
       { fs( e d e) } \\
       { cs4 }
@@ -177,16 +177,16 @@ Mov.2.lower.D = {
 
 Mov.2.upper.Coda = {
   \relative {
-    g'16 fs a g b a c b d c e d |
-    f4. g16 a g f e d |
+    g'16( fs a g b a c b d c e d) |
+    f4.( g16 a g f e d) |
     ds4( e) r16 g(fs e) |
     d( b a e') g,8. 16
     <<
-      { b a g a } \\
+      { b( a g a) } \\
       fs4
     >> |
-    g16 fs a g b a c b d c e d |
-    f4. g16 a g f e d |
+    g16( fs a g b a c b d c e d) |
+    f4.( g16 a g f e d) |
     e4 fs? g |
     g,4. a32( g fs g)
     <<
