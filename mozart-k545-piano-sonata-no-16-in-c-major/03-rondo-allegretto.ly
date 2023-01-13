@@ -133,7 +133,7 @@ Mov.3.lower.C = \relative {
     } \\
     {
       c8 cs |
-      d e f e |
+      d[ e f e] |
       d4 e,
     }
   >> |
