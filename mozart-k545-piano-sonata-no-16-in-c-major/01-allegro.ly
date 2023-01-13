@@ -29,7 +29,7 @@ Mov.1.global = {
 
 Mov.1.upper.A = {
   \relative c'' {
-    \footnote "*" #'(1 . 1) \markup \small { \italic { * m.1: } First print edition has no dynamics. Mozart’s autograph score is considered lost. Editorial dynamics vary widely. }
+    \footnote "*" #'(1 . 1) \markup \tiny { \italic { * m.1: } First print edition has no dynamics. Mozart’s autograph score is considered lost. Editorial dynamics vary widely. }
     c2 e4 g |
     b,4.( c16 d) c4 r |
     a'2 g4 c |
@@ -66,7 +66,7 @@ Mov.1.upper.A = {
     c'4 r16 c a fs d4 r16 d fs d |
     b'4 r16 b g e c4 r16 c e c |
     a'4 r16 a fs
-    \footnote "*" #'(0.5 . 1) \markup \small { * \italic { m.21: } Some editions have C instead of B, see m. 66. (Muzyka; Peters, n.d., ca. 1938; Lafitte, 1909) }
+    \footnote "*" #'(0.5 . 1) \markup \tiny { * \italic { m.21: } Some editions have C instead of B, see m. 66. (Muzyka; Peters, n.d., ca. 1938; Lafitte, 1909) }
     d b4 r16 g' d b |
     a2 \appoggiatura b16 c4 \appoggiatura ds16 e4 |
     \appoggiatura gs16 a4. b32( a gs a) c8( a) c( a) |
@@ -90,7 +90,7 @@ Mov.1.lower.A = {
     \clef bass
     <c f,> |
     <c e,> r r q |
-    < \footnote "*" #'(0.5 . 0.5) \markup \small { * \italic { m.7: } Some editions have B instead of C; see mm. 48, 52. (Bärenreiter, 1986; Muzyka, n.d., ca. 1964) }
+    < \footnote "*" #'(0.5 . 0.5) \markup \tiny { * \italic { m.7: } Some editions have B instead of C; see mm. 48, 52. (Bärenreiter, 1986; Muzyka, n.d., ca. 1964) }
       c d,> r r <b d,> |
     <c c,> r r <e, c> |
     <a f>1 |
@@ -180,7 +180,7 @@ Mov.1.upper.A′ = {
     <g c,> r r q |
     <
       f
-      \footnote "*" #'(0.5 . 1) \markup \small { * \italic { m.52: } Some editions have B instead of C. (Muzyka) }
+      \footnote "*" #'(0.5 . 1) \markup \tiny { * \italic { m.52: } Some editions have B instead of C. (Muzyka) }
       c
     > r r <f b,> |
     <e c> r r <e c> |
@@ -196,7 +196,7 @@ Mov.1.upper.A′ = {
     g'4 r16 g e c a4 r16 a c a |
     f'4 r16 f d b g4 r16 g' b g e'4 r16 e c a f4 r16 f a f |
     d'4 r16 d b
-    \footnote "*" #'(0.5 . 1) \markup \small { * \italic { m.66: } Some editions have F instead of G. (Muzyka) }
+    \footnote "*" #'(0.5 . 1) \markup \tiny { * \italic { m.66: } Some editions have F instead of G. (Muzyka) }
     g e4 r16 c' g e |
     d2 \appoggiatura cs16 d4 \appoggiatura cs16 d4 |
     a'2 \appoggiatura gs16 a4 \appoggiatura gs16 a4 |
@@ -219,7 +219,7 @@ Mov.1.lower.A′ = {
     \clef bass
     <f bf,> |
     <f a,> r r q |
-    < \footnote "*" #'(0.5 . -0.25) \markup \small { * \italic { m.48: } Some editions have E instead of F. (Bärenreiter; Muzyka) }
+    < \footnote "*" #'(0.5 . -0.25) \markup \tiny { * \italic { m.48: } Some editions have E instead of F. (Bärenreiter; Muzyka) }
       f
       g,> r r <e g,> |
     <f f,> r r2 |
@@ -242,7 +242,7 @@ Mov.1.lower.A′ = {
     r16 d, f b d4 r16 e, g b e4 |
     \clef treble
     r16 c e
-    \footnote "*" #'(0.25 . -3) \markup \small { * \italic { m.65: } Some editions have G instead of A (Meyer, 1872); considered an error. (Bärenreiter; Muzyka) }
+    \footnote "*" #'(0.25 . -3) \markup \tiny { * \italic { m.65: } Some editions have G instead of A (Meyer, 1872); considered an error. (Bärenreiter; Muzyka) }
     a c4 r16 d, f a d4 |
     r16 b, d g b4 r16 c, e g c4 |
     r8 <a f> q q q q q q |
