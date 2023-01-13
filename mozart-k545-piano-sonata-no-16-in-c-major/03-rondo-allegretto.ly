@@ -83,7 +83,7 @@ Mov.3.upper.C = \relative {
   e r b'16( gs e d) |
   c( e a gs a e c a) |
   gs( b e gs) b( gs e d) |
-  c e a gs a e c a |
+  c( e a gs a e c a) |
   e8 r <e' c>-! q-! |
   <c a> r <d b>-! q-! |
   <b gs> r r4 |
