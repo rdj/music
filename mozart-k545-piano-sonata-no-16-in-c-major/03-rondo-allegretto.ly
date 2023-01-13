@@ -1,6 +1,6 @@
 twice = #(define-music-function (music) (ly:music?) #{ \repeat unfold 2 $music #})
 thrice = #(define-music-function (music) (ly:music?) #{ \repeat unfold 3 $music #})
-simile = \markup { \italic simile }
+simile = \markup { \tiny \italic simile }
 
 Mov.3.global = {
   \key c \major
