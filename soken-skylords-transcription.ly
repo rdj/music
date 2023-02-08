@@ -86,11 +86,11 @@ upper.B = \relative {
 }
 
 lower.B_tenor = \relative {
-  r4 r8 a8\( fs' e |
+  s4 r8 a8\( fs' e |
   fs2 a8 b |
   <fs cs d,>2.\) |
   s2. |
-  r4 r8 a,8\( fs' e |
+  s4 r8 a,8\( fs' e |
   fs2 a8 b |
   <fs cs d,>2.\) |
   s2. |
@@ -99,11 +99,11 @@ lower.B_tenor = \relative {
 lower.B_bass = \relative {
   <b, fs'>2. |
   s2. |
-  c,4\rest c\rest a''8\rest a8^\( |
+  s4 s4  a'8\rest a8^\( |
   d,2 cs4 |
   <b fs'>2.\) |
   s2. |
-  c,4\rest c\rest a''8\rest a8 |
+  s4 s4 a'8\rest a8 |
   d,2 cs4 |
 }
 
@@ -187,11 +187,11 @@ lower.C_bass = \relative {
   b,2. |
   s |
   d |
-  r4 r4 cs4 |
+  s4 s4 cs4 |
   b2. |
   s |
   d |
-  r4 r4 c4 |
+  s4 s4 c4 |
   b2. |
   s |
   b |
@@ -383,7 +383,7 @@ lower.F_tenor = \relative {
   fs'8\( a d cs a b |
   gs b e2\) |
   b8\rest fs d' cs a b |
-  R2. |
+  s2. |
   \clef bass
   r8 \su fs, \sn d' cs a b |
   r8 \su cs \sn g' fs e cs |
