@@ -300,7 +300,7 @@ upper.E = \relative {
   \thrice { <gs b ds> ds } |
   <g? b d?> d? \twice { <g b d> d } |
   \thrice { <a' cs e> g } |
-  \thrice { <bf d f> b } |
+  \thrice { <bf d f> g } |
   \thrice { <a cs e> g } |
   \thrice { <bf d> g } |
   \thrice { <a cs e> g } |
@@ -487,16 +487,16 @@ upper.E′ = \relative {
   \barNumberCheck #81
   \twice { \thrice { <c' d fs>8 a8 } | }
   \thrice { <b d fs> fs } |
-  \thrice { <c' d f> f, } |
+  \twice { <c' d f> f, } <bf d f> f |
   <a b? ds>8 fs? \twice { <a b ds>8 fs } |
   \thrice { <a b ds>8 fs } |
   \thrice { <gs b ds> ds } |
   <g? b d?> d? <g b d> d <b' d f>4 |
   \thrice { <a' cs e>8 g } |
-  \thrice { <bf d f> b } |
+  \thrice { <bf d f> g } |
   \thrice { <a cs e> g } |
-  \thrice { <bf d> g } |
-  \thrice { <a cs e> g } |
+  \twice { <bf d> g } <bf f> cs, |
+  \thrice { <a' cs e> g } |
   \thrice { <a bf d> g } |
   \thrice { <a cs e> g } |
   \twice { <bf d> g } <g cs e>4 |
@@ -550,10 +550,12 @@ upper.G_alto = \relative {
   \barNumberCheck #104
   s4. g'4. |
   s2. |
-  <c, a>16 d8 8 16 <c a>16 d8 8 16 |
+  <c, g>16 d8 8 16 <c g>16 d8 8 16 |
   s2. |
   <c g>16 d8 8 16 <e g,>16 d8 8 16 |
   s2. |
+  \once \override NoteColumn.force-hshift = #2.5
+  \shiftOn
   d'16 a g fs g a d a g fs g a |
   <d a d,>4. <a d f>~ |
   4.~ 8 <g c e>8. <g c>16 |
@@ -594,8 +596,8 @@ lower.G_bass = \relative {
   <d a'>4.~ 8 a d |
   <d a'>2.~ |
   q2. |
-  <c g>2. |
-  <c g>2. |
+  <c g'>2. |
+  <c g'>2. |
   b2. |
   b2. |
   bf2. |
