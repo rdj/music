@@ -123,13 +123,13 @@ Mov.1.upper.B = {
   \relative c'' {
     g4 g'16 d g bf d bf g bf c a fs a |
     g4 g,16 d g bf d bf g bf c a fs a |
-    g4 r r16 g' bf a g f? e d |
+    g4 r r16 g' bf a g f e d |
     cs4 r r16 cs' e d cs bf a g |
-    f?4 d16 a d f a f d f g e cs e |
+    f4 d16 a d f a f d f g e cs e |
     d4 d,16 a d f a f d f g e cs e |
     r d e f g a b cs d4 r |
     r16 b c d e fs gs a b4 r |
-    r16 a e' d c b a g? f?4 r |
+    r16 a e' d c b a g f4 r |
     r16 g d' c b a g f e4 r |
     r16 f c' b a g f e d4 r |
     r16 e b' a gs f e d c4 r |
@@ -146,13 +146,13 @@ Mov.1.lower.B = {
     \clef bass
     <c, a d,> |
     r16 g, a bf c d e fs g4 r |
-    r16 a, b? cs d e fs gs a4 r |
+    r16 a, b cs d e fs gs a4 r |
     <d, d,> r r
     \clef treble
     <g' e a,> |
     <f d> r r \clef bass <g, e a,> |
-    <f d> r r16 d' f e d c? b a |
-    gs4 r r16 gs b a gs f? e d |
+    <f d> r r16 d' f e d c b a |
+    gs4 r r16 gs b a gs f e d |
     c4 r r16
     \clef treble
     d' a' g f e d c |
@@ -199,7 +199,7 @@ Mov.1.upper.A′ = {
     g e4 r16 c' g e |
     d2 \appoggiatura cs16 d4 \appoggiatura cs16 d4 |
     a'2 \appoggiatura gs16 a4 \appoggiatura gs16 a4 |
-    g?8 a16 b c d e d c b a g f e d c |
+    g8 a16 b c d e d c b a g f e d c |
     \afterGrace 16/17 d1\startTrillSpan { c32[(\stopTrillSpan d]) } |
     c4 c16 g c e g e c e f d b d |
     c4 c,16 g c e g e c e f d b d |
@@ -223,7 +223,7 @@ Mov.1.lower.A′ = {
       g,> r r <e g,> |
     <f f,> r r2 |
     f,8 g16 a bf c d e f e d c bf a g f |
-    e8 f16 g a b? c d e d c b a g f e |
+    e8 f16 g a b c d e d c b a g f e |
     d8 e16 f g a b c d c b a g f e d |
     c8 d16 e f g a b c b a g f e d c |
     <f a>1 |
@@ -247,7 +247,7 @@ Mov.1.lower.A′ = {
     r8 <a f> q q q q q q |
     \clef bass
     r <ef c fs,> q q q q q q |
-    g,16 e'? c e \repeat unfold 3 { g,16 e' c e } |
+    g,16 e' c e \repeat unfold 3 { g,16 e' c e } |
     \repeat unfold 4 { g, f' b, f' } |
     <e c>4 r r <f d g,> |
     <e c> r r <f, d g,> |

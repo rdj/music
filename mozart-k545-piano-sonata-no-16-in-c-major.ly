@@ -18,6 +18,13 @@
   tagline = ##f
 }
 
+\layout {
+  \context {
+    \PianoStaff
+    \accidentalStyle piano
+  }
+}
+
 \include "mozart-k545-piano-sonata-no-16-in-c-major/01-allegro.ly"
 
 \pageBreak

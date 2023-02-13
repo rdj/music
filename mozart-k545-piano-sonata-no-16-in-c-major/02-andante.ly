@@ -87,10 +87,10 @@ Mov.2.upper.C = {
     d4~ 16( cs e d g fs e d) |
     cs8.( d16) e4 r |
     e4~ 16( ds fs e a g fs e) |
-    d?8.( e16) fs4 r |
+    d8.( e16) fs4 r |
     fs4~ 16( e g fs b a g fs) |
     e4~ 16( ds fs e a g fs e) |
-    e( d?) d8~ 16 a( d fs)
+    e( d) d8~ 16 a( d fs)
     <<
       { fs( e d e) } \\
       { cs4 }
@@ -132,7 +132,7 @@ Mov.2.upper.D = {
     >>
     <c a>4( bf16)( a c bf d c ef d)
 
-    f4~ 16( af g f ef d c b?) |
+    f4~ 16( af g f ef d c b) |
     c8.( ef16) g4 r |
     g4~ 16( fs a g) bf( cs, bf' cs,) |
     cs4( d) r |
@@ -163,7 +163,7 @@ Mov.2.lower.D = {
 
     af16 f' c f g, d' b d f, d' g, d' |
     ef, c' g c d, b' f b c, c' ef, c' |
-    cs, bf' e,? bf' d, bf' g bf ef, bf' g bf |
+    cs, bf' e, bf' d, bf' g bf ef, bf' g bf |
     d, bf' g bf \twice { d, a' fs a } |
     \thrice { c, a' fs a } |
     \thrice { bf, g' d g } |
@@ -187,7 +187,7 @@ Mov.2.upper.Coda = {
     >> |
     g16( fs a g b a c b d c e d) |
     f4.( g16 a g f e d) |
-    e4 fs? g |
+    e4 fs g |
     g,4. a32( g fs g)
     <<
       { b8 a } \\
