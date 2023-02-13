@@ -16,12 +16,19 @@
   tagline = ##f
 }
 
+\layout {
+  \context {
+    \PianoStaff
+    \accidentalStyle piano
+    \override TupletBracket.bracket-visibility = ##t
+  }
+}
+
 global = {
   \key af \major
   \time 3/4
   \tempo "Lento" 4 = 138
   \partial 4
-  \override TupletBracket.bracket-visibility = ##t
 }
 
 upper.A = \relative {
@@ -221,7 +228,6 @@ breaks_ref = {
 %%showLastLength =   % use this to only render the last few measures
 \score {
   \new PianoStaff <<
-    \accidentalStyle piano
     \new Dynamics {
       \global
       \editorial.above.A
