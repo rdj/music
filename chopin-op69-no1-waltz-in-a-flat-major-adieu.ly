@@ -63,6 +63,7 @@ upper.A = \relative {
   8( df bf' af f df |
   df2 c4) |
   \tiny
+  \once \slurUp
   \tuplet 13/4 { a8( bf a gs a bf b c df d ef e f }
   \normalsize
   gf8)[-! r16 a,16]( |
