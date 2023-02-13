@@ -1,4 +1,4 @@
-\version "2.20.0"
+\version "2.24.0"
 \language "english"
 \pointAndClickOff
 
@@ -6,7 +6,6 @@
 \paper {
   print-page-number = ##f
   indent = 0
-  page-breaking = #ly:one-page-breaking
 }
 
 \header {
@@ -20,47 +19,62 @@
 global = {
   \key c \major
   \time 4/4
-}
-
-upperStaff = {
   \tempo "Tempo"
-  \relative c'' {
-    \repeat unfold 20 R1
-  }
-  \bar "|."
 }
 
-lowerStaff = {
-  \relative c {
-    \repeat unfold 20 R1
-  }
+upper.A = \relative {
+  \clef treble
+  c'4 d e f g a b c~ 1
 }
 
-dynamics = {
+lower.A = \relative {
+  \clef bass
+  c1 g c
 }
 
-pedalMarks = {
+editorial.above.A = {
+  %% marks above the grand staff
 }
 
+editorial.between.A = {
+  %% marks between the staves, e.g. dynamics
+}
+
+editorial.below.A = {
+  %% marks below the grand staff, e.g. pedal marks
+}
+
+breaks_ref = {
+  %% breaks matching some reference for ease of authoring
+}
+
+%%showLastLength =   % use this to only render the last few measures
 \score {
   \new PianoStaff <<
-    \new Staff = "upper" {
-      \clef treble
+    \new Dynamics {
       \global
-      \upperStaff
+      \editorial.above.A
+    }
+    \new Staff = "up" {
+      \global
+      \upper.A
+      \bar "|."
     }
     \new Dynamics {
       \global
-      \dynamics
+      \editorial.between.A
     }
-    \new Staff = "lower" {
-      \clef bass
+    \new Staff = "down" {
       \global
-      \lowerStaff
+      \lower.A
     }
     \new Dynamics {
       \global
-      \pedalMarks
+      \editorial.below.A
+    }
+    \new Dynamics {
+      \global
+      \breaks_ref
     }
   >>
 }
