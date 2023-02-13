@@ -16,6 +16,14 @@
   tagline = ##f
 }
 
+\layout {
+  \context {
+    \PianoStaff
+    \accidentalStyle piano
+    %% \override TupletBracket.bracket-visibility = ##t
+  }
+}
+
 global = {
   \key c \major
   \time 4/4
