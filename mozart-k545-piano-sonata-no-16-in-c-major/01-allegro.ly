@@ -43,11 +43,10 @@ Mov.1.upper.A = {
         \magnifyStaff #2/3
         firstClef = ##f
       }
-      { \once \override TupletBracket.bracket-visibility = ##f
-        \tupletUp \tuplet 3/2 { f16 g \set stemRightBeamCount = #1 f }
-        \set stemLeftBeamCount = #1
-        \set stemRightBeamCount = #2
-        e f e4 }
+      {
+        \tuplet 3/2 { f16[( g f] }
+        e f) e4
+      }
     >> r |
     a,8 b16 c d e f g a g f e d c b a |
     g8 a16 b c d e f g f e d c b a g |
