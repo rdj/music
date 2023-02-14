@@ -21,6 +21,9 @@
     \PianoStaff
     \accidentalStyle piano
   }
+
+  %% Put a bar line before the clef in the footnote variants
+  \override Score.SystemStartBar.collapse-height = #-inf.0
 }
 
 global = {
@@ -36,23 +39,31 @@ upper.A = \relative {
   \tuplet 3/2 { df ef df } c[ df f8. ef16] |
   df2 c4) |
   r4
-  <<
-    { a8( bf \tuplet 3/2 { c ef df } }
-
+  \once \override Score.Footnote.annotation-line = ##f
+  \footnote \markup { \bold "*" } #'(0 . 3) \markup {
+    \bold { "*" }
+    \tiny { m. 3 variant: }
+    \score {
       \new Staff \with {
-        \remove Time_signature_engraver
-        alignAboveContext = "up"
         \magnifyStaff #2/3
-        firstClef = ##f
+        \remove Time_signature_engraver
         \override KeySignature.stencil = ##f
       }
-      {
+      \relative {
+        \clef treble
         \key af \major
-        a8( bf c \slashedGrace ef df)
-        \once \override Staff.BarLine.transparent = ##t
-        \once \override Staff.BarLine.allow-span-bar = ##f
+        \override NoteHead.font-size = #2
+        \override Accidental.font-size = #2
+        \override Rest.font-size = #2
+        r4 a'8[( bf c \slashedGrace ef df])
+        \revert NoteHead.font-size
+        \revert Accidental.font-size
+        \revert Rest.font-size
+        \bar "|"
       }
-  >> |
+    }
+  }
+  a8( bf \tuplet 3/2 { c ef df } |
   c2 bf4) |
   bf4.(-> af8 \tuplet 3/2 { af g f } |
   f2 ef4) |
@@ -71,8 +82,7 @@ upper.A = \relative {
       \new Staff \with {
         \magnifyStaff #2/3
         \remove Time_signature_engraver
-        % firstClef = ##f
-        % \override KeySignature.stencil = ##f
+        \override KeySignature.stencil = ##f
       }
       \relative {
         \clef treble
