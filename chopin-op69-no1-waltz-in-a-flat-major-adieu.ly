@@ -35,7 +35,24 @@ upper.A = \relative {
   ef''8( d |
   \tuplet 3/2 { df ef df } c[ df f8. ef16] |
   df2 c4) |
-  r4 a8( bf \tuplet 3/2 { c ef df } |
+  r4
+  <<
+    { a8( bf \tuplet 3/2 { c ef df } }
+
+      \new Staff \with {
+        \remove Time_signature_engraver
+        alignAboveContext = "up"
+        \magnifyStaff #2/3
+        firstClef = ##f
+        \override KeySignature.stencil = ##f
+      }
+      {
+        \key af \major
+        a8( bf c \slashedGrace ef df)
+        \once \override Staff.BarLine.transparent = ##t
+        \once \override Staff.BarLine.allow-span-bar = ##f
+      }
+  >> |
   c2 bf4) |
   bf4.(-> af8 \tuplet 3/2 { af g f } |
   f2 ef4) |
