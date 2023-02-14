@@ -39,30 +39,6 @@ upper.A = \relative {
   \tuplet 3/2 { df ef df } c[ df f8. ef16] |
   df2 c4) |
   r4
-  \once \override Score.Footnote.annotation-line = ##f
-  \footnote \markup { \bold "*" } #'(0 . 3) \markup {
-    \bold { "*" }
-    \tiny { m. 3 variant: }
-    \score {
-      \new Staff \with {
-        \magnifyStaff #2/3
-        \remove Time_signature_engraver
-        \override KeySignature.stencil = ##f
-      }
-      \relative {
-        \clef treble
-        \key af \major
-        \override NoteHead.font-size = #2
-        \override Accidental.font-size = #2
-        \override Rest.font-size = #2
-        r4 a'8[( bf c \slashedGrace ef df])
-        \revert NoteHead.font-size
-        \revert Accidental.font-size
-        \revert Rest.font-size
-        \bar "|"
-      }
-    }
-  }
   a8( bf \tuplet 3/2 { c ef df } |
   c2 bf4) |
   bf4.(-> af8 \tuplet 3/2 { af g f } |
@@ -74,40 +50,6 @@ upper.A = \relative {
   b2 c4~\) |
   8( df bf') af( f df |
   df2 c4) |
-  \once \override Score.Footnote.annotation-line = ##f
-  \footnote \markup { \bold "**" } #'(0 . 3) \markup {
-    \bold { "**" }
-    \tiny { m. 11 variant: }
-    \score {
-      \new Staff \with {
-        \magnifyStaff #2/3
-        \remove Time_signature_engraver
-        \override KeySignature.stencil = ##f
-      }
-      \relative {
-        \clef treble
-        \key af \major
-        \once \omit TupletNumber
-        \stemUp
-        \once \slurDown
-        \tuplet 12/4 { a'8[( bf a gs a c ef gf
-                            \ottava #1
-                            a c ef f]
-                     }
-        \stemNeutral
-        \override NoteHead.font-size = #2
-        \override Accidental.font-size = #2
-        \override Rest.font-size = #2
-        gf8-![)
-          \ottava #0
-          r16 a,,!]
-        \revert NoteHead.font-size
-        \revert Accidental.font-size
-        \revert Rest.font-size
-        \bar "|"
-      }
-    }
-  }
   r8
   \once \omit TupletNumber
   \tiny
@@ -181,7 +123,110 @@ lower.A = {
 }
 
 editorial.above.A = {
-  %% marks above the grand staff
+  s4 |
+  s2. |
+  s2 s4 |
+  \barNumberCheck #3
+  \once \override Score.Footnote.annotation-line = ##f
+  s4
+   -\footnote
+    \markup { \bold * }
+    #'(0 . 0)
+  \markup {
+    \bold { "*" }
+    \tiny { \italic { m.3: } \hspace #1 }
+    \score {
+      \new Staff \with {
+        \magnifyStaff #2/3
+        \remove Time_signature_engraver
+        \override KeySignature.stencil = ##f
+      }
+      \relative {
+        \clef treble
+        \key af \major
+        \override NoteHead.font-size = #2
+        \override Accidental.font-size = #2
+        \override Rest.font-size = #2
+        r4 a'8[( bf c \slashedGrace ef df])
+        \revert NoteHead.font-size
+        \revert Accidental.font-size
+        \revert Rest.font-size
+        \bar "|"
+      }
+    }
+    \tiny { \hspace #1 [A3] (Rothschild’s autograph, 1842); [EF] (Fontana’s editions, 1855) 2nd and 3rd times }
+    }
+    ^""
+  s2 |
+  s2.*7 |
+  s8
+   -\footnote
+    \markup { \bold { "*" } }
+    #'(0 . 0)
+    \markup {
+      \bold { "*" }
+      \tiny { \italic { m.11: } }
+      \score {
+        \new Staff \with {
+          \magnifyStaff #2/3
+          \remove Time_signature_engraver
+          \override KeySignature.stencil = ##f
+        }
+        \relative {
+          \override NoteHead.font-size = #2
+          \override Accidental.font-size = #2
+          \override Rest.font-size = #2
+          \clef treble
+          \key af \major
+          \stemUp
+          r8
+          \once \omit TupletNumber
+          \once \slurDown
+          \tuplet 8/6 { a'16[( bf a gs a-. c-. ef-. f-.]) }
+          \stemNeutral
+          gf8-!
+          r16 a,
+          \revert NoteHead.font-size
+          \revert Accidental.font-size
+          \revert Rest.font-size
+          \bar "|"
+        }
+      }
+      \tiny { \hspace #0.5 [A1] (Wodzińska’s, 1835); \hspace #0.5 }
+      \score {
+        \new Staff \with {
+          \magnifyStaff #2/3
+          \remove Time_signature_engraver
+          \override KeySignature.stencil = ##f
+        }
+        \relative {
+          \clef treble
+          \key af \major
+          \once \omit TupletNumber
+          \stemUp
+          \once \slurDown
+          \tuplet 12/4 { a'8[( bf a gs a c ef gf
+                              \ottava #1
+                              a c ef f]
+                       }
+          \stemNeutral
+          \override NoteHead.font-size = #2
+          \override Accidental.font-size = #2
+          \override Rest.font-size = #2
+          gf8-![)
+            \ottava #0
+            r16 a,,!]
+          \revert NoteHead.font-size
+          \revert Accidental.font-size
+          \revert Rest.font-size
+          \bar "|"
+        }
+      }
+      \tiny { \hspace #1 [EF] \italic "de capo" \hspace #1 }
+    }
+  ^""
+  s8 s2 |
+  s2. |
 }
 
 editorial.between.A = {
