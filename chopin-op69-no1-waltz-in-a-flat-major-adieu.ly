@@ -63,12 +63,48 @@ upper.A = \relative {
   b2 c4~\) |
   8( df bf') af( f df |
   df2 c4) |
+  \once \override Score.Footnote.annotation-line = ##f
+  \footnote \markup { \bold "**" } #'(0 . 3) \markup {
+    \bold { "**" }
+    \tiny { m. 11 variant: }
+    \score {
+      \new Staff \with {
+        \magnifyStaff #2/3
+        \remove Time_signature_engraver
+        % firstClef = ##f
+        % \override KeySignature.stencil = ##f
+      }
+      \relative {
+        \clef treble
+        \key af \major
+        \once \omit TupletNumber
+        \stemUp
+        \once \slurDown
+        \tuplet 12/4 { a'8[( bf a gs a c ef gf
+                            \ottava #1
+                            a c ef f]
+                     }
+        \stemNeutral
+        \override NoteHead.font-size = #2
+        \override Accidental.font-size = #2
+        \override Rest.font-size = #2
+        gf8-![)
+          \ottava #0
+          r16 a,,!]
+        \revert NoteHead.font-size
+        \revert Accidental.font-size
+        \revert Rest.font-size
+        \bar "|"
+      }
+    }
+  }
   r8
   \once \omit TupletNumber
   \tiny
   \tuplet 13/3 { a8(-> bf a gs a bf b c df d ef e f }
   \normalsize
-  gf-.[) r16 a,16]( |
+  gf-.[) r16 a,!16](
+  |
   \slashedGrace a8 c2 bf4) |
   bf4.( af8 \tuplet 3/2 { af g f } |
   f2 ef4) |
