@@ -151,11 +151,42 @@ editorial.above.A = {
              \bar "|"
            }
          }
-         \tiny { \hspace #1 [A3] (Rothschild’s autograph, 1842); [EF] (Fontana’s editions, 1855), when repeated }
+         \tiny { \hspace #1 [A3] (Rothschild’s autograph, 1842); [EF] (Fontana’s editions, 1855) before trio, \italic "da capo" }
        }
      ^""
   s2 |
-  s2.*7 |
+  s2.*5 |
+  \barNumberCheck #9
+  s8-\footnote
+       ✱
+       #'(0 . 0)
+       \markup {
+         \tiny { ✱ \italic { m.9: } \hspace #1 }
+         \score {
+           \new Staff \with {
+             \magnifyStaff #2/3
+             \remove Time_signature_engraver
+             \override KeySignature.stencil = ##f
+           }
+           \relative {
+             \clef treble
+             \key af \major
+             \override NoteHead.font-size = #2
+             \override Accidental.font-size = #2
+             \override Rest.font-size = #2
+             c''8([ df \slashedGrace df bf') af( f df)]
+             \revert NoteHead.font-size
+             \revert Accidental.font-size
+             \revert Rest.font-size
+             \bar "|"
+           }
+         }
+         \tiny { \hspace #1 [EF] \concat { \italic "da capo" ; } [PWM] optional variant before trio }
+       }
+    ^""
+  s8
+  s2 |
+  s2. |
   \barNumberCheck #11
   s8-\footnote
        ✱
@@ -222,6 +253,11 @@ editorial.above.A = {
        }
      ^""
   s8 s2 |
+  s2.*3 |
+  \barNumberCheck #15
+  \grace
+  s8-\footnote ✱ #'(0 . 0) \markup { \tiny { ✱ \italic { m.15: } [PWM] advises playing this grace note before the beat. } }
+    ^""
   s2. |
 }
 
@@ -260,8 +296,14 @@ breaks_ref = {
   \barNumberCheck #5
   s2.*6 | \break
   \barNumberCheck #11
-  s2.*6 | \break
-  \barNumberCheck #17
+  s2.*5 |
+  \barNumberCheck #16
+  s2 \break
+  s4 |
+  s2.*5 | \break
+  \barNumberCheck #22
+  s2.*6 | \break % volta in here 24a/24b
+  %%\barNumberCheck #27
 }
 
 %%showLastLength =   % use this to only render the last few measures
