@@ -29,7 +29,7 @@
 global = {
   \key af \major
   \time 3/4
-  \tempo "Tempo de Valse"
+  \tempo "Tempo di Valse"
   \partial 4
 }
 
