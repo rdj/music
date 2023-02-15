@@ -18,12 +18,19 @@
 
 \layout {
   \context {
+    \Score
+    %%\override BarNumber.break-visibility = ##(#t #t #t) % to draw every bar number
+    alternativeNumberingStyle = #'numbers-with-letters
+    barNumberVisibility = #first-bar-number-invisible-save-broken-bars
+
+    %% Put a bar line before the clef in the footnote variants
+    \override SystemStartBar.collapse-height = #-inf.0
+  }
+
+  \context {
     \PianoStaff
     \accidentalStyle piano
   }
-
-  %% Put a bar line before the clef in the footnote variants
-  \override Score.SystemStartBar.collapse-height = #-inf.0
 }
 
 global = {
@@ -33,17 +40,28 @@ global = {
   \partial 4
 }
 
-upper.A = \relative {
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% A = mm. 1-(16), 1-beat anacrusis, simple repeat before last
+%%                 beat of m. 16, fine
+%%
+%% A = mm. 25-(40), no anacrusis, no repeat, section break before last
+%%                  beat of m. 40
+%%
+%% All the same notation both times.
+
+upper.A_anacrusis = \relative {
   \clef treble
   ef''8( d |
-  \tuplet 3/2 { df ef df } c[ df f8. ef16] |
+}
+
+upper.A = \relative {
+  \tuplet 3/2 { df'' ef df } c[ df f8. ef16] |
   df2 c4) |
   r4
   a8( bf \tuplet 3/2 { c ef df } |
   c2 bf4) |
   bf4.(-> af8 \tuplet 3/2 { af g f } |
   f2 ef4) |
-  \barNumberCheck #7
   ef\( \grace { ef8[ f ef d ef] }
   \once \slurUp
   \acciaccatura ef8 g' f ef df |
@@ -65,8 +83,12 @@ upper.A = \relative {
   af2)
 }
 
+lower.A_anacrusis = \relative {
+  \clef bass
+  r4
+}
+
 lower.A_tenor = \relative {
-  s4 |
   r4 <af df> q |
   r <g df'> <g c> |
   r <gf c> q |
@@ -83,9 +105,6 @@ lower.A_tenor = \relative {
 }
 
 lower.A_bass = \relative {
-  \oneVoice
-  r4 |
-  \voiceTwo
   f2. |
   e |
   ef |
@@ -122,8 +141,11 @@ lower.A = {
   >>
 }
 
-editorial.above.A = {
+editorial.above.A_anacrusis = {
   s4 |
+}
+
+editorial.above.A = {
   s2. |
   s2 s4 |
   \barNumberCheck #3
@@ -273,13 +295,17 @@ editorial.above.A = {
   s8-\footnote ✱ #'(0 . 0) \markup { \tiny { ✱ \italic { m.15: } [PWM] advises playing this grace note before the beat. } }
     ^""
   s2. |
+  s2
+  \barNumberCheck #16
 }
 
-editorial.between.A = {
-  %% marks between the staves, e.g. dynamics
+editorial.between.A_anacrusis = {
   s4-\tweak thickness #3.5
     _\markup \whiteout \italic "con anima"
   |
+}
+
+editorial.between.A = {
   s4
   \once \override Hairpin.shorten-pair = #'(0 . -2)
   s4\< s4 |
@@ -288,11 +314,17 @@ editorial.between.A = {
   s8..\> s32\! s4 s4 |
   s2.*3 |
   s8..\> s32\! s4 s4 |
+  s2.*3 |
+  s4\> s4\! s4 |
+  s2. |
+  s2
+}
+
+editorial.below.A_anacrusis = {
+  s4 |
 }
 
 editorial.below.A = {
-  %% marks below the grand staff, e.g. pedal marks
-  s4 |
   s2.*5 |
   s4\sustainOn s4 s8 s8\sustainOff |
   s4\sustainOn s4 s8 s8\sustainOff |
@@ -300,8 +332,264 @@ editorial.below.A = {
   s2.*5 |
   s4\sustainOn s4 s8 s8\sustainOff |
   s4\sustainOn s4 s8 s8\sustainOff |
-  s4\sustainOn s8_\markup { \italic Fine } s8\sustainOff
+  s4\sustainOn s8 s8\sustainOff
 }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% B = mm. (16)-24b, 1-beat anacrusis, two 1-measure voltas
+
+upper.B_anacrusis = \relative {
+  r4
+}
+
+upper.B = \relative {
+  \barNumberCheck #17
+  \repeat unfold 7 { R2. | }
+}
+
+upper.B_volta.1 = \relative {
+  R2. |
+}
+
+upper.B_volta.2 = \relative {
+  R2. |
+}
+
+lower.B_anacrusis = \relative {
+  r4
+}
+
+lower.B_tenor = \relative {
+  s2.*7
+}
+
+lower.B_bass = \relative {
+  \oneVoice
+  \repeat unfold 7 { R2. }
+  \voiceOne
+}
+
+lower.B = {
+  \barNumberCheck #17
+  <<
+    \new Voice = "tenor" {
+      \voiceOne
+      \lower.B_tenor
+    }
+    \new Voice = "bass" {
+      \voiceTwo
+      \lower.B_bass
+    }
+  >>
+}
+
+lower.B_volta.1 = \relative {
+  R2.
+}
+
+lower.B_volta.2 = \relative {
+  R2.
+}
+
+editorial.above.B_anacrusis = {
+  s4 |
+}
+
+editorial.above.B = {
+  \barNumberCheck #17
+  s2.*7 |
+}
+
+editorial.above.B_volta.1 = {
+  s2. |
+}
+
+editorial.above.B_volta.2 = {
+  s2. |
+}
+
+editorial.between.B_anacrusis = {
+  s4 |
+}
+
+editorial.between.B = {
+  \barNumberCheck #17
+  s2.*7 |
+}
+
+editorial.between.B_volta.1 = {
+  s2. |
+}
+
+editorial.between.B_volta.2 = {
+  s2. |
+}
+
+editorial.below.B_anacrusis = {
+  s4 |
+}
+
+editorial.below.B = {
+  \barNumberCheck #17
+  s2.*7 |
+}
+
+editorial.below.B_volta.1 = {
+  s2. |
+}
+
+editorial.below.B_volta.2 = {
+  s2. |
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% trio.A = mm. (40)-(48b), 1-beat anacrusis, volta 1 is full measure,
+%%                          section break before last beat of volta 2
+
+upper.trio.A_anacrusis = \relative {
+  r4 |
+}
+
+upper.trio.A = \relative {
+  \barNumberCheck #41
+  \repeat unfold 7 R2. |
+}
+
+upper.trio.A_volta.1 = \relative {
+  R2.
+}
+
+upper.trio.A_volta.2 = \relative {
+  r4 r4
+}
+
+lower.trio.A_anacrusis = \relative {
+  r4
+}
+
+lower.trio.A = \relative {
+  \barNumberCheck #41
+  \repeat unfold 7 R2. |
+}
+
+lower.trio.A_volta.1 = \relative {
+  R2. |
+}
+
+lower.trio.A_volta.2 = \relative {
+  r4 r4
+}
+
+editorial.above.trio.A_anacrusis = {
+  s4
+}
+
+editorial.above.trio.A = {
+  \barNumberCheck #41
+  s2.*7 |
+}
+
+editorial.above.trio.A_volta.1 = {
+  s2. |
+}
+
+editorial.above.trio.A_volta.2 = {
+  s4 s4
+}
+
+editorial.between.trio.A_anacrusis = {
+  s4
+}
+
+editorial.between.trio.A = {
+  \barNumberCheck #41
+  s2.*7 |
+}
+
+editorial.between.trio.A_volta.1 = {
+  s2. |
+}
+
+editorial.between.trio.A_volta.2 = {
+  s4 s4
+}
+
+editorial.below.trio.A_anacrusis = {
+  s4
+}
+
+editorial.below.trio.A = {
+  \barNumberCheck #41
+  s2.*7 |
+}
+
+editorial.below.trio.A_volta.1 = {
+  s2. |
+}
+
+editorial.below.trio.A_volta.2 = {
+  s4 s4
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% trio.B = (48b)-(64), 1 beat anacrusis, double bar DC al fine before
+%%                      last beat of m. 64
+
+upper.trio.B_anacrusis = \relative {
+  r4
+}
+
+upper.trio.B = \relative {
+  \barNumberCheck #49
+  \repeat unfold 15 R2.
+  r4 r4
+}
+
+lower.trio.B_anacrusis = \relative {
+  r4
+}
+
+lower.trio.B = \relative {
+  \barNumberCheck #49
+  \repeat unfold 15 R2.
+  r4 r4
+}
+
+editorial.above.trio.B_anacrusis = {
+  s4 |
+}
+
+editorial.above.trio.B = {
+  \barNumberCheck #49
+  s2.*15 |
+  s4 s4
+}
+
+editorial.between.trio.B_anacrusis = {
+  s4 |
+}
+
+editorial.between.trio.B = {
+  \barNumberCheck #49
+  s2.*15 |
+  s4 s4
+}
+
+editorial.below.trio.B_anacrusis = {
+  s4 |
+}
+
+editorial.below.trio.B = {
+  \barNumberCheck #49
+  s2.*15 |
+  s4 s4
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% breaks_ref to match PWM 7a
 
 breaks_ref = {
   %% breaks matching some reference for ease of authoring
@@ -317,33 +605,131 @@ breaks_ref = {
   s2.*5 | \break
   \barNumberCheck #22
   s2.*6 | \break % volta in here 24a/24b
-  %%\barNumberCheck #27
+  \barNumberCheck #27
+  s2.*6 | \break
+  \barNumberCheck #33
+  s2.*6 | \break
+  \barNumberCheck #39
+  \grace s8
+  s2.*6 | \break
+  \barNumberCheck #45
+  s2.*7 | \break % volta in here 48a/48b
+  \barNumberCheck #51
+  s2.*7 | \break
+  \barNumberCheck #58
 }
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Score
 
 %%showLastLength =   % use this to only render the last few measures
 \score {
   \new PianoStaff <<
     \new Dynamics {
       \global
+      \editorial.above.A_anacrusis
       \editorial.above.A
+      \editorial.above.B_anacrusis
+      \editorial.above.B
+      \editorial.above.B_volta.1
+      \editorial.above.B_volta.2
+      s2.*15 | s2 %% do not repeat footnotes
+      \editorial.above.trio.A_anacrusis
+      \editorial.above.trio.A
+      \editorial.above.trio.A_volta.1
+      \editorial.above.trio.A_volta.2
+      \editorial.above.trio.B_anacrusis
+      \editorial.above.trio.B
     }
     \new Staff = "up" {
       \global
-      \repeat volta 2 {
-        \upper.A
+      \repeat segno 2 {
+        \repeat volta 2 {
+          \upper.A_anacrusis
+          \upper.A
+        }
+        \fine
+        \upper.B_anacrusis
+        \repeat volta 2 {
+          \upper.B
+        }
+        \alternative {
+          \upper.B_volta.1
+          \upper.B_volta.2
+        }
+        <<
+          %% At the top, the slur starts in the anacrusis. In this
+          %% written out repeat of A, the slur starts on the first note
+          %% of the triplet, which we can accomplish by creating an
+          %% equivalent parallel spacer rest to start the slur.
+          { \tuplet 3/2 { s8( s8 s8 } }
+          \upper.A
+        >>
+        \section \sectionLabel "TRIO"
+        \upper.trio.A_anacrusis
+        \repeat volta 2 {
+          \upper.trio.A
+        }
+        \alternative {
+          \upper.trio.A_volta.1
+          \upper.trio.A_volta.2
+        }
+        \section
+        \upper.trio.B_anacrusis
+        \upper.trio.B
+        \bar "||"
       }
     }
     \new Dynamics {
       \global
+      \editorial.between.A_anacrusis
       \editorial.between.A
+      \editorial.between.B_anacrusis
+      \editorial.between.B
+      \editorial.between.B_volta.1
+      \editorial.between.B_volta.2
+      \editorial.between.A
+      \editorial.between.trio.A_anacrusis
+      \editorial.between.trio.A
+      \editorial.between.trio.A_volta.1
+      \editorial.between.trio.A_volta.2
+      \editorial.between.trio.B_anacrusis
+      \editorial.between.trio.B
     }
     \new Staff = "down" {
       \global
+      \lower.A_anacrusis
       \lower.A
+      \lower.B_anacrusis
+      \lower.B
+      \lower.B_volta.1
+      \lower.B_volta.2
+      \lower.A
+      \section
+      \lower.trio.A_anacrusis
+      \lower.trio.A
+      \lower.trio.A_volta.1
+      \lower.trio.A_volta.2
+      \section
+      \lower.trio.B_anacrusis
+      \lower.trio.B
     }
     \new Dynamics {
       \global
+      \editorial.below.A_anacrusis
       \editorial.below.A
+      \editorial.below.B_anacrusis
+      \editorial.below.B
+      \editorial.below.B_volta.1
+      \editorial.below.B_volta.2
+      \editorial.below.A
+      \editorial.below.trio.A_anacrusis
+      \editorial.below.trio.A
+      \editorial.below.trio.A_volta.1
+      \editorial.below.trio.A_volta.2
+      \editorial.below.trio.B_anacrusis
+      \editorial.below.trio.B
     }
     \new Dynamics {
       \global
