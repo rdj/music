@@ -170,7 +170,7 @@ editorial.above.A = {
          \tiny { ✱ \italic { m.3: } \hspace #1 }
          \score {
            \new Staff \with {
-             \magnifyStaff #2/3
+             \magnifyStaff #1/2
              \remove Time_signature_engraver
              \override KeySignature.stencil = ##f
            }
@@ -200,7 +200,7 @@ editorial.above.A = {
          \tiny { ✱ \italic { m.9: } \hspace #1 }
          \score {
            \new Staff \with {
-             \magnifyStaff #2/3
+             \magnifyStaff #1/2
              \remove Time_signature_engraver
              \override KeySignature.stencil = ##f
            }
@@ -231,7 +231,7 @@ editorial.above.A = {
          \tiny { ✱ \italic { m.11: } }
          \score {
            \new Staff \with {
-             \magnifyStaff #2/3
+             \magnifyStaff #1/2
              \remove Time_signature_engraver
              \override KeySignature.stencil = ##f
            }
@@ -258,7 +258,7 @@ editorial.above.A = {
          \tiny { \hspace #0.5 [A1] (Wodzińska’s, 1835); \hspace #0.5 }
          \score {
            \new Staff \with {
-             \magnifyStaff #2/3
+             \magnifyStaff #1/2
              \remove Time_signature_engraver
              \override KeySignature.stencil = ##f
            }
@@ -339,34 +339,55 @@ editorial.below.A = {
 %% B = mm. (16)-24b, 1-beat anacrusis, two 1-measure voltas
 
 upper.B_anacrusis = \relative {
-  r4
+  c''8( cf |
 }
 
 upper.B = \relative {
   \barNumberCheck #17
-  \repeat unfold 7 { R2. | }
+  \tuplet 3/2 { bf'8 c bf } a bf bf bf' |
+  c[) r16 bf16( g8 ef] df4) |
+  \repeat unfold 2 {
+    \tuplet 3/2 { bf8( c bf } a bf bf bf' |
+    c[) r16 bf16( g8 ef] df4) |
+  }
+  \tuplet 3/2 { bf8( c bf } a bf af' g) |
 }
 
 upper.B_volta.1 = \relative {
-  R2. |
+  f''4( ef8 g,[ af a])
 }
 
 upper.B_volta.2 = \relative {
-  R2. |
+  f''4.( e8 ef d) |
 }
 
 lower.B_anacrusis = \relative {
-  r4
+  r4 |
 }
 
 lower.B_tenor = \relative {
-  s2.*7
+  f'4( g d |
+  ef4. bf8 4) |
+  d4.(\arpeggio bf8 4) |
+  ef4.( bf8 4) |
+  f'4( g d |
+  ef4. bf8 4) |
 }
 
 lower.B_bass = \relative {
+  \clef treble
+  <af bf>2. |
+  g |
+  \clef bass
+  \once \set PianoStaff.connectArpeggios = ##t
+  <af bf,>\arpeggio |
+  <ef g>4 s2 |
+  \clef treble
+  <af bf>2. |
+  g |
+  \clef bass
   \oneVoice
-  \repeat unfold 7 { R2. }
-  \voiceOne
+  bf,4-. <af'! d>( bf) |
 }
 
 lower.B = {
@@ -384,11 +405,11 @@ lower.B = {
 }
 
 lower.B_volta.1 = \relative {
-  R2.
+  ef4-. <g ef'>( bf) |
 }
 
 lower.B_volta.2 = \relative {
-  R2.
+  ef4( <g ef'> bf) |
 }
 
 editorial.above.B_anacrusis = {
@@ -418,11 +439,11 @@ editorial.between.B = {
 }
 
 editorial.between.B_volta.1 = {
-  s2. |
+  s4\> s4\! s4 |
 }
 
 editorial.between.B_volta.2 = {
-  s2. |
+  s4\> s4\! s4 |
 }
 
 editorial.below.B_anacrusis = {
@@ -431,11 +452,14 @@ editorial.below.B_anacrusis = {
 
 editorial.below.B = {
   \barNumberCheck #17
-  s2.*7 |
+  s2.*2 |
+  s4\sustainOn s4 s8 s8\sustainOff |
+  s2.*3 |
+  s4\sustainOn s4 s8 s8\sustainOff |
 }
 
 editorial.below.B_volta.1 = {
-  s2. |
+  s4\sustainOn s4 s8 s8\sustainOff |
 }
 
 editorial.below.B_volta.2 = {
@@ -448,7 +472,7 @@ editorial.below.B_volta.2 = {
 %%                          section break before last beat of volta 2
 
 upper.trio.A_anacrusis = \relative {
-  r4 |
+  <df'' f>4-. |
 }
 
 upper.trio.A = \relative {
