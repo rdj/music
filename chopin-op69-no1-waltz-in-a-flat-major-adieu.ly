@@ -127,6 +127,20 @@ editorial.above.A = {
   s2. |
   s2 s4 |
   \barNumberCheck #3
+  %% The trick to footnotes in the Dynamics context is to attach the
+  %% footnote to an event that's attached to a spacer rest. We want an
+  %% event that doesn't actually have any visual effect, so we use an
+  %% empty text event. The general idea is
+  %%
+  %%   s4-\footnote mark offset-pair content
+  %%     ^""
+  %%
+  %% Another way to do it is a timing footnote on Staff.BarLine. That
+  %% will put the mark directly above the barline, and if there's a line
+  %% break the bar line is on the line before. That looks like
+  %%
+  %%   \footnote mark offset-pair content Staff.BarLine
+  %%
   s4-\footnote
        ✱
        #'(0 . 0)
