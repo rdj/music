@@ -6,6 +6,7 @@
 \paper {
   print-page-number = ##f
   indent = 0
+  markup-system-spacing = #0
 }
 
 \header {
@@ -191,38 +192,7 @@ editorial.above.A = {
        }
      ^""
   s2 |
-  s2.*5 |
-  \barNumberCheck #9
-  s8-\footnote
-       ✱
-       #'(0 . 0)
-       \markup {
-         \tiny { ✱ \italic { m.9: } \hspace #1 }
-         \score {
-           \new Staff \with {
-             \magnifyStaff #1/2
-             \remove Time_signature_engraver
-             \override KeySignature.stencil = ##f
-           }
-           \relative {
-             \clef treble
-             \key af \major
-             \override NoteHead.font-size = #2
-             \override Accidental.font-size = #2
-             \override Rest.font-size = #2
-             c''8([ df \slashedGrace df bf') af( f df)]
-             \revert NoteHead.font-size
-             \revert Accidental.font-size
-             \revert Rest.font-size
-             \bar "|"
-           }
-         }
-         \tiny { \hspace #1 [EF] \concat { \italic "da capo" ; } [PWM] optional variant before trio }
-       }
-    ^""
-  s8
-  s2 |
-  s2. |
+  s2.*7 |
   \barNumberCheck #11
   s8-\footnote
        ✱
@@ -255,7 +225,7 @@ editorial.above.A = {
              \bar "|"
            }
          }
-         \tiny { \hspace #0.5 [A1] (Wodzińska’s, 1835); \hspace #0.5 }
+         \tiny { \hspace #0.5 [A1] (Wodzińska’s autograph, 1835); \hspace #0.5 }
          \score {
            \new Staff \with {
              \magnifyStaff #1/2
@@ -292,11 +262,46 @@ editorial.above.A = {
   s2.*3 |
   \barNumberCheck #15
   \grace
-  s8-\footnote ✱ #'(0 . 0) \markup { \tiny { ✱ \italic { m.15: } [PWM] advises playing this grace note before the beat. } }
+  s8-\footnote ✱ #'(0 . 0) \markup { \tiny { ✱ \italic { m.15: } Chopin National Edition Vol. 27 B III (Eskier et al., 2010) [FWN] advises playing this grace note before the beat. } }
     ^""
   s2. |
   s2
   \barNumberCheck #16
+}
+
+editorial.above.A_repeat = {
+  s2.*8 |
+  \barNumberCheck #33
+  s8-\footnote
+       ✱
+       #'(0 . 0)
+       \markup {
+         \tiny { ✱ \italic { m.33: } \hspace #1 }
+         \score {
+           \new Staff \with {
+             \magnifyStaff #1/2
+             \remove Time_signature_engraver
+             \override KeySignature.stencil = ##f
+           }
+           \relative {
+             \clef treble
+             \key af \major
+             \override NoteHead.font-size = #2
+             \override Accidental.font-size = #2
+             \override Rest.font-size = #2
+             c''8([ df \slashedGrace df bf') af( f df)]
+             \revert NoteHead.font-size
+             \revert Accidental.font-size
+             \revert Rest.font-size
+             \bar "|"
+           }
+         }
+         \tiny { \hspace #1 [EF] bar 9 \concat { \italic "da capo" ; } [FWN] cites as optional variant here  }
+       }
+    ^""
+  s8 s2 |
+  s2.*6 |
+  s2
 }
 
 editorial.between.A_anacrusis = {
@@ -613,7 +618,7 @@ editorial.below.trio.B = {
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% breaks_ref to match PWM 7a
+%% breaks_ref to match FWN 7a
 
 breaks_ref = {
   %% breaks matching some reference for ease of authoring
@@ -628,7 +633,7 @@ breaks_ref = {
   s4 |
   s2.*5 | \break
   \barNumberCheck #22
-  s2.*6 | \break % volta in here 24a/24b
+  s2.*6 | \pageBreak % volta in here 24a/24b
   \barNumberCheck #27
   s2.*6 | \break
   \barNumberCheck #33
@@ -658,7 +663,7 @@ breaks_ref = {
       \editorial.above.B
       \editorial.above.B_volta.1
       \editorial.above.B_volta.2
-      s2.*15 | s2 %% do not repeat footnotes
+      \editorial.above.A_repeat
       \editorial.above.trio.A_anacrusis
       \editorial.above.trio.A
       \editorial.above.trio.A_volta.1
