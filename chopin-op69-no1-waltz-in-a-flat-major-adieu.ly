@@ -168,7 +168,7 @@ editorial.above.A = {
        ✱
        #'(0 . 0)
        \markup {
-         \tiny { ✱ \italic { m.3: } \hspace #1 }
+         \tiny { ✱ \italic { m. 3: } \hspace #1 }
          \score {
            \new Staff \with {
              \magnifyStaff #1/2
@@ -198,7 +198,7 @@ editorial.above.A = {
        ✱
        #'(0 . 0)
        \markup {
-         \tiny { ✱ \italic { m.11: } }
+         \tiny { ✱ \italic { m. 11: } }
          \score {
            \new Staff \with {
              \magnifyStaff #1/2
@@ -262,7 +262,7 @@ editorial.above.A = {
   s2.*3 |
   \barNumberCheck #15
   \grace
-  s8-\footnote ✱ #'(0 . 0) \markup { \tiny { ✱ \italic { m.15: } Chopin National Edition Vol. 27 B III (Eskier et al., 2010) [FWN] advises playing this grace note before the beat. } }
+  s8-\footnote ✱ #'(0 . 0) \markup { \tiny { ✱ \italic { m. 15: } Chopin National Edition Vol. 27 B III (Eskier et al., 2010) [FWN] advises playing this grace note before the beat. } }
     ^""
   s2. |
   s2
@@ -276,7 +276,7 @@ editorial.above.A_repeat = {
        ✱
        #'(0 . 0)
        \markup {
-         \tiny { ✱ \italic { m.33: } \hspace #1 }
+         \tiny { ✱ \italic { m. 33: } \hspace #1 }
          \score {
            \new Staff \with {
              \magnifyStaff #1/2
@@ -296,7 +296,7 @@ editorial.above.A_repeat = {
              \bar "|"
            }
          }
-         \tiny { \hspace #1 [EF] bar 9 \concat { \italic "da capo" ; } [FWN] cites as optional variant here  }
+         \tiny { \hspace #1 [EF] \italic "da capo" (m. 9). [FWN] suggests as optional variant here at m. 33.  }
        }
     ^""
   s8 s2 |
