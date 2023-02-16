@@ -7,6 +7,8 @@
   print-page-number = ##f
   indent = 0
   markup-system-spacing = #0
+  top-margin = #4
+  bottom-margin = #4
 }
 
 \header {
@@ -663,23 +665,61 @@ editorial.below.trio.A_volta.2 = {
 %%                      fermata before last beat of 56
 
 upper.trio.B_anacrusis = \relative {
-  r4
+  <<
+    \context Voice = "soprano" \relative {
+      \voiceOne
+      c''4 |
+    }
+    \context Voice = "alto" \relative {
+      \voiceTwo
+      e'4 |
+    }
+  >>
 }
 
-upper.trio.B = \relative {
+upper.trio.B = {
   \barNumberCheck #49
-  \repeat unfold 7 R2.
-  r4 r4
+  <<
+    \context Voice = "soprano" \relative {
+      \voiceOne
+      c''4( b8 c df4) |
+      df4( c8 df d4) |
+      d4( cs8 d ef4) |
+      ef4( d8 ef e4) |
+      e4( ds8 e f4) |
+      f4( e8 f g4) |
+      g4( fs8 g af4) |
+    }
+    \context Voice = "alto" \relative {
+      \voiceTwo
+      e'2 f4 |
+      2 af4 |
+      2 g4 |
+      2 bf4 |
+      2 af4 |
+      2 df4 |
+      2 c4 |
+    }
+  >>
+  \relative {
+    <df'' bf'>2\fermata
+  }
 }
 
 lower.trio.B_anacrusis = \relative {
-  r4
+  <c g'>4 |
 }
 
 lower.trio.B = \relative {
   \barNumberCheck #49
-  \repeat unfold 7 R2.
-  r4 r4
+  <c g'>2 <cf af'>4 |
+  q2 <bf bf'>4 |
+  q2 <ef bf'>4 |
+  q2 <c c'>4 |
+  q2 <f c'>4 |
+  q2 <ef ef'>4 |
+  q2 <af ef'>4 |
+  <g ef'>2_\fermata
 }
 
 editorial.above.trio.B_anacrusis = {
@@ -753,7 +793,9 @@ breaks_ref = {
 %%showLastLength =   % use this to only render the last few measures
 \score {
   \new PianoStaff <<
-    \new Dynamics {
+    \new Dynamics \with {
+      staff-affinity = #'DOWN
+    }{
       \global
       \editorial.above.A_anacrusis
       \editorial.above.A
@@ -814,7 +856,9 @@ breaks_ref = {
         \bar "||"
       }
     }
-    \new Dynamics {
+    \new Dynamics \with {
+      staff-affinity = #'CENTER
+    }{
       \global
       \editorial.between.A_anacrusis
       \editorial.between.A
@@ -854,7 +898,9 @@ breaks_ref = {
       \lower.trio.A_repeat
       \lower.trio.A_last_bar
     }
-    \new Dynamics {
+    \new Dynamics \with {
+      staff-affinity = #'UP
+    }{
       \global
       \editorial.below.A_anacrusis
       \editorial.below.A
