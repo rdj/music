@@ -480,17 +480,70 @@ upper.trio.A_anacrusis = \relative {
   <df'' f>4-. |
 }
 
+upper.trio.A_split = {
+  <<
+    \context Voice = "soprano" \relative {
+      \voiceOne
+      \hideNotes
+      df'4(
+      \unHideNotes
+      \tuplet 3/2 { f8 g f } |
+      \hideNotes
+      ef4)
+      \unHideNotes
+    }
+    \context Voice = "alto" \relative {
+      \voiceTwo
+      df'2-> |
+      <c ef>4^.
+    }
+  >>
+}
+
 upper.trio.A = \relative {
-  \barNumberCheck #41
-  \repeat unfold 7 R2. |
+  <bf' df>4-. \upper.trio.A_split <af c>4-.( <bf df-.> |
+  <g bf>-.) \upper.trio.A_split <af c>4-.( <df f>-. |
+  <bf df>-.) \upper.trio.A_split <af c>4-.( <bf df-.> |
+  <g bf>-.)
+  <<
+    \context Voice = "soprano" \relative {
+      \voiceOne
+      \once \hideNotes
+      df'4(
+      \tuplet 3/2 { f8 g f } |
+    }
+    \context Voice = "alto" \relative {
+      \voiceTwo
+      df'2-> |
+    }
+  >>
 }
 
 upper.trio.A_volta.1 = \relative {
-  R2.
+  <<
+    \context Voice = "soprano" \relative {
+      \once \hideNotes
+      ef'2)
+    }
+    \context Voice = "alto" \relative {
+      \voiceTwo
+      \once \stemUp
+      <c' ef>2
+    }
+  >>
+  <df'' f>4-.
 }
 
 upper.trio.A_volta.2 = \relative {
-  r4 r4
+  \once \hideNotes
+  \grace ef''8^(
+  <c, ef af>2)
+}
+
+upper.trio.A_last_bar = \relative {
+  \context Voice = "soprano" {
+    <c' ef af>2)
+  }
 }
 
 lower.trio.A_anacrusis = \relative {
@@ -498,16 +551,54 @@ lower.trio.A_anacrusis = \relative {
 }
 
 lower.trio.A = \relative {
-  \barNumberCheck #41
-  \repeat unfold 7 R2. |
+  \repeat unfold 3 {
+    ef,4-. g'( ef) |
+    af,-. af'( ef) |
+  }
+  ef,4-. g'(
+  \shape #'((3.75 . 0) (4.5 . 0) (4.5 . 0) (5.25 . 0)) RepeatTie
+  ef)-\parenthesize-\repeatTie
+}
+
+lower.trio.A_repeat = \relative {
+  \repeat unfold 3 {
+    ef,4-. g'( ef) |
+    af,-. af'( ef) |
+  }
+  \context Voice = "tenor" {
+    \oneVoice
+    ef,4-. g'( ef)~
+  }
 }
 
 lower.trio.A_volta.1 = \relative {
-  R2. |
+  af,-. af'( ef) |
 }
 
 lower.trio.A_volta.2 = \relative {
-  r4 r4
+  <<
+    \context Voice = "tenor" \relative {
+      \voiceOne
+      ef4\repeatTie af
+    }
+    \context Voice = "bass" \relative {
+      \voiceTwo
+      <ef af,>2
+    }
+  >>
+}
+
+lower.trio.A_last_bar = \relative {
+  <<
+    \context Voice = "tenor" \relative {
+      \voiceOne
+      ef4 af
+    }
+    \context Voice = "bass" \relative {
+      \voiceTwo
+      <ef af,>2
+    }
+  >>
 }
 
 editorial.above.trio.A_anacrusis = {
@@ -515,7 +606,6 @@ editorial.above.trio.A_anacrusis = {
 }
 
 editorial.above.trio.A = {
-  \barNumberCheck #41
   s2.*7 |
 }
 
@@ -528,11 +618,14 @@ editorial.above.trio.A_volta.2 = {
 }
 
 editorial.between.trio.A_anacrusis = {
+  s4\p
+}
+
+editorial.between.trio.A_anacrusis_repeat = {
   s4
 }
 
 editorial.between.trio.A = {
-  \barNumberCheck #41
   s2.*7 |
 }
 
@@ -549,12 +642,15 @@ editorial.below.trio.A_anacrusis = {
 }
 
 editorial.below.trio.A = {
-  \barNumberCheck #41
-  s2.*7 |
+  s2\sustainOn s16*3 s16\sustainOff |
+  \repeat unfold 3 {
+    s4\sustainOn s4\sustainOff s4 |
+    s2\sustainOn s16*3 s16\sustainOff |
+  }
 }
 
 editorial.below.trio.A_volta.1 = {
-  s2. |
+  s4\sustainOn s16*3 s16\sustainOff s4 |
 }
 
 editorial.below.trio.A_volta.2 = {
@@ -563,8 +659,8 @@ editorial.below.trio.A_volta.2 = {
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% trio.B = (48b)-(64), 1 beat anacrusis, double bar DC al fine before
-%%                      last beat of m. 64
+%% trio.B = (48b)-(56), 1 beat anacrusis,
+%%                      fermata before last beat of 56
 
 upper.trio.B_anacrusis = \relative {
   r4
@@ -572,7 +668,7 @@ upper.trio.B_anacrusis = \relative {
 
 upper.trio.B = \relative {
   \barNumberCheck #49
-  \repeat unfold 15 R2.
+  \repeat unfold 7 R2.
   r4 r4
 }
 
@@ -582,7 +678,7 @@ lower.trio.B_anacrusis = \relative {
 
 lower.trio.B = \relative {
   \barNumberCheck #49
-  \repeat unfold 15 R2.
+  \repeat unfold 7 R2.
   r4 r4
 }
 
@@ -592,7 +688,7 @@ editorial.above.trio.B_anacrusis = {
 
 editorial.above.trio.B = {
   \barNumberCheck #49
-  s2.*15 |
+  s2.*7 |
   s4 s4
 }
 
@@ -602,7 +698,9 @@ editorial.between.trio.B_anacrusis = {
 
 editorial.between.trio.B = {
   \barNumberCheck #49
-  s2.*15 |
+  s4 s4\cresc s4 |
+  s2.*5 |
+  s4\! s4 s4 |
   s4 s4
 }
 
@@ -612,7 +710,7 @@ editorial.below.trio.B_anacrusis = {
 
 editorial.below.trio.B = {
   \barNumberCheck #49
-  s2.*15 |
+  s2.*7 |
   s4 s4
 }
 
@@ -670,6 +768,9 @@ breaks_ref = {
       \editorial.above.trio.A_volta.2
       \editorial.above.trio.B_anacrusis
       \editorial.above.trio.B
+      \editorial.above.trio.A_anacrusis
+      \editorial.above.trio.A
+      \editorial.above.trio.A_volta.2
     }
     \new Staff = "up" {
       \global
@@ -707,6 +808,9 @@ breaks_ref = {
         \section
         \upper.trio.B_anacrusis
         \upper.trio.B
+        \upper.trio.A_anacrusis
+        \upper.trio.A
+        \upper.trio.A_last_bar
         \bar "||"
       }
     }
@@ -725,6 +829,9 @@ breaks_ref = {
       \editorial.between.trio.A_volta.2
       \editorial.between.trio.B_anacrusis
       \editorial.between.trio.B
+      \editorial.between.trio.A_anacrusis_repeat
+      \editorial.between.trio.A
+      \editorial.between.trio.A_volta.2
     }
     \new Staff = "down" {
       \global
@@ -743,6 +850,9 @@ breaks_ref = {
       \section
       \lower.trio.B_anacrusis
       \lower.trio.B
+      \lower.trio.A_anacrusis
+      \lower.trio.A_repeat
+      \lower.trio.A_last_bar
     }
     \new Dynamics {
       \global
@@ -759,6 +869,9 @@ breaks_ref = {
       \editorial.below.trio.A_volta.2
       \editorial.below.trio.B_anacrusis
       \editorial.below.trio.B
+      \editorial.below.trio.A_anacrusis
+      \editorial.below.trio.A
+      \editorial.below.trio.A_volta.2
     }
     \new Dynamics {
       \global
