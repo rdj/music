@@ -352,10 +352,10 @@ upper.B_anacrusis = \relative {
 upper.B = \relative {
   \barNumberCheck #17
   \tuplet 3/2 { bf'8 c bf } a bf bf bf' |
-  c[) r16 bf16( g8 ef] df4) |
+  c[) r16 bf16( g8 ef] bf4) |
   \repeat unfold 2 {
     \tuplet 3/2 { bf8( c bf } a bf bf bf' |
-    c[) r16 bf16( g8 ef] df4) |
+    c[) r16 bf16( g8 ef] bf4) |
   }
   \tuplet 3/2 { bf8( c bf } a bf af' g) |
 }
