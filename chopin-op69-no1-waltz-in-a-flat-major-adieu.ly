@@ -486,13 +486,11 @@ upper.trio.A_split = {
   <<
     \context Voice = "soprano" \relative {
       \voiceOne
-      \hideNotes
-      df'4(
-      \unHideNotes
+      \once \hideNotes
+      f'4(
       \tuplet 3/2 { f8 g f } |
-      \hideNotes
+      \once \hideNotes
       ef4)
-      \unHideNotes
     }
     \context Voice = "alto" \relative {
       \voiceTwo
@@ -511,7 +509,7 @@ upper.trio.A = \relative {
     \context Voice = "soprano" \relative {
       \voiceOne
       \once \hideNotes
-      df'4(
+      f'4(
       \tuplet 3/2 { f8 g f } |
     }
     \context Voice = "alto" \relative {
