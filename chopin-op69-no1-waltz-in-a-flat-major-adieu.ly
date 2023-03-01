@@ -552,24 +552,27 @@ lower.trio.A_anacrusis = \relative {
   r4
 }
 
+lower.trio.A_core = \relative {
+  ef,4-. g'( ef) |
+  af,-. af'( ef) |
+  ef,4-. bf''( ef,) |
+  af,-. af'( ef) |
+  ef,4-. g'( ef) |
+  af,-. af'( ef) |
+}
+
 lower.trio.A = \relative {
-  \repeat unfold 3 {
-    ef,4-. g'( ef) |
-    af,-. af'( ef) |
-  }
-  ef,4-. g'(
+  \lower.trio.A_core
+  ef,4-. bf''(
   \shape #'((3.75 . 0) (4.5 . 0) (4.5 . 0) (5.25 . 0)) RepeatTie
-  ef)-\parenthesize-\repeatTie
+  ef,)-\parenthesize-\repeatTie
 }
 
 lower.trio.A_repeat = \relative {
-  \repeat unfold 3 {
-    ef,4-. g'( ef) |
-    af,-. af'( ef) |
-  }
+  \lower.trio.A_core
   \context Voice = "tenor" {
     \oneVoice
-    ef,4-. g'( ef)~
+    ef,4-. bf''( ef,)~
   }
 }
 
