@@ -308,6 +308,27 @@ editorial.above.A_repeat = {
   s2
 }
 
+%% Chopin used two different kinds of > accent marks. One looks like a
+%% standard accent mark, the other is elongated. I'm not really sure
+%% how to do that with lilypond, so I am simulating it with a
+%% specially stylized hairpin.
+%%
+%%     Short accents may be called ‘energy accents’; they always apply
+%%     to single notes or chords. long accents are of an expressive,
+%%     melodic character; they generally affect longer notes and
+%%     occasionally characteristic motives, often of three notes. [NE]
+%%
+%%     A further characteristic of Chopin’s notation that we have
+%%     respected is the distinction between long and short accent
+%%     signs. For Chopin, the short accent denotes a louder dynamic,
+%%     whereas the long accent implies an expressive stress. [Wiener]
+
+long_accent = {
+  \once \override Hairpin.thickness = 2.0
+  \once \override Hairpin.height = 0.4
+  \once \override Hairpin.self-alignment-Y = -1
+}
+
 editorial.between.A_anacrusis = {
   s4-\tweak thickness #3.5
     _\markup \whiteout \italic "con anima"
@@ -320,11 +341,14 @@ editorial.between.A = {
   s4\< s4 |
   s2\> s4\! |
   s2.*3 |
+  \long_accent
   s8..\> s32\! s4 s4 |
   s2.*3 |
+  \long_accent
   s8..\> s32\! s4 s4 |
   s2.*3 |
-  s4\> s4\! s4 |
+  \long_accent
+  s8..\> s32\! s4 s4 |
   s2. |
   s2
 }
@@ -448,11 +472,13 @@ editorial.between.B = {
 }
 
 editorial.between.B_volta.1 = {
-  s4\> s4\! s4 |
+  \long_accent
+  s8..\> s32\! s4 s4 |
 }
 
 editorial.between.B_volta.2 = {
-  s4\> s4\! s4 |
+  \long_accent
+  s8..\> s32\! s4 s4 |
 }
 
 editorial.below.B_anacrusis = {
