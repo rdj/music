@@ -264,7 +264,7 @@ editorial.above.A = {
   s2.*3 |
   \barNumberCheck #15
   \grace
-  s8-\footnote ✱ #'(0 . 0) \markup { \tiny { ✱ \italic { m. 15: } [FWN] (Chopin National Edition Vol. 27 B III, Ekier et al., 2010) advises playing this grace note before the beat. } }
+  s8-\footnote ✱ #'(0 . 0) \markup { \tiny { ✱ \italic { m. 15: } [NE] (Chopin National Edition, Vol. 27 B III, Ekier et al., 2010) advises playing this grace note before the beat. } }
     ^""
   s2. |
   s2
@@ -298,7 +298,7 @@ editorial.above.A_repeat = {
              \bar "|"
            }
          }
-         \tiny { \hspace #1 [EF] \italic "da capo" (m. 9). [FWN] suggests as optional variant here at m. 33.  }
+         \tiny { \hspace #1 [EF] \italic "da capo" (m. 9). [NE] suggests as optional variant here at m. 33.  }
        }
     ^""
   s8 s2 |
