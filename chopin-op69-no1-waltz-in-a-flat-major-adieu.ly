@@ -12,8 +12,7 @@
 }
 
 \header {
-  title = "Waltz no. 9 [“L’adieu”]"
-  subsubtitle = \markup { dedicated to Elise Peruzzi (1837) }
+  title = "Waltz"
   composer = "Frédéric Chopin"
   opus = "WN 47 (1835) [Op. posth. 69, No. 1]"
   tagline = ##f
@@ -145,7 +144,13 @@ lower.A = {
 }
 
 editorial.above.A_anacrusis = {
-  s4 |
+  s4-\footnote
+       ""
+       #'(0 . 0)
+       \markup \tiny \wordwrap {
+         ✱ Musical text from the 1837 autograph dedictated Elise Peruzzi.
+       }
+    ^"" |
 }
 
 editorial.above.A = {
@@ -261,12 +266,7 @@ editorial.above.A = {
        }
      ^""
   s8 s2 |
-  s2.*3 |
-  \barNumberCheck #15
-  \grace
-  s8-\footnote ✱ #'(0 . 0) \markup { \tiny { ✱ \italic { m. 15: } [NE] (Chopin National Edition, Vol. 27 B III, Ekier et al., 2010) advises playing this grace note before the beat. } }
-    ^""
-  s2. |
+  s2.*4 |
   s2
   \barNumberCheck #16
 }
@@ -298,7 +298,7 @@ editorial.above.A_repeat = {
              \bar "|"
            }
          }
-         \tiny { \hspace #1 [EF] \italic "da capo" (m. 9). [NE] suggests as optional variant here at m. 33.  }
+         \tiny { \hspace #1 [EF] \italic "da capo" (m. 9). [NE] (Chopin National Edition) suggests as optional variant here at m. 33.  }
        }
     ^""
   s8 s2 |
