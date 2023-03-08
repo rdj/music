@@ -62,7 +62,8 @@ upper.A = \relative {
   r4
   a8( bf \tuplet 3/2 { c ef df } |
   c2 bf4) |
-  bf4.(-> af8 \tuplet 3/2 { af g f } |
+  \once \stemUp
+  bf4.^(-> af8 \tuplet 3/2 { af g f } |
   f2 ef4) |
   ef\( \grace { ef8[ f ef d ef] }
   \once \slurUp
@@ -78,7 +79,8 @@ upper.A = \relative {
   gf-.[) r16 a,!16](
   |
   \slashedGrace a8 c2 bf4) |
-  bf4.( af8 \tuplet 3/2 { af g f } |
+  \once \stemUp
+  bf4.^( af8 \tuplet 3/2 { af g f } |
   f2 ef4) |
   \slashedGrace ef8
   \tuplet 3/2 { ef8( f ef } d ef <f df'> <g c> |
