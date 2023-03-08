@@ -795,7 +795,7 @@ breaks_ref = {
 \score {
   \new PianoStaff <<
     \new Dynamics \with {
-      staff-affinity = #'DOWN
+      \override VerticalAxisGroup.staff-affinity = #DOWN
     }{
       \global
       \editorial.above.A_anacrusis
@@ -858,7 +858,7 @@ breaks_ref = {
       }
     }
     \new Dynamics \with {
-      staff-affinity = #'CENTER
+      \override VerticalAxisGroup.staff-affinity = #CENTER
     }{
       \global
       \editorial.between.A_anacrusis
@@ -900,7 +900,7 @@ breaks_ref = {
       \lower.trio.A_last_bar
     }
     \new Dynamics \with {
-      staff-affinity = #'UP
+      \override VerticalAxisGroup.staff-affinity = #UP
     }{
       \global
       \editorial.below.A_anacrusis
