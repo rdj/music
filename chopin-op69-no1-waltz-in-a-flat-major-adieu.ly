@@ -12,7 +12,7 @@
 }
 
 \header {
-  title = "Waltz no. 9 (“L’adieu”)"
+  title = "Waltz no. 9 [“L’adieu”]"
   subsubtitle = \markup { dedicated to Elise Peruzzi (1837) }
   composer = "Frédéric Chopin"
   opus = "WN 47 (1835) [Op. posth. 69, No. 1]"
