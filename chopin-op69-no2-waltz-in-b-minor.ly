@@ -2,32 +2,25 @@
 \language "english"
 \pointAndClickOff
 
-%% Chopin used two different kinds of > accent marks. One looks like a
-%% standard accent mark, the other is elongated. I'm not really sure
-%% how to do that with lilypond, so I am simulating it with a
-%% specially stylized hairpin.
-%%
-%%     Short accents may be called ‘energy accents’; they always apply
-%%     to single notes or chords. long accents are of an expressive,
-%%     melodic character; they generally affect longer notes and
-%%     occasionally characteristic motives, often of three notes. [NE]
-%%
-%%     A further characteristic of Chopin’s notation that we have
-%%     respected is the distinction between long and short accent
-%%     signs. For Chopin, the short accent denotes a louder dynamic,
-%%     whereas the long accent implies an expressive stress. [Wiener]
+fz = #(make-dynamic-script "fz")
 
-long_accent_below = {
+%% Chopin uses regular and long >-shaped accent marks. The longer ones
+%% I render with modified hairpins. See my comments in the source for
+%% Waltz WN 47 [Op. posth. 69, No. 1] for more details.
+
+long_accent_base = {
   \once \override Hairpin.endpoint-alignments = #'(-1 . -1)
   \once \override Hairpin.thickness = 2.0
   \once \override Hairpin.height = 0.4
+}
+
+long_accent_below = {
+  \long_accent_base
   \once \override Hairpin.self-alignment-Y = -1
 }
 
 long_accent_above = {
-  \once \override Hairpin.endpoint-alignments = #'(-1 . -1)
-  \once \override Hairpin.thickness = 2.0
-  \once \override Hairpin.height = 0.4
+  \long_accent_base
   \once \override Hairpin.self-alignment-Y = 1
 }
 
@@ -43,7 +36,7 @@ long_accent_above = {
 \header {
   title = "Waltz"
   composer = "Frédéric Chopin"
-  opus = "WN 19 (ca. 1829) [Op. posth. 69, No. 2]"
+  opus = "WN 19 (1829) [Op. posth. 69, No. 2]"
   tagline = ##f
 }
 
@@ -92,8 +85,8 @@ upper.A = \relative {
   as2 fs'4~ |
   8( g fs cs e d) |
   b2 fs'4 |
-  \acciaccatura { \bar "" \once \slurUp fs8 \bar "|" }
-  fs'8[ r16 cs\( d8 as b fs] |
+  \slashedGrace { \bar "" \once \slurUp fs8-\shape #'((0 . 1) (0 . 0.5) (0 . 0.5) (0.5 . 0))^( \bar "|" }
+  fs'8[) r16 cs\( d8 as b fs] |
   a g b, c ds e |
   g8.[ fs16 b,8 d cs fs,] |
 }
@@ -106,7 +99,7 @@ upper.A_volta.1 = \relative {
 
 upper.A_volta.2 = \relative {
   \once \hideNotes
-  \grace { \once \stemUp e''1^( }
+  \grace { \once \stemUp e''1-\shape #'((-1 . 0) (-0.5 . 0) (0 . 0) (0 . 0))^( }
   b4.) fs8[ b r16 bf] |
 }
 
@@ -200,30 +193,50 @@ upper.B = \relative {
   b4.->( a8 cs e) |
   g4.->( fs8 cs d) |
   fs4.-> e8 b cs |
-  as4.-> cs8 g cs |
-  R2. |
-  R2. |
-  R2. |
-  R2. |
-  R2. |
-  R2. |
-  R2. |
-  R2. |
+  as4.^> cs8 g cs |
+  fs,4.\( as8 cs e |
+  g4. fs8 cs d\) |
+  \slashedGrace d8 fs4.( e8 b cs) |
+  \slashedGrace cs8 e4.( d8 \tuplet 3/2 { d cs b) } |
+  b4.->( a8 cs e) |
+  g4.( fs8 cs d) |
+  fs4. e8-\shape #'((0 . -1.5) (0 . 0) (0 . 0) (0 . 0))-( fs'-.) e( |
+  d) cs-. c-. b-. as-. a-. |
 }
 
-lower.B = {
+lower.B = \relative {
   \barNumberCheck #17
-  \repeat unfold 16 R2. |
+  cs4 <g' a e'> q |
+  d <fs a d> q |
+  a, <a' cs g'> q |
+  d, <a' d fs> q |
+  cs, <g' a e'> q |
+  d <fs a d> r |
+  g, <e' b' e> r |
+  fs, <fs' cs' e> <fs b e> |
+  fs, <fs' cs' e> <fs as e'> |
+  b, <fs' b d> q |
+  a, <a' cs g'> q |
+  d, <a' d fs> q |
+  cs, <g' a e'> q |
+  d < fs a d> r |
+  g, <e' b' e> r |
+  fs,-. <fs' e'> as,( |
 }
 
 editorial.above.B = {
   \barNumberCheck #17
-  s2.*16 |
+  s2.*9 |
+  \long_accent_above s8..\> s32\! s2 |
+  \long_accent_above s8..\> s32\! s2 |
+  \long_accent_above s8..\> s32\! s2 |
+  s2.*4 |
 }
 
 editorial.between.B = {
   \barNumberCheck #17
-  s2.*16 |
+  s2.*15 |
+  s8^\markup { \italic stretto } s8 s4 s4 |
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -231,28 +244,75 @@ editorial.between.B = {
 
 upper.A′ = \relative {
   \barNumberCheck #33
-  \repeat unfold 15 R2. |
+  gs''8-. g-. fs-. cs-. d-. b-. |
+  as2 a'4 |
+  gs8-.( g-. fs-. e-. cs-. d-.) |
+  b4 r a' |
+  gs8( g es fs b d) |
+  d4 es, d'->~ |
+  4 e, cs'-> |
+  c8-. b-. as-. a-. gs-. g-. |
+  fs-. f-. e-. d-. cs-. b-. |
+  as2 g'4~ |
+  8 fs es fs cs d |
+  b2 fs'4\turn |
+  \slashedGrace { \bar "" fs8 \bar "|" }
+  fs'8 cs( d) as( b) fs\( |
+  a g b, c ds e\) |
+  g\( fs b, d cs fs, |
   \section
   \key b \major
-  R2. |
+  b4\) r fs |
 }
 
-lower.A′ = {
+lower.A′ = \relative {
   \barNumberCheck #33
-  \repeat unfold 15 R2. |
+  b,4) <fs' b d> q |
+  cs <fs cs' e> q |
+  fs, <fs' as e'> q |
+  b, <fs' b d> q |
+  b, <fs' b d> q |
+  b, <gs' b d> q |
+  b, <g' b e> q |
+  b, <fs' cs' e> <fs as e'> |
+  b, <fs' b d> q |
+  cs <fs cs' e> q |
+  fs, <fs' as e'> q |
+  b, <fs' b d> r |
+  <d d,> <fs b fs'> r |
+  <<
+    { \voiceTwo \once \stemUp \slashedGrace e,8 e'2. } \\
+    { \voiceOne s4 <g c> q }
+  >> |
+  <fs fs,> <fs b d> <fs as e'> |
+
   \section
   \key b \major
-  R2. |
+  b, <fs' ds'> q |
 }
 
 editorial.above.A′ = {
   \barNumberCheck #33
-  s2.*16 |
+  s2. |
+  s2 \long_accent_above s8..\> s32\! |
+  s2. |
+  s2 \long_accent_above s8..\> s32\! |
+  s2.*5 |
+  s2 \long_accent_above s8..\> s32\! |
+  s2.*6 |
 }
 
 editorial.between.A′ = {
   \barNumberCheck #33
-  s2.*16 |
+  s2. |
+  s2 s4^\fz |
+  s2. |
+  s2 s4^\fz |
+  s2.*9 |
+  \long_accent_below
+  s8\> s8\!
+  s8\< s8 s8 s8\! |
+  s2.*2 |
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -260,17 +320,48 @@ editorial.between.A′ = {
 
 upper.C = \relative {
   \barNumberCheck #49
-  \repeat unfold 16 R2. |
+  ds''8( e ds cs ds e) |
+  gs2( fs4) |
+  ds8( e ds cs ds e) |
+  gs2( fs4) |
+  fs ds'8-.( 8-.) 4( |
+  cs-.) e,8-.( 8-.) 4( |
+  ds-.) b'8-.( 8-.) 4( |
+  as-.) cs,8-.( 8-.) e4( |
+  ds8)( e ds cs ds e) |
+  \slashedGrace e8 gs2( fs4) |
+  ds8( e ds cs ds e) |
+  \slashedGrace e8 gs2( fs4) |
+  ds b'8-.( 8-.) 4( |
+  as-.) cs,8-.( 8-.) 4( |
+  b-.) gs'8-.( 8-.) 4( |
+  fs-.) \stemDown as,8-.( 8-.) \stemNeutral <as e'>4( |
 }
 
-lower.C = {
+lower.C = \relative {
   \barNumberCheck #49
-  \repeat unfold 16 R2. |
+  b,4 <fs' ds'> q |
+  as, <fs' e'> q |
+  b, <fs' ds'> q |
+  as, <fs' e'> q |
+  b, <fs' b ds> q |
+  fs, <fs' as e'> q |
+  b, <fs' b ds> q |
+  fs, <fs' cs' e> <fs as e'> |
+  b, <fs' b ds> q |
+  as, <fs' cs' e> q |
+  b, <fs' b ds> q |
+  as, <fs' cs' e> q |
+  b, <fs' b ds> q |
+  cs <as' cs fs> q |
+  cs, <gs' cs es> q |
+  fs, <fs' cs' e> q |
 }
 
 editorial.above.C = {
   \barNumberCheck #49
-  s2.*16 |
+  s8-\markup { \italic dolce } s8 s2 |
+  s2.*15 |
 }
 
 editorial.between.C = {
@@ -283,17 +374,42 @@ editorial.between.C = {
 
 upper.C′ = \relative {
   \barNumberCheck #65
-  \repeat unfold 16 R2. |
+  <b' ds>8)( <cs e> <b ds> <as cs> <b ds> <cs e> |
+  <as gs'>4) r8 <e' fs> q4-> |
+  <b ds>8( <cs e> <b ds>\prall <as cs> <b ds> <cs e> |
+  <as gs'>4) r8 <e' fs> q4-> |
+  <ds fs>4 <fs ds'>8-.( q-.) q4( |
+  <e cs'>4-.) <e as,>8-.( q-.) q4( |
+  <ds b>4-.) <ds b'>8-.( q-.) q4( |
+  <cs as'>4-.) <cs as>8-.( q-.) <e as,>4( |
+  <b ds>8)( <cs e> <b ds> <as cs> <b ds> <cs e> |
+  <as g'>4) r8 <e' fs> q4-> |
+  <b d>8( <cs e> <b d>\prall <as cs> <b d> <cs e> |
+  <as g'>4) r8 <as fs'>( q4-> |
+  <b fs'>4. <e fs,>8 <d b>4) |
+  <d es,>4.^( <cs es,>8 <b es,>4) |
+  <as fs>4-\shape #'((0 . 2) (0 . 1) (0 . 1) (0 . 0.5))-( <cs as>2~ |
+  q4) fs, fs'~ |
 }
 
-lower.C′ = {
+lower.C′ = \relative {
   \barNumberCheck #65
-  \repeat unfold 16 R2. |
+  \repeat unfold 5 {
+    b,4 <fs' b ds> q |
+    fs, <fs' cs' e> q |
+  }
+  b, <fs' b d> q |
+  fs, <fs' cs' e> q |
+  b, <fs' b d> q |
+  g, <g' b>8 <g cs> <g d'>4 |
+  fs, <cs' fs as> <fs as cs> |
+  <as cs fs> r r |
 }
 
 editorial.above.C′ = {
   \barNumberCheck #65
-  s2.*16 |
+  s2.*15 |
+  s2 \long_accent_above s8..\> s32\! |
 }
 
 editorial.between.C′ = {
@@ -366,7 +482,6 @@ breaks_ref = {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Score
 
-%%showLastLength =   % use this to only render the last few measures
 \score {
   \new PianoStaff <<
     \new Dynamics \with {
