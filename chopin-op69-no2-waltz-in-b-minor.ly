@@ -425,9 +425,9 @@ upper.final = \relative {
   b'4\) r
 }
 
-lower.final = {
+lower.final = \relative {
   \barNumberCheck #96
-  r4 r4
+  <b d>4 b,
 }
 
 editorial.above.final = {
