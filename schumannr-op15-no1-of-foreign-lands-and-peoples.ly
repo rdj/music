@@ -127,7 +127,7 @@ lower.B_bass = \relative {
     \relative { s2 | s4 \once \omit TupletBracket \once \omit TupletNumber \trip { s8 a4 } } \\
     \relative { s2 | d2 } \\
     \relative {
-      c4_4( c |
+      c4( c |
       b8._2_3 a16 g4)_\fermata
     }
   >> |
