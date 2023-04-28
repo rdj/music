@@ -35,6 +35,7 @@ long_accent_above = {
 
 \header {
   title = "Waltz"
+  subtitle = "Later version"
   composer = "Frédéric Chopin"
   opus = "WN 19 (1829) [Op. posth. 69, No. 2]"
   tagline = ##f
