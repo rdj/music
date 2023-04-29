@@ -12,9 +12,9 @@
 }
 
 \header {
-  title = "Waltz"
+  title = "Waltz in A minor"
   composer = "Frédéric Chopin"
-  opus = "Op. posth., B. 150, WN 63 (ca. 1843)"
+  opus = "Op. posth., B. 150, KK IVb/11, WN 63 (ca. 1843)"
   tagline = ##f
 }
 
