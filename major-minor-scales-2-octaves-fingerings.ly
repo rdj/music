@@ -23,6 +23,7 @@
 
 rflat = \markup { \raise #0.5 \tiny \flat }
 rsharp = \markup { \raise #1 \tiny \sharp }
+one = \markup \tiny \number 1
 three = \markup \tiny \number 3
 threes = \markup \parenthesize \three
 thumbs = \markup \parenthesize \tiny \number 1
@@ -144,10 +145,50 @@ thumbs = \markup \parenthesize \tiny \number 1
   }
   \relative {
     fs8^\markup { \concat{F \rsharp} Melodic Minor \concat { ( \three } ascending. RH changes descending; \three together on \concat { C \rsharp } only)}^2_4
-    gs^3_3 a^1 b cs_3^3 ds es^1 fs_4 |
-    gs^3_3 a^1 b cs_3^3 ds es^1 fs^3_4 e_1 |
+    gs^3_3 a^1 b cs_3^3 ds es^1_1 fs_4 |
+    gs^3_3 a^1 b cs_3^3 ds es^1_1 fs^3_2 e^2_1 |
     d cs^3_3 b_1 a gs^4 fs e_1 d |
-    cs^3_3 b_1 a gs^4 fs4^3_4 r |
+    cs^3_3 b_1 a gs^3 fs4^2_4 r |
+    \break
+  }
+}
+
+\pageBreak
+
+\new Staff {
+  \clef treble
+  \key e \major
+  \time 4/4
+  \relative {
+    e'8^\markup { "E Major" \threes }^1_5
+    fs gs^3_3 a^1 b cs^3_3 ds e^1 |
+    fs_4 gs^3_3 a^1 b cs^3_3 ds e^5_1 ds |
+    cs^3_3 b_1 a gs^3_3 fs e_1 ds^4 cs^3_3 |
+    b_1 a gs^3_3 fs e4^1_5 r |
+    \break
+  }
+  \relative {
+    cs'8^\markup { \concat{C \rsharp} Natural Minor \threes}^3_3
+    ds e^1 fs_4 gs^3_3 a^1 b cs^3_3 |
+    ds e^1 fs_4 gs^3_3 a^1 b cs^3_3 b_1 |
+    a gs^3_3 fs e_1 ds^4 cs^3_3 b_1 a |
+    gs^3_3 fs e_1 ds^4 cs4^3_3 r |
+    \break
+  }
+  \relative {
+    cs'8^\markup { \concat{C \rsharp} Harmonic Minor \threes}^3_3
+    ds e^1 fs_4 gs^3_3 a^1 bs cs^3_3 |
+    ds e^1 fs_4 gs^3_3 a^1 bs cs^3_3 bs_1 |
+    a gs^3_3 fs e_1 ds^4 cs^3_3 bs_1 a |
+    gs^3_3 fs e_1 ds^4 cs4^3_3 r |
+    \break
+  }
+  \relative {
+    cs'8^\markup { \concat{C \rsharp} Melodic Minor \concat { ( \one } ascending; \three descending — RH changes)}^2_3
+    ds e^1_1 fs_4 gs^3_3 as bs^1_1 cs_3 |
+    ds e^1_1 fs_4 gs^3_3 as bs^1_1 cs^3_3 b_1 |
+    a gs^3_3 fs e_1 ds^4 cs^3_3 b_1 a |
+    gs^3_3 fs e_1 ds^4 cs4^3_3 r |
     \break
   }
 }
