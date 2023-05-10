@@ -163,19 +163,27 @@ upper = \relative {
   <ef ef'>4. <f f,>8 <c' c,> |
 
   \barNumberCheck #32
-  <cf cf,>2. <bf bf,>2.\fermata |
-  \magnifyMusic 0.63 {
-  \cadenzaOn
-  \stemUp
-  \repeat unfold 12 { cf16[ bf c a] }
-  cf16[ bf d c]
-  bf[ a af g]
-  f[( d ef c]
-  \ottava #0
-  bf8[ af af, bf])
-  \stemNeutral
-  \cadenzaOff
-  }
+  <<
+    \magnifyMusic 0.63 {
+      s2. s2 s8 s16 s32
+      \cadenzaOn
+      \stemUp
+      \repeat unfold 12 { cf16[ bf c a] }
+      cf16[ bf d c]
+      bf[ a af g]
+      f[_( d ef \once \omit Accidental c]
+      \ottava #0
+      bf8[ af af, bf])
+      \stemNeutral
+      \cadenzaOff
+      s32
+    }
+    \\
+    {
+      <cf'' cf,>2. <bf bf,>2.^\fermata
+    }
+  >> |
+
   \resetRelativeOctave c''
   <ef g,>8( bf g' <ef g,> bf g' <ef g,> bf g' <ef g,> bf g') |
   <ef g,>4. <ef' g,> <ef,, g,>2.\fermata |
@@ -354,23 +362,32 @@ lower = \absolute {
   >> |
 
   \barNumberCheck #32
-  \stemDown
-  \tuplet 4/3 {
-    bf,,8[
-    -\shape #'((0 . 2) (0 . 0) (0 . 0) (0 . 1)) -(
-    bf, f af
-  }
-  \tuplet 4/3 {
-    d' bf
-    \clef treble
-    f' af'])
-  }
-  \stemNeutral
-  d''2.\fermata
-  \cadenzaOn
-  s4*10
-  s4*7
-  \cadenzaOff
+  <<
+    {
+      \oneVoice
+      \stemDown
+      \tuplet 4/3 {
+        bf,,8[
+          -\shape #'((0 . 2) (0 . 0) (0 . 0) (0 . 1)) -(
+          bf, f af
+        }
+        \tuplet 4/3 {
+          d' bf
+          \clef treble
+          f' af'])
+      }
+      \stemNeutral
+      d''2.\fermata
+    } \\
+    {
+      s2. s2 s8 s16 s32
+      \cadenzaOn
+      s4*10
+      s4*7
+      \cadenzaOff
+      s32
+    }
+  >>
   |
 
   \clef bass
@@ -409,11 +426,12 @@ above = {
   s1.*7 |
 
   \barNumberCheck #32
-  s1.
+  s2. s2 s8 s16 s32
   \cadenzaOn
   s4*10
   s4*7
   \cadenzaOff
+  s32 |
 
   \barNumberCheck #33
   s8^\markup \italic { a tempo }
@@ -500,6 +518,40 @@ between = {
   s4.\p \tuplet 8/6 { s16 s s s s s
   \once \override Hairpin.endpoint-alignments = #`(,LEFT . ,LEFT)
   s\< s } s4.\! s4. |
+
+  s8^\markup\italic{ con forza } s4 s4. s8 s8
+  \long_accent_below
+  \once \override Hairpin.shorten-pair = #'(0 . 1)
+  s8-\tweak extra-offset #'(0 . 3) \> s8\!
+  s8^\markup\italic{ stretto } s8 |
+
+  s4. s4. s8
+  \long_accent_below s8-\tweak extra-offset #'(0 . 3) \> s8\!
+  s4. |
+
+  \barNumberCheck #32
+  s8\ff
+  \once \override TextSpanner.bound-details.left.text = \markup { \italic "senza" }
+  \once \override TextSpanner.bound-details.right.text = \markup { \italic " tempo" }
+  % s2. s2 s8 s16 s32
+  s8^\startTextSpan s8 s4. s2 s8 s16 s32
+  \cadenzaOn
+  s16\stopTextSpan s16*3
+  s4
+  \once \override Hairpin.self-alignment-Y = -2
+  s16\< s16*3
+  s4*3
+  s16*3 s16_\markup\italic{ cresc. }
+  s16*3 s16\!
+  s4 s4
+  s16 s16 s16\> s16_\markup\italic{ dim. }
+  s4
+  s16 s16 s16\! s16
+  s4_\markup\italic{ rall. }
+  s16 s16 s16 s16_\markup\italic{ smorz. }
+  s4 s4
+  \cadenzaOff
+  s32 |
 }
 
 pedal_off_late = {
@@ -556,12 +608,13 @@ below = {
   \ped_single \ped_single \ped_single \ped_single |
 
   \barNumberCheck #32
-  s8\sustainOn s4 s4. s4. s8 s8 s8
+  s2.\sustainOn s2 s8 s16 s32
   \cadenzaOn
   s4*10
   s4*5
-  s8\sustainOff s8 s4
+  s4\sustainOff s4
   \cadenzaOff
+  s32 |
 
   s8\sustainOn
 }
@@ -603,17 +656,12 @@ breaks_ref = {
   \break \barNumberCheck #30
   s1.*2 |
   \break \barNumberCheck #32
-  s2. s2.
+  s2. s2 s8 s16 s32
   \cadenzaOn
   s4*10 \break
   s4*7
   \cadenzaOff
-  %% ???
-  % s2. s2. \afterGrace { \repeat unfold 40 { s16 } \break
-  %                       \repeat unfold 20 { s16 }
-  %                       s8 s8 s8 s8 } |
-  % s1. |
-  % s1. |
+  s32 |
 }
 
 
