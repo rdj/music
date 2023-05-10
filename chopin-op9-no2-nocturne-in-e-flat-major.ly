@@ -106,7 +106,7 @@ upper = \relative {
   ^( bf16-. af-. g-. af-. \slashedGrace af c, d) ef4.~ 8 d( ef |
 
   \barNumberCheck #9
-  f4.) g4( ef8) f4.( c4.) |
+  f4.) g4( f8) f4.( c4.) |
   ef8-.( ef-. ef-. ef) d16( ef f16. ef32 ef4.) bf |
   bf'( a4 g8 <f a,>4. <d bf> |
   <ef g,>) \stemUp <d a>8-._( <c a>-. <d a>-. <bf f>-.) \stemNeutral <b fs>-.( <b e,>-. <c bf e,>-. <c a f>-. <d af>-.) |
@@ -118,7 +118,7 @@ upper = \relative {
   bf8( d') cs(-. \tuplet 13/6 { c16-. b-. bf-. a-. af-. f-. d-. cf->) bf d g f ef } ef4.~ 8 d ef |
 
   \barNumberCheck #17
-  f4.( g4 ef8) f4.( c4.) |
+  f4.( g4 f8) f4.( c4.) |
   \tuplet 4/3 { ef8( 8 8 8 } ef d16 ef f16. ef32 ef4.) bf |
   bf'( a4 g8 <f a,>4. <d bf> |
   <ef g,>) \stemUp <d a>8-._( <c a>-. <d a>-. <bf f>-.) \stemNeutral <b fs>-.( <b e,>-. <c bf e,>-. <c a f>-. <d af>-.) |
@@ -142,7 +142,7 @@ upper = \relative {
 
   \barNumberCheck #25
   ef4. f8( ef f g2.) |
-  ef4.~ 16( g f) f( ef f g4)
+  ef4.~ 16( f ef) f( ef f g4)
   \once \override Script.avoid-slur = #'outside
   ef8\turn( ef')  d c |
   bf4 a8( af) c, d
@@ -168,12 +168,12 @@ upper = \relative {
       s2. s2 s8 s16 s32
       \cadenzaOn
       \stemUp
-      \repeat unfold 12 { cf16[ bf c a] }
+      \repeat unfold 12 { cf!16[ bf c a] }
       cf16[ bf d c]
       bf[ a af g]
       f[_( d ef \once \omit Accidental c]
       \ottava #0
-      bf8[ af af, bf])
+      bf8[ af c, d])
       \stemNeutral
       \cadenzaOff
       s32
