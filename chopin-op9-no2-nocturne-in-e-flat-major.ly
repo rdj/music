@@ -189,6 +189,20 @@ upper = \relative {
   <ef g,>4. <ef' g,> <ef,, g,>2.\fermata |
 }
 
+%% For mm. 13, 21: draws a dashed line from grace note g'
+%% in the upper staff to ef, in the lower
+graceNoteLine = \absolute {
+  \change Staff = "up"
+  \hideNotes
+  \grace
+  g'8.
+  -\tweak style #'dashed-line
+  -\tweak bound-details.left.start-at-dot #f
+  -\glissando
+  \change Staff = "down"
+  ef,8
+}
+
 lower = \absolute {
   \clef bass
   r8 |
@@ -257,7 +271,10 @@ lower = \absolute {
   <bf d'> <a ds'> gs g <f! c' ef'> <bf f'> |
 
   \barNumberCheck #13
-  ef, <g ef'> <bf ef' g'>
+  <<
+    \graceNoteLine \\
+    { \oneVoice ef, <g ef'> <bf ef' g'> }
+  >>
   ef <af d'> <bf d' af'>
   ef <g ef'> <bf ef' g'>
   d  <g ef'> <bf ef' g'> |
@@ -298,7 +315,10 @@ lower = \absolute {
   <bf d'> <a ds'> gs g <f! c' ef'!> <bf f'> |
 
   \barNumberCheck #21
-  ef,-. <g ef'>( <bf ef' g'>)
+  <<
+    \graceNoteLine \\
+    { \oneVoice ef,-. <g ef'>( <bf ef' g'>) }
+  >>
   ef -. <af d'>( <bf d' af'>)
   ef -. <g ef'>( <bf ef' g'>)
   d  ( <g ef'> <bf ef' g'>) |
