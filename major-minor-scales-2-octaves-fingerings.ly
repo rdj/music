@@ -12,6 +12,7 @@
     \Score
     \omit BarNumber
     \omit TimeSignature
+    \accidentalStyle piano
   }
 }
 
@@ -189,6 +190,124 @@ thumbs = \markup \parenthesize \tiny \number 1
     ds e^1_1 fs_4 gs^3_3 as bs^1_1 cs^3_3 b_1 |
     a gs^3_3 fs e_1 ds^4 cs^3_3 b_1 a |
     gs^3_3 fs e_1 ds^4 cs4^3_3 r |
+    \break
+  }
+}
+
+\new Staff {
+  \clef treble
+  \key b \major
+  \time 4/4
+  \relative {
+    b8^\markup{B Major \thumbs}^1_4
+    cs ds e^1_1 fs_4 gs as b^1_1 |
+    cs_3 ds e^1_1 fs_4 gs as b^5_1 as |
+    gs fs e^1_1 ds^3 cs b^1_1 as^4 gs |
+    fs e^1_1 ds^3 cs b4^1_4 r |
+    \break
+  }
+  \relative {
+    gs8^\markup{\concat{G \rsharp} Natural Minor \thumbs}^3_3
+    as b^1_1 cs_3 ds e^1_1 fs_4 gs |
+    as b^1_1 cs_3 ds e^1_1 fs_3 gs^3_2 fs |
+    e^1_1 ds^3 cs b^1_1 as^4 gs fs e^1_1 |
+    ds^3 cs b^1_1 as^4 gs4^3_3 r |
+    \break
+  }
+  \relative {
+    gs8^\markup{\concat{G \rsharp} Harmonic Minor \threes}^3_3
+    as b^1 cs_4 ds^3_3 e^1 fss gs^3_3 |
+    as b^1 cs_4 ds^3_3 e^1 fss gs^3_3 fss_1 |
+    e ds^3_3 cs b_1 as^4 gs^3_3 fss_1 e |
+    ds^3_3 cs b_1 as^4 gs4^3_3 r |
+    \break
+  }
+  \relative {
+    gs8^\markup{\concat{G \rsharp} Melodic Minor \concat{( \three} ascending; \one descending — LH changes)}^3_3
+    as b^1 cs_4 ds^3_3 es^1 fss gs^3_3 |
+    as b^1 cs_4 ds^3_3 es^1 fss gs^3_2 fs |
+    e^1_1 ds^3 cs b^1_1 as^4 gs fs e^1_1 |
+    ds^3 cs b^1_1 as^4 gs4^3_3 r |
+    \break
+  }
+}
+
+\pageBreak
+
+\new Staff {
+  \clef treble
+  \key fs \major
+  \time 4/4
+  \relative {
+    fs8^\markup{\concat{ F \rsharp} Major \thumbs}^2_4
+    gs as b^1_1 cs_3 ds es^1_1 fs_4 |
+    gs as b^1_1 cs_3 ds es^1_1 fs es^1_1 |
+    ds^3 cs b^1_1 as^4 gs fs es^1_1 ds^3 |
+    cs b^1_1 as^4 gs fs4 r |
+    \break
+  }
+  \relative {
+    ds'8^\markup{\concat{D \rsharp} Natural Minor \thumbs}^3_2
+    es^1_1 fs_4 gs as b^1_1 cs_3 ds |
+    es^1_1 fs_4 gs as b^1_1 cs_3 ds cs |
+    b^1_1 as^4 gs fs es^1_1 ds^3 cs b^1_1 |
+    as^4 gs fs es^1_1 ds4 r |
+    \break
+  }
+  \relative {
+    ds'8^\markup{\concat{D \rsharp} Harmonic Minor \thumbs}^3_2
+    es^1_1 fs_4 gs as b^1_1 css_3 ds |
+    es^1_1 fs_4 gs as b^1_1 css_3 ds css |
+    b^1_1 as^4 gs fs es^1_1 ds^3 css b^1_1 |
+    as^4 gs fs es^1_1 ds4 r |
+    \break
+  }
+  \relative {
+    ds'8^\markup{\concat{D \rsharp} Melodic Minor \thumbs}^3_2
+    es^1_1 fs_4 gs as bs^1_1 css_3 ds |
+    es^1_1 fs_4 gs as bs^1_1 css_3 ds cs |
+    b^1_1 as^4 gs fs es^1_1 ds^3 cs b^1_1 |
+    as^4 gs fs es^1_1 ds4 r |
+    \break
+  }
+}
+
+\new Staff {
+  \clef treble
+  \key cs \major
+  \time 4/4
+  \relative {
+    cs'8^\markup{\concat{ C \rsharp} Major \thumbs}^2_3
+    ds es^1_1 fs_4 gs as bs^1_1 cs_3 |
+    ds es^1_1 fs_4 gs as bs^1_1 cs bs^1_1 |
+    as^4 gs fs es^1_1 ds^3 cs bs^1_1 as^4 |
+    gs fs es^1_1 ds^3 cs4 r |
+    \break
+  }
+  \relative {
+    as8^\markup{\concat{A \rsharp} Natural Minor \thumbs}_2
+    bs^1_1 cs_3 ds es^1_1 fs_4 gs as |
+    bs^1_1 cs_3 ds es^1_1 fs_4 gs as
+    gs |
+    fs es^1_1 ds^3 cs bs^1_1 as^4 gs fs |
+    es^1_1 ds^3 cs bs^1_1 as4 r |
+    \break
+  }
+  \relative {
+    as8^\markup{\concat{A \rsharp} Harmonic Minor \thumbs}_2
+    bs^1_1 cs_3 ds es^1_1 fs_4 gss as |
+    bs^1_1 cs_3 ds es^1_1 fs_4 gss as gss |
+    fs es^1_1 ds^3 cs bs^1_1 as^4 gss fs |
+    es^1_1 ds^3 cs bs^1_1 as4 r |
+    \break
+  }
+  \relative {
+    as8^\markup{\concat{A \rsharp} Melodic Minor \thumbs}_2
+    bs^1_1 cs_3 ds es^1_1 fss_4 gss as |
+    bs^1_1 cs_3 ds es^1_1 fss_4 gss as
+    gs |
+    fs es^1_1 ds^3 cs bs^1_1 as^4 gs fs |
+    es^1_1 ds^3 cs bs^1_1 as4 r |
     \break
   }
 }
