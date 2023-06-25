@@ -311,3 +311,43 @@ thumbs = \markup \parenthesize \tiny \number 1
     \break
   }
 }
+
+\pageBreak
+
+\new Staff {
+  \clef treble
+  \key f \major
+  \time 4/4
+  \relative {
+    f8^\markup{F Major \thumbs}^1_5
+    g a bf c^1_1 d_3 e f^1_1 |
+    g_4 a bf c^1_1 d_3 e f^4_1 e |
+    d c^1_1 bf^4 a g f^1_1 e^3 d |
+    c^1_1 bf^4 a g f4^1_5 r |
+    \break
+  }
+  \relative {
+    d'8^\markup{D Natural Minor \threes}^1_5
+    e f^3_3 g^1 a bf^3_3 c d^1_1 |
+    e_4 f^3_3 g^1 a bf^3_3 c d^5_1 c |
+    bf^3_3 a_1 g f^3_3 e d^1_1 c^4 bf^3_3 |
+    a_1 g f^3 e d4^1_5 r |
+    \break
+  }
+  \relative {
+    d'8^\markup{D Harmonic Minor \threes}^1_5
+    e f^3_3 g^1 a bf^3_3 cs d^1_1 |
+    e_4 f^3_3 g^1 a bf^3_3 cs d^5_1 cs |
+    bf^3_3 a_1 g f^3_3 e d^1_1 cs^4 bf^3_3 |
+    a_1 g f^3 e d4^1_5 r |
+    \break
+  }
+  \relative {
+    d'8^\markup{D Melodic Minor \threes}^1_5
+    e f^3_3 g^1 a b^3_3 cs d^1_1 |
+    e_4 f^3_3 g^1 a b^3_3 cs d^5_1 c |
+    bf^3_3 a_1 g f^3_3 e d^1_1 c^4 bf^3_3 |
+    a_1 g f^3 e d4^1_5 r |
+    \break
+  }
+}
