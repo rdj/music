@@ -74,34 +74,86 @@ upper_first_theme = \relative {
 upper_B_soprano = \absolute {
   s1*7 |
   \once \hide NoteHead
-  \repeat unfold 40 { gf'8 } |
-  \repeat unfold 3 \repeat unfold 8 <bf bf'>8 |
+  \repeat unfold 40 { gs'8 } |
+  \repeat unfold 3 \repeat unfold 8 <b b'>8 |
+
+  s1 |
+
+  \barNumberCheck #44
+
+  s1*7 |
+  \once \hide NoteHead
+  \repeat unfold 40 { gs'8 } |
+  \repeat unfold 3 \repeat unfold 8 <b b'>8 |
+
+  \barNumberCheck #59
+
+  <b ds' gs' b'>8
+  \repeat unfold 7 gs'8 |
 }
 
 upper_B_alto = \relative {
-  s1*7 |
+  \relative {
+    s1*7 |
+    s1 |
+    s2 cs'4 bs |
+    s2 ds4 cs4~ |
+    4 ds e ds |
+    ds1 |
+    <e gs>2 <ds gs>2 |
+    <e gs>2 <ds gs>2 |
+    <gs ds>2 <fss ds>2 |
+  }
+
   s1 |
-  s2 c'4 bs |
-  s2 df4 c4~ |
-  4 df ef df |
-  df1 |
-  <ef gf>2 <df gf>2 |
-  <ef gf>2 <df gf>2 |
-  <gf df>2 <fss df>2 |
+
+  \barNumberCheck #44
+
+  \relative {
+    s1*7 |
+    s1 |
+    s2 cs'4 bs |
+    s2 ds4 cs4~ |
+    4 ds e ds |
+    ds1 |
+    <e gs>2 <ds gs>2 |
+    <e gs>2 <ds gs>2 |
+    <gs ds>2 <fss ds>2 |
+  }
 }
 
 lower_B_soprano = \absolute {
   \repeat unfold 7 {
-    \repeat unfold 8 { gf8 } |
+    \repeat unfold 8 { gs8 } |
   }
   \autoBeamOff
-  \crossStaff \repeat unfold 40 { gf8 }
+  \crossStaff \repeat unfold 40 { gs8 }
   \autoBeamOn
   s1*3 |
+
   \change Staff = "up"
-  <bf df' gf' bf'>8
+  <b ds' gs' b'>8
   \change Staff = "down"
-  \repeat unfold 7 gf8
+  \repeat unfold 7 gs8 |
+
+  \barNumberCheck #44
+
+  %% All but the last measure repeats
+  \repeat unfold 7 {
+    \repeat unfold 8 { gs8 } |
+  }
+  \autoBeamOff
+  \crossStaff \repeat unfold 40 { gs8 }
+  \autoBeamOn
+  s1*3 |
+}
+
+upper_C_soprano = {
+  \barNumberCheck #60
+}
+
+upper_C_alto = {
+  \barNumberCheck #60
 }
 
 upper = \relative {
@@ -154,6 +206,9 @@ upper = \relative {
   \oneVoice
   r2 |
 
+  \barNumberCheck #28
+  \key cs \minor
+
   <<
     \new Voice = "soprano" {
       \voiceOne
@@ -170,11 +225,28 @@ upper = \relative {
       \lower_B_soprano
     }
   >>
+
+<<
+  \new Voice = "soprano" {
+    \voiceOne
+    \upper_C_soprano
+  }
+  \new Voice = "alto" {
+    \voiceTwo
+    \upper_C_alto
+  }
+>>
 }
 
 lower = \relative {
   \clef bass
-  s1*89
+  s1*27 |
+  \barNumberCheck #28
+  \key cs \minor
+  s1*48 |
+  \barNumberCheck #76
+  \key df \major
+  s1*14
 }
 
 above = {
