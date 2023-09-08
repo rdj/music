@@ -36,9 +36,9 @@ twice = #(define-music-function (music) (ly:music?) #{ \repeat unfold 2 $music #
     printKeyCancellation = ##f
 
     %% Don't break beams between beat one and two
-    beamException = #'()
+    beamExceptions = #'()
     baseMoment = #(ly:make-moment 1/2)
-    beatStructure = 1
+    beatStructure = #'(1)
   }
 }
 
