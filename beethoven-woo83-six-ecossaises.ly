@@ -397,7 +397,7 @@ no.6.lower = \relative {
   bf c d c |
   bf af g f |
 
-  ef4 ef, |
+  ef4 g, |
   \common.refrain_skip_first.lower
 }
 
