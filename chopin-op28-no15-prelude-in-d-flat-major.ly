@@ -68,7 +68,7 @@ global = {
 upper_first_theme = \relative {
   f''8.\( df16 af2 bf4 |
   c2. df4 ef8. f16 gf2 f4 |
-  f4. ef8 df4
+  f4. ef8
 }
 
 upper_B_soprano = \absolute {
@@ -148,8 +148,27 @@ lower_B_soprano = \absolute {
   s1*3 |
 }
 
-upper_C_soprano = {
+upper_C_soprano = \relative {
   \barNumberCheck #60
+
+  <bs' bs,>2\( <cs cs,> |
+  <ds cs ds,>2. <ds bs ds,>4 |
+  <e ds e,>4 <e cs e,> <ds cs ds,> <ds bs ds,> |
+  <cs cs,>1\) |
+
+  <gs ds bs>2\( <gs e cs>4 <gs cs, as> |
+  <gs ds bs> <gs e cs> <gs cs, as> <gs e cs> |
+  q <gs ds bs> <gs fs ds> <gs e cs> |
+  <gs ds bs>1\) |
+
+  <bs ds, bs>2\( <cs cs,> |
+  <ds cs ds,>2. <ds bs ds,>4 |
+  <e ds ds,>4 <e cs e,> <ds cs ds,> <ds bs ds,> |
+  <cs b gs>2 <cs a gs>4 <cs a fs> |
+  <gs fs ds>2 <gs fs cs>4 <as e cs> |
+  <as e cs>2 <gs ds bs>4\) <as e cs>4\( |
+  <as e cs>2 <gs ds bs>4\) <as e cs>\( |
+  <as e cs> <gs ds bs>\) s2 |
 }
 
 upper_C_alto = {
@@ -162,9 +181,10 @@ upper = \relative {
   \voiceOne
   \upper_first_theme
   \relative {
-    \grace ef''8 \tuplet 7/2 { ef8_( f ef d ef f gf)\) } |
+    df''4
+    \grace ef8 \tuplet 7/2 { ef8_( f ef d ef f gf)\) } |
   }
-  \upper_first_theme \)
+  \upper_first_theme \absolute { df''4 } \)
 
   \oneVoice
   \relative {
@@ -196,9 +216,10 @@ upper = \relative {
 
   \voiceOne
   \upper_first_theme
-  \tuplet 7/2 \relative { d''8 ef e f af g gf\) } |
   \relative {
-    f''8.\( df16 af2 bf4 |
+    df''4
+    \tuplet 7/2 { d8_( ef e f af g gf)\) } |
+    f8.\( df16 af2 bf4 |
     c2. df4 ef8. f16 gf2\) c,4( |
     ef2)
   }
@@ -236,6 +257,15 @@ upper = \relative {
     \upper_C_alto
   }
 >>
+
+  \barNumberCheck #76
+  \key df \major
+  
+  \voiceOne
+  \upper_first_theme
+  \relative {
+    df''8. d16 \tuplet 10/4 { ef16_( f ef d ef e f af g gf)\) } |
+  }
 }
 
 lower = \relative {
