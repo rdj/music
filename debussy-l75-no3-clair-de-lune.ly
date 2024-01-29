@@ -31,6 +31,9 @@ global = {
   \tempo "Andante très expressif"
 }
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% A = mm. 1-14 "Andante très expressif"
+
 upper.A_soprano = \relative {
   s8
   \change Staff = "down"
@@ -177,11 +180,11 @@ lower.A = {
 }
 
 editorial.above.A = {
-  %% marks above the grand staff
+  s1*9/8*14 |
+  \barNumberCheck #15
 }
 
 editorial.between.A = {
-  %% marks between the staves, e.g. dynamics
   s8\pp
   s8
   s16
@@ -197,10 +200,12 @@ editorial.between.A = {
   \tuplet 2/3 {
     s8 s8\> s8 s8\!
   } |
+  \barNumberCheck #15
 }
 
 editorial.below.A = {
-  %% marks below the grand staff, e.g. pedal marks
+  s1*9/8*14 |
+  \barNumberCheck #15
 }
 
 breaks_ref = {
