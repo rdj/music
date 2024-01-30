@@ -21,7 +21,7 @@
     \PianoStaff
     \consists "Span_stem_engraver"
     \accidentalStyle piano
-    %% \override TupletBracket.bracket-visibility = ##t
+    \override TupletBracket.bracket-visibility = ##f
   }
 }
 
@@ -208,6 +208,246 @@ editorial.below.A = {
   \barNumberCheck #15
 }
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% B = mm. 15-26 "Tempo rubato"
+
+upper.B_soprano = \relative {
+  \oneVoice
+
+  \once \override TupletBracket.bracket-visibility = ##t
+  \tuplet 2/3 {
+    r8 <f'' bf f'>8^-~\(
+  }
+  q8 <ef bf' ef>^- q^-
+  q^- <df bf' df>^- q^- |
+  q^- <c gf' bf c>^- q^-
+  \tuplet 2/3 {
+    q^- <df bf' df>^-
+  }
+  <bf gf' bf>4.^-\) |
+
+  \once \override TupletBracket.bracket-visibility = ##t
+  \tuplet 2/3 {
+    r8 <f' bf f'>8^-~\(
+  }
+  q <gf bf gf'> <f bf f'>
+  <ef bf' ef> <f bf f'> <ef bf' ef> |
+  <df bf' df> <ef bf' ef> <df bf' df>
+  \tuplet 2/3 {
+    <c bf' c>
+    \slashedGrace ef'
+    %-\vshape #'(((0 . 0) (0 . 0) (0 . 0) (0 . 0)))
+    (
+    <df bf) df,>
+  }
+  <bf, gf' bf>4.~\) |
+  \tuplet 6/9 {
+    q8[\( <gf gf'> <af ef' af> <c c'> <bf gf' bf> <gf gf'>]\)
+  } |
+  r8 <gf c ef gf>^-\( q^- q^- q^- <af c ef af>^- <gf c ef gf>4.^-\) |
+
+  \voiceOne
+  \tuplet 6/9 {
+    r8 <gf gf'>[\( <af af'> <df df'> <bf bf'> <gf gf'>]\)
+  } |
+  \oneVoice
+  r8 <gf bf ef gf>^-\( q^- q^- q^- <af c f af>^- <gf bf ef gf>4.^-\) |
+  \voiceOne
+  \tuplet 6/9 {
+    r8 <gf gf'>[\( <af af'> <ef' ef'> <df df'> <bf bf'>]\)
+  } |
+  \oneVoice
+  r8 <bf gf' bf>\( q q q <c af' c> <bf gf' bf> <df bf' df> <ef bf' ef>\) |
+
+  \ottava #1
+  <af df af'>2.^-\arpeggio q4.^-\arpeggio |
+  q2.^-\arpeggio
+  \ottava #0
+  <af, ef' af>4.^-\arpeggio |
+}
+
+upper.B_alto = \relative {
+  s1*9/8*6 |
+  \barNumberCheck #21
+  \once \omit TupletNumber
+  \tuplet 6/9 {
+    s8 df''4 s8 gf4
+  } |
+  s1*9/8 |
+  \once \omit TupletNumber
+  \tuplet 6/9 {
+    s8 <df bf>4 s8 <bf' gf>4
+  } |
+  s1*9/8*3 |
+}
+
+upper.B = {
+  <<
+    \context Voice = "soprano" {
+      \voiceOne
+      \upper.B_soprano
+    }
+    \context Voice = "alto" {
+      \voiceTwo
+      \upper.B_alto
+    }
+  >>
+}
+
+lower.B_tenor = \relative {
+  \once \override TupletBracket.bracket-visibility = ##t
+  \tuplet 2/3 {
+    r8
+    \clef treble
+    \override TieColumn.tie-configuration = #'((0 . 1) (-1 . 1) (-4 . -1))
+    <bf' gf f>_-~_\(
+  }
+  q8
+  \revert TieColumn.tie-configuration
+  <bf gf ef>_- q_-
+  q_- <bf gf df>_- q_-
+  q_- <bf gf c,>_- q_-
+  \tuplet 2/3 {
+    q_- <bf gf df>_-
+  }
+  <gf df bf>4._-\) |
+  \clef bass
+  \tuplet 2/3 {
+    s8
+    \clef treble
+    \override TieColumn.tie-configuration = #'((0 . 1) (-1 . 1) (-4 . -1))
+    <bf gf f>_-~_\(
+  }
+  q8
+  \revert TieColumn.tie-configuration
+  <ef bf gf> <bf gf f>
+  <bf gf ef> <bf gf f> <bf gf ef> |
+  <bf gf df> <bf gf ef> <bf gf df>
+  \tuplet 2/3 { <bf gf c,> <bf gf df> }
+  <gf ef bf>4.\) |
+  \clef bass
+  <<
+    \relative {
+      \voiceOne
+      \stemDown
+      \tupletDown
+      \tweak TupletNumber.Y-offset #-2.5
+      \tuplet 6/9 {
+        r8 gf[_\( af c bf gf]\)
+      } |
+      r8 <gf c ef>^\( q
+      q q <af c ef> <gf c ef>4.\) |
+      \tweak TupletNumber.Y-offset #-2.5
+      \tuplet 6/9 {
+        r8 gf[_\( af df bf gf]\)
+      } |
+      r8 <gf bf ef>^-\( q^-
+      q^- q^- <af c f>^-
+      <gf bf ef>4.^-\) |
+      \tweak TupletNumber.Y-offset #-2
+      \tuplet 6/9 {
+        r8 gf[_\( af ef' df bf]\)
+      } |
+      r8 <bf df gf>_\( q q q <c ef af> <bf df gf>
+      \clef treble
+      <df gf bf> <ef gf bf>\) |
+    } \\
+    \relative {
+      \voiceThree
+      \once \omit TupletNumber
+      \tuplet 6/9 {
+        s8 s8 <c' ef>4 <ef gf>4
+      } |
+      s1*9/8 |
+      \once \omit TupletNumber
+      \tuplet 6/9 {
+        s8 <bf df>4 s8 <gf' df>4
+      } |
+      s1*9/8 |
+      \once \omit TupletNumber
+      \tuplet 6/9 {
+        s8 <df bf>4 s8 <bf' gf>4
+      } |
+    }
+  >>
+
+  \oneVoice
+  <f af df f>2.\arpeggio^-\( <ff af bf df ff>4.\arpeggio^- |
+  \once \stemDown
+  <ef gf af df ef>2.\arpeggio^-\) <af, ef' gf c>4.\arpeggio |
+  \clef bass
+}
+
+lower.B_bass = \relative {
+  <ef, ef,>2. s4. |
+  s1*9/8 |
+  <<
+    \absolute {
+      \voiceTwo
+      <ef, ef,,>2.
+    } \\
+    \absolute {
+      \voiceThree
+      bf,2.^\markup { \small \italic "m.d." }
+    }
+  >>
+  s4. |
+  s1*9/8 |
+  <af af,>2. s4. |
+  <a a,>2. s4. |
+  <bf bf,>2. s4. |
+  <c c,>2. s4. |
+  <df df,>2. s4. |
+  <ef ef,>2. s4. |
+  s1*9/8 * 2 |
+  \barNumberCheck #27
+}
+
+lower.B = {
+  <<
+    \context Voice = "tenor" {
+      \voiceOne
+      \lower.B_tenor
+    }
+    \context Voice = "bass" {
+      \voiceTwo
+      \lower.B_bass
+    }
+  >>
+}
+
+editorial.above.B = {
+  s8\tempo "Tempo rubato"
+  s1*8/8 |
+  s1*9/8*3 |
+  s8 s8-
+  \markup {
+    \override #'(line-width . 45)
+    \fill-line { peu à peu cresc. et animé }
+  }
+  s8 s2. |
+  s1*9/8*7 |
+  \barNumberCheck #27
+}
+
+editorial.between.B = {
+  s8\pp
+  s1*8/8 |
+  s1*9/8*9 |
+  s8-
+  \markup {
+    \override #'(line-width . 20)
+    \fill-line { dim. molto }
+  } s4 s2. |
+  s1*9/8*1 |
+  \barNumberCheck #27
+}
+
+editorial.below.B = {
+  s1*9/8*12 |
+  \barNumberCheck #27
+}
+
 breaks_ref = {
   R1*9/8 * 3 | \break
   \barNumberCheck #4
@@ -275,23 +515,28 @@ breaks_ref = {
     \new Dynamics {
       \global
       \editorial.above.A
+      \editorial.above.B
     }
     \new Staff = "up" {
       \global
       \upper.A
+      \upper.B
       \bar "|."
     }
     \new Dynamics {
       \global
       \editorial.between.A
+      \editorial.between.B
     }
     \new Staff = "down" {
       \global
       \lower.A
+      \lower.B
     }
     \new Dynamics {
       \global
       \editorial.below.A
+      \editorial.below.B
     }
     \new Dynamics {
       \global
