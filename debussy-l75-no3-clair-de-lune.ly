@@ -22,6 +22,7 @@
     \consists "Span_stem_engraver"
     \accidentalStyle piano
     \override TupletBracket.bracket-visibility = ##f
+    printKeyCancellation = ##f
   }
 }
 
@@ -146,14 +147,10 @@ lower.A_bass = \relative {
   af2. gf4. |
   f2. \tuplet 2/3 { ef8 af,^~ } |
   \oneVoice
-  \override Beam.auto-knee-gap = #1
-  \override Beam.positions = #'(2.75 . 3.5)
   <af df,>8_\(
   \change Staff = "up"
   <af' f>
   \change Staff = "down"
-  \revert Beam.auto-knee-gap
-  \revert Beam.positions
   \clef treble
   <f' af>~ q2.\) |
   \clef bass
@@ -417,9 +414,8 @@ lower.B = {
 }
 
 editorial.above.B = {
-  s8\tempo "Tempo rubato"
-  s1*8/8 |
-  s1*9/8*3 |
+  \tempo "Tempo rubato"
+  s1*9/8*4 |
   s8 s8-
   \markup {
     \override #'(line-width . 45)
@@ -446,6 +442,184 @@ editorial.between.B = {
 editorial.below.B = {
   s1*9/8*12 |
   \barNumberCheck #27
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% C = mm. 27-36  "Un poco mosso"
+
+upper.C_soprano = \relative {
+  <af' f>2.\( cf4 df8\) |
+  <af f>2.\( <cf af>4 af8\) |
+  \oneVoice
+  <df f,>4\( <ef af,>8 <f df>4. <df f,>4 <f df>8\)
+  <g ef>\( <f df> <df bf>
+  \voiceOne
+  <df bf>4.\) r4 r8 |
+  bf2.\( c4 f8\) |
+  bf,2.\( c4 f8\) |
+  gf4.~\(
+  \tuplet 4/6 {
+    8[ f d ef]
+  } |
+  bf'2. af4.\)
+  <af f>2.\( <cf af>4 df8\) |
+  <af f>2.\( <b gs>4 gs8\) |
+}
+
+upper.C_alto = \relative {
+  s2. af'4. |
+  s1*9/8*2 |
+  s1*3/8
+  \change Staff = "down"
+  \once \stemUp
+  g8
+  -\shape #'((1 . 1.5) (-1 . 6) (0 . -1) (0 . 0))
+  \(
+  \change Staff = "up"
+  f df
+  df8. bf\) |
+
+  s2. s4 af'16 f |
+  s2. s4 af16 f |
+  s4. gf'16 gf, bf f' gf, bf d gf, bf ef gf, bf |
+  s1*9/8*3 |
+}
+
+upper.C = {
+  <<
+    \context Voice = "soprano" {
+      \voiceOne
+      \upper.C_soprano
+    }
+    \context Voice = "alto" {
+      \voiceTwo
+      \upper.C_alto
+    }
+  >>
+}
+
+up = {
+  \change Staff = "up"
+  \stemDown
+}
+dn = {
+  \change Staff = "down"
+  \voiceOne
+}
+
+lower.C_tenor = \relative {
+  \mergeDifferentlyDottedOn
+  %% Not sure why lilypond gets confused here, but it places the two
+  %% staves too close together in this particular system and then
+  %% complains about the beam slope on the staff-crossing figuration.
+  %% We can fix it by just adding a little space between the staves.
+  %% It doesn't happen every time because often there are other
+  %% objects between the staff like hairpins that it has to work to
+  %% avoid, introducing more space naturally.
+  \once \override Score.NonMusicalPaperColumn.line-break-system-details = #'((alignment-distances . (11)))
+  df,16_\( af' df f \up af df\) \dn
+  f,,_\( c' f \up af c f\) \dn
+  af,,_\( ff' af \up cf ff af\) \dn
+  df,,,_\( af' df f \up af df\) \dn
+  f,,_\( c' f \up af c f\) \dn
+  af,,_\( ff' af \up cf af' ff\) \dn
+  s1*9/8*2
+  af,,16_\( ef' gf bf \up c gf'\) \dn
+  gf,,_\( df' gf bf \up df gf\) \dn
+  f,,_\( c' f af c8\) |
+  af,16_\( ef' gf bf \up c gf'\) \dn
+  gf,,_\( df' gf bf \up df gf\) \dn
+  f,,_\( c' f af c8\) |
+  ef,,16_\( bf' ef gf bf ef\) s1*6/8 |
+  d16_\( gf bf \up bf gf' bf\) \dn
+  ef,,_\( gf bf \up bf gf' bf\) \dn
+  c,,
+  _\shape #'((1 . 0.5) (0 . 0) (0 . 0) (0 . 0)) \(
+  e af \up c e af\) \dn |
+  \once \override Score.NonMusicalPaperColumn.line-break-system-details = #'((alignment-distances . (12)))
+  df,,,
+  _\shape #'((0 . 0) (0 . 0) (0 . -2) (0 . 0)) \(
+  af' df f \up af df\) \dn
+  af,
+  _\shape #'((1 . 0.5) (0 . 0) (0 . -2) (0 . 0)) \(
+  c f \up af c f\) \dn
+  cf,
+  _\shape #'((1 . 0.5) (0.5 . 0) (0.5 . -3) (0 . 0)) \(
+  ff a \up cf ff a\) \dn |
+  df,,,
+  _\shape #'((0 . 0) (0 . 0) (0 . -2) (0 . 0)) \(
+  af' df f \up af df\) \dn
+  af,
+  _\shape #'((1 . 0.5) (0 . 0) (0 . -2) (0 . 0)) \(
+  c f \up af c f\) \dn
+  b,,
+  _\shape #'((1 . 0.5) (0 . 0) (0.5 . -2) (0 . 0)) \(
+  e gs \up b gs'! e\) \dn |
+}
+
+lower.C_bass = \relative {
+  df,4. f af |
+  df, f af |
+  df,16^\( af' df f af df f af f df af f af f df af df af\) |
+  ef_\( bf' ef g bf ef g ef bf g ef df ef, bf' ef g ef bf\) |
+  af4. gf f |
+  af gf f |
+  ef4.
+  \tuplet 4/6 {
+    gf''8[^\( f d ef]\)
+  } |
+  \clef treble
+  d4. ef af, |
+  \clef bass
+  df,4. f af |
+  df, f gs |
+}
+
+lower.C = {
+  <<
+    \context Voice = "tenor" {
+      \voiceOne
+      \lower.C_tenor
+    }
+    \context Voice = "bass" {
+      \voiceTwo
+      \lower.C_bass
+    }
+  >>
+}
+
+editorial.above.C = {
+  \tempo "Un poco mosso"
+  s1*9/8*10 |
+  \barNumberCheck #37
+}
+
+editorial.between.C = {
+  s8\pp
+  s1*8/8 |
+  s1*9/8*1 |
+  \once \override Hairpin.endpoint-alignments = #`(,LEFT . ,LEFT)
+  s4\< s8 s4. s4 s8\! |
+  s1*9/8*1 |
+  s2.\p
+  \once \override Hairpin.endpoint-alignments = #`(,LEFT . ,LEFT)
+  s4\< s16\! s |
+  s2.\p
+  \once \override Hairpin.endpoint-alignments = #`(,LEFT . ,LEFT)
+  s4\< s16\! s |
+  s1*9/8*2 |
+  s16
+  \tweak TextScript.extra-offset  #'(5 . 20)
+  s
+  - \tweak extra-offset  #'(0 . 2.5) - "cresc."
+  s4 s2. |
+  s1*9/8 |
+  \barNumberCheck #37
+}
+
+editorial.below.C = {
+  s1*9/8*10 |
+  \barNumberCheck #37
 }
 
 breaks_ref = {
@@ -516,27 +690,38 @@ breaks_ref = {
       \global
       \editorial.above.A
       \editorial.above.B
+      \editorial.above.C
     }
     \new Staff = "up" {
       \global
       \upper.A
       \upper.B
+      \upper.C
+      \bar "||"
+      \key cs \minor
+      R1*9/8*12
       \bar "|."
     }
     \new Dynamics {
       \global
       \editorial.between.A
       \editorial.between.B
+      \editorial.between.C
     }
     \new Staff = "down" {
       \global
       \lower.A
       \lower.B
+      \lower.C
+      \key cs \minor
+      \clef treble
+      R1*9/8*12
     }
     \new Dynamics {
       \global
       \editorial.below.A
       \editorial.below.B
+      \editorial.below.C
     }
     \new Dynamics {
       \global

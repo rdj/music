@@ -20,6 +20,7 @@
   \context {
     \PianoStaff
     \accidentalStyle piano
+    printKeyCancellation = ##f
     %% \override TupletBracket.bracket-visibility = ##t
   }
 }
