@@ -10,9 +10,9 @@
 
 \header {
   title = "Clair de Lune"
-  subsubtitle = \markup { "From" \italic "Suite bergamasque" "(1905)" }
+  subsubtitle = \markup { "No. 3 from" \italic "Suite bergamasque" "(1905)" }
   composer = "Claude Debussy"
-  opus = "L. 75 (1890–1905)"
+  opus = "L. 75, No. 3 (1890–1905)"
   tagline = ##f
 }
 
