@@ -622,6 +622,278 @@ editorial.below.C = {
   \barNumberCheck #37
 }
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% D = mm. 37-42 "En animant"
+
+upper.D_soprano = \relative {
+  \barNumberCheck #37
+  s1*9/8*6 |
+  \barNumberCheck #43
+}
+
+upper.D_alto = \relative {
+}
+
+upper.D = {
+  \key cs \minor
+  <<
+    \context Voice = "soprano" {
+      \voiceOne
+      \upper.D_soprano
+    }
+    \context Voice = "alto" {
+      \voiceTwo
+      \upper.D_alto
+    }
+  >>
+}
+
+lower.D_tenor = \relative {
+  \barNumberCheck #37
+  s1*9/8*6 |
+  \barNumberCheck #43
+}
+
+lower.D_bass = \relative {
+}
+
+lower.D = {
+  \key cs \minor
+  <<
+    \context Voice = "tenor" {
+      \voiceOne
+      \lower.D_tenor
+    }
+    \context Voice = "bass" {
+      \voiceTwo
+      \lower.D_bass
+    }
+  >>
+}
+
+editorial.above.D = {
+  \tempo "En animant"
+  \barNumberCheck #37
+  s1*9/8*6 |
+  \barNumberCheck #43
+}
+
+editorial.between.D = {
+  \barNumberCheck #37
+  s1*9/8*6 |
+  \barNumberCheck #43
+}
+
+editorial.below.D = {
+  \barNumberCheck #37
+  s1*9/8*6 |
+  \barNumberCheck #43
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% E = mm. 43-50 "Calmato"
+
+upper.E_soprano = \relative {
+  \barNumberCheck #43
+  s1*9/8*8 |
+  \barNumberCheck #51
+}
+
+upper.E_alto = \relative {
+}
+
+upper.E = {
+  \key df \major
+  <<
+    \context Voice = "soprano" {
+      \voiceOne
+      \upper.E_soprano
+    }
+    \context Voice = "alto" {
+      \voiceTwo
+      \upper.E_alto
+    }
+  >>
+}
+
+lower.E_tenor = \relative {
+  \barNumberCheck #43
+  s1*9/8*8 |
+  \barNumberCheck #51
+}
+
+lower.E_bass = \relative {
+}
+
+lower.E = {
+  \key df \major
+  <<
+    \context Voice = "tenor" {
+      \voiceOne
+      \lower.E_tenor
+    }
+    \context Voice = "bass" {
+      \voiceTwo
+      \lower.E_bass
+    }
+  >>
+}
+
+editorial.above.E = {
+  \tempo Calmato
+  \barNumberCheck #43
+  s1*9/8*8 |
+  \barNumberCheck #51
+}
+
+editorial.between.E = {
+  \barNumberCheck #43
+  s1*9/8*8 |
+  \barNumberCheck #51
+}
+
+editorial.below.E = {
+  \barNumberCheck #43
+  s1*9/8*8 |
+  \barNumberCheck #51
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% A′ = mm. 51-65 "a Tempo 1º"
+
+upper.A′_soprano = \relative {
+  \barNumberCheck #51
+  s1*9/8*15 |
+  \barNumberCheck #66
+}
+
+upper.A′_alto = \relative {
+}
+
+upper.A′ = {
+  <<
+    \context Voice = "soprano" {
+      \voiceOne
+      \upper.A′_soprano
+    }
+    \context Voice = "alto" {
+      \voiceTwo
+      \upper.A′_alto
+    }
+  >>
+}
+
+lower.A′_tenor = \relative {
+  \barNumberCheck #51
+  s1*9/8*15 |
+  \barNumberCheck #66
+}
+
+lower.A′_bass = \relative {
+}
+
+lower.A′ = {
+  <<
+    \context Voice = "tenor" {
+      \voiceOne
+      \lower.A′_tenor
+    }
+    \context Voice = "bass" {
+      \voiceTwo
+      \lower.A′_bass
+    }
+  >>
+}
+
+editorial.above.A′ = {
+  \tempo "a Tempo 1º"
+  \barNumberCheck #51
+  s1*9/8*15 |
+  \barNumberCheck #66
+}
+
+editorial.between.A′ = {
+  \barNumberCheck #51
+  s1*9/8*15 |
+  \barNumberCheck #66
+}
+
+editorial.below.A′ = {
+  \barNumberCheck #51
+  s1*9/8*15 |
+  \barNumberCheck #66
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% C′ = mm. 66-72 "morendo jusqu'à la fin"
+
+upper.C′_soprano = \relative {
+  \barNumberCheck #66
+  s1*9/8*7 |
+  \barNumberCheck #73
+}
+
+upper.C′_alto = \relative {
+}
+
+upper.C′ = {
+  <<
+    \context Voice = "soprano" {
+      \voiceOne
+      \upper.C′_soprano
+    }
+    \context Voice = "alto" {
+      \voiceTwo
+      \upper.C′_alto
+    }
+  >>
+}
+
+lower.C′_tenor = \relative {
+  \barNumberCheck #66
+  s1*9/8*7 |
+  \barNumberCheck #73
+}
+
+lower.C′_bass = \relative {
+}
+
+lower.C′ = {
+  <<
+    \context Voice = "tenor" {
+      \voiceOne
+      \lower.C′_tenor
+    }
+    \context Voice = "bass" {
+      \voiceTwo
+      \lower.C′_bass
+    }
+  >>
+}
+
+editorial.above.C′ = {
+  \barNumberCheck #66
+  s16\pp
+  s -\tweak extra-offset #'(1 . 1) -"morendo jusqu’à la fin"
+  s1*8/8 |
+  s1*9/8*6 |
+  \barNumberCheck #73
+}
+
+editorial.between.C′ = {
+  \barNumberCheck #66
+  s1*9/8*7 |
+  \barNumberCheck #73
+}
+
+editorial.below.C′ = {
+  \barNumberCheck #66
+  s1*9/8*7 |
+  \barNumberCheck #73
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 breaks_ref = {
   R1*9/8 * 3 | \break
   \barNumberCheck #4
@@ -691,6 +963,10 @@ breaks_ref = {
       \editorial.above.A
       \editorial.above.B
       \editorial.above.C
+      \editorial.above.D
+      \editorial.above.E
+      \editorial.above.A′
+      \editorial.above.C′
     }
     \new Staff = "up" {
       \global
@@ -698,8 +974,11 @@ breaks_ref = {
       \upper.B
       \upper.C
       \bar "||"
-      \key cs \minor
-      R1*9/8*12
+      \upper.D
+      \bar "||"
+      \upper.E
+      \upper.A′
+      \upper.C′
       \bar "|."
     }
     \new Dynamics {
@@ -707,21 +986,30 @@ breaks_ref = {
       \editorial.between.A
       \editorial.between.B
       \editorial.between.C
+      \editorial.between.D
+      \editorial.between.E
+      \editorial.between.A′
+      \editorial.between.C′
     }
     \new Staff = "down" {
       \global
       \lower.A
       \lower.B
       \lower.C
-      \key cs \minor
-      \clef treble
-      R1*9/8*12
+      \lower.D
+      \lower.E
+      \lower.A′
+      \lower.C′
     }
     \new Dynamics {
       \global
       \editorial.below.A
       \editorial.below.B
       \editorial.below.C
+      \editorial.below.D
+      \editorial.below.E
+      \editorial.below.A′
+      \editorial.below.C′
     }
     \new Dynamics {
       \global
