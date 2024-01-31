@@ -23,6 +23,7 @@
     \accidentalStyle piano
     \override TupletBracket.bracket-visibility = ##f
     printKeyCancellation = ##f
+    \mergeDifferentlyDottedOn
   }
 }
 
@@ -508,7 +509,6 @@ dn = {
 }
 
 lower.C_tenor = \relative {
-  \mergeDifferentlyDottedOn
   %% Not sure why lilypond gets confused here, but it places the two
   %% staves too close together in this particular system and then
   %% complains about the beam slope on the staff-crossing figuration.
@@ -626,15 +626,29 @@ editorial.below.C = {
 %% D = mm. 37-42 "En animant"
 
 upper.D_soprano = \relative {
-  \barNumberCheck #37
-  s1*9/8*6 |
-  \barNumberCheck #43
+  cs'''4( gs8) e'4( cs8) gs'4( e8) |
+  gs4.( fs2.) |
+  fs2.\( a4 cs8\) |
+  fs,,2.\( a4 cs8\) |
+  \oneVoice
+  <e cs>8\( <ds b> <cs a>
+  \tuplet 2/3 { <b gs> <a fs>~ }
+  q <gs e> <fs ds>\) |
+  \voiceOne
+  <e cs>\( <ds b> <cs a> <b gs> <a fs> <gs e>~ q <fs ds> <e cs>\) |
 }
 
 upper.D_alto = \relative {
+  cs'''8. cs,16 gs' e
+  e'8. e,16 cs' gs
+  gs'8. gs,16 e' b |
+  s1*9/8*4 |
+  \resetRelativeOctave c'
+  s2. a4. |
 }
 
 upper.D = {
+  \barNumberCheck #37
   \key cs \minor
   <<
     \context Voice = "soprano" {
@@ -646,18 +660,47 @@ upper.D = {
       \upper.D_alto
     }
   >>
-}
-
-lower.D_tenor = \relative {
-  \barNumberCheck #37
-  s1*9/8*6 |
   \barNumberCheck #43
 }
 
+lower.D_tenor = \relative {
+  cs'16\( e gs b8.\)
+  e,16\( gs b cs8.\)
+  gs16\( b cs e8.\) |
+  gs,16_\( a cs \up gs' cs a\) \dn
+  fs,_\( a cs \up fs cs' a\) \dn
+  %% Maybe? placement of sharp is a bit confusing
+  %\once \override NoteColumn.force-hshift = 1.5
+  fs,
+  -\shape #'((0 . -1) (1 . 0) (0 . 0) (0 . 0)) _\(
+  a cs \up fs cs' a\) \dn |
+  fs,_\( a cs \up fs cs' a\) \dn
+  fs,_\( a cs \up fs cs' a\) \dn
+  e,_\( a cs e \up cs'' cs,\) \dn |
+  \resetRelativeOctave c'
+  b_\( ds fs \up fs cs' a\) \dn
+  a,_\( cs e \up fs cs' a\) \dn
+  gs,_\( cs e a \up e' a\) \dn
+  \once \mergeDifferentlyHeadedOn
+  fs,,^\( cs' e fs a cs e fs e cs a fs\) e\( fs e cs a fs\) |
+}
+
 lower.D_bass = \relative {
+  \clef treble
+  b4. cs e |
+  gs fs
+  es |
+  e ds cs |
+  b a gs |
+  fs2.~ 4. |
+  \clef bass
+  \oneVoice
+  fs,16\( cs' e fs a cs e cs a fs e cs\)
+  fs,\( cs' fs, cs' fs, cs'\) |
 }
 
 lower.D = {
+  \barNumberCheck #37
   \key cs \minor
   <<
     \context Voice = "tenor" {
@@ -669,6 +712,7 @@ lower.D = {
       \lower.D_bass
     }
   >>
+  \barNumberCheck #43
 }
 
 editorial.above.D = {
@@ -680,7 +724,10 @@ editorial.above.D = {
 
 editorial.between.D = {
   \barNumberCheck #37
-  s1*9/8*6 |
+  s8 s8-"più cresc." s1*7/8 |
+  s1*9/8*3 |
+  s8\f s1*8/8 |
+  s8-"dim." s1*8/8 |
   \barNumberCheck #43
 }
 
