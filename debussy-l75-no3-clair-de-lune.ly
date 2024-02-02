@@ -30,6 +30,11 @@ global = {
   \key df \major
   \time 9/8
   \tempo "Andante très expressif"
+
+  %% Note: I originally put these merge defaults in the PianoStaff
+  %% context, but then I had trouble turning them off in m.59. By
+  %% putting them here, they are added to each Staff, and in that case
+  %% turning them briefly off and then back on seems to work fine.
   \mergeDifferentlyDottedOn
   \mergeDifferentlyHeadedOn
 }
@@ -1020,15 +1025,27 @@ editorial.below.A′ = {
 %% C′ = mm. 66-72 "morendo jusqu'à la fin"
 
 upper.C′_soprano = \relative {
-  \barNumberCheck #66
-  s1*9/8*7 |
-  \barNumberCheck #73
+  s1*9/8 |
+  r4 r8 cf''4.( df) |
+  s1*9/8 |
+  r4 r8 cf'4.( df) |
+  cf\( df ff\) |
+  \oneVoice
+  <af f>2.~ q4. |
+  <af f df af>2.\arpeggio r4 r8 |
 }
 
 upper.C′_alto = \relative {
+  s1*9/8 |
+  s4. af'4. ff |
+  s1*9/8 |
+  s4. af'2. |
+  af2. s4. |
+  s1*9/8*2 |
 }
 
 upper.C′ = {
+  \barNumberCheck #66
   <<
     \context Voice = "soprano" {
       \voiceOne
@@ -1039,18 +1056,48 @@ upper.C′ = {
       \upper.C′_alto
     }
   >>
-}
-
-lower.C′_tenor = \relative {
-  \barNumberCheck #66
-  s1*9/8*7 |
   \barNumberCheck #73
 }
 
+lower.C′_tenor = \relative {
+  df,16^\( af' df f \up af df\) \dn
+  f,,^\( c' f \up af c f\) \dn
+  df,,^\( af' df f \up af df\) \dn |
+  f,,_\( c' f \up af c f\) \dn
+  af,,_\( ff' af cf ff gf af4.\) \dn |
+  df,,16^\( af' df f \up af df\) \dn
+  f,,^\( c' f \up af c f\) \dn
+  df,,^\( af' df f \up af df\) \dn |
+  \once \override Score.NonMusicalPaperColumn.line-break-system-details = #'((alignment-distances . (12)))
+  f,,_\( c' f \up af c f\) \dn
+  af,,_\( cf ff af cf ff~ 4.\) |
+  af,,16_\( cf ff af cf ff~ 4.\) s4. |
+  \resetRelativeOctave c,
+  df16^\( af' df f af df
+  \clef treble
+  \stemDown
+  f8 af df f af df\) |
+  \stemNeutral
+}
+
 lower.C′_bass = \relative {
+  df,4. f df |
+  f af2. |
+  df4. f df |
+  f
+  \clef treble
+  af2. |
+  af
+  \clef bass
+  af,4. |
+  df,2. s4. |
+  \oneVoice
+  \resetRelativeOctave c'
+  <df af' df f>2.\arpeggio r4 r8 |
 }
 
 lower.C′ = {
+  \barNumberCheck #66
   <<
     \context Voice = "tenor" {
       \voiceOne
@@ -1061,6 +1108,7 @@ lower.C′ = {
       \lower.C′_bass
     }
   >>
+  \barNumberCheck #73
 }
 
 editorial.above.C′ = {
