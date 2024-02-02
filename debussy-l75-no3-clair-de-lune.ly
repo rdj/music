@@ -23,8 +23,6 @@
     \accidentalStyle piano
     \override TupletBracket.bracket-visibility = ##f
     printKeyCancellation = ##f
-    \mergeDifferentlyDottedOn
-    \mergeDifferentlyHeadedOn
   }
 }
 
@@ -32,6 +30,8 @@ global = {
   \key df \major
   \time 9/8
   \tempo "Andante très expressif"
+  \mergeDifferentlyDottedOn
+  \mergeDifferentlyHeadedOn
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -41,7 +41,8 @@ upper.A_soprano = \relative {
   s8
   \change Staff = "down"
   <af' f>
-  -\shape #'(((0 . 0) (-0.5 . 2.5) (-2 . -2.5) (0 . 0))) \(
+  -\shape #'(((0 . -6) (0 . 4) (0 . -2) (0 . -2)))
+  \(
   \oneVoice
   \change Staff = "up"
   <af' f>~ q4.
@@ -845,15 +846,53 @@ editorial.below.E = {
 %% A′ = mm. 51-65 "a Tempo 1º"
 
 upper.A′_soprano = \relative {
-  \barNumberCheck #51
-  s1*9/8*15 |
-  \barNumberCheck #66
+  \oneVoice
+  r4 r8
+  \ottava #1
+  <af''' f>4.\( f4.~ |
+  8 <ef c> <f df> <ef c>2.~\) |
+  q8\( <df bf> <ef c> \tuplet 2/3 { <df bf> <f df>~ } \tuplet 2/3 { q <df bf>~ } |
+  q <c af> <df bf> <c af>2.\) |
+  \ottava #0
+  r8 <bf gf>8\( <c af>
+  \voiceOne
+  bf ef bf af bf af~\) |
+  \oneVoice
+  <af f>\( <gf ef> <af f> <gf ef>4. <f~ a,>\) |
+  \voiceOne
+  f8\( <f df> <gf ef> f bf f ef f ef~ |
+  8 <df bf> <ef c> <df bf>4. <c af>\) |
+  \oneVoice
+  r4 r8 <af' f>4.(\( <f df>~) |
+  \voiceOne
+  q8 ef f ef2.~\) |
+  8 <df df,>\( <ef ef,> <af f af,>4. <f~ df f,> |
+  f8 ef f ef4. df\) |
+  \oneVoice r8 \voiceOne
+  df,\( ef <bf' f df>4. <f df af>\) |
+  \oneVoice r8 \voiceOne
+  gf\( af df4. bf\) |
+  \oneVoice r8 \voiceOne
+  bf\( c f4. <af, gf c,>4.\) |
 }
 
 upper.A′_alto = \relative {
+  s1*9/8*4 |
+  s4. gf''4. f~ |
+  \once \hideNotes 8
+  s4 s2. |
+  s4. df4. df |
+  s1*9/8*2 |
+  s8 <bf gf>4~ 2. |
+  r8 af4 s2. |
+  r8 <bf f>4~ q2. |
+  s8 af,4( \once \hideNotes df4.) s4. |
+  s8 <df bf>4( <bf' gf>4.) <gf df> |
+  s8 <gf c,>4 <c af>4. s4. |
 }
 
 upper.A′ = {
+  \barNumberCheck #51
   <<
     \context Voice = "soprano" {
       \voiceOne
@@ -864,18 +903,84 @@ upper.A′ = {
       \upper.A′_alto
     }
   >>
-}
-
-lower.A′_tenor = \relative {
-  \barNumberCheck #51
-  s1*9/8*15 |
   \barNumberCheck #66
 }
 
+lower.A′_tenor = \relative {
+  \accidentalStyle forget
+  \accidentalStyle piano
+  f'16
+  -\shape #'((0 . 0) (1 . 2) (2 . -2) (3 . 5)) ^\(
+  af c f af c\) r4 r8 r4 r8 |
+  f,,16\( a c ef f a\) r4 r8 r4 r8 |
+  f,16\( af! bf df f af\) r4 r8 r4 r8 |
+  ef,16\( gf af c ef gf\) r4 r8 r4 r8 |
+  df,16\( ef gf bf df ef\) r4 r8 <c af f ef c>4.\arpeggio |
+  c,,16\( gf' bf c ef gf bf4.\) <ef, c>4. |
+  af,!16\( bf df f af bf\) r4 r8 <ef, df bf gf>4.\arpeggio |
+  f,16\( af bf df f af\) r4 r8 <ef c>4. |
+  %% Fit the treble clef inside the beamed eighths
+  \once \override Score.NonMusicalPaperColumn.line-break-system-details = #'((alignment-distances . (12)))
+  <af,, df,>8 \up <af' f> \dn
+  \clef treble
+  <af' f>~ q2. |
+  \clef bass
+  r8 <df,, gf bf df>4~ 2. |
+  r8 <f af>4\( <df' f>4. df\) |
+  r8 ef4~ 4.( df) |
+  s1*9/8 |
+  r4 r8 s2. |
+  \tuplet 2/3 { af,8\( ef' }
+  \clef treble
+  \absolute af''4.
+  \clef bass
+  \oneVoice
+  af\) |
+}
+
 lower.A′_bass = \relative {
+  f'2._- 4._- |
+  2._- 4._- |
+  2._- 4._- |
+  ef2._- 4._- |
+  df2.( c4.) |
+  \clef bass
+  c,2.( f4.) |
+  \clef treble
+  af2.( \once \hideNotes gf4.) |
+  \clef bass
+  f2.( \tuplet 2/3 { ef8) af, -\shape #'(() ((0 . 0) (0 . 0) (-1.5 . 0) (-1.5 . 0))) -~ } |
+  <<
+    \context Voice = "bass" \relative {
+      \voiceTwo
+      \mergeDifferentlyHeadedOff
+      \mergeDifferentlyDottedOff
+      <af, df,>2. s4.
+      \mergeDifferentlyHeadedOn
+      \mergeDifferentlyDottedOn
+      <df gf,>2. s4. |
+      af2. s4. |
+      bf2. s4. |
+      \oneVoice
+      f2.~ 4. |
+      \voiceTwo
+      ef2. s4. |
+      af2. s4. |
+    }
+    \new Voice = "overlapped" \relative {
+      \voiceFour
+      s4. cf'2._> |
+      s1*9/8 |
+      s4. cf4.~ 4. |
+      s8 <bf f>4~ 2. |
+      s1*9/8 |
+      s4 s8 ef,4.^( ef') |
+    }
+  >> |
 }
 
 lower.A′ = {
+  \barNumberCheck #51
   <<
     \context Voice = "tenor" {
       \voiceOne
@@ -886,6 +991,7 @@ lower.A′ = {
       \lower.A′_bass
     }
   >>
+  \barNumberCheck #66
 }
 
 editorial.above.A′ = {
@@ -897,7 +1003,10 @@ editorial.above.A′ = {
 
 editorial.between.A′ = {
   \barNumberCheck #51
-  s1*9/8*15 |
+  s8\ppp s1*8/8 |
+  s1*9/8*7 |
+  s8\pp s1*8/8 |
+  s1*9/8*6 |
   \barNumberCheck #66
 }
 
