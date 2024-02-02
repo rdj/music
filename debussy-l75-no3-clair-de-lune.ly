@@ -24,6 +24,7 @@
     \override TupletBracket.bracket-visibility = ##f
     printKeyCancellation = ##f
     \mergeDifferentlyDottedOn
+    \mergeDifferentlyHeadedOn
   }
 }
 
@@ -681,7 +682,6 @@ lower.D_tenor = \relative {
   b_\( ds fs \up fs cs' a\) \dn
   a,_\( cs e \up fs cs' a\) \dn
   gs,_\( cs e a \up e' a\) \dn
-  \once \mergeDifferentlyHeadedOn
   fs,,^\( cs' e fs a cs e fs e cs a fs\) e\( fs e cs a fs\) |
 }
 
@@ -741,16 +741,31 @@ editorial.below.D = {
 %% E = mm. 43-50 "Calmato"
 
 upper.E_soprano = \relative {
-  \barNumberCheck #43
-  s1*9/8*8 |
-  \barNumberCheck #51
+  <ef' df>2.\( <gf ef>4 <bf gf ef>8\) |
+  <ef, df>2.\( <gf ef>4 <bf~ gf~ ef>8\) |
+  <bf gf df>8\( <f' c af> <ef bf gf> <bf gf>4. <af gf>\) |
+  <bf gf df>8\( <f' c af> <ef bf gf> <bf gf>4. <af gf>\) |
+  ef'2.\( gf4 bf8\) |
+  ef,2.\( gf4 bf8\) |
+  ef2.~\( 4.~ |
+  4. df ef\) |
 }
 
 upper.E_alto = \relative {
+  gf4\( af8 bf4 df8 c4.\) |
+  gf4\( af8 bf4 df8 c4.\) |
+  s4. df8 bf df bf c ef |
+  s4. df8 bf df bf c ef |
+  ef'16 ef,\( gf bf gf ef\)
+  r16   ef\( gf bf gf ef\) s4. |
+  ef'16 ef,\( gf bf gf ef\)
+  r16   ef\( gf bf gf ef\) s4. |
+  s1*9/8*2 |
 }
 
 upper.E = {
   \key df \major
+  \barNumberCheck #43
   <<
     \context Voice = "soprano" {
       \voiceOne
@@ -761,19 +776,38 @@ upper.E = {
       \upper.E_alto
     }
   >>
-}
-
-lower.E_tenor = \relative {
-  \barNumberCheck #43
-  s1*9/8*8 |
   \barNumberCheck #51
 }
 
+lower.E_tenor = \relative {
+  s1*9/8*4 |
+  \repeat unfold 2 {
+    s2. c'16
+    -\shape #'((0 . 0) (1.5 . -1.5) (1 . -2) (0 . 0)) _\(
+    ef gf bf \up c ef\) \dn |
+  }
+  gf,16\( bf df \up ef gf bf\) \dn
+  gf,16\( bf df \up ef gf c\) \dn
+  gf,16\( bf df \up ef gf bf\) \dn |
+  gf,16\( a df \up ef gf a\) \dn
+  gf,16\( a df \up ef gf cf\) \dn
+  gf,16\( a df \up ef gf a\) \dn
+}
+
 lower.E_bass = \relative {
+  af,16^\( \repeat unfold 17 { ef' af, } ef'\) |
+  af,^\( ef af ef' af, ef' af ef af ef' af, ef af ef af, ef' af, ef\) |
+  af^\( ef af ef' af, ef' af ef af ef' af, ef af ef af ef af ef\) |
+  gf4\( af8 bf4 df8 c4.\) |
+  gf4\( af8 bf4 df8 c4.\) |
+  \clef treble
+  gf'2.~ 4. |
+  gf2. 4. |
 }
 
 lower.E = {
   \key df \major
+  \barNumberCheck #43
   <<
     \context Voice = "tenor" {
       \voiceOne
@@ -784,6 +818,7 @@ lower.E = {
       \lower.E_bass
     }
   >>
+  \barNumberCheck #51
 }
 
 editorial.above.E = {
@@ -795,7 +830,8 @@ editorial.above.E = {
 
 editorial.between.E = {
   \barNumberCheck #43
-  s1*9/8*8 |
+  s8\pp s1*8/8 |
+  s1*9/8*7 |
   \barNumberCheck #51
 }
 
