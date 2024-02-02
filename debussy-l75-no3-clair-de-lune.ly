@@ -46,7 +46,7 @@ upper.A_soprano = \relative {
   s8
   \change Staff = "down"
   <af' f>
-  -\shape #'(((0 . -6) (0 . 4) (0 . -2) (0 . -2)))
+  -\shape #'(((-1 . -5) (-0.5 . 5) (0 . -2.5) (-0.5 . 0)))
   \(
   \oneVoice
   \change Staff = "up"
@@ -543,7 +543,6 @@ lower.C_tenor = \relative {
   c,,
   _\shape #'((1 . 0.5) (0 . 0) (0 . 0) (0 . 0)) \(
   e af \up c e af\) \dn |
-  \once \override Score.NonMusicalPaperColumn.line-break-system-details = #'((alignment-distances . (12)))
   df,,,
   _\shape #'((0 . 0) (0 . 0) (0 . -2) (0 . 0)) \(
   af' df f \up af df\) \dn
@@ -615,6 +614,8 @@ editorial.between.C = {
   \once \override Hairpin.endpoint-alignments = #`(,LEFT . ,LEFT)
   s4\< s16\! s |
   s1*9/8*2 |
+  %% Make room between staves for the cresc.
+  \once \override Score.NonMusicalPaperColumn.line-break-system-details = #'((alignment-distances . (12)))
   s16
   \tweak TextScript.extra-offset  #'(5 . 20)
   s
@@ -915,7 +916,7 @@ lower.A′_tenor = \relative {
   \accidentalStyle forget
   \accidentalStyle piano
   f'16
-  -\shape #'((0 . 0) (1 . 2) (2 . -2) (3 . 5)) ^\(
+  -\shape #'((0 . 0) (1 . 2) (2 . -2) (2 . 5)) ^\(
   af c f af c\) r4 r8 r4 r8 |
   f,,16\( a c ef f a\) r4 r8 r4 r8 |
   f,16\( af! bf df f af\) r4 r8 r4 r8 |
@@ -1064,11 +1065,13 @@ lower.C′_tenor = \relative {
   f,,^\( c' f \up af c f\) \dn
   df,,^\( af' df f \up af df\) \dn |
   f,,_\( c' f \up af c f\) \dn
-  af,,_\( ff' af cf ff gf af4.\) \dn |
+  af,,
+  -\shape #'((0 . 0) (0 . 0) (1 . -3) (1 . -0.5)) _\(
+  ff' af cf ff gf af4.\) \dn |
+  \once \override Score.NonMusicalPaperColumn.line-break-system-details = #'((alignment-distances . (12)))
   df,,16^\( af' df f \up af df\) \dn
   f,,^\( c' f \up af c f\) \dn
   df,,^\( af' df f \up af df\) \dn |
-  \once \override Score.NonMusicalPaperColumn.line-break-system-details = #'((alignment-distances . (12)))
   f,,_\( c' f \up af c f\) \dn
   af,,_\( cf ff af cf ff~ 4.\) |
   af,,16_\( cf ff af cf ff~ 4.\) s4. |
@@ -1134,7 +1137,7 @@ editorial.below.C′ = {
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-breaks_ref = {
+breaks_ref = { %% Durand urtext
   R1*9/8 * 3 | \break
   \barNumberCheck #4
   R1*9/8 * 4 | \break
@@ -1195,6 +1198,64 @@ breaks_ref = {
   \barNumberCheck #71
 }
 
+breaks_mine = {
+  R1*9/8 * 3 | \break
+  \barNumberCheck #4
+  R1*9/8 * 4 | \break
+  \barNumberCheck #8
+  R1*9/8 * 4 | \break
+  \barNumberCheck #12
+  R1*9/8 * 3 | \pageBreak
+  \barNumberCheck #15
+  R1*9/8 * 3 | \break
+  \barNumberCheck #18
+  R1*9/8 * 3 | \break
+  \barNumberCheck #21
+  R1*9/8 * 3 | \break
+  \barNumberCheck #24
+  R1*9/8 * 3 | \pageBreak
+  \barNumberCheck #27
+  R1*9/8 * 2 | \break
+  \barNumberCheck #29
+  R1*9/8 * 2 | \break
+  \barNumberCheck #31
+  R1*9/8 * 2 | \break
+  \barNumberCheck #33
+  R1*9/8 * 2 | \break
+  \barNumberCheck #35
+  R1*9/8 * 2 | \pageBreak
+  \barNumberCheck #37
+  R1*9/8 * 2 | \break
+  \barNumberCheck #39
+  R1*9/8 * 2 | \break
+  \barNumberCheck #41
+  R1*9/8 * 2 | \break
+  \barNumberCheck #43
+  R1*9/8 * 2 | \break
+  \barNumberCheck #45
+  R1*9/8 * 2 | \pageBreak
+  \barNumberCheck #47
+  R1*9/8 * 2 | \break
+  \barNumberCheck #49
+  R1*9/8 * 2 | \break
+  \barNumberCheck #51
+  R1*9/8 * 3 | \break
+  \barNumberCheck #54
+  R1*9/8 * 2 | \break
+  \barNumberCheck #56
+  R1*9/8 * 3 | \pageBreak
+  \barNumberCheck #59
+  R1*9/8 * 3 | \break
+  \barNumberCheck #62
+  R1*9/8 * 4 | \break
+  \barNumberCheck #66
+  R1*9/8 * 2 | \break
+  \barNumberCheck #68
+  R1*9/8 * 2 | \break
+  \barNumberCheck #70
+}
+
+
 %%showLastLength =   % use this to only render the last few measures
 \score {
   \new PianoStaff <<
@@ -1253,7 +1314,7 @@ breaks_ref = {
     }
     \new Dynamics {
       \global
-      \breaks_ref
+      \breaks_mine
     }
   >>
 }
