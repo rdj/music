@@ -551,7 +551,7 @@ lower.C_tenor = \relative {
   c f \up af c f\) \dn
   cf,
   _\shape #'((1 . 0.5) (0.5 . 0) (0.5 . -3) (0 . 0)) \(
-  ff a \up cf ff a\) \dn |
+  ff af \up cf ff af\) \dn |
   df,,,
   _\shape #'((0 . 0) (0 . 0) (0 . -2) (0 . 0)) \(
   af' df f \up af df\) \dn
@@ -789,7 +789,7 @@ upper.E = {
 lower.E_tenor = \relative {
   s1*9/8*4 |
   \repeat unfold 2 {
-    s2. c'16
+    df'2. c16
     -\shape #'((0 . 0) (1.5 . -1.5) (1 . -2) (0 . 0)) _\(
     ef gf bf \up c ef\) \dn |
   }
@@ -924,10 +924,10 @@ lower.A′_tenor = \relative {
   df,16\( ef gf bf df ef\) r4 r8 <c af f ef c>4.\arpeggio |
   c,,16\( gf' bf c ef gf bf4.\) <ef, c>4. |
   af,!16\( bf df f af bf\) r4 r8 <ef, df bf gf>4.\arpeggio |
-  f,16\( af bf df f af\) r4 r8 <ef c>4. |
+  f,16\( af bf df f af\) r4 r8 <c, gf>4. |
   %% Fit the treble clef inside the beamed eighths
   \once \override Score.NonMusicalPaperColumn.line-break-system-details = #'((alignment-distances . (12)))
-  <af,, df,>8 \up <af' f> \dn
+  <af, df,>8 \up <af' f> \dn
   \clef treble
   <af' f>~ q2. |
   \clef bass
