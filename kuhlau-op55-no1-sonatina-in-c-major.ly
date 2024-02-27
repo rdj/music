@@ -187,7 +187,7 @@ I.upper.B = \relative {
   <d f>\) r8 q8( <c e>4) r8 q8( |
   <b d>4) <c e>( <b d>) <c e>( |
   <b d>8) g'8\( a b c d e f |
-  g2\)\( g8 e d c |
+  g2\)\( f8 e d c |
   b4\) b b b |
   c c d8\( c b c |
   d4.\) g,8\( a b c d |
@@ -822,7 +822,9 @@ II.editorial.between.D = {
   s4 s16\p s |
   \once \override Hairpin.endpoint-alignments = #`(,LEFT . ,RIGHT)
   s4\> s16 s\! |
-  s4 s16\ff
+  s4 s8\ff |
+  s4. * 3 |
+  s4
 }
 
 II.editorial.below.D = {
