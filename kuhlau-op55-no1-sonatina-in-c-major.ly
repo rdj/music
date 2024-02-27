@@ -1,4 +1,4 @@
-\version "2.24.0"
+\version "2.24.3"
 \language "english"
 \pointAndClickOff
 
@@ -646,7 +646,7 @@ II.editorial.between.C = {
   s8 |
   s4^\markup \italic { dolce } s8 |
   s4. * 3 |
-  \once \override Hairpin.endpoint-alignments = #`(,LEFT . RIGHT)
+  \once \override Hairpin.endpoint-alignments = #`(,LEFT . ,RIGHT)
   s8\< s4 |
   s4 s16 s\! |
   s8\> s8 s8\! |
@@ -815,12 +815,12 @@ II.editorial.between.D = {
   s16\f s |
   s4. |
   s4 s16\p s |
-  \once \override Hairpin.endpoint-alignments = #`(,LEFT . RIGHT)
+  \once \override Hairpin.endpoint-alignments = #`(,LEFT . ,RIGHT)
   s4\> s16 s\! |
   s4 s16\f s |
   s4. |
   s4 s16\p s |
-  \once \override Hairpin.endpoint-alignments = #`(,LEFT . RIGHT)
+  \once \override Hairpin.endpoint-alignments = #`(,LEFT . ,RIGHT)
   s4\> s16 s\! |
   s4 s16\ff
 }
