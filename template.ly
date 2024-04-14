@@ -57,10 +57,11 @@ breaks_ref = {
   %% breaks matching some reference for ease of authoring
 }
 
-%%showLastLength =   % use this to only render the last few measures
 \score {
   \new PianoStaff <<
-    \new Dynamics {
+    \new Dynamics \with {
+      \override VerticalAxisGroup.staff-affinity = #DOWN
+    }{
       \global
       \editorial.above.A
     }
@@ -69,7 +70,9 @@ breaks_ref = {
       \upper.A
       \bar "|."
     }
-    \new Dynamics {
+    \new Dynamics \with {
+      \override VerticalAxisGroup.staff-affinity = #CENTER
+    }{
       \global
       \editorial.between.A
     }
@@ -77,7 +80,9 @@ breaks_ref = {
       \global
       \lower.A
     }
-    \new Dynamics {
+    \new Dynamics \with {
+      \override VerticalAxisGroup.staff-affinity = #UP
+    }{
       \global
       \editorial.below.A
     }
