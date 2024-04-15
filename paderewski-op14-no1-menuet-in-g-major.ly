@@ -32,7 +32,9 @@ global = {
   \tempo "Allegretto"
 }
 
-%% mm. 9-14 are repeated several times verbatim in the piece
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% “REFRAIN”
+%% mm. 9-14 are repeated several times in the piece verbatim
 
 refrain.above = {
   \grace s8 -\markup \italic { a tempo } s2. |
@@ -184,6 +186,10 @@ editorial.below.A = {
   s4\sustainOn s4 s4\sustainOff |
 }
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% B = mm. 20-44
+%% |: 20-42 [ 1. 43 :| 2. 44 ] ||
+
 upper.B = \relative {
   \repeat volta 2 {
     <a' fs>2. |
@@ -228,21 +234,9 @@ upper.B = \relative {
     \change Staff = "up"
     \barNumberCheck 35
     d'2~)\fermata 8 cs |
-    \slashedGrace cs8( <c) fs, d>4-. q-. q-. |
-    <b g d>
-    <<
-      <b g>2 \\
-      { b,8\( d b d\) }
-    >> |
-    <c d fs a>4-. q-. q-. |
-    <b d g> d8\( g b d\) |
-    \slashedGrace d8( <c) fs, d>4-. q-. q-. |
-    <b g d>
-    <<
-      <b g>2 \\
-      { b,8\( d b d\) }
-    >> |
-    <e g a>4-. <e g c>-. <c d fs>-. |
+
+    \refrain.upper
+    <e, g a>4-. <e g c>-. <c d fs>-. |
   }
   \alternative {
     { <b d g>2 d4 }
@@ -269,13 +263,8 @@ lower.B = \relative {
   <b d>4 r4 s4 |
   R2.\fermata |
 
-  d,,4-. <d' fs c'>-. q-. |
-  g,, <d'' g> r |
-  d,,-. <d'' fs a>-. q-. |
-  g,, <d'' g b> r |
-  d,,-. <d'' fs c'>-. q-. |
-  g,, <d'' g> r |
-  <c a'>-. <a a'>-. <d a'>-. |
+  \refrain.lower
+  <c, a'>4-. <a a'>-. <d a'>-. |
   %% 1.
   <g, d' g>2 r4 |
   %% 2.
@@ -287,6 +276,7 @@ editorial.above.B = {
   \barNumberCheck 20
   s2.-\markup \italic { poco più mosso } |
   s2. * 14 |
+  %% Not using refrain.upper here because the a tempo comes an eighth note early
   s2 s8 s8 -\markup \italic { a tempo } |
   s2. * 9 |
   \barNumberCheck 45
@@ -321,8 +311,9 @@ editorial.between.B = {
     s8\< s8 * 6 s8\! s8
   } |
   s2. |
-  \grace s8\p
-  s2. |
+
+  \refrain.between
+  s2. * 3 |
 }
 
 editorial.below.B = {
@@ -338,12 +329,7 @@ editorial.below.B = {
   s4\sustainOn s4 s4 |
   s4\sustainOff s4 s4 |
 
-  s4\sustainOn s4\sustainOff s4 |
-  s4\sustainOn s8 s8\sustainOff s4 |
-  s4\sustainOn s4\sustainOff s4 |
-  s4\sustainOn s8 s8\sustainOff s4 |
-  s4\sustainOn s4\sustainOff s4 |
-  s4\sustainOn s8 s8\sustainOff s4 |
+  \refrain.below
 
   s16 s8\sustainOn s16\sustainOff
   s16 s8\sustainOn s16\sustainOff
