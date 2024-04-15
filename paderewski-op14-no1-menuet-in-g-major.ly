@@ -32,17 +32,15 @@ global = {
   \tempo "Allegretto"
 }
 
-upper.A = \relative {
-  \clef treble
-  d''4 d c\turn |
-  b b c\turn |
-  d d c\turn |
-  b b c\turn |
-  d2\( \grace { e16( fs } g4)\) |
-  d2\( \grace { e16( fs } g4)\) |
-  d2.~ |
-  4 d4.->( cs8) |
-  \slashedGrace cs8( <c) fs, d>4-. q-. q-. |
+%% mm. 9-14 are repeated several times verbatim in the piece
+
+refrain.above = {
+  \grace s8 -\markup \italic { a tempo } s2. |
+  s2. * 5 |
+}
+
+refrain.upper = \relative {
+  \slashedGrace cs''8( <c) fs, d>4-. q-. q-. |
   <b g d>
   <<
     <b g>2 \\
@@ -56,8 +54,52 @@ upper.A = \relative {
     <b g>2 \\
     { b,8\( d b d\) }
   >> |
+}
+
+refrain.between = {
+  \grace { s8\p } s2. |
+  s2. * 2 |
+  s4 s4\< s8 s8\! |
+  s2. * 2 |
+}
+
+refrain.lower = \relative {
+  d,4-. <d' fs c'>-. q-. |
+  g,, <d'' g> r |
+  d,,-. <d'' fs a>-. q-. |
+  g,, <d'' g b> r |
+  d,,-. <d'' fs c'>-. q-. |
+  g,, <d'' g> r |
+}
+
+refrain.below = {
+  s4\sustainOn s4\sustainOff s4 |
+  s4\sustainOn s8 s8\sustainOff s4 |
+  s4\sustainOn s4\sustainOff s4 |
+  s4\sustainOn s8 s8\sustainOff s4 |
+  s4\sustainOn s4\sustainOff s4 |
+  s4\sustainOn s8 s8\sustainOff s4 |
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% A = mm. 1-19
+%% 1 |: 2-14 [ 1. 15-17 :| 2. 18-19 ] ||
+
+upper.A = \relative {
+  \clef treble
+  d''4 d c\turn |
+  b b c\turn |
+  d d c\turn |
+  b b c\turn |
+  d2\( \grace { e16( fs } g4)\) |
+  d2\( \grace { e16( fs } g4)\) |
+  d2.~ |
+  4 d4.->( cs8) |
+
+  \refrain.upper
+
   %% 1.
-  <a e' a>4 q <a e' g> |
+  <a, e' a>4 q <a e' g> |
   <a d fs> r r |
   d' d c\turn |
   %% 2.
@@ -76,16 +118,12 @@ lower.A = \relative {
     <b d>\(\< g'\! <c, e>\) |
     <b d>\(\< g'4.\! e8 |
     d2.\) |
-    d,,4-. <d' fs c'>-. q-. |
-    g,, <d'' g> r |
-    d,,-. <d'' fs a>-. q-. |
-    g,, <d'' g b> r |
-    d,,-. <d'' fs c'>-. q-. |
-    g,, <d'' g> r |
+
+    \refrain.lower
   }
   \alternative {
     { % 1.
-      c c cs |
+      c,4 c cs |
       d8\( e d cs c a\) |
       <g d' b'>4\arpeggio <b' d> <a d> |
     }
@@ -99,8 +137,8 @@ lower.A = \relative {
 editorial.above.A = {
   %% marks above the grand staff
   s2. * 8 |
-  \grace s8 -\markup \italic { a tempo } s2. |
-  s2. * 10 |
+  \refrain.above
+  s2. * 5 |
 }
 
 editorial.between.A = {
@@ -112,10 +150,9 @@ editorial.between.A = {
   \once \override Hairpin.to-barline = ##f
   s4\> s4 |
   s4\! s4 s4 |
-  \grace { s8\p } s2. |
-  s2. * 2 |
-  s4 s4\< s8 s8\! |
-  s2. * 2 |
+
+  \refrain.between
+
   %% 1.
   s2. |
   \once \override Hairpin.endpoint-alignments = #`(,RIGHT . ,RIGHT)
@@ -133,16 +170,14 @@ editorial.below.A = {
   s4\sustainOn s4 s4\sustainOff |
   s4 s4.\sustainOn s8\sustainOff |
   s4 s4.\sustainOn s8\sustainOff |
-  s4\sustainOn s4\sustainOff s4 |
-  s4\sustainOn s8 s8\sustainOff s4 |
-  s4\sustainOn s4\sustainOff s4 |
-  s4\sustainOn s8 s8\sustainOff s4 |
-  s4\sustainOn s4\sustainOff s4 |
-  s4\sustainOn s8 s8\sustainOff s4 |
+
+  \refrain.below
+
   %% 1.
   s4\sustainOn s4 s4\sustainOff\sustainOn |
   s4\sustainOff s2 |
   s4\sustainOn s4\sustainOff s4 |
+  %% 2.
   s16 s8\sustainOn s16\sustainOff
   s16 s8\sustainOn s16\sustainOff
   s16 s8\sustainOn s16\sustainOff |
