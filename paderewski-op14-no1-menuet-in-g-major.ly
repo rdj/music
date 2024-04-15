@@ -89,51 +89,53 @@ refrain.below = {
 
 upper.A = \relative {
   \clef treble
-  d''4 d c\turn |
-  b b c\turn |
-  d d c\turn |
-  b b c\turn |
-  d2\( \grace { e16( fs } g4)\) |
-  d2\( \grace { e16( fs } g4)\) |
-  d2.~ |
-  4 d4.->( cs8) |
+  \repeat volta 2 {
+    d''4 d c\turn |
+    b b c\turn |
+    d d c\turn |
+    b b c\turn |
+    d2\( \grace { e16( fs } g4)\) |
+    d2\( \grace { e16( fs } g4)\) |
+    d2.~ |
+    4 d4.->( cs8) |
 
-  \refrain.upper
-
-  %% 1.
-  <a, e' a>4 q <a e' g> |
-  <a d fs> r r |
-  d' d c\turn |
-  %% 2.
-  <b, e g b> <e g b e> <cs g' a cs> |
-  <d fs a d>2 d4 |
+    \refrain.upper
+  }
+  \alternative {
+    { %% 1.
+      <a, e' a>4 q <a e' g> |
+      <a d fs> r r |
+      d' d c\turn |
+    }
+    { %% 2.
+      <b, e g b> <e g b e> <cs g' a cs> |
+      <d fs a d>2 d4 |
+    }
+  }
 }
 
 lower.A = \relative {
   \clef bass
   <b d>4 q <a d> |
-  \repeat volta 2 {
-    <g d'> q <a d>
-    <b d> q <a d> |
-    <g d'> q <a d>
-    <b d>\(\< g'\! <c, e>\) |
-    <b d>\(\< g'\! <c, e>\) |
-    <b d>\(\< g'4.\! e8 |
-    d2.\) |
 
-    \refrain.lower
-  }
-  \alternative {
-    { % 1.
-      c,4 c cs |
-      d8\( e d cs c a\) |
-      <g d' b'>4\arpeggio <b' d> <a d> |
-    }
-    { % 2.
-      <g b> <e, b' g'>\arpeggio <a e' a> |
-      <d a'> d, r |
-    }
-  }
+  <g d'> q <a d>
+  <b d> q <a d> |
+  <g d'> q <a d>
+  <b d>\(\< g'\! <c, e>\) |
+  <b d>\(\< g'\! <c, e>\) |
+  <b d>\(\< g'4.\! e8 |
+  d2.\) |
+
+  \refrain.lower
+
+  %% 1.
+  c,4 c cs |
+  d8\( e d cs c a\) |
+  <g d' b'>4\arpeggio <b' d> <a d> |
+
+  %% 2.
+  <g b> <e, b' g'>\arpeggio <a e' a> |
+  <d a'> d, r |
 }
 
 editorial.above.A = {
