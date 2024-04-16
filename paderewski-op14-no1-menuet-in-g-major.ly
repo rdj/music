@@ -192,61 +192,65 @@ editorial.below.A = {
 %% B = mm. 20-44 “poco più mosso”
 %% |: 20-42 [ 1. 43 :| 2. 44 ] ||
 
-upper.B = \relative {
-  \repeat volta 2 {
-    <a' fs>2. |
-    <b g>2. |
-    <c e,>2^\( <cs g>4 |
-    <d fs,>2.\) |
-    <a' fs a,>2. |
-    <b g b,>2. |
-    <c e, c>2 <cs a g cs,>4 |
-    <d a fs d>4 r d,, |
-    d' d c\turn |
-    b b c\turn |
-    d d c\turn |
-    b b c\turn |
-    d16\( e fs g a b c d e fs g e\) |
-    d\( e fs g
-    \ottava 1
-    a b c d e fs g e\) |
-    \barNumberCheck 34
-    \once \omit TupletBracket
-    \once \omit TupletNumber
-    \magnifyMusic 0.75 \tuplet 33/6 {
-      \stemDown
-      d8[
-      -\shape #'((0 . -2) (4 . 2) (-2 . 4) (0 . -3))
-      -\(
-      e d b
-      \ottava 0
-      g e d
-      e d b g e d
-      e d b g e d
-      e d b g]
-      \change Staff = "down"
-      d[ b g d g b d g b
-      %%\once \slurDown
-      d]\)
-      \shape #'((0.5 . 1) (1 . 0.5) (0 . 2) (-0.5 . 5))
-      _(
-      \stemNeutral
-    }
-    |
-    \change Staff = "up"
-    \barNumberCheck 35
-    d'2~)\fermata 8 cs |
+Bcore.upper = \relative {
+  <a' fs>2. |
+  <b g>2. |
+  <c e,>2^\( <cs g>4 |
+  <d fs,>2.\) |
+  <a' fs a,>2. |
+  <b g b,>2. |
+  <c e, c>2 <cs a g cs,>4 |
+  <d a fs d>4 r d,, |
+  d' d c\turn |
+  b b c\turn |
+  d d c\turn |
+  b b c\turn |
+  d16\( e fs g a b c d e fs g e\) |
+  d\( e fs g
+  \ottava 1
+  a b c d e fs g e\) |
+  \once \omit TupletBracket
+  \once \omit TupletNumber
+  \magnifyMusic 0.75 \tuplet 33/6 {
+    \stemDown
+    d8[
+    -\shape #'((0 . -2) (4 . 2) (-2 . 4) (0 . -3))
+    -\(
+    e d b
+    \ottava 0
+    g e d
+    e d b g e d
+    e d b g e d
+    e d b g]
+    \change Staff = "down"
+    d[ b g d g b d g b
+    %%\once \slurDown
+    d]\)
+    \shape #'((0.5 . 1) (1 . 0.5) (0 . 2) (-0.5 . 5))
+    _(
+    \stemNeutral
+  }
+  |
+  \change Staff = "up"
+  d'2~)\fermata 8 cs |
 
-    \refrain.upper
-    <e, g a>4-. <e g c>-. <c d fs>-. |
+  \refrain.upper
+  <e, g a>4-. <e g c>-. <c d fs>-. |
+}
+
+upper.B = \relative {
+  \barNumberCheck 20
+  \repeat volta 2 {
+    \Bcore.upper
   }
   \alternative {
     { <b d g>2 d4 }
     { <b d g>2 g'4 }
   }
+  \barNumberCheck 45
 }
 
-lower.B = \relative {
+Bcore.lower = \relative {
   d8\( e' d cs d c |
   b c b a b g |
   a gs a g fs e |
@@ -267,26 +271,34 @@ lower.B = \relative {
 
   \refrain.lower
   <c, a'>4-. <a a'>-. <d a'>-. |
+}
+
+lower.B = \relative {
+  \barNumberCheck 20
+  \Bcore.lower
   %% 1.
   <g, d' g>2 r4 |
   %% 2.
   <g d' g>2 r4 |
+  \barNumberCheck 45
 }
 
-editorial.above.B = {
-  %% marks above the grand staff
-  \barNumberCheck 20
+Bcore.above = {
   s2.-\markup \italic { poco più mosso } |
   s2. * 14 |
   %% Not using refrain.upper here because the a tempo comes an eighth note early
   s2 s8 s8 -\markup \italic { a tempo } |
-  s2. * 9 |
+  s2. * 7 |
+}
+
+editorial.above.B = {
+  \barNumberCheck 20
+  \Bcore.above
+  s2. * 2 |
   \barNumberCheck 45
 }
 
-editorial.between.B = {
-  %% marks between the staves, e.g. dynamics
-  \barNumberCheck 20
+Bcore.between = {
   s2.\p |
   \once \override Hairpin.endpoint-alignments = #`(,RIGHT . ,CENTER)
   s8\< s8 s2 |
@@ -315,12 +327,17 @@ editorial.between.B = {
   s2. |
 
   \refrain.between
-  s2. * 3 |
+  s2. |
 }
 
-editorial.below.B = {
-  %% marks below the grand staff, e.g. pedal marks
+editorial.between.B = {
   \barNumberCheck 20
+  \Bcore.between
+  s2. * 2 |
+  \barNumberCheck 45
+}
+
+Bcore.below = {
   s2. * 7 |
   s4\sustainOn s4 s4\sustainOff |
   s4\sustainOn s4\sustainOff s4 |
@@ -336,11 +353,16 @@ editorial.below.B = {
   s16 s8\sustainOn s16\sustainOff
   s16 s8\sustainOn s16\sustainOff
   s16 s8\sustainOn s16\sustainOff |
+}
 
+editorial.below.B = {
+  \barNumberCheck 20
+  \Bcore.below
   %% 1.
   s4\sustainOn s4 s4\sustainOff |
   %% 2.
   s4\sustainOn s4 s4\sustainOff |
+  \barNumberCheck 45
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -609,6 +631,46 @@ editorial.below.A′ = {
   \barNumberCheck 93
 }
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% B′ = mm. 93 - 116
+%%
+%% Same as B except the ending, m. 116 with no repeat replacing the
+%% 1st/2nd endings in mm. 43-44.
+
+upper.B′ = \relative {
+  \barNumberCheck 93
+  \Bcore.upper
+  <b d g>4 r r |
+  \barNumberCheck 117
+}
+
+lower.B′ = \relative {
+  \barNumberCheck 93
+  \Bcore.lower
+  <g, d' g>4 r d'' |
+  \barNumberCheck 117
+}
+
+editorial.above.B′ = {
+  \barNumberCheck 93
+  \Bcore.above
+  s2. |
+  \barNumberCheck 117
+}
+
+editorial.between.B′ = {
+  \barNumberCheck 93
+  \Bcore.between
+  s2. |
+  \barNumberCheck 117
+}
+
+editorial.below.B′ = {
+  \barNumberCheck 93
+  \Bcore.below
+  s4\sustainOn s4 s4\sustainOff |
+  \barNumberCheck 117
+}
 
 breaks_ref = {
   s2. * 5 | \break
@@ -653,6 +715,24 @@ breaks_ref = {
   \barNumberCheck 88
   s2. * 5 | \pageBreak
   \barNumberCheck 93
+  s2. * 5 | \break
+  \barNumberCheck 98
+  s2. * 5 | \break
+  \barNumberCheck 103
+  s2. * 4 | \break
+  \barNumberCheck 107
+  s2. * 4 | \break
+  \barNumberCheck 111
+  s2. * 6 | \pageBreak
+  \barNumberCheck 117
+  s2. * 6 | \break
+  \barNumberCheck 123
+  s2. * 3 | \break
+  \barNumberCheck 126
+  s2. * 4 | \break
+  \barNumberCheck 130
+  s2. * 4 | \break
+  \barNumberCheck 134
 }
 
 \score {
@@ -665,6 +745,7 @@ breaks_ref = {
       \editorial.above.B
       \editorial.above.C
       \editorial.above.A′
+      \editorial.above.B′
     }
     \new Staff = "up" {
       \global
@@ -676,6 +757,8 @@ breaks_ref = {
       \bar "||"
       \upper.A′
       \bar "||"
+      \upper.B′
+      \bar "||"
     }
     \new Dynamics \with {
       \override VerticalAxisGroup.staff-affinity = #CENTER
@@ -685,6 +768,7 @@ breaks_ref = {
       \editorial.between.B
       \editorial.between.C
       \editorial.between.A′
+      \editorial.between.B′
     }
     \new Staff = "down" {
       \global
@@ -692,6 +776,7 @@ breaks_ref = {
       \lower.B
       \lower.C
       \lower.A′
+      \lower.B′
     }
     \new Dynamics \with {
       \override VerticalAxisGroup.staff-affinity = #UP
@@ -701,6 +786,7 @@ breaks_ref = {
       \editorial.below.B
       \editorial.below.C
       \editorial.below.A′
+      \editorial.below.B′
     }
     \new Dynamics {
       \global
