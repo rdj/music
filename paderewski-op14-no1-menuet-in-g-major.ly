@@ -189,7 +189,7 @@ editorial.below.A = {
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% B = mm. 20-44
+%% B = mm. 20-44 “poco più mosso”
 %% |: 20-42 [ 1. 43 :| 2. 44 ] ||
 
 upper.B = \relative {
@@ -343,6 +343,273 @@ editorial.below.B = {
   s4\sustainOn s4 s4\sustainOff |
 }
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% C = mm. 45-76  “con forza la melodia”
+
+upper.C = \relative {
+  \barNumberCheck 45
+  g''2( d4) |
+  ef4~\( 8 f g ef\) |
+  g2\( d4 |
+  \grace { ef16( f } g8) ef f d ef c\) |
+  f2( c4) |
+  d~\( 8 ef f d\) |
+  f2\( c4 |
+  \grace { d16( ef } f8) d ef c d bf\) |
+
+  <<
+    {
+      g'2\(
+      \once \override DynamicText.X-offset = #-1.5
+      \once \override DynamicLineSpanner.Y-offset = #3.5
+      \once \override DynamicLineSpanner.outside-staff-priority = ##f
+      d4\p |
+      ef4~ 8 f g ef\) |
+      g2\( d4 |
+      \grace { ef16( f } g8) ef f d ef c\) |
+      f2\( c4 |
+      d~ 8 ef f d\) |
+      f2\( c4 |
+      \grace { d16( ef } f8) d ef c d bf\) |
+    }
+    \\
+    \relative {
+      \slashedGrace g'8~ 2.\sf~ | 2.~ | 2.~ | 2. |
+      \slashedGrace f8~ 2.\sf~ | 2.~ | 2.~ | 2. |
+    }
+  >>
+
+  d2.~ |
+  4 fs,8\( g a fs\) |
+  d'2.~ |
+
+  \voiceOne
+  4~ 16\( d e fs g a bf c\) |
+  \once \override TrillSpanner.bound-details.left.text = \markup {
+    \musicglyph "scripts.trill" \raise #1.5 \teeny \flat \hspace #0.25
+  }
+  d2.~\startTrillSpan | 2.~ | 2.~ | 2.~ | 2.~ | 2. |
+
+  \once \override TrillSpanner.bound-details.left.text = \markup {
+    \musicglyph "scripts.trill" \raise #1.5 \teeny \flat \hspace #0.25
+  }
+  \once \override TrillSpanner.to-barline = ##f
+  \once \override TrillSpanner.bound-details.right.padding = #-1
+  d,~\startTrillSpan | 2.~ |
+
+  \oneVoice
+  \once \override TrillSpanner.bound-details.left.text = \markup {
+    %%\musicglyph "scripts.trill"
+    \raise #1.5 \teeny \natural \hspace #0.25
+  }
+  \once \override TrillSpanner.Y-offset = #5.5
+  d~\startTrillSpan | 2.~ | 2.~ | 2. |
+
+  \slashedGrace { \bar "" cs8(\stopTrillSpan \bar "||" }
+}
+
+turn_natural = \markup { \hspace #0.60 \column { \center-align \line { \musicglyph #"scripts.turn" } \line { \raise #1.75 \fontsize #-3 \natural } } }
+
+lower.C = \relative {
+  \barNumberCheck 45
+  \repeat unfold 2 {
+    g,4 <b' d g> q |
+    c, <c' ef g> q |
+  }
+  \repeat unfold 2 {
+    f,, <a' c f> q |
+    bf, <bf' d f> q |
+  }
+  \repeat unfold 2 {
+    g, <g' b f'> q |
+    c, <g' c ef> q |
+  }
+  \repeat unfold 2 {
+    f, <f' a ef'> q |
+    bf, <f' bf d> q |
+  }
+  \barNumberCheck 61
+  d, <fs' d'>\(
+  \once \override Hairpin.endpoint-alignments = #`(,LEFT . ,RIGHT)
+  \once \override Hairpin.to-barline = ##f
+  <a e'>\< |
+  <d fs>\)\! r r |
+  d,-\shape #'((0 . -1) (5.5 . 7) (-1.5 . -9) (-1 . -3.5)) -\(
+  \once \override Hairpin.endpoint-alignments = #`(,LEFT . ,RIGHT)
+  \once \override Hairpin.to-barline = ##f
+  <bf' g'>\< <d a'> |
+  \change Staff = "up"
+  \voiceTwo
+  <g bf>\)\!
+  \change Staff = "down"
+  \oneVoice
+  r r |
+
+  d
+  \change Staff = "up"
+  \voiceTwo
+  <fs d'>_\( <a e'> |
+  <d fs>\) fs8\( g a fs\) |
+  \change Staff = "down"
+  \oneVoice
+  d,4
+  \change Staff = "up"
+  \voiceTwo
+  <bf' g'>\( <d a'> |
+  <g bf>\) g8\( a bf g\) |
+  <d fs>4 fs8\( g a fs\) |
+  g4 g8\( a bf g\) |
+  <d, fs>4 fs8\( g a fs\) |
+  g4 g8\( a bf g\) |
+  \once \showStaffSwitch
+  \change Staff = "down"
+  \oneVoice
+  \repeat unfold 2 {
+    d4 d cs^\turn_natural |
+  }
+  <<
+    { s4 d2~ | 2. | } \\
+    { d4 d4. cs8 | c4 b a | }
+  >>
+}
+
+editorial.above.C = {
+  \barNumberCheck 45
+  s4-\markup \italic { con forza la melodia } s2 |
+  s2. * 31 |
+  \grace s8
+  \barNumberCheck 77
+}
+
+editorial.between.C = {
+  \barNumberCheck 45
+  s4\p s2 |
+  s2. |
+  s2 s4\> |
+  s8 s8\! s2 |
+  s4\p s2 |
+  s2. * 2 |
+  \once \override Hairpin.endpoint-alignments = #`(,LEFT . ,LEFT)
+  s8\> s8 * 4 s8\! |
+  \repeat unfold 2 {
+    s2. * 3 |
+    \once \override Hairpin.endpoint-alignments = #`(,LEFT . ,LEFT)
+    s8\> s8 * 4 s8\! |
+  }
+  s4\mf s2 | s2. * 2 |
+  s4 s16 s16\< s16*5 s16\! |
+  s2 s4\cresc |
+  s2. * 4 |
+  s4 s4\! s4 |
+  s2. * 2 |
+  s4\f s2 |
+  \once \override Hairpin.endpoint-alignments = #`(,LEFT . ,RIGHT)
+  s4\> s2 |
+  s4 s8 s8 s8\! s8-\markup \whiteout \pad-markup #0.5 \italic { poco ritardando } |
+  s2. |
+  \barNumberCheck 77
+}
+
+editorial.below.C = {
+  \barNumberCheck 45
+  \repeat unfold 4 {
+    s4\sustainOn s2 |
+    s4\sustainOff\sustainOn s8 s8\sustainOff s4 |
+    s4\sustainOn s2 |
+    s4\sustainOff\sustainOn s4\sustainOff s4 |
+  }
+  s4\sustainOn s2 |
+  s4 s4\sustainOff s4 |
+  s4\sustainOn s2 |
+  s8 s8\sustainOff s2 |
+  s4\sustainOn s2 |
+  s4\sustainOff s2 |
+  s4\sustainOn s2 |
+  s4\sustainOff s2 |
+  s2. * 8 |
+  \barNumberCheck 77
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% A′ = mm. 77 - 92
+
+upper.A′ = \relative {
+  d''4) d c\turn |
+  b b c\turn |
+  d d c\turn |
+  b b c\turn |
+  d2\( \grace { e16( fs } g4)\) |
+  d2\( \grace { e16( fs } g4)\) |
+  d2.~ |
+  4 d4.->( cs8) |
+
+  \refrain.upper
+
+  <b, e g b>4 <e g b e> <cs g' a cs> |
+  <d fs a d>2 d4 |
+}
+
+lower.A′ = \relative {
+  <<
+    {
+      d'2.~ | 2. |
+      2.~ | 2. |
+    }
+    \\
+    {
+      b4 b a | g g a | b b a | g g a |
+    }
+  >>
+  <b d>4\(\< g'\! <c, e>\) |
+  <b d>\(\< g'\! <c, e>\) |
+  <b d>\(\< g'4.\! e8 |
+  d2.\) |
+
+  \refrain.lower
+
+  <g, b>4 <e, b' g'>\arpeggio <a e' a> |
+  <d a'> d, r |
+}
+
+editorial.above.A′ = {
+  \barNumberCheck 77
+  s4-\markup \italic { a tempo } s2 |
+  s2. * 7 |
+  \refrain.above
+  s2. * 2  |
+  \barNumberCheck 93
+}
+
+editorial.between.A′ = {
+  \barNumberCheck 77
+  s4\p s2 |
+  s2. * 5 |
+  s4-\markup \italic { rit. }
+  \once \override Hairpin.endpoint-alignments = #`(,RIGHT . ,CENTER)
+  \once \override Hairpin.to-barline = ##f
+  s4\> s4 |
+  s4\! s4 s4 |
+  \refrain.between
+  s2. * 2 |
+  \barNumberCheck 93
+}
+
+editorial.below.A′ = {
+  \barNumberCheck 77
+  s2. * 4 |
+  s4\sustainOn s4 s4\sustainOff |
+  s4\sustainOn s4 s4\sustainOff |
+  s4 s4.\sustainOn s8\sustainOff |
+  s4 s4.\sustainOn s8\sustainOff |
+  \refrain.below
+  s16 s8\sustainOn s16\sustainOff
+  s16 s8\sustainOn s16\sustainOff
+  s16 s8\sustainOn s16\sustainOff |
+  s4\sustainOn s4 s4\sustainOff |
+  \barNumberCheck 93
+}
+
+
 breaks_ref = {
   s2. * 5 | \break
   \barNumberCheck 6 |
@@ -362,9 +629,32 @@ breaks_ref = {
   \barNumberCheck 38
   s2. * 7 | \pageBreak
   \barNumberCheck 45
+  s2. * 4 | \break
+  \barNumberCheck 49
+  s2. * 4 | \break
+  \barNumberCheck 53
+  \grace s8
+  s2. * 4 | \break
+  \barNumberCheck 57
+  \grace s8
+  s2. * 4 | \break
+  \barNumberCheck 61
+  s2. * 4 | \pageBreak
+  \barNumberCheck 65
+  s2. * 6 | \break
+  \barNumberCheck 71
+  s2. * 6 |
+  \grace s8
+  \break
+  \barNumberCheck 77
+  s2. * 6 | \break
+  \barNumberCheck 83
+  s2. * 5 | \break
+  \barNumberCheck 88
+  s2. * 5 | \pageBreak
+  \barNumberCheck 93
 }
 
-%%showLastLength =   % use this to only render the last few measures
 \score {
   \new PianoStaff <<
     \new Dynamics \with {
@@ -373,12 +663,18 @@ breaks_ref = {
       \global
       \editorial.above.A
       \editorial.above.B
+      \editorial.above.C
+      \editorial.above.A′
     }
     \new Staff = "up" {
       \global
       \upper.A
       \bar "||"
       \upper.B
+      \bar "||"
+      \upper.C
+      \bar "||"
+      \upper.A′
       \bar "||"
     }
     \new Dynamics \with {
@@ -387,11 +683,15 @@ breaks_ref = {
       \global
       \editorial.between.A
       \editorial.between.B
+      \editorial.between.C
+      \editorial.between.A′
     }
     \new Staff = "down" {
       \global
       \lower.A
       \lower.B
+      \lower.C
+      \lower.A′
     }
     \new Dynamics \with {
       \override VerticalAxisGroup.staff-affinity = #UP
@@ -399,6 +699,8 @@ breaks_ref = {
       \global
       \editorial.below.A
       \editorial.below.B
+      \editorial.below.C
+      \editorial.below.A′
     }
     \new Dynamics {
       \global
