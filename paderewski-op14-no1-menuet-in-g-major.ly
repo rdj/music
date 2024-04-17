@@ -672,6 +672,159 @@ editorial.below.B′ = {
   \barNumberCheck 117
 }
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Coda mm. 117-138
+
+tr = \startTrillSpan
+
+upper.Coda = \relative {
+  d''2\tr c4\tr |
+  b2\tr c4\tr |
+  d2\tr c4\tr |
+  b2\tr c4\tr |
+
+  \omit TupletNumber
+  \once \undo \omit TupletNumber
+  \tuplet 3/2 4 {
+    d8\stopTrillSpan\( cs d e d e fs e fs |
+    g fs g a g a b a b |
+    c as b c b c cs bs cs |
+    d cs d cs d cs
+  }
+  d16 cs d cs\) |
+
+  \ottava 1
+  \tuplet 3/2 4 {
+    d8\( cs d e d e fs e fs |
+    g fs g a g a b a b |
+    c e d c b a g fs e |
+    \ottava 0
+    d c b a g fs e fs e\) |
+    d\( cs d e d e fs e fs |
+    g fs g a g a b a b |
+    c e d c b a g fs e |
+    d c b a g fs
+  }
+  e16 d e fs\) |
+
+  \tuplet 3/2 4 { g8^\( b a g fs e } d16 c b a |
+
+  \change Staff = "down"
+  \voiceOne
+
+  \tuplet 3/2 4 { g8 b a g fs e } d16 c b a\) |
+
+  r16 g[\( b d g b d
+  \change Staff = "up"
+  g b d g b] |
+  d g b d
+  \ottava 1
+  g8\)
+  \ottava 0
+  r r4 |
+
+  \oneVoice
+  \resetRelativeOctave c'
+  \set PianoStaff.connectArpeggios = ##t
+  <d g b d b'>4\arpeggio ^\markup \italic \small { L.H. } r r |
+  <g b d g> r r |
+}
+
+lower.Coda = \relative {
+  <b d>2 <a d>4 |
+  <g d'>2 <a d>4 |
+  <b d> q <a d> |
+  <g d'>2 <a d>4 |
+  <b d> c d |
+  e fs g |
+  a2 as4 |
+  b2. |
+  \clef treble
+  <b d>4-. <as cs>-. <a c>-. |
+  <g b>-. <fs a>-. <e g>-. |
+  <a, e' g c>\arpeggio r r |
+  \clef bass
+  <d fs> r r|
+  <b d>-. <as cs>-. <a c>-. |
+  <g b>-. <fs a>-. <e g>-. |
+  <a, e' g c>\arpeggio r r |
+  <d fs> r r |
+  <g, d' b'>\arpeggio r r |
+  <<
+    {
+      %% This pedal bracket wants to collide with the notes, I
+      %% couldn't figure out how to move it down in the "below"
+      %% dynamics context, so this fixed it.
+      s2. |
+      \once \hideNotes
+      \grace \absolute fs,, \sustainOn
+      s2. |
+      s4 s8\sustainOff s8 s4 |
+    }
+    \\
+    {
+      \voiceTwo R2. |
+      g,16[ b d g b d g b
+      \change Staff = "up"
+      d g b d] |
+      g b d g b8 r r4 |
+      \change Staff = "down"
+    }
+  >>
+  \oneVoice
+  \resetRelativeOctave c
+  <g d' b'>4\arpeggio r r |
+  \once \override Stem.details.lengths = #'(6)
+  \slashedGrace g,8( <d'' g b d>4) r r |
+}
+
+editorial.above.Coda = {
+  \mark "Coda"
+  \tempo "Vivo"
+  s2. |
+}
+
+editorial.between.Coda = {
+  s2\p s4 |
+  s2. * 3 |
+  s4 s4\< s4 |
+  \tuplet 3/2 4 { s8 * 8 s8\! } |
+  s4 s4\< s4 |
+  s4 \tuplet 3/2 4 { s8 s8 s8\! } s4 |
+  \tuplet 3/2 4 {
+    s8 s8 s8-\markup \italic { accelerando } s4. s8\< s4 |
+    s4. s8 s8 s8\! s4. |
+    s4 s8\> s4. s4. |
+    s4. s4. s8 s8 s8\! |
+    s4.\< s4. s4. s4. s8 s8\! s8 s4. |
+    s8\f s8\> s8 s4. s4. |
+    s4. s4.
+  }
+  s16\! s16 * 3 |
+  s2. * 3 |
+  s16\> s16 * 3 s8\! s8 s4\mf |
+  s2. |
+  \grace s8\p
+  s2. |
+}
+
+editorial.below.Coda = {
+  s2. * 10 |
+  s4\sustainOn s4 s4\sustainOff |
+  s4\sustainOn s4 s4\sustainOff |
+  s2. * 2 |
+  s4\sustainOn s4 s4\sustainOff |
+  s4\sustainOn s4 s4\sustainOff |
+  s4\sustainOn s4 s4\sustainOff |
+  s2. |
+  % \grace s8\sustainOn
+  % s4 s4 s4 |
+  % s4 s8\sustainOff s8 s4 |
+  s2. | s2. |
+  s4\sustainOn s4\sustainOff s4 |
+  \grace s8\sustainOn s4 s4\sustainOff s4 |
+}
+
 breaks_ref = {
   s2. * 5 | \break
   \barNumberCheck 6 |
@@ -746,6 +899,7 @@ breaks_ref = {
       \editorial.above.C
       \editorial.above.A′
       \editorial.above.B′
+      \editorial.above.Coda
     }
     \new Staff = "up" {
       \global
@@ -759,6 +913,8 @@ breaks_ref = {
       \bar "||"
       \upper.B′
       \bar "||"
+      \upper.Coda
+      \bar "|."
     }
     \new Dynamics \with {
       \override VerticalAxisGroup.staff-affinity = #CENTER
@@ -769,6 +925,7 @@ breaks_ref = {
       \editorial.between.C
       \editorial.between.A′
       \editorial.between.B′
+      \editorial.between.Coda
     }
     \new Staff = "down" {
       \global
@@ -777,6 +934,7 @@ breaks_ref = {
       \lower.C
       \lower.A′
       \lower.B′
+      \lower.Coda
     }
     \new Dynamics \with {
       \override VerticalAxisGroup.staff-affinity = #UP
@@ -787,6 +945,7 @@ breaks_ref = {
       \editorial.below.C
       \editorial.below.A′
       \editorial.below.B′
+      \editorial.below.Coda
     }
     \new Dynamics {
       \global
