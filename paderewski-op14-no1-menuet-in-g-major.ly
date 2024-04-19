@@ -134,7 +134,7 @@ lower.A = \relative {
   <g d' b'>4\arpeggio <b' d> <a d> |
 
   %% 2.
-  <g b> <e, b' g'>\arpeggio <a e' a> |
+  <e g> <e, b' g'>\arpeggio <a e' a> |
   <d a'> d, r |
 }
 
@@ -589,7 +589,7 @@ lower.A′ = \relative {
 
   \refrain.lower
 
-  <g, b>4 <e, b' g'>\arpeggio <a e' a> |
+  <e, g>4 <e, b' g'>\arpeggio <a e' a> |
   <d a'> d, r |
 }
 
