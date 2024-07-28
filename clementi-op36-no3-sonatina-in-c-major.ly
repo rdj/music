@@ -5,6 +5,14 @@
 #(set-default-paper-size "letter")
 \paper {
   print-page-number = ##f
+  score-markup-spacing = #'((basic-distance . 10)
+                            (padding . 0)
+                            (stretchability . 60))
+
+  system-system-spacing = #'((basic-distance . 10)
+                             (minimum-distance . 8)
+                             (padding . 0)
+                             (stretchability . 60))
 }
 
 \header {
@@ -20,7 +28,11 @@
     \PianoStaff
     \accidentalStyle piano
     printKeyCancellation = ##f
-    %% \override TupletBracket.bracket-visibility = ##t
+
+    \override StaffGrouper.staff-staff-spacing = #'(
+      (basic-distance . 10)
+      (padding . 0)
+    )
 
     %% Override the default positions of the "tr" trill script,
     %% bringing it inside slurs
@@ -412,20 +424,13 @@ II.upper.B = \relative {
 }
 
 II.lower.B = \relative {
-  %% Put the clef change after the volta repeat bar line
-  \override Score.BreakAlignment.break-align-orders =
-    #(make-vector 3 '(span-bar
-                      breathing-sign
-                      staff-bar
-                      key
-                      clef
-                      time-signature))
+  \set Staff.explicitClefVisibility = #end-of-line-invisible
   \clef treble
   a'4\( d, a' g | fs d a' d,\) |
+  \unset Staff.explicitClefVisibility
   b'\( d, b' a | g d b' d,\) |
   e\( g d c | b d g\) r |
 
-  \revert Score.BreakAlignment.break-align-orders
   \clef bass
   c,,2 <c' d,>4 q |
   \once \set doubleSlurs = ##t
@@ -471,6 +476,270 @@ II.score = {
   >>
 }
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% III. Allegro
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+III.global = {
+  \key c \major
+  \time 2/4
+  \tempo "Allegro"
+  % \set Timing.beamExceptions = #'()
+                                % \set Timing.baseMoment = #(ly:make-moment 1/2)
+  \set Timing.beamExceptions = #'(
+    (end .
+      (
+        ((1 . 8) . (4))  ;; eighths in groups of four
+        ((1 . 16) . (4 4)) ;; sixteenths in groups of four
+     )
+   ))
+
+}
+
+III.breaks_ref = {
+  %% breaks matching some reference for ease of authoring
+  s2 * 6 | \break
+  s2 * 7 | \break
+  s2 * 9 | \break
+  s2 * 8 | \break %pageBreak
+  s2 * 6 | \break
+  s2 * 8 | \break
+  s2 * 7 | \break
+  s2 * 7 | \break
+  s2 * 8 | \break
+  s2 * 8 | \break
+  s2 * 8 |
+}
+
+%% The third movements sections overlap a bit, so I just put everything in "A"
+
+III.upper.A = \relative {
+  c''4.\( e8 |
+  d16 c b d c8-.\) r |
+  c16\( d c b c d e f |
+  g8-.\) g-. g-. r |
+  c16\( d e d c b a g |
+  f b d c b a g f |
+  e g c b a g f e |
+  d8\) r g16\( f e d |
+  c4. e8 |
+  d16 c b d c8-.\) r |
+  c16\( d c b c d e f |
+  g8-.\) g-. g-. r |
+  c16\( d e d c b a gs |
+  a b c b a g f e |
+  d c b a g f e d |
+  c8\) r r4 |
+
+  g'4.\fz g8\p\( |
+  a16 g f e\) e4( |
+  d8-.) d16\( e f8-.\) g-. |
+  f4( e8-.) r |
+  g4.\fz g8\p\( |
+  a16 g f e\) e'4\fz( |
+  fs,8-.) fs16\( g a8-.\) d-. |
+  g, r r4 |
+
+  d'16\fz\( d'\> d, d' d,8-.\) d-. |
+  e16\p\( d c b\) b4( |
+  a8-.) a16\( b c8-.\) d-. |
+  c4( b8-.) r |
+  d'16\fz\( d, d' d, d'8-.\) d-. |
+  d16\( e d c b c b a |
+  \twice {
+    \twice { g a g fs } |
+    g a b c d c b a |
+  }
+  \twice { g a g fs } |
+  g b g d d g d b |
+  b d b g g b g d |
+  e8\) r c'16\( e c a |
+  g8-.\) g-. a16\( c a fs |
+  g8-.\) g-. g'-. g-. |
+  a,-. a-. a'-. a-. |
+  b,-. b-. b'-. b-. |
+
+  r g,\( fs g |
+  gs a bf b |
+
+  c4.\)\( e8 |
+  d16 c b d c8-.\) r |
+  c16\( d c b c d e f |
+  g8-.\) g-. g-. r |
+  c16\( d e d c b a g |
+  f b d c b a g f |
+  e g c b a g f e |
+  d8\) r g16\( f e d |
+  c4. e8 |
+  d16 c b d c8-.\) r |
+  c16\( d c b c d e f |
+  g8-.\) g-. g-. r |
+  c16\( d e d c b a gs |
+  a b c b a g f e |
+  d c b a g f e d |
+  c8\) r r4 |
+
+  g'4.\fz g8\p\( |
+  a16 g f e\) e4( |
+  d8-.) d16\( e f8-.\) g-. |
+  f4( e8-.) r |
+
+  c'8-. c16\( d e8-.\) c-. |
+  a-. a'16\( f d8-.\) f16\( d |
+  b8-.\) d16\( b g8-.\) b-. |
+  c16\( b c e d c b a |
+  g4.\fz\) g8\p\( |
+  a16 g f e\) e4( |
+  d8-.) d16\( e f8-.\) g-. |
+  f4( e8-.) r |
+
+  c'16\( d e f g a b c |
+  a8-.\) a16\( f d8-.\) f16\( d |
+  b8-.\) d16\( b g8-.\) b-. |
+
+  c16\( d c b
+  \X 7 { c d c b } |
+  c8-.\) r r g16\( c |
+  e8-!\) c16\( e g8-!\) e16\( g |
+  c8-!\) r r4 |
+}
+
+III.lower.A = \relative {
+  \clef treble
+  \X 4 { <c' e>8 } |
+  <c f> q <c e> q |
+  \X 4 <c e> |
+  \X 4 <c e> |
+  <c e> r r4 |
+  <b g'>8 r r4 |
+  <c g'>8 r r4 |
+  g16\( b d g\) r4 |
+
+  \X 4 { <c, e>8 } |
+  <c f> q <c e> q |
+  \X 4 <c e> |
+  \X 4 <c e> |
+  <c e> r r4 |
+
+  \clef bass
+  <f, f'>8 r r4 |
+  <g b>8 r r4 |
+
+  \X 3 {
+    c,8( <g' e>) q q |
+    b,( <g' d>) q q |
+  }
+  c,( <g' e>) q q |
+  d( <c' a>) q q |
+  \X 3 {
+    g( <d' b>) q q |
+    fs,( <d' a>) q q |
+  }
+  <g, b d> r r4 |
+
+  \clef treble
+  \twice {
+    <e' g>8-. r <c e>-. r |
+    <b d>-. r r4 |
+  }
+  \clef bass
+  <e, g>8-. r <c e>-. r |
+  <b d>-. r <b d g>-. r |
+  q r q r |
+  <c g'> r <c a'> r |
+  <d b'> r <d c'> r |
+  <g b>2 |
+  <g c>2 |
+  <g d'>2 |
+  R2 |
+  R2 |
+
+  \clef treble
+  \X 4 { <c e>8 } |
+  <c f> q <c e> q |
+  \X 4 <c e> |
+  \X 4 <c e> |
+  <c e> r r4 |
+  <b g'>8 r r4 |
+  <c g'>8 r r4 |
+  g16\( b d g\) r4 |
+
+  \X 4 { <c, e>8 } |
+  <c f> q <c e> q |
+  \X 4 <c e> |
+  \X 4 <c e> |
+  <c e> r r4 |
+
+  \clef bass
+  <f, f'>8 r r4 |
+  <g b>8 r r4 |
+
+  c,8( <g' e>) q q |
+  \twice {
+    \twice {
+      b,( <g' d>) q q |
+      c,8( <g' e>) q q |
+    }
+    e( <c' g>) q q |
+    f,( <d' a>) q q |
+    g,( <f' d>) q q |
+    <e c> r r4 |
+  }
+
+  \clef treble
+  <e g>8-. r <d f>-. r |
+  <c e>-. r r4 |
+  \clef bass
+  <e, g>8-. r <d f>-. r |
+  <c e>-. r r4 |
+  q8-! r q-! r |
+  q-! r r4 |
+}
+
+III.editorial.between.A = {
+  s2\p |
+  s2 * 29 |
+  s2\p |
+  s2 * 3 |
+  s2-\markup \italic { cresc. } |
+  s2\f |
+  s2 * 4 |
+  s2-\markup \italic { dimin. } |
+  s2\p |
+  s8 s8\pp s4 |
+  s2 * 29 |
+  s2\f |
+  s2 * 2 |
+  s16 s16\p s8 s4  |
+  s2 * 3 |
+  s4. s8\f |
+  s2 * 2 |
+}
+
+III.score = {
+  \new PianoStaff <<
+    \new Staff = "up" {
+      \III.global
+      \III.upper.A
+      \bar "|."
+    }
+    \new Dynamics \with {
+      \override VerticalAxisGroup.staff-affinity = #CENTER
+    }{
+      \III.global
+      \III.editorial.between.A
+    }
+    \new Staff = "down" {
+      \III.global
+      \III.lower.A
+    }
+    \new Dynamics {
+      \III.global
+      \III.breaks_ref
+    }
+  >>
+}
+
 \score { \I.score }
 \score {
   \header {
@@ -479,5 +748,13 @@ II.score = {
     opus = " "
   }
   \II.score
+}
+\score {
+  \header {
+    %% Do not repeat the opus
+    piece = " "
+    opus = " "
+  }
+  \III.score
 }
 
