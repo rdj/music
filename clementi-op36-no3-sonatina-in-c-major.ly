@@ -25,7 +25,9 @@
     %% Override the default positions of the "tr" trill script,
     %% bringing it inside slurs
     scriptDefinitions = #(cons*
-                          `(trill . ,(acons 'avoid-slur 'inside (assoc-get 'trill default-script-alist)))
+                          `(trill . ,(cons*
+                                      '(avoid-slur . inside)
+                                      (assoc-get 'trill default-script-alist)))
                           default-script-alist)
   }
 }
@@ -310,7 +312,7 @@ I.editorial.between.B = {
   s1\f |
 }
 
-\score {
+I.score = {
   \new PianoStaff \with { instrumentName = \markup { \abs-fontsize #18 { "3." } } } <<
     \new Staff = "up" {
       \I.global
@@ -338,3 +340,144 @@ I.editorial.between.B = {
     }
   >>
 }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% II. Un poco adagio AABB
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+II.global = {
+  \key g \major
+  \time 4/4
+  \tempo "Un poco adagio"
+  \set Timing.beamExceptions = #'()
+  \set Timing.baseMoment = #(ly:make-moment 1/2)
+}
+
+II.breaks_ref = {
+  %% breaks matching some reference for ease of authoring
+  \autoBreaksOff
+  s1 * 5 | \break
+  s1 * 5 | \break
+  s1 * 6 | \break
+}
+
+II.upper.A = \relative {
+  \clef treble
+  g'4.\( fs8 g4. a8 |
+  b4. a8 g2\) |
+  d'4.\sf\( e8\p d4. c8 |
+  b4. c8 d4\) r |
+  \voiceOne
+  g4.\( fs8 g8. fs16 g8. fs16 |
+  g4. a8 b8. a16 g8. fs16 |
+  \oneVoice
+  e8. d16 c8. b16 a8. g16 fs8. g16\) |
+  \once \set doubleSlurs = ##t
+  <b g>2( <a fs>4) r |
+}
+
+II.lower.A = \relative {
+  \clef bass
+  g4\( d' b d |
+  g, d' b d\) |
+  fs,\( d' a d |
+  g, d' b d\) |
+  \change Staff = "up"
+  \voiceTwo
+  e\( g d c b d g\) r |
+  \change Staff = "down"
+  \oneVoice
+  c,2( cs) |
+  d4\( d, d'\) r |
+}
+
+II.editorial.between.A = {
+  %% marks between the staves, e.g. dynamics
+  s1-\markup \italic { dolce } |
+  s1 * 3 |
+  s4. s8-\markup \italic { cresc. } s2 |
+  s4\f s4 s2-\markup \italic { dimin. } |
+  s1\p |
+  s1 |
+}
+
+II.upper.B = \relative {
+  c''4.\( d8 c4. b8 | a4. b8 c4. cs8\) |
+  d4.\( e8 d4. c8 | b4. c8 d4\) r |
+  g4.\( fs8 g8. a16 b8. c16 |
+  d4. c8 b8. a16 g8. fs16 |
+  e8. d16 c8. b16\) \acciaccatura b8 a8.\( g16 a8. b16\) |
+  \once \set doubleSlurs = ##t
+  <a fs>2( g4) r |
+}
+
+II.lower.B = \relative {
+  %% Put the clef change after the volta repeat bar line
+  \override Score.BreakAlignment.break-align-orders =
+    #(make-vector 3 '(span-bar
+                      breathing-sign
+                      staff-bar
+                      key
+                      clef
+                      time-signature))
+  \clef treble
+  a'4\( d, a' g | fs d a' d,\) |
+  b'\( d, b' a | g d b' d,\) |
+  e\( g d c | b d g\) r |
+
+  \revert Score.BreakAlignment.break-align-orders
+  \clef bass
+  c,,2 <c' d,>4 q |
+  \once \set doubleSlurs = ##t
+  <c g>2( <b g>4) r |
+}
+
+II.editorial.between.B = {
+  s1-\markup \italic { dolce } |
+  s1 * 3 |
+  s1-\markup \italic { cresc. } |
+  s1-\markup \italic { dimin. } |
+  s1\p |
+  s1 |
+}
+
+II.score = {
+  \new PianoStaff <<
+    \new Staff = "up" {
+      \II.global
+      \repeat volta 2 {
+        \II.upper.A
+      }
+      \repeat volta 2 {
+        \II.upper.B
+      }
+    }
+    \new Dynamics \with {
+      \override VerticalAxisGroup.staff-affinity = #CENTER
+    }{
+      \II.global
+      \II.editorial.between.A
+      \II.editorial.between.B
+    }
+    \new Staff = "down" {
+      \II.global
+      \II.lower.A
+      \II.lower.B
+    }
+    \new Dynamics {
+      \II.global
+      \II.breaks_ref
+    }
+  >>
+}
+
+\score { \I.score }
+\score {
+  \header {
+    %% Do not repeat the opus
+    piece = " "
+    opus = " "
+  }
+  \II.score
+}
+
