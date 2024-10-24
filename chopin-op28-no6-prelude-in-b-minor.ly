@@ -14,7 +14,7 @@ X = #(define-music-function (num music) (integer? ly:music?) #{ \repeat unfold $
 }
 
 \header {
-  title = "Prelude in B major"
+  title = "Prelude in B minor"
   subsubtitle = \markup { "No. 6 from" \italic "24 Préludes pour le Piano" "(1839)" }
   composer = "Frédéric Chopin"
   opus = "Op. 28, No. 6"
@@ -236,6 +236,7 @@ breaks_ref = {
     \new Staff = "up" {
       \global
       \upper
+      \bar "|."
     }
     \new Dynamics \with {
       \override VerticalAxisGroup.staff-affinity = #CENTER
