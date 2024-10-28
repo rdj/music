@@ -1,12 +1,12 @@
-\version "2.20.0"
+\version "2.24.2"
 \language "english"
 \pointAndClickOff
 
 #(set-default-paper-size "letter")
 \paper {
   print-page-number = ##f
-  indent = 0
-  page-breaking = #ly:one-page-breaking
+  %indent = 0
+  %page-breaking = #ly:one-page-breaking
 }
 
 \header {
@@ -17,6 +17,13 @@
   tagline = ##f
 }
 
+\layout {
+  \context {
+    \PianoStaff
+    \accidentalStyle piano
+  }
+}
+
 global = {
   \key d \minor
   \time 3/8
@@ -24,135 +31,154 @@ global = {
 
 upperStaff = {
   \relative c' {
-    d16 e f g a bf |
-    cs, bf' a g f e |
+    d16^2 e^1 f g a bf |
+    cs,^1 bf' a g f e |
     f8 a d |
-    g, cs e |
-    d16 e f g a bf |
-    cs, bf' a g f e |
-    f d e f g a | \break
+    g,^1 cs e |
+    d16^2 e^1 f g a bf |
 
+    cs, bf' a g f e |
+    f^3 d e f g a |
     bf, a' g f e d |
-    e c d e f g |
+    e^3 c d e f g |
     a, g' f e d c |
-    d e f d e f |
+
+    d^3 e f d e f |
     g,8 r r |
     c16 d e c d e |
-    f,8 r bf~ |
-    8 a g | \break
+    f,8 r bf~^3 |
+    8 a g |
+    c16^5 bf a g f e |
 
-    c16 bf a g f e |
-    f g g8. f16 |
-    f8 c' c |
+    f g g8.\trill f16 |
+    f8 c'^5 c^2 |
     c4.~\prall |
     c4.~ |
     c4.~ |
-    c16 bf a g f e |
-    c' d, e fs g a | \break
 
-    bf a g f e d |
-    bf' c, d e f g |
-    a b c d e f |
+    c16^1 bf^2 a g^3 f e |
+    c' d, e fs g^1 a |
+    bf a g f^3 e d |
+    bf' c, d e f^1 g |
+    a b^1 c d e f |
+
     gs, f' e d c b |
-    c b d c b a |
-    gs a gs fs e d |
-    c d e fs gs a | \break
+    c^3 b d c b a |
+    gs^3 a gs fs e d^3 |
+    c d e^1 fs gs a |
+    d, c' b a^1 gs^3 fs |
 
-    d, c' b a gs fs |
-    e fs gs a b c |
+    e fs gs a^1 b c |
     fs, e' d c b a |
-    gs a b c d e |
+    gs^2 a^1 b c d e |
     a, f' e d c b |
     a' gs fs e a8~ |
-    16 d, b8. a16 | \break
 
-    a8. a16 bf c |
+    16 d,^1 b8.^\prall a16^2 |
+    \stemDown
+    a8.^1 a16^3 bf c |
+    \stemNeutral
     d,8 fs a |
-    bf16 g a bf c d |
+    \stemUp
+    bf16 g^1 a bf c d |
+    \stemNeutral
     e, d' c bf a g |
+
     a8 f'16 e f8 |
     g, e' r |
-    d16 e f g a bf | \break
-
+    d16^2 e^1 f g a bf |
     cs, bf' a g f e |
     f8 d g,~ |
-    g16 d' cs e a, cs |
-    d b cs8. d16 |
-    d c bf a g f |
-    bf cs, d e f g |
-    a d f,8 e16 d |
-    d4.\fermata
+
+    g16 d'^4 cs e a, cs |
+    d b^1 cs8.\trill d16 |
+    d^5 c bf a g f^2 |
+    bf cs,^2 d^1 e f g^1 |
+    a d f,8 e16^3 d^2 |
+    d4.^1 \fermata
   }
-  \bar "|."
 }
 
 lowerStaff = {
   \relative c {
     R4. |
     R4. |
-    d16 e f g a bf |
-    cs, bf' a g f e |
+    d16_5 e f g a bf_2 |
+    cs, bf' a_1 g_3 f e |
     f8 a d |
+
     e, g cs |
-    d, d' f, |
-
+    d, d' f,_4 |
     g a bf |
-    c, c' e, |
+    c, c' e,_4 |
     f g a |
-    bf16 g a bf c d |
-    e, d' c bf a g |
-    a f g a bf c |
-    d, c' bf a g f |
-    e c d e f g |
 
-    a, g' f e d c |
-    d bf c8 c, |
-    f16 g a bf c d |
+    bf16_3 g a bf c d |
+    e, d' c bf a_1 g_4 |
+    a_3 f g a bf c |
+    d, c' bf a g_1 f |
+    e c d e f g |
+    a, g' f e d_1 c |
+
+    d bf c8_1 c, |
+    f16_3 g a bf_3 c d |
     e, d' c bf a g |
-    a bf c d e f |
-    g, f' e d c bf |
+    a bf c d e_2 f |
+    g, f' e d c_1 bf |
+
     a bf c a bf c |
     fs,8 r r |
-
-    g16 a bf g a bf |
+    g16_3 a bf g a bf |
     e,8 r r |
     f f' d |
-    b gs e |
-    a16 gs a b c d |
+
+    b_1 gs e |
+    a16_1 gs_4 a b c d_3 |
     e4.~\prall |
     e4.~ |
+    e4.~ |
 
     e4.~ |
     e4.~ |
-    e4.~ |
-    e8 e' d |
+    e8 e'_1 d |
     c b a |
-    d e f |
-    d e e, |
+    d_2 e f_2 |
 
-    a16 a, bf c d ef |
-    gs, ef' d c bf a |
-    g8. 16 a bf |
-    c,8 g' c |
-    f16 g a b cs d |
-    e, d' cs b a g |
+    d e_1 e, |
+    \stemUp
+    a16_1 a, bf c d_1 ef_2 |
+    \stemNeutral
+    gs, ef' d_1 c bf a |
+    g8. 16_3 a bf |
+    c,8 g'_2 c |
+
+    f16_3 g a b_3 cs d |
+    e, d' cs b_1 a_3 g |
     f8 a d |
-
     e, g cs |
-    d,16 e f g a bf |
+    d,16 e f g a bf_2 |
+
     cs, bf' a g f e |
     f g a8 a, |
-    bf8. c16 bf a |
-    g bf' a g f e |
+    bf8._3 c16 bf a |
+    g bf'_2 a_1 g f e |
     f g a8 a, |
-    d,4.\fermata |
+    d,4. _\fermata |
   }
 }
 
-dynamics = {
-}
+breaks = {
+  s4. * 5 | \break
+  s4. * 5 | \break
+  s4. * 6 | \break
+  s4. * 5 | \break
+  s4. * 5 | \pageBreak
 
-pedalMarks = {
+  s4. * 5 | \break
+  s4. * 5 | \break
+  s4. * 5 | \break
+  s4. * 5 | \break
+  s4. * 6 |
 }
 
 \score {
@@ -161,10 +187,7 @@ pedalMarks = {
       \clef treble
       \global
       \upperStaff
-    }
-    \new Dynamics {
-      \global
-      \dynamics
+      \bar "|."
     }
     \new Staff = "lower" {
       \clef bass
@@ -173,7 +196,7 @@ pedalMarks = {
     }
     \new Dynamics {
       \global
-      \pedalMarks
+      \breaks
     }
   >>
 }
