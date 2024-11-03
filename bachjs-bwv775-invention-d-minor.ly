@@ -104,7 +104,7 @@ lowerStaff = {
     R4. |
     R4. |
     d16_5 e f g a bf_2 |
-    cs, bf' a_1 g_3 f e |
+    cs, bf' a g f e |
     f8 a d |
 
     e, g cs |
@@ -146,15 +146,15 @@ lowerStaff = {
 
     d e_1 e, |
     \stemUp
-    a16_1 a, bf c d_1 ef_2 |
+    a16_1 a,_4 bf c d_1 ef_2 |
     \stemNeutral
-    gs, ef' d_1 c bf a |
+    fs, ef' d_1 c bf a |
     g8. 16_3 a bf |
     c,8 g'_2 c |
 
     f16_3 g a b_3 cs d |
-    e, d' cs b_1 a_3 g |
-    f8 a d |
+    e, d' cs b_1 a g |
+    f8_4 a d |
     e, g cs |
     d,16 e f g a bf_2 |
 
