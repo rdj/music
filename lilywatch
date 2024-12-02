@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+fswatch -0 -E -i '[.]ly$' -e . ~/projects/music | while read -d "" f; do
+    lilypond "$f" && open "${f%.*}.pdf";
+done
