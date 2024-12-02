@@ -17,15 +17,27 @@
   tagline = ##f
 }
 
+\layout {
+  \context {
+    \Score
+    barNumberVisibility = #first-bar-number-invisible-save-broken-bars
+  }
+  \context {
+    \PianoStaff
+    \accidentalStyle piano
+  }
+}
+
 global = {
   \key bf \major
   \time 4/4
+  \autoLineBreaksOff
 }
 
 upperStaff = {
   \relative c'' {
     %% Bach: \clef soprano
-    r16 bf32 c d c bf16 f' d bf' f d f32 ef d ef f16 bf, d f, af | \break
+    r16 bf32 c d c bf16 f' d bf' f d f32 ef d ef f16 bf, d f, af |
     g ef32 f g f ef16 bf' g ef' bf g bf32 af g af bf16 ef, g c, ef |
     a, c32 d ef d c16 a' f c' a ef' f,32 g a g f16 c' a f' c |
 
@@ -38,7 +50,7 @@ upperStaff = {
 
     r16 f,32 g a g f16 c' a f' c a' ef32 d c d ef16 a, c fs, a |
     bf8 d bf g af f' af, f |
-    g16 c,32 d ef d c16 g' ef c' g d' af32 g f g af16 d, f b, g' |  \pageBreak
+    g16 c,32 d ef d c16 g' ef c' g d' af32 g f g af16 d, f b, g' |
 
     ef8 r r16 c32 d ef d c16 c'8. bf16 a f32 g a g f16 |
     f'8. ef16 d bf32 c d c bf16 bf'8. af16 g bf32 af g af bf16 |
@@ -92,17 +104,25 @@ lowerStaff = {
 
     d f32 ef d ef f16 bf, d f, af g ef32 f g f ef16 bf' g ef' bf |
     %% Bach: \clef bass
-    g bf32 af g af bf16 ef, g bf, d c f,32 g a? g f16 c' a ef' c |
+    g bf32 af g af bf16 ef, g bf, d c f,32 g a g f16 c' a ef' c |
 
     a c32 bf a bf c16 f, a c, ef d bf'32 c d c bf16 f'8 f, |
-    bf1\fermata |
+    bf1_\fermata |
   }
 }
 
-dynamics = {
-}
+breaks = {
 
-pedalMarks = {
+  s1 * 2 | \break
+  s1 * 2 | \break
+  s1 * 2 | \break
+  s1 * 2 | \break
+  s1 * 2 | \pageBreak
+
+  s1 * 2 | \break
+  s1 | s2 \break
+  s2 | s1 | \break
+  s1 * 2 | \break
 }
 
 \score {
@@ -112,10 +132,6 @@ pedalMarks = {
       \global
       \upperStaff
     }
-    \new Dynamics {
-      \global
-      \dynamics
-    }
     \new Staff = "down" {
       \clef bass
       \global
@@ -123,7 +139,7 @@ pedalMarks = {
     }
     \new Dynamics {
       \global
-      \pedalMarks
+      \breaks
     }
   >>
 }
