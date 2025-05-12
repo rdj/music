@@ -1,6 +1,8 @@
-\version "2.24.0"
+\version "2.24.4"
 \language "english"
 \pointAndClickOff
+
+twice = #(define-music-function (music) (ly:music?) #{ \repeat unfold 2 $music #})
 
 #(set-default-paper-size "letter")
 \paper {
@@ -64,7 +66,9 @@ upper.A = \relative {
   q2\( <b gs>4^2^3\) |
   <<
     { e4 e e | e } \\
-    { r8 a, bf( a) bf( a) | e'[ a,] e'^\( d a b^3\) }
+    { r8 a,
+      \twice { bf_> \shape #'((0.5 . 0) (0.5 . 0) (0.5 . 0) (0 . 0)) ^( a) } |
+      e'[ a,] e'^\( d a b^3\) }
   >> |
   <cs a>2^1^4\( <b gs>4^2^3 |
   a8-.^1\) a^3\( gs a b a\) |
@@ -82,7 +86,7 @@ lower.A = \relative {
   q2 <cs e>4 |
   <b e> q <a e'> |
   e'2. |
-  <cs g'>4 q q |
+  <cs! g'>4 q q |
   <<
     { g'4-1 fs-2 f-1 } \\
     d2.-4
@@ -160,12 +164,7 @@ editorial.between.A = {
   \once \override Hairpin.endpoint-alignments = #`(,LEFT . ,LEFT)
   s4\> s  s\! |
   s2. |
-  s4
-  \once \override Hairpin.endpoint-alignments = #`(,LEFT . ,LEFT)
-  s8\> s8\!
-  \once \override Hairpin.endpoint-alignments = #`(,LEFT . ,LEFT)
-  s8\> s8\! |
-  \once \override Hairpin.endpoint-alignments = #`(,LEFT . ,LEFT)
+  s2. |
   s4\> s s\! |
   s2. * 6 |
   s4\pp s2 |

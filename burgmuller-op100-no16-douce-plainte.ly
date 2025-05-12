@@ -54,7 +54,8 @@ depr = \markup { \italic "dimin. e poco riten." }
       }
       \repeat volta 2 { % B section
         <ef c>-!\p\<^1^4 <d c>-!^1^3 <ef c>-! <d c>-! <ef c>-! <d c>-! <ef c>-! <d c>-!\! |
-        d\(^2 g f ef d-.\) d\(^1 ef e\) |
+        \once \override Hairpin.endpoint-alignments = #`(,LEFT . ,LEFT)
+        d\(^2\> g f ef\! d-.\) d\(^1 ef e\) |
         <g ef?>-!^2^5\< <f ef>-!^2^4 <g ef>-! <f ef>-! <g ef>-! <f ef>-! <g ef>-! <f ef>-!\! |
         f\(\>^1 bf a g\! f-.\) bf\(\<^3 c d\)\! |
         d4.\f\( a8\) bf4.\( g8\)^1 |
