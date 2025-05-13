@@ -6,6 +6,8 @@ X = #(define-music-function (num music) (integer? ly:music?) #{ \repeat unfold $
 trip = #(define-music-function (music) (ly:music?) #{ \tuplet 3/2 #music #})
 gr = #(define-music-function (music) (ly:music?) #{ \appoggiatura #music #})
 ffz = #(make-dynamic-script "ffz")
+turnNatural = \markup { \hspace #0.60 \column { \center-align \line { \musicglyph #"scripts.turn" } \line { \raise #1.75 \fontsize #-3 \natural } } }
+turnSharp = \markup { \hspace #0.60 \column { \center-align \line { \musicglyph #"scripts.turn" } \line { \raise #1.75 \fontsize #-3 \sharp } } }
 
 #(set-default-paper-size "letter")
 \paper {
@@ -28,6 +30,7 @@ ffz = #(make-dynamic-script "ffz")
   \context {
     \Score
     barNumberVisibility = #first-bar-number-invisible-save-broken-bars
+    % \override BarNumber.break-visibility = #all-visible
   }
   \context {
     \PianoStaff
@@ -36,22 +39,31 @@ ffz = #(make-dynamic-script "ffz")
   }
 }
 
-global = {
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Schubert - Scherzo in B-flat major, D. 593, No. 1
+%%
+%%   Allegretto: |:A:| |:BA′:|
+%%   Trio: C |:D:|
+%%   Scherzo Da Capo
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Allegretto
+%% |:A:| |:BA′:|
+
+global_allegretto = {
   \tempo "Allegretto"
   \key bf \major
   \time 3/4
+  \partial 4
 }
 
-%% Overall structure
-%% Allegretto |:A:| |:BA′:|  Trio |:C:|  Scherzo da capo
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% A. Alegretto
-%% mm. 1-16 (repeated)
+%% A = mm. 0.3 - 16.2 (repeat)
 
 upper.A = \relative {
   \clef treble
-  \partial 4
   \trip { f''8\( f, d'\) } |
   bf8-.( r bf-.) r \trip { f'\( f, d'\) } |
   bf8-.( r bf-.) r \gr g'16 f8-. e-. |
@@ -77,7 +89,6 @@ upper.A = \relative {
 
 lower.A = \relative {
   \clef bass
-  \partial 4
   r4 |
   \X 3 {
     bf,8 r <f' bf d> r r4 |
@@ -99,7 +110,6 @@ lower.A = \relative {
 }
 
 between.A = {
-  \partial 4
   s4\p |
   s2. * 7 |
   s2 s4\pp |
@@ -112,10 +122,11 @@ between.A = {
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% B. mm. 16.3-36.2 (fermata rest)
+%% B = mm. 16.3-36.2 (fermata rest)
 
 upper.B = \relative {
   \barNumberCheck 16
+  \grace s64
   \trip { f'''8\( f, bf\) } |
   \X 2 {
     a r a r \trip { f'8\( f, bf\) } |
@@ -151,10 +162,9 @@ upper.B = \relative {
 
 lower.B = \relative {
   \barNumberCheck 16
-  %% TODO - try to get it to draw this clef change differently, after
-  %% the repeat bar and after the line break, so that there's a bass
-  %% clef at the beginning of the line and then an explicit clef
-  %% change so it's not see easy to miss when reading.
+  \once \hideNotes \grace c64
+  \once \override Staff.Clef.X-extent = #'(1.5 . 2)
+  %\once\override Staff.Clef.extra-spacing-width = #'(0 . 0)
   \clef treble
   d''8 r |
   \X 2 {
@@ -182,7 +192,7 @@ lower.B = \relative {
   r r\fermata
 }
 
-between.B = \relative {
+between.B = {
   \barNumberCheck 16
   s4\p |
   s4\fp s2 |
@@ -200,10 +210,300 @@ between.B = \relative {
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% breaks_ref to match NE
+%% A′ = mm. 36.3 - 50.2 (repeat to B)
 
-breaks_ref = {
+upper.A′ = \relative {
+  \clef treble
   \partial 4
+  \trip { f''8\( f, d'\) } |
+  bf8-.( r bf-.) r \trip { f'\( f, d'\) } |
+  bf8-.( r bf-.) r \gr g'16 f8-. e-. |
+  \gr g16 f8-. e-. f-. g-. a-. bf-. |
+  fs4->( g8) r \trip { g\( c, ef\) } |
+  a,-.( r a-.) r \trip { gf'\( c, ef\) } |
+  a,-.( r a-.) r \gr d'16 c8-. b-. |
+  \gr d16 c8-. b-. c-. d-. ef-. f-. |
+  cs4->( d8) r \trip { f,\( f, d'\) } |
+  bf8-.( r bf-.) r \trip { f'\( f, d'\) } |
+  bf8-.( r bf-.) r r4 |
+  r <bf d f bf>-. q-. |
+  <bf ef bf'~>\( \trip { bf'8 g ef } \trip { bf g ef\) } |
+  <<
+    { d16( f) r8 df16( g) r8 c,16( f) r8 }
+    \\
+    { bf,8 s bf s a s }
+  >> |
+  bf8 r r4
+}
+
+lower.A′ = \relative {
+  \clef bass
+  \partial 4
+  r4 |
+  \X 3 {
+    bf,8 r <f' bf d> r r4 |
+  }
+  ef,8 r <g' bf ef> r r4 |
+  \X 2 {
+    f8 r <c' ef f> r r4 |
+  }
+  f,8 r <a ef' f> r r4 |
+  bf,8 r <bf' d f> r r4 |
+  bf,8 r <af' bf d> r r4 |
+  bf,8 r <af' bf d> r \trip { bf\( d, f\) } |
+  af, r <af d f af>4-. q-. |
+  <g ef' g>2 r4 |
+  <f f'>8 r <f e'> r <f ef'> r |
+  <bf d> r bf, r
+}
+
+between.A′ = {
+  \partial 4
+  s4\p |
+  s2. * 7 |
+  s2 s4\pp |
+  s2. |
+  s2 s4\f |
+  s4 s2\ff |
+  s8\> s8\! s2 |
+  s4\p s2 |
+  s2
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Trio C |:D:|
+
+global_trio = {
+  \set Staff.explicitKeySignatureVisibility = #begin-of-line-visible
+  \once \override Staff.TimeSignature.break-visibility = #begin-of-line-visible
+
+  \mark "Trio"
+  \key ef \major
+  \barNumberCheck 50
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% C = mm. 50.3 - 66.2
+
+upper.C_soprano = \relative {
+  \once \oneVoice bf4^\turnNatural |
+  <ef g,>2->^\markup { \italic legato }\( d8 c | <bf af>2 c8 d\) |
+  \oneVoice
+  ef4_\( fs8. g16 c8.-> bf16\) |
+  <f d>4 r bf,4^\turnNatural |
+  \voiceOne
+  <ef g,>2->\( d8 c | <bf af>2 c8 d\) |
+  \after 4*2/3 \turn ef4\( g8 f ef d\)
+  <ef g,>4 \oneVoice r bf'4^\turnNatural |
+  \voiceOne
+  ef2->\( d8 c | <bf af>2 c8 d\) |
+  \oneVoice
+  ef4\( fs8. g16 c8.-> bf16\) |
+  <f d>4 r bf,4^\turnNatural |
+  \voiceOne
+  <ef g,>2->\( d8 c | <bf af>2 c8 d\) |
+  \after 4*2/3 \turn ef4\( g8 f ef d\)
+  ef4 \oneVoice r
+}
+
+upper.C_alto = \relative {
+  s4 |
+  g2. |
+  s2. * 3 |
+  g2. |
+  s2. |
+  bf4\( c af\) |
+  s2. |
+  << g'2. \\ { g2 ef4 } >> |
+  d2 s4 |
+  s2. * 2 |
+  << g2. \\ { g2 ef4 } >> |
+  d2 s4 |
+  bf'\( c af\) |
+  g s
+}
+
+upper.C = <<
+  \clef treble
+  \new Voice = "soprano" {
+    \voiceOne
+    \upper.C_soprano
+  }
+  \new Voice = "alto" {
+    \voiceTwo
+    \upper.C_alto
+  }
+>>
+
+%% Note that there is some crazy notation going on here in the left
+%% hand, I think Schubert is trying to really notate some finger
+%% pedaling or something. There are a lot of overlapping notes that
+%% I'm having trouble ascribing to specific independent voices.
+lower.C_tenor = \relative {
+  s4 |
+  r << bf,2-> \\ {} \\ { s4 ef } >> |
+  << { r4 bf2-> } \\ {} \\ { d2 s4 } >> |
+  r4 bf2-> |
+  bf,4( bf') s |
+  r << bf2-> \\ {} \\ { s4 ef } >> |
+  << { r4 bf2-> } \\ {} \\ { d2 s4 } >> |
+  s2. * 2 |
+  \X 3 { r4 bf'2-> | }
+  bf,4( bf') s |
+  \X 2 { r4 bf2-> | }
+  s2. |
+  s2
+}
+
+lower.C_bass = \relative {
+  \once \oneVoice r4 |
+  ef,2.( |
+  f2.) |
+  g2( ef4) |
+  bf2
+  \once \oneVoice r4 |
+  ef2.( |
+  f2.) |
+  \oneVoice
+  g4-. af-. bf-. |
+  ef,-. ef'-. r |
+  \voiceTwo
+  ef2.( |
+  f2.) |
+  g2( ef4) |
+  bf2 \once \oneVoice r4 |
+  ef2.( |
+  f2.) |
+  \oneVoice
+  g4-. af-. bf-. |
+  ef, r
+}
+
+lower.C = <<
+  \clef bass
+  \new Voice = "soprano" {
+    \voiceOne
+    \lower.C_tenor
+  }
+  \new Voice = "alto" {
+    \voiceTwo
+    \lower.C_bass
+  }
+>>
+
+between.C = {
+  s4\p |
+  s2. * 15 |
+  s2
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% D = mm. 66.3 - 80.2 (repeat)
+
+upper.D_soprano = \relative {
+  g4^\turnSharp |
+  <g' ef>2\( <ef c>8 <d bf>\) |
+  <c a>2\( <d bf>8 <ef c>\) |
+  <f d>2\( <d bf>8 <c a>\) |
+  <bf g>4. d8\( ef f |
+  g f ef4
+  \change Staff = "down"
+  <c a ef>4\) |
+  <bf d,>8\( a c bf a af\) |
+  \change Staff = "up"
+  <ef' g,>2->\( d8 c |
+  <bf af>2 c8 d\) |
+  ef4_\( fs8. g16 c8.-> bf16\) |
+  <f d>4 \oneVoice r bf^\turnNatural |
+  \voiceOne
+  ef2->\( d8 c | <bf af>2 c8 d\) |
+  \after 4*2/3 \turn ef4\( g8 f ef d\) |
+  ef4 \once \oneVoice r
+}
+
+upper.D_alto = \relative {
+  s4 |
+  s2. * 3 |
+  s4. bf4. |
+  bf8 b c4 s |
+  s2. |
+  g2. |
+  s2. * 3 |
+  << g'2. \\ { g2 ef4 } >> |
+  d2 s4 |
+  bf'4\( c af\) |
+  g4 s
+}
+
+upper.D = <<
+  \new Voice = "soprano" {
+    \voiceOne
+    \upper.D_soprano
+  }
+  \new Voice = "alto" {
+    \voiceTwo
+    \upper.D_alto
+  }
+>>
+
+lower.D_tenor = \relative {
+  s4 |
+  s2. * 6 |
+  r4 << bf,2-> \\ {} \\ { s4 ef } >> |
+  << { r4 bf2-> } \\ {} \\ { d2 s4 } >> |
+  r4 bf2-> |
+  bf,4( bf') s |
+  \X 2 { r4 bf'2-> } |
+  s2. |
+  s2
+}
+
+lower.D_bass = \relative {
+  \oneVoice
+  r4 |
+  c,8\( b c d ef e |
+  f e f g f ef\) |
+  d\( bf d ef f fs |
+  g fs g af g d\) |
+  \voiceTwo
+  ef\( d c ef f f,\) |
+  bf4 r r |
+  ef2.( | f2.) |
+  g2( ef4) |
+  bf2 \once \oneVoice r4 |
+  ef'2.( | f) |
+  \oneVoice
+  g4-. af-. bf-. |
+  ef, r_\markup { \translate #'(-10 . 0) \small \italic "Scherzo Da Capo" }
+}
+
+lower.D = <<
+  \new Voice = "soprano" {
+    \voiceOne
+    \lower.D_tenor
+  }
+  \new Voice = "alto" {
+    \voiceTwo
+    \lower.D_bass
+  }
+>>
+
+between.D = {
+  s4 |
+  s4\pp s2 |
+  s2. * 2 |
+  s4. s8\> s8 s8\! |
+  s2. * 2 |
+  s4\p s2 |
+  s2. * 6 |
+  s2
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% breaks_ref to match Henle At the Piano
+
+breaks_ref_allegretto = {
   s4 |
   s2. * 5 | \break
   \barNumberCheck 6
@@ -211,6 +511,7 @@ breaks_ref = {
   \barNumberCheck 11
   s2. * 5 | s2 \pageBreak
   \barNumberCheck 16 %beat 3
+  \grace { s64 }
   s4 | s2. * 4 | \break
   \barNumberCheck 21
   s2. * 5 | \break
@@ -224,6 +525,9 @@ breaks_ref = {
   s2. * 5 | \pageBreak
   \barNumberCheck 46
   s2. * 4 | s2 \break
+}
+
+breaks_ref_trio = {
   \barNumberCheck 50 %beat 3
   s4 | s2. * 5 | \break
   \barNumberCheck 56
@@ -237,6 +541,15 @@ breaks_ref = {
   \barNumberCheck 80
 }
 
+breaks = {
+  s4 |
+  s2. * 15 |
+  s2 \break \grace s64 s4 |
+  s2. * 33 |
+  s2 \pageBreak s4 |
+  s2. * 6 \break |
+  s2. * 6 \break |
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Score
@@ -244,26 +557,50 @@ breaks_ref = {
 \score {
   \new PianoStaff <<
     \new Staff = "up" {
-      \global
-      \repeat volta 2 { \upper.A }
-      \upper.B
-      %\bar "|."
+      \global_allegretto
+      \repeat volta 2 {
+        \upper.A
+      }
+      \repeat volta 2 {
+        \upper.B
+        \upper.A′
+      }
+
+      \global_trio
+      \upper.C
+      \repeat volta 2 {
+        \upper.D
+      }
     }
     \new Dynamics \with {
       \override VerticalAxisGroup.staff-affinity = #CENTER
     }{
-      \global
+      \global_allegretto
       \between.A
       \between.B
+      \between.A′
+
+      \global_trio
+      \between.C
+      \between.D
     }
     \new Staff = "down" {
-      \global
+      \global_allegretto
       \lower.A
       \lower.B
+      \lower.A′
+
+      \global_trio
+      \lower.C
+      \lower.D
     }
     \new Dynamics {
-      \global
-      \breaks_ref
+      \breaks
+      % \global_allegretto
+      % \breaks_ref_allegretto
+
+      % \global_trio
+      % \breaks_ref_trio
     }
   >>
 }
