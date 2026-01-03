@@ -36,7 +36,7 @@ global = {
 
 upperStaff = \relative c'' {
   %% Bach: \clef soprano
-  r8 b16 a g fs g e b'8\mordent b e8.-\mordent g16 |
+  r8 b16 a g fs g e b'8\mordent b e8.-\mordent fs16 |
   ds8\prall fs16 e ds cs ds b b'8 a16 g fs8.\prall e32 fs |
   g8 b16 a g fs g e c'8. b16 a g fs e |
   fs8 a16 g fs e fs d b'8. a16 g fs e d |
