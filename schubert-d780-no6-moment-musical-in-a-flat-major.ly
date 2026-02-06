@@ -5,7 +5,22 @@
 #(set-default-paper-size "letter")
 \paper {
   print-page-number = ##f
-  %%indent = 0
+
+  % top-system-spacing.basic-distance = #6
+  % top-system-spacing.minimum-distance = #6
+  % top-system-spacing.padding = #1
+
+  % markup-system-spacing.basic-distance = #6
+  % markup-system-spacing.minimum-distance = #6
+  % markup-system-spacing.padding = #1
+
+  % score-markup-spacing.basic-distance = #6
+  % score-markup-spacing.minimum-distance = #6
+  % score-markup-spacing.padding = #1
+
+  % system-system-spacing.basic-distance = #6
+  % system-system-spacing.minimum-distance = #6
+  % system-system-spacing.padding = #1
 }
 
 \header {
@@ -180,18 +195,96 @@ upper.B = \relative {
   \barNumberCheck 40
   \section
   \key af \major
-  R2. * 25 |
-  r4 r4
+  <ff af>2 q4 |
+  <<
+    { af2 4 | 2.( | g4.) af8 bf c } \\
+    { ff,4. ef8 d4 | ef2.~ | 2 r4 }
+  >> |
+  <df' af f>2 q4 |
+  <<
+    { ef16 df c df ef4 bf | df2.( | c4) } \\
+    { <bf g>2 g4 | <g( bf>2. | af4) }
+  >>
+  r4 <f' c af> |
+  q2 q4 |
+  <<
+    { af4. g8 <f c af>4 | \once \hideNotes f2.~ | 2\( ff4 | ef2 d4 | df2\) } \\
+    { af4. g8 f4 | <g~ bf~ df~ f>2. | <g bf df>2. | bf2.~ | 2 } \\
+    { \once \override NoteColumn.force-hshift = #1.75 <af c>2 }
+  >>
+
+  %% Re-enter A theme
+  <c af ef>4 |
+  <c^( af_~ f~>2. |
+  <bf) af f>4 r <f' bf, g> |
+  <f( c~ af~>2. |
+  <ef) c af>4 r8
+  << {
+       ef, af c |
+       <df( g,>2 <c) af>4 |
+       bf2 <d bf>4 |
+       <d( bf~>2. |
+       <ef) bf>4
+     }
+     \\
+     {
+       c,4. |
+       <ef df(>2 <ef c)>4 |
+       <ef bf>2 <af d,>4 |
+       <af-\shape #'(
+         ((1.25 . 0) (2.5 . 1.75) (1 . 4) (0 . 4))
+         ((0 . 4) (-0.75 . 3) (-1.5 . 1) (-1.25 . 0))
+        )-\=1(
+        d,-\shape #'(
+         ((0.5 . 0) (1.0 . 0.5) (0.5 . 1.75) (0 . 2.5))
+         ((0 . 3) (-0.75 . 2.25) (-1.5 . 0.75) (-1.25 . 0))
+        )\=2(
+       >2. |
+       <g\=1)
+        ef\=2)
+       >4
+     }
+   >>
+  r4 <c af ef>4 |
+  <<
+    \new Voice { \voiceOne c2~ 8 cf | bf4 }
+    \new Voice { \voiceTwo <af ff>2.~ | q4 }
+  >>
+  r <c af ef> |
+  <<
+    \new Voice { \voiceOne c2~ 8 cf | bf4 }
+    \new Voice { \voiceTwo <af ff>2.~ | q4 }
+  >>
+  r
+
   \barNumberCheck 65
   \section
   \key e \major
-  r4 |
-  R2. * 8 |
+  <b gs e>4~ |
+  q q q |
+  q <cs a e> <d b e,> |
+  <e cs e,> <d b e,> <cs a e> |
+  <cf^( af ef~>2. |
+  <bf) g ef>2
+
+  \change Staff = "down"
+  \voiceOne
+  <b, gs>4~ |
+  q q q |
+  q <cs a> <d b> |
+  \grace fs16 <e cs>4 <d b> <cs a>
+
+  \change Staff = "up"
   \barNumberCheck 74
   \section
   \key af \major
-  R2. * 3 |
-  r4 r4
+  \change Staff = "down"
+  <cf af>2. |
+  <bf g>2. |
+  af2.~ |
+  2
+  \change Staff = "up"
+  \oneVoice
 }
 
 lower.B = \relative {
@@ -240,18 +333,71 @@ lower.B = \relative {
   \barNumberCheck 40
   \section
   \key af \major
-  R2. * 25 |
-  r4 r4
+  <ff' cf'>2 q4 |
+  q2 <ff af>4 |
+  <ef bf'>2.~ |
+  q2 r4 |
+  <ef f af df>2 q4 |
+  <ef g bf df>2 <ef ef'>4 |
+  <af ef'>2.~ |
+  q4 r <af c f> |
+  q2 q4 |
+  <af c>2 q4 |
+  <<
+    { \once \hideNotes f'2.~ | 2 ff4 } \\
+    { <g,~ bf~ df~ f>2. | <g bf df>2. }
+  >> |
+  <g ef'>2.~ |
+  q2
+
+  % Re-enter the main theme
+  af4 |
+  df2.~ |
+  4 r <df f> |
+  <c_~ f(>2. |
+  <c ef)>4 r8
+  <<
+    { \once \mergeDifferentlyDottedOn af4. } \\
+    { af8 ef c }
+  >> |
+  <<
+    { <ef g>2 <ef af>4 } \\
+    { bf2 af4 }
+  >> |
+  <g ef' g>2 <f bf f'>4 |
+  <ef bf' ef>2.~ |
+  q4 r
+
+  \repeat unfold 2 {
+    <af, af'> |
+    <df df'>2.~ |
+    q4 r
+  }
+
   \barNumberCheck 65
   \section
   \key e \major
-  r4 |
-  R2. * 8 |
+  <d d'>4~ |
+  q q q |
+  q <cs cs'> <b b'> |
+  <a a'> <b b'> <cs cs'> |
+  <ef ef'>2.~ |
+  q2
+
+  \voiceTwo
+  <d' e>4~ |
+  q q q |
+  q <cs e> <b e> |
+  <a e'> <b e> <cs e> |
+
   \barNumberCheck 74
   \section
   \key af \major
-  R2. * 3 |
-  r4 r4
+  ef2.~ |
+  <ef, ef'>2. |
+  <af af,>2.~ |
+  q2
+  \oneVoice
 }
 
 editorial.above.B = {
@@ -328,7 +474,7 @@ breaks_ref = {
   \barNumberCheck 40
   s2. * 10 | \break
   \barNumberCheck 50
-  s2. * 11 | \pageBreak
+  s2. * 11 | \break %pageBreak
   \barNumberCheck 61
   s2. * 8 | \break
   \barNumberCheck 69
@@ -358,7 +504,7 @@ breaks_ref = {
       {
         \upper.A
       }
-      %%\repeat volta 2
+      \repeat volta 2
       {
         \upper.B
       }
