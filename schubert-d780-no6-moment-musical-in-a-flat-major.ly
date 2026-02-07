@@ -38,6 +38,10 @@
     % \override BarNumber.break-visibility = #all-visible
   }
   \context {
+    \Staff
+    \override TimeSignature.break-visibility = ##(#f #t #t)
+  }
+  \context {
     \PianoStaff
     \accidentalStyle piano
     printKeyCancellation = ##t
@@ -62,6 +66,14 @@ global_allegretto = {
   \key af \major
   \time 3/4
   \tempo "Allegretto"
+  \partial 4
+}
+
+global_trio = {
+  \barNumberCheck 77
+  \key df \major
+  \time 3/4
+  \mark "Trio"
   \partial 4
 }
 
@@ -409,6 +421,7 @@ editorial.above.B = {
   s4\> s4 s4\! |
   s2. * 3 |
   s2
+  \barNumberCheck 77
 }
 
 editorial.between.B = {
@@ -456,8 +469,377 @@ editorial.between.B = {
 }
 
 editorial.below.B = {
+  \barNumberCheck 16
+  s4 |
+  s2. * 60 |
+  s2
+  \barNumberCheck 77
 }
 
+upper.C_soprano = \relative {
+  \oneVoice
+  f'4 |
+  f2\( gf8 f\) |
+  ef2\( f8 ef\) |
+  s2. |
+  s2 <af df, af>4 |
+  q2
+  <<
+    { \voiceOne bf8 af } \\
+    { \voiceThree df,4 }
+  >>
+  |
+  \oneVoice
+  q4 <df' df,>( <bf bf,>) |
+  <gf gf,> <bff gf ef bff> <af gf ef c af> |
+  <f df af>2 <f' af, f>4 |
+
+  \voiceOne
+  f2 gf8( f) |
+  ef2 f8( ef) |
+  df4-.\( df-. ef-.\) |
+  af,2
+
+  \oneVoice
+  <af' df, af>4 |
+  q2
+  <<
+    { \voiceOne bf8( af) } \\
+    { \voiceThree df,4 }
+  >>
+  |
+  \oneVoice
+  q4 <df' df,>( <bf bf,>) |
+  <gf gf,>\( <bff gf ef bff> <af gf ef c af>\) |
+  <f df af>2
+}
+
+upper.C_alto = \relative {
+  s4 | s2. * 4 |
+  s2 bf8 af |
+  s2. * 3 |
+  <af' f>2. |
+  <af gf>2. |
+  <af f>4 <bf gf> <df bf> |
+  af2 s4 |
+
+  s2 bf8 af |
+  s2. * 2 |
+  s2
+}
+
+upper.C = <<
+  \clef treble
+  \new Voice = "soprano" {
+    \voiceOne
+    \upper.C_soprano
+  }
+  \new Voice = "alto" {
+    \voiceTwo
+    \upper.C_alto
+  }
+>>
+
+lower.C_tenor = \relative {
+  <f af>4 |
+  q2. |
+  <gf af>2. |
+  <f af df>4-.\( <gf bf df>-. <ef bf' df ef>-.\) |
+  <ef af>2 s4 |
+  s2 gf8 f |
+  s2. * 7 |
+  s2 gf'8 f |
+  s2. * 2 |
+  s2
+}
+
+lower.C_bass = \relative {
+  <df, af' df>4 |
+  q2. |
+  <ef af c>2. |
+  <f af df>4 <gf bf df> <g bf df> |
+  <af c>2
+
+  \oneVoice
+  <f df' f>4 |
+  q2
+  <<
+    { \voiceTwo gf8 f } \\
+    { \voiceFour df'4 }
+  >>
+
+  \oneVoice
+  <f, df' f>4 <bf bf'> <gf gf'> |
+  <ef ef'> <c c'> <af af'> |
+  <df df'>2
+
+  <df' af' df>4 |
+  q2. |
+  <ef af c>2. |
+  <f af df>4 <gf bf df> <g bf df ef> |
+  <af c ef>2
+
+  \oneVoice
+  <f df' f>4 |
+  q2
+  <<
+    { \voiceTwo gf8 f } \\
+    { \voiceFour df'4 }
+  >>
+
+  \oneVoice
+  <f, df' f>4\( <bf bf'> <gf gf'> |
+  <ef ef'> <c c'> <af af'>\) |
+  <df df'>2
+}
+
+lower.C = <<
+  \clef bass
+  \new Voice = "soprano" {
+    \voiceOne
+    \lower.C_tenor
+  }
+  \new Voice = "alto" {
+    \voiceTwo
+    \lower.C_bass
+  }
+>>
+
+editorial.above.C = {
+  s4 |
+  \barNumberCheck 78
+  s2. * 15 |
+  \barNumberCheck 93
+  s2
+}
+
+editorial.between.C = {
+  s4\pp |
+  \barNumberCheck 78
+  s2. * 4 |
+  s2.\< |
+  s4\> s4 s4\! |
+  s2. * 9 |
+  \barNumberCheck 93
+  s2
+}
+
+editorial.below.C = {
+  s4 |
+  \barNumberCheck 78
+  s2. * 15 |
+  \barNumberCheck 93
+  s2
+}
+
+upper.D_soprano = \relative {
+  \oneVoice
+  <ef' af ef'>4 |
+  q2
+  <<
+    { \voiceOne df'8 ef } \\
+    { \voiceThree af,4 }
+  >> |
+  \oneVoice
+  <c af c,>4\( <ef af, ef> <f af, f> |
+  <gf af, gf> <af af,> <bf bf, af>\) |
+  <ef, af, ef>2 <e af, e>4 |
+
+  \voiceOne
+  f2 gf8( f) |
+  <<
+    { \voiceOne ef2 d4 } \\
+    { \voiceFour af2. }
+  >> |
+  \voiceOne
+  df2 c8 bf |
+  ef2 df8 c |
+  df2 c8 bf |
+  af4\( g gf\) |
+
+  \oneVoice
+  f2 gf8 f |
+  ef2 f8 ef |
+  s2. |
+  s2 <af df, af>4 |
+  q2
+  <<
+    { \voiceOne bf8 af } \\
+    { \voiceThree df,4 }
+  >>
+  |
+  \oneVoice
+  q4\( <f' af, f> <ef af, ef> |
+  <df f, df>2 <c af ef c>4\) |
+  <df af f df>2
+
+  <af' df, af>4 |
+  q2
+  <<
+    { \voiceOne bf8 af } \\
+    { \voiceThree df,4 }
+  >>
+  |
+  \oneVoice
+  q4
+
+  \voiceOne
+  <f' af, f> <ef af, ef> |
+  <df f, df>2 <c af ef c>4 |
+  <df af f df>2
+}
+
+upper.D_alto = \relative {
+  s4 |
+  s2 df'8 ef |
+  s2. * 3 |
+  <af f>2. |
+  ef2 d4 |
+  <g df>2 q4 |
+  <fs ef>2 q4 |
+  <g df>2 q4 |
+  c,2. |
+  s2. * 4 |
+  s2 bf8 af |
+  s2. * 3 |
+  s2 bf'8 af |
+  s4 <df af df,> <c af c,> |
+  <bf f bf,>2 <af gf af,>4 |
+  <af f df>2
+}
+
+upper.D = <<
+  \clef treble
+  \new Voice = "soprano" {
+    \voiceOne
+    \upper.D_soprano
+  }
+  \new Voice = "alto" {
+    \voiceTwo
+    \upper.D_alto
+  }
+>>
+
+lower.D_tenor = \relative {
+  s4 |
+  s2 bf8 c |
+  s2. * 4 |
+  c2 b4 |
+  s2. |
+  <a ef>2 a4 |
+  s2. |
+  ef2( af4) |
+  <af f>2. |
+  <af gf>2. |
+  <df af f>4-.\( <df bf gf>-. <ef df bf ef,>-.\) |
+  <af, ef>2 s4 |
+  s2
+  <<
+    { \voiceOne gf8 f } \\
+    { \voiceThree df4 }
+  >>
+  |
+  \voiceOne
+  s2. * 3 |
+  s2 gf'8 f |
+  s2. * 2 |
+  s2
+}
+
+lower.D_bass = \relative {
+  \oneVoice
+  <c af' c>4 |
+  q2
+  <<
+    { \voiceFour bf8 c } \\
+    { \voiceTwo af'4 }
+  >> |
+  \oneVoice
+  <af, af'>4 <c af' c> <df af' df> |
+  <ef af ef'> <f af f'> <gf af gf'> |
+  <c, af' c>2. |
+
+  <df af' df>2. |
+  <<
+    { \voiceFour af'2. } \\
+    { \voiceTwo c,2 b4 }
+  >> |
+  \oneVoice
+  <bf ef bf'>2 ef4 |
+  \voiceTwo
+  a,2 ef'4 |
+  \oneVoice
+  <bf ef bf'>2 ef4 |
+  \voiceTwo
+  af,2. |
+  <df, af' df>2. |
+  <ef af c>2. |
+  <f af df>4 <gf bf df> <g bf df> |
+  <af c>2
+  \oneVoice
+  <f df' f>4 |
+  q2
+  \voiceTwo
+  gf8 f |
+  \oneVoice
+  <f df' f>4 <df' af' df> <c af' c> |
+  <bf f' bf>2 <af af' bf>4 |
+  <df f af>2 <f df' f>4 |
+  q2
+  <<
+    { \voiceFour df'4 } \\
+    { \voiceTwo ef,8 df }
+  >> |
+  \oneVoice
+  <df df' f>4
+  s2 |
+  s2. |
+  s2
+}
+
+lower.D = <<
+  \clef bass
+  \new Voice = "soprano" {
+    \voiceOne
+    \lower.D_tenor
+  }
+  \new Voice = "alto" {
+    \voiceTwo
+    \lower.D_bass
+  }
+>>
+
+editorial.above.D = {
+  s4 |
+  \barNumberCheck 94
+  s2. * 21 |
+  \barNumberCheck 115
+  s2
+}
+
+editorial.between.D = {
+  s4\f |
+  s2. |
+  s4\< s2 |
+  s2 s4\! |
+  s2. |
+  s2.\pp |
+  s2. * 10 |
+  s4 s4\> s4 |
+  s2\! s4 |
+  s2. * 2 |
+  s4 s4\> s4 |
+  s2\! s4 |
+  s2
+}
+
+editorial.below.D = {
+  s4 |
+  \barNumberCheck 94
+  s2. * 20 |
+  \barNumberCheck 114
+  s2 s4^\markup { \tiny \italic { Allegretto D.C. } }
+}
 
 breaks_ref = {
   %% breaks matching some reference for ease of authoring
@@ -470,16 +852,20 @@ breaks_ref = {
   \barNumberCheck 25
   s2. * 8 | \break
   \barNumberCheck 33
-  s2. * 7 | \break
+  s2. * 7 | \pageBreak
   \barNumberCheck 40
   s2. * 10 | \break
   \barNumberCheck 50
-  s2. * 11 | \break %pageBreak
+  s2. * 11 | \break
   \barNumberCheck 61
   s2. * 8 | \break
   \barNumberCheck 69
-  s2. * 9 | \break
-  \barNumberCheck 78
+  s2. * 8 |
+  s2 \break
+  \barNumberCheck 77
+  \global_trio
+  \pageBreak
+  s4 |
   s2. * 9 | \break
   \barNumberCheck 87
   s2. * 10 | \break
@@ -487,6 +873,15 @@ breaks_ref = {
   s2. * 10 | \break
   \barNumberCheck 107
   s2. * 8 | s2
+}
+
+breaks = {
+  s4 |
+  s2. * 76 |
+  s2 \break
+  \barNumberCheck 77
+  \global_trio
+  \pageBreak
 }
 
 \score {
@@ -497,6 +892,9 @@ breaks_ref = {
       \global_allegretto
       \editorial.above.A
       \editorial.above.B
+      \global_trio
+      \editorial.above.C
+      \editorial.above.D
     }
     \new Staff = "up" {
       \global_allegretto
@@ -508,6 +906,12 @@ breaks_ref = {
       {
         \upper.B
       }
+      \global_trio
+      \upper.C
+      \repeat volta 2
+      {
+        \upper.D
+      }
     }
     \new Dynamics \with {
       \override VerticalAxisGroup.staff-affinity = #CENTER
@@ -515,11 +919,17 @@ breaks_ref = {
       \global_allegretto
       \editorial.between.A
       \editorial.between.B
+      \global_trio
+      \editorial.between.C
+      \editorial.between.D
     }
     \new Staff = "down" {
       \global_allegretto
       \lower.A
       \lower.B
+      \global_trio
+      \lower.C
+      \lower.D
     }
     \new Dynamics \with {
       \override VerticalAxisGroup.staff-affinity = #UP
@@ -527,6 +937,9 @@ breaks_ref = {
       \global_allegretto
       \editorial.below.A
       \editorial.below.B
+      \global_trio
+      \editorial.below.C
+      \editorial.below.D
     }
     \new Dynamics {
       \global_allegretto
