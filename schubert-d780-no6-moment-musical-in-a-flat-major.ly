@@ -125,7 +125,7 @@ lower.A = \relative {
   4 r <df, df,> |
   <c c,>2.~ |
   q4 r <c' e> |
-  <bf ef>2 <af ef>4 |
+  <bf ef>2 <af ef'>4 |
   df,2 ef4 |
   <af, ef'>2.~ |
   q4 r
