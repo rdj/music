@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-fswatch -0 -E -i '[.]ly$' -e . ~/projects/music | while IFS= read -r -d '' f; do
+fswatch -0 -E --filter-mode=conjunctive -i '[.]ly$' -e '/[.]#[^/]*[.]ly$' ~/projects/music | while IFS= read -r -d '' f; do
     lilypond "$f" && open "${f%.*}.pdf";
 done
