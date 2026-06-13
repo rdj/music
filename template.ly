@@ -2,8 +2,8 @@
 \language "english"
 \pointAndClickOff
 
-#(set-default-paper-size "letter")
 \paper {
+  #(set-paper-size '(cons (* 9 in) (* 12 in))) % iPad ratio
   print-page-number = ##f
   indent = 0
 }
