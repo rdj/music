@@ -11,7 +11,7 @@
 
 \header {
   title = "Prelude No. 1 in C major"
-  subsubtitle = \markup { "from" \italic { "The Well-Tempered Clavier, Book I" } "(1722)" }
+  subsubtitle = \markup { "from" \italic { "The Well-Tempered Clavier, Book I" } "(1801)" }
   composer = "Johann Sebastian Bach"
   opus = "Prelude from BWV 846 (1722)"
   tagline = ##f
