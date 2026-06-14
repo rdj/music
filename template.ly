@@ -14,9 +14,9 @@
 
 \header {
   title = "Title"
-  subsubtitle = \markup { "From" \italic "Whatever" "(Year)" }
+  subsubtitle = \markup { "From" \italic "Whatever" "(Year Published)" }
   composer = "Composer"
-  opus = "Catalog 123 (Year)"
+  opus = "Catalog 123 (Year Composed)"
   tagline = ##f
 }
 
