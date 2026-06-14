@@ -6,8 +6,10 @@
   #(set-paper-size '(cons (* 9 in) (* 12 in)))
   print-page-number = ##f
   indent = 0
-  top-margin = #4
-  bottom-margin = #4
+  top-margin = 2
+  bottom-margin = 2
+  left-margin = 5
+  right-margin = 5
 }
 
 \header {

@@ -6,6 +6,10 @@
   #(set-paper-size '(cons (* 9 in) (* 12 in))) % iPad ratio
   print-page-number = ##f
   indent = 0
+  top-margin = 2
+  bottom-margin = 2
+  left-margin = 5
+  right-margin = 5
 }
 
 \header {
